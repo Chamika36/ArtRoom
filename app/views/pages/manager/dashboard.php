@@ -17,9 +17,9 @@
             <?php include('../../include/navbar.php'); ?>
         </div>
         
-        <div class="item2">
-            <?php include('./sidebar.php'); ?>
-        </div>
+        <!-- <div class="item2">
+            <?php //include('./sidebar.php'); ?>
+        </div> -->
         
         <!-- Dashboard -->
         <div class="item3">
