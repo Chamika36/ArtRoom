@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtRoom</title>
-    <link rel="stylesheet" href="../../../public/css/navbar.css">
+    <link rel="stylesheet" href="../../../public/css/customer-navbar.css">
 </head>
-
 
 <body>
     <!-- Navbar -->
@@ -19,21 +18,22 @@
                     </a>
                 </li>
                 <!-- Common Items for All Users -->
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Events</a></li>
+                <li class="active"><a href="#">LogIn</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#">Packages</a></li>
                 <li><a href="#">gallery</a></li>
-                <li><a href="#">Users</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Request</a></li>
+                <li><a href="#">Contact Us</a></li>
 
-                <li class="right"><a href="#">LogIn</a></li>
+                
                 
                 <!-- User-Specific Items (Added Dynamically using PHP) -->
             </ul>
         </nav>
 
-        <label class="title">Dashboard</label> 
+       
     </div>
     <!-- Content of the Page Goes Here -->
 </body>
 </html>
-
