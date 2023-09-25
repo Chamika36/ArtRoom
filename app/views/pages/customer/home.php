@@ -83,7 +83,7 @@
             font-weight: 400;
             line-height: 118.9%; /* 42.804px */
             letter-spacing: 1.44px;
-            position: absolute; /* Set the image position to absolute */
+            position: absolute; 
             top: 60%;            /* Move the image down by 50% of the viewport height */
             left: 50%;           /* Move the image to the right by 50% of the viewport width */
             transform: translate(-50%, -50%);
