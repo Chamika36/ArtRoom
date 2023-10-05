@@ -6,7 +6,14 @@ class Home extends Controller {
         $data = [
             'title' => 'Home'
         ];
-        $this->view('home/login', $data);
+        $this->view('pages/customer/home', $data);
+    }
+
+    public function dash() {
+        $data = [
+            'title' => 'Home'
+        ];
+        $this->view('pages/manager/dashboard', $data);
     }
 }
 

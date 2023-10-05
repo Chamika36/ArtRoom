@@ -1,0 +1,50 @@
+    <!-- <script>
+        function validateForm() {
+            var firstName = document.forms["registrationForm"]["firstName"].value;
+            var lastName = document.forms["registrationForm"]["lastName"].value;
+            var email = document.forms["registrationForm"]["email"].value;
+            var contactNumber = document.forms["registrationForm"]["contactNumber"].value;
+            var password = document.forms["registrationForm"]["password"].value;
+            var confirmPassword = document.forms["registrationForm"]["confirmPassword"].value; // Corrected field name
+            var userType = document.forms["registrationForm"]["userType"].value;
+
+            if (firstName == "") {
+                alert("First Name must be filled out");
+                return false;
+            }
+
+            if (lastName == "") {
+                alert("Last Name must be filled out");
+                return false;
+            }
+
+            if (email == "") {
+                alert("Email must be filled out");
+                return false;
+            } else {
+                // Regular expression for a valid email address
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailPattern.test(email)) {
+                    alert("Invalid email address");
+                    return false;
+                }
+            }
+
+            if (contactNumber == "") {
+                alert("Contact Number must be filled out");
+                return false;
+            }
+
+            if (password == "") {
+                alert("Password must be filled out");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords don't match"); // Updated alert message ../../controllers/User.php
+                return false;
+            }
+
+            return true;
+        }
+    </script> -->

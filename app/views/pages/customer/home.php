@@ -147,16 +147,16 @@
     <div class="container">
         <!-- Navbar -->
         <div class="item1">
-            <?php include('../../include/customer-navbar.php'); ?>
+            <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
         </div>
         
     </div>
     <div>
-    <img class="responsive-image01" src="../../../../public/images/customer-home-pic.svg">
+    <img class="responsive-image01" src="<?php echo URLROOT ?>/images/customer-home-pic.svg">
     </div>
 
     <div>
-    <img class="logo" src="../../../../public/images/logo.svg">
+    <img class="logo" src="<?php echo URLROOT ?>/images/logo.svg">
     </div>
 
     <div>
@@ -175,7 +175,7 @@
     </div>
 
     <div>
-    <img class="cameraLogo" src="../../../../public/images/cameraLogo.svg">
+    <img class="cameraLogo" src="<?php echo URLROOT ?>/images/cameraLogo.svg">
     </div>
 
     <div style="position: absolute; top: 90%;  left: 75%;">

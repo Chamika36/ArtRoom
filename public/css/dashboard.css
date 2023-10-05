@@ -1,5 +1,5 @@
 .main-box{
-    width: 70%;
+    width: auto;
     height: 400px;
     margin: auto;
     margin-block: 5%;
@@ -9,7 +9,7 @@
     justify-content: center;
     display: flexbox;
     align-items: center;
-    align-self: center;
+    align-self: center; 
 }
 
 .box {
