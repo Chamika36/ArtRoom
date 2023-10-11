@@ -1,36 +1,31 @@
 <head>
     <title>Packages</title>
-    <link rel="stylesheet" href="../../../../public/css/package.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/package.css">
 </head>
 
+<body>
+
     <div class="header">
-        <?php require '../../include/navbar.php'; ?>
+        <?php include(APPROOT . '/views/include/navbar.php'); ?>
     </div>
 
     <div class="menu">
-        <?php include('./sidebar.php'); ?>
+        <?php include('sidebar.php'); ?>
     </div>
 
     <div class="main">
-        <div class="row">
-            <div class="column">
-                <div class="card">
-                    <h2>TITLE HEADING</h2>
-                    <h5>Title description, Dec 7, 2017</h5>
-                    <div class="fakeimg">Image</div>
-                    <p>Some text..</p>
-                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-                    <h2>TITLE HEADING</h2>
-                    <h5>Title description, Dec 7, 2017</h5>
-                    <div class="fakeimg">Image</div>
-                    <p>Some text..</p>
-                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                </div>
-            </div>
-        </div>
+        <ul>
+            <?php foreach($data['packages'] as $package) : ?>
+                <li>
+                    <div class="card">
+                        <h2><?php echo $package->Name ?></h2>
+                        <h5><?php echo $package->Price; ?></h5>
+                        <div class="fakeimg">Image</div>
+                        <p><?php echo $package->Description; ?></p>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </div>
+
+</body>
