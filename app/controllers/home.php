@@ -2,7 +2,12 @@
 
 
 class Home extends Controller {
-    public function index() {
+
+    public function __construct() {
+        $this->userModel = $this->model('User');
+    }
+
+   public function index() {
         $data = [
             'title' => 'Home'
         ];

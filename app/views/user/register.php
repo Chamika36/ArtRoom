@@ -10,10 +10,10 @@
 <body>
     <div class="container">
         <h2>User Registration</h2>
-        <form name="registrationForm" action="" method="POST">
+        <form name="registrationForm" action="<?php echo URLROOT; ?>/users/register" method="POST">
             <div class="form-group">
                 <label for="firstName">First Name: <sup>*</sup></label>
-                <input type="text" name="firstName" class="input-error">
+                <input type="text" name="firstName" class="input-error" required> 
                 <span class="invalid-feedback"><?php echo $data['name_err']?></span>
             </div>
             <div class="form-group">

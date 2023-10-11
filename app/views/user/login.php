@@ -8,10 +8,9 @@
 
 </head>
 <body>
-    <?php echo APPROOT . URLROOT?>
     <div class="container">
         <h2>User login</h2>
-        <form name="logInForm" action="" method="POST">
+        <form name="logInForm" action="<?php echo URLROOT; ?>/users/login" method="POST">
             <div class="form-group">
                 <label for="email">Email: <sup>*</sup></label>
                 <input type="email" name="email" class="input-error">

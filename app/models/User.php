@@ -1,6 +1,6 @@
 <?php
     class User {
-        $private $db;
+        private $db;
 
         public function __construct() {
             $this->db = new Database;
@@ -8,7 +8,7 @@
 
         // Register user
         public function register($data) {
-            $this->db->query('INSERT INTO users (firstName, lastName, contactNumber, email, password, userType, specialization) VALUES(:firstName, :lastName, :contactNumber, :email, :password, :userType, :specialization)');
+            $this->db->query('INSERT INTO user (firstName, lastName, contactNumber, email, password, userType, specialization) VALUES(:firstName, :lastName, :contactNumber, :email, :password, :userType, :specialization)');
             // Bind values
             $this->db->bind(':firstName', $data['firstName']);
             $this->db->bind(':lastName', $data['lastName']);
@@ -28,7 +28,7 @@
 
         // Find user by email
         public function findUserByEmail($email) {
-            $this->db->query('SELECT * FROM users WHERE email = :email');
+            $this->db->query('SELECT * FROM user WHERE email = :email');
             // Bind value
             $this->db->bind(':email', $email);
 
