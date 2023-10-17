@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <div class="sidebar">        
         <ul>
-            <li><a href="#">Add New Package</a></li>
+            <li><a href="<?php echo URLROOT; ?>/packages/add">Add New Package</a></li>
             <li><a href="#">Edit Excisting Package</a></li>
         </ul>
     </div>
