@@ -19,10 +19,11 @@
                     'contactNumber' => trim($_POST['contactNumber']),
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
-                    'confirm_password' => trim($_POST['confirmPassword']),
+                    'confirmPassword' => trim($_POST['confirmPassword']),
                     'userType' => $_POST['userType'],
                     'specialization' => $_POST['specialization'],
-                    'name_err' => '',
+                    'first_name_err' => '',
+                    'last_name_err' => '',
                     'email_err' => '',
                     'contact_err' => '',
                     'password_err' => '',
@@ -39,13 +40,23 @@
                     }
                 }
 
+                // Validate Contact Number
+                if(empty($data['contactNumber'])) {
+                    $data['contact_err'] = 'Please enter phone number';
+                } else {
+                    // Check email
+                    if($this->userModel->findUserByContactNumber($data['contactNumber'])) {
+                        $data['contact_err'] = 'Contact number is already taken';
+                    }
+                }
+
                 // Validate Name
                 if(empty($data['firstName'])) {
-                    $data['name_err'] = 'Please enter name';
+                    $data['first_name_err'] = 'Please enter name';
                 }
 
                 if(empty($data['lastName'])) {
-                    $data['name_err'] = 'Please enter name';
+                    $data['last_name_err'] = 'Please enter name';
                 }
 
                 // Validate Contact Number
@@ -61,10 +72,10 @@
                 }
 
                 // Validate Confirm Password
-                if(empty($data['confirm_password'])) {
+                if(empty($data['confirmPassword'])) {
                     $data['confirm_password_err'] = 'Please confirm password';
                 } else {
-                    if($data['password'] != $data['confirm_password']) {
+                    if($data['password'] != $data['confirmPassword']) {
                         $data['confirm_password_err'] = 'Passwords do not match';
                     }
                 }
@@ -78,14 +89,15 @@
 
                     // Register User
                     if($this->userModel->register($data)) {
+                        echo 'Success';
                         flash('register_success', 'You are registered and can log in');
-                        redirect('home/login');
+                        redirect('users/login');
                     } else {
                         die('Something went wrong');
                     }
                 } else {
                     // Load view with errors
-                    $this->view('home/register', $data);
+                    $this->view('user/register', $data);
                 }
 
 
@@ -97,17 +109,17 @@
                     'contactNumber' => '',
                     'email' => '',
                     'password' => '',
-                    'confirm_password' => '',
+                    'confirmPassword' => '',
                     'userType' => '',
                     'specialization' => '',
-                    'name_err' => '',
+                    'first_name_err' => '',
+                    'last_name_err' => '',
                     'contact_err' => '',
                     'email_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => '',
                 ];
 
-                // Load view
                 $this->view('user/register', $data);
             }
         }
@@ -146,6 +158,24 @@
                 }
 
                 // Make sure errors are empty
+                if(empty($data['email_err']) && empty($data['password_err'])) {
+                    // Validated
+                    // Check and set logged in user
+                    $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+                    if($loggedInUser) {
+                        // Create Session
+                        echo 'Success';
+                        $this->createUserSession($loggedInUser);
+                    } else {
+                        $data['password_err'] = 'Password incorrect';
+
+                        $this->view('user/login', $data);
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('user/login', $data);
+                }
 
 
             } else {
@@ -159,6 +189,42 @@
 
                 // Load view
                 $this->view('user/login', $data);
+            }
+        }
+
+        public function createUserSession($user) {
+            $_SESSION['user_id'] = $user->UserID;
+            $_SESSION['user_email'] = $user->Email;
+            $_SESSION['user_type_id'] = $user->UserTypeID;
+            $_SESSION['user_name'] = $user->FirstName . ' ' . $user->LastName;
+            
+            switch($_SESSION['user_type_id']) {
+                case 1:
+                    redirect('home/index');
+                    break;
+                case 2: 
+                    redirect('home/dash');
+                    break;
+                default:
+                    redirect('home/index');
+                    break;
+            }
+        }
+
+        public function logout(){
+            unset($_SESSION['user_id']);
+            unset($_SESSION['user_email']);
+            unset($_SESSION['user_type_id']);
+            unset($_SESSION['user_name']);
+            session_destroy();
+            redirect('users/login');
+        }
+
+        public function isLoggedIn() {
+            if(isset($_SESSION['user_id'])) {
+                return true;
+            } else {
+                return false;
             }
         }
     }

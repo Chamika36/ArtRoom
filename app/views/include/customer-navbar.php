@@ -18,7 +18,15 @@
                     </a>
                 </li>
                 <!-- Common Items for All Users -->
-                <li class="active"><a href="#">LogIn</a></li>
+                <?php
+                    if (isset($_SESSION['user_id'])) {
+                        // User is logged in
+                        echo '<li class="right"><a href="'. URLROOT .'/users/logout">Log Out</a></li>';
+                    } else {
+                        // User is not logged in
+                        echo '<li class="right"><a href="'. URLROOT .'/users/login">Log In</a></li>';
+                    }
+                ?>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Packages</a></li>
                 <li><a href="#">gallery</a></li>

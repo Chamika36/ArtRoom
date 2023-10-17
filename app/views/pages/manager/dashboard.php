@@ -5,28 +5,36 @@
 
 <body>
 
-    <div class="container">
+    <div class="container2">
         <!-- Navbar -->
-        <div class="header">
+        <div id="header2">
             <?php include(APPROOT . '/views/include/navbar.php'); ?>
         </div>
-        
-        <div class="menu">
-            <?php include('./sidebar.php'); ?>
-        </div>
-        
-        <!-- Dashboard -->
-        <div class="main">
+    
+            <div id="menu">
+                <?php include('sidebar.php'); ?>
+            </div>
+            
+            <!-- Dashboard -->
+            <div id="main">
             <div class="main-box">
-            <div>
-                <a class="box" href="#">PHOTOGRAPHERS <br />54</a>
-                <a class="box" href="#">EDITORS <br />39</a>
-                <a class="box" href="#">PRINTING <br />39</a>
-                <a class="box" href="#">Event Requests <br />39</a>
-                <a class="box" href="#">Ongoing Events <br />39</a>
+                    <div class="box">
+                        <a href="#">PHOTOGRAPHERS <br> 54</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">EDITORS <br> 39</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">PRINTING <br> 39</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">Event Requests <br> 39</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">Ongoing Events <br> 39</a>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>  
     </div>
 
 </body>

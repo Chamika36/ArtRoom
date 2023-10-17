@@ -12,33 +12,33 @@
         <h2>User Registration</h2>
         <form name="registrationForm" action="<?php echo URLROOT; ?>/users/register" method="POST">
             <div class="form-group">
-                <label for="firstName">First Name: <sup>*</sup></label>
-                <input type="text" name="firstName" class="input-error" required> 
-                <span class="invalid-feedback"><?php echo $data['name_err']?></span>
+                <label for="firstName">First Name: </label>
+                <input type="text" name="firstName" value="<?php echo $data['firstName']?>" required> 
+                <span class="invalid-feedback"><?php echo $data['first_name_err']?></span>
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name: <sup>*</sup></label>
-                <input type="text" name="lastName" class="input-error">
-                <span class="invalid-feedback"><?php echo $data['name_err']?></span>
+                <label for="lastName">Last Name: </label>
+                <input type="text" name="lastName" value="<?php echo $data['lastName']?>" required>
+                <span class="invalid-feedback"><?php echo $data['last_name_err']?></span>
             </div>
             <div class="form-group">
-                <label for="email">Email: <sup>*</sup></label>
-                <input type="email" name="email" class="input-error">
+                <label for="email">Email: </label>
+                <input type="email" name="email" value="<?php echo $data['email']?>" required>
                 <span class="invalid-feedback"><?php echo $data['email_err']?></span>
             </div>
             <div class="form-group">
-                <label for="contactNumber">Contact Number: <sup>*</sup></label>
-                <input type="tel" name="contactNumber" class="input-error" pattern="([0-9]{10})">
+                <label for="contactNumber">Contact Number: </label>
+                <input type="tel" name="contactNumber" pattern="([0-9]{10})" value="<?php echo $data['contactNumber']?>" required>
                 <span class="invalid-feedback"><?php echo $data['contact_err']?></span>
             </div>
             <div class="form-group">
-                <label for="password">Password: <sup>*</sup></label>
-                <input type="password" name="password" class="input-error">
+                <label for="password">Password: </label>
+                <input type="password" name="password" value="<?php echo $data['password']?>" required>
                 <span class="invalid-feedback"><?php echo $data['password_err']?></span>
             </div>
             <div class="form-group">
-                <label for="confirmPassword">Confirm Password: <sup>*</sup></label>
-                <input type="password" name="confirmPassword" class="input-error">
+                <label for="confirmPassword">Confirm Password: </label>
+                <input type="password" name="confirmPassword" value="<?php echo $data['confirmPassword']?>" required>
                 <span class="invalid-feedback"><?php echo $data['confirm_password_err']?></span>
             </div>
             <div class="form-group">
@@ -51,10 +51,15 @@
                     <option value="5">Printing Firm</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="specialization">Specialization (optional):</label>
-                <input type="text" name="specialization" class="input-error">
+            <div class="form-group" id="specialization-group" style="display: none;">
+                <label for="specialization">Specialization:</label>
+                <select name="specialization" id="specialization">
+                    <option value="">Select Specialization</option>
+                    <option value="Indoor">Indoor</option>
+                    <option value="Outdoor">Outdoor</option>
+                </select>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Register">
             </div>
@@ -62,3 +67,17 @@
     </div>
 </body>
 </html>
+
+<script>
+    document.getElementById("userType").addEventListener("change", function() {
+        var userType = this.value;
+        var specializationGroup = document.getElementById("specialization-group");
+
+        if (userType === "3" || userType === "4") {
+            specializationGroup.style.display = "block";
+        } else {
+            specializationGroup.style.display = "none";
+        }
+    });
+</script>
+

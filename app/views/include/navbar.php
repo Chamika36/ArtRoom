@@ -23,10 +23,19 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">Events</a></li>
                 <li><a href="#">Packages</a></li>
-                <li><a href="#">gallery</a></li>
+                <li><a href="#">Gallery</a></li>
                 <li><a href="#">Users</a></li>
 
-                <li class="right"><a href="#">LogIn</a></li>
+                <?php
+                    if (isset($_SESSION['user_id'])) {
+                        // User is logged in
+                        echo '<li class="right"><a href="'. URLROOT .'/users/logout">Log Out</a></li>';
+                    } else {
+                        // User is not logged in
+                        echo '<li class="right"><a href="'. URLROOT .'/users/login">Log In</a></li>';
+                    }
+                ?>
+
                 
                 <!-- User-Specific Items (Added Dynamically using PHP) -->
             </ul>
