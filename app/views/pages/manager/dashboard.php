@@ -5,9 +5,9 @@
 
 <body>
 
-    <div class="container2">
+    <div class="container">
         <!-- Navbar -->
-        <div id="header2">
+        <div id="header">
             <?php include(APPROOT . '/views/include/navbar.php'); ?>
         </div>
     

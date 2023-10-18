@@ -20,11 +20,11 @@
                     </a>
                 </li>
                 <!-- Common Items for All Users -->
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Users</a></li>
+                <li class="active"><a href="<?php echo URLROOT ?>/home/dash">Home</a></li>
+                <li><a href="<?php echo URLROOT ?>/events">Events</a></li>
+                <li><a href="<?php echo URLROOT ?>/packages">Packages</a></li>
+                <li><a href="<?php echo URLROOT ?>/gallery">Gallery</a></li>
+                <li><a href="<?php echo URLROOT ?>/profiles">Users</a></li>
 
                 <?php
                     if (isset($_SESSION['user_id'])) {
@@ -47,3 +47,23 @@
 </body>
 </html>
 
+<Script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.getElementById("menu-toggle");
+        const navUl = document.querySelector("nav ul");
+
+    menuToggle.addEventListener("click", function() {
+        navUl.classList.toggle("show-menu");
+    });
+    });
+
+    const currentUrl = window.location.pathname;
+    const navLinks = document.querySelectorAll('nav a');
+
+    for (const link of navLinks) {
+        if (link.getAttribute('href') === currentUrl) {
+            link.parentElement.classList.add('active');
+        }
+    }
+
+</Script>

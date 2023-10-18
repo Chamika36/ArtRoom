@@ -1,38 +1,60 @@
+/* Sidebar Styles */
 .sidebar {
     height: 100%;
-    background-color:#A8A597;
-}
-
-.sidebar ul {
+    background-color: #A8A597;
+    width: 250px; /* Adjust the width as needed */
+    top: 0;
+    left: 0;
+    transition: width 0.3s;
+    overflow-y: auto;
+  }
+  
+  .sidebar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-.sidebar ul li {
+  }
+  
+  .sidebar ul li {
     margin-bottom: 10px;
-}
-
-.sidebar ul li a {
+  }
+  
+  .sidebar ul li a {
     display: block;
     color: #000000;
     text-decoration: none;
     padding: 10px;
     transition: background-color 0.3s;
-}
-
-.sidebar ul li a:hover {
+  }
+  
+  /* Add Font Awesome icons to list items */
+  .sidebar ul li a i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  .sidebar ul li a:hover {
     background-color: #555;
-}
-
-
- /* @media (max-width: 768px) {
+  }
+  
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
     .sidebar {
-        width: 100%;
-        height: auto;
+      width: 60px; /* Adjust the width for mobile view */
     }
-
-    .content {
-        margin-left: 0;
+  
+    /* Hide text and show only icons */
+    .sidebar ul li a {
+      text-align: center;
+      padding: 10px 0;
     }
-} */
+  
+    .sidebar ul li a i {
+      display: block;
+    }
+  
+    .sidebar ul li a span {
+      display: none;
+    }
+  }
+  

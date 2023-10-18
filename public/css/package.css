@@ -1,33 +1,109 @@
-.fakeimg {
-    background-color: #aaa;
-    width: 30%;
-    padding: 20px;
-  }
-  
-  .card {
-    /* display: block; */
-     margin-top: 20px;
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-     padding: 16px;
-     text-align: center;
-     background-color: #f1f1f1;
-  }
-  
-  /* Float four columns side by side */
+ul {
+    list-style-type: none; /* Remove bullets */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    max-height: fit-content;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #D4C5BE;
+}
+
+/* Float four columns side by side */
 .column {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Display three columns per row */
     align-self: center;
-    float: center;
-    padding: 0 10px;
+ /* Center align content within columns */
+    gap: 20px; /* Add some gap between columns */
+}
+
+.button {
+    color: #FFF;
+    background-color: #423026;
+    display: inline-block;
+    padding: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-right: 10px;
+    border-radius: 28px;
+}
+
+.button a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.button:hover{
+    opacity: 50%;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between; /* Place labels and input fields side by side */
+    align-items: center;
+    margin: 15px 0;
+}
+  
+  label {
+    flex: 1; /* Allow labels to take 50% of the available space */
+    font-weight: bold;
+    padding-right: 10px; /* Add spacing between label and input field */
+    text-align: left; /* Right-align the label */
   }
   
-  /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 -5px;}
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    flex: 1; /* Allow input fields to take 50% of the available space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
   
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus {
+    border: 1px solid #007BFF;
+  }
+  
+  .invalid-feedback {
+    color: red;
+    font-size: 14px;
+  }
+  
+  /* .form-group [type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  } */
+  
+  /* Adjust the styling for small screens (e.g., mobile devices) as needed */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    #header,
+    #menu {
+      width: 100%;
+    }
+    .form-group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    label {
+      text-align: left;
+    }
   }
