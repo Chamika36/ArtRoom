@@ -13,16 +13,7 @@ nav {
     display: flex;
     justify-content: space-between;
   }
-
-    .navbar{
-    background-image: url('../images/customer-home-bg.png'); 
-    background-size: cover;
-    background-position: center; /* Center the background image */
-    width: 100%;
-    height: 420px; 
     
-  } 
-
   nav ul {
     list-style: none;
     padding: 0;

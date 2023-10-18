@@ -13,6 +13,15 @@
     />
 
     <style>
+
+        .background_pic{
+        background-image: url('../images/customer-home-bg.png'); 
+        background-size: cover;
+        background-position: center; /* Center the background image */
+        width: 100%;
+        height: 420px; 
+        }
+
         img {
             width: 330px;
             height: 330px;
@@ -142,7 +151,11 @@
 
 </head>
 
+
+
 <body style="background-color:#E1DBCC;">
+
+        
 
     <div class="container">
         <!-- Navbar -->
@@ -151,6 +164,11 @@
         </div>
         
     </div>
+
+    <div>
+    <img class="background_pic" src="<?php echo URLROOT ?>/images/customer-home-bg.png">
+    </div>
+
     <div>
     <img class="responsive-image01" src="<?php echo URLROOT ?>/images/customer-home-pic.svg">
     </div>
