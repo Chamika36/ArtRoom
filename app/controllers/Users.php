@@ -4,6 +4,16 @@
             $this->userModel = $this->model('User');
         }
 
+        public function index() {
+            $users = $this->userModel->getUsers();
+            $data = [
+                'users' => $users
+            ];
+            $this->view('pages/manager/users', $data);
+        }
+
+        
+
         public function register() {
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
