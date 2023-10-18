@@ -17,7 +17,7 @@
 
       
       .background {
-            background-image: url('../../../../public/images/customer-home2-bg.png');
+            background-image: url('<?php echo URLROOT ?>/images/customer-home2-bg.png');
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -27,12 +27,12 @@
        }
 
        #image_of_the_sun {
-        background-image: url('../../../../public/images/customer-home02-sun-photo.png');
+        background-image: url('<?php echo URLROOT ?>/images/customer-home02-sun-photo.png');
         width: 231px;
         height: 310px;
         flex-shrink: 0;
         border-radius: 32px;
-        background: url('../../../../public/images/customer-home02-sun-photo.png'), lightgray 50% / cover no-repeat;
+        background: url('<?php echo URLROOT ?>/images/customer-home02-sun-photo.png'), lightgray 50% / cover no-repeat;
         position: absolute; 
         top: 36%;            
         left: 12%;           
@@ -80,11 +80,15 @@
     </style>
 
 </head>
+      
   <body class="background">
+      <div id="header">
+            <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
+      </div>
       <!-- Your page content goes here -->
       
       <div id="image_of_the_sun"></div>
-      <img src="../../../../public/images/logo.png" alt="Your Image" class="logo">
+      <img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo">
 
       <div id="about_us"><p><b>About Us</b></p></div>
       <div id="description"><p><b>Art Room studio is a professional wedding photography studio in Balangoda, Sri Lanka.  
