@@ -146,7 +146,7 @@
 
     <div class="container">
         <!-- Navbar -->
-        <div class="item1">
+        <div id="header">
             <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
         </div>
         
@@ -185,6 +185,8 @@
     <div style="position: absolute; top: 90%;  left: 85%;">
         <p class="bottomText">Our Services</p>
     </div>
+
+        
 
 </body>
 </html>    
