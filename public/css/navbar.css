@@ -18,6 +18,7 @@ nav {
   background-size: cover;
   background-position: center;
   width: 100%;
+  position: relative; /* Add this line */
 }
 
 nav ul {
@@ -81,10 +82,30 @@ nav ul li:hover {
   nav ul {
     flex-direction: column;
     align-items: center;
+    position: absolute; /* Add this line */
+    top: 70px; /* Adjust the top position to your liking */
+    left: 0;
+    right: 0;
+    background: #423026;
+    display: none; /* Initially hide the menu items */
+    z-index: 1; /* Place the menu above the content */
   }
+
+  nav ul.show {
+    display: flex; /* Show the menu items when the menu is active */
+  }
+
+  .menu-icon {
+    display: block;
+    align-self: flex-end;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
   nav ul li {
     margin: 5px 0;
     padding: 10px;
+    width: 100%; /* Make the menu items full-width */
+    border: none; /* Remove the background color */
   }
 }
-

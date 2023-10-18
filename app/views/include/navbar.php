@@ -23,7 +23,7 @@
                 <li class="active"><a href="<?php echo URLROOT ?>/home/dash">Home</a></li>
                 <li><a href="<?php echo URLROOT ?>/events">Events</a></li>
                 <li><a href="<?php echo URLROOT ?>/packages">Packages</a></li>
-                <li><a href="<?php echo URLROOT ?>/gallery">Gallery</a></li>
+                <li><a href="<?php echo URLROOT ?>/samples">Gallery</a></li>
                 <li><a href="<?php echo URLROOT ?>/profiles">Users</a></li>
 
                 <?php
@@ -34,13 +34,11 @@
                         // User is not logged in
                         echo '<li class="right"><a href="'. URLROOT .'/users/login">Log In</a></li>';
                     }
-                ?>
-
-                
+                ?>           
                 <!-- User-Specific Items (Added Dynamically using PHP) -->
             </ul>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>    
         </nav>
-
         <label class="title">Dashboard</label> 
     </div>
     <!-- Content of the Page Goes Here -->
@@ -64,6 +62,11 @@
         if (link.getAttribute('href') === currentUrl) {
             link.parentElement.classList.add('active');
         }
+    }
+
+    function toggleMenu() {
+        const menu = document.querySelector('nav ul');
+        menu.classList.toggle('show');
     }
 
 </Script>
