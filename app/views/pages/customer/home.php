@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 
-<!-- new branch added -->
-
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>    
@@ -20,7 +18,7 @@
         background-image: url('../images/customer-home-bg.png'); 
         background-size: cover;
         background-position: center; /* Center the background image */
-        width: 100%;
+        width: 50%;
         height: 420px; 
         }
 
@@ -169,14 +167,14 @@
 
     <div>
     <img class="background_pic" src="<?php echo URLROOT ?>/images/customer-home-bg.png">
-    </div>
+    </div> 
 
     <div>
     <img class="responsive-image01" src="<?php echo URLROOT ?>/images/customer-home-pic.svg">
     </div>
 
     <div>
-    <img class="logo" src="<?php echo URLROOT ?>/images/logo.svg">
+    <img class="logo" src="<?php echo URLROOT ?>/images/logo.png">
     </div>
 
     <div>
