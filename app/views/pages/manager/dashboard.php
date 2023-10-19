@@ -10,11 +10,6 @@
         <div id="header">
             <?php include(APPROOT . '/views/include/navbar.php'); ?>
         </div>
-    
-            <div id="menu">
-                <?php include('sidebar.php'); ?>
-            </div>
-            
             <!-- Dashboard -->
             <div id="main">
             <div class="main-box">

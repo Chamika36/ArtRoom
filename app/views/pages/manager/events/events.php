@@ -16,16 +16,16 @@
 
 <body>
     <div class="container">
-        <div class="item1">
+        <div id="header">
             <!-- Navbar -->
-            <?php include('../../include/navbar.php'); ?>
+            <?php include(APPROOT . '/views/include/navbar.php'); ?>
         </div>
 
-        <div class="item2">Sidebar</div>
+        <div id="menu">Sidebar</div>
 
-        <div class="item3">
+        <div id="main">
             <!-- Calendar -->
-            <?php include('./calendar.php'); ?>
+            <?php include('calendar.php'); ?>
         </div>
 
     </div>
