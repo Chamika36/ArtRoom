@@ -11,7 +11,21 @@ class Home extends Controller {
         $data = [
             'title' => 'Home'
         ];
+        $this->view('pages/customer/home', $data);
+    }
+
+    public function index2() {
+        $data = [
+            'title' => 'Home'
+        ];
         $this->view('pages/customer/home2', $data);
+    }
+
+    public function index3() {
+        $data = [
+            'title' => 'Home'
+        ];
+        $this->view('pages/customer/home3', $data);
     }
 
     public function dash() {
