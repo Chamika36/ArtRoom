@@ -14,13 +14,13 @@ body {
   display: grid;
   grid-template-rows: 0.25fr 1fr; 
   grid-template-columns: 0.2fr 0.8fr;
-  grid-template-areas: "header2 header2" "menu main";
+  grid-template-areas: "header header" "menu main";
   column-gap: 1%;
   height: 100%;
 }
 
 #header {
-  grid-area: header2;
+  grid-area: header;
 }
 
 #menu {
@@ -30,6 +30,102 @@ body {
 #main {
   grid-area: main;
   margin-right: 5%;
+}
+
+/*
+
+* Sidebar Styles -------------------------------------------------------------------------------------
+
+*/
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  padding-top: 20px;
+  transition: 0.3s;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #555;
+}
+
+/* Font Awesome Icons */
+.sidebar ul li a i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Hide text and show only icons on mobile view */
+@media (max-width: 768px) {
+    .sidebar {
+    width: 60px;
+    transition: 0.3s;
+    overflow-y: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    background-color: #555;
+    color: #fff;
+    z-index: 1;
+    height: 100%;
+    overflow-x: hidden;
+    transition: 0.3s;
+  }
+
+  .sidebar ul li a {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .sidebar ul li a i {
+    display: block;
+    padding-left: 10px;
+    font-size: 24px;
+  }
+
+  .sidebar ul li a span {
+    display: none; 
+  }
+
+  .sidebar.active {
+    width: 250px;
+    left: 0;
+    transition: 0.3s;
+  }
+
+  .sidebar ul li a:hover {
+    background-color: #333;
+  }
 }
 
 /*
@@ -48,7 +144,8 @@ nav {
   line-height: 118.9%;
   letter-spacing: 0.68px;
   align-items: normal;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -115,6 +212,14 @@ nav ul li:hover {
   margin-left: 5%;
 }
 
+.menu-icon {
+  display: none;
+  align-self: flex-end;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
 /* Responsive Styles */
 /* Small Screens */
 @media (max-width: 768px) {
@@ -135,17 +240,19 @@ nav ul li:hover {
   }
 
   .menu-icon {
+    margin-top: 5px;
+    margin-left: auto;
     display: block;
     align-self: flex-end;
-    font-size: 24px;
+    font-size: 30px;
     cursor: pointer;
   }
 
   nav ul li {
     margin: 5px 0;
     padding: 10px;
-    width: 100%; /* Make the menu items full-width */
-    border: none; /* Remove the background color */
+    width: 100%; 
+    border: none; 
   }
 }
 
@@ -163,6 +270,7 @@ ul {
 .card {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     max-width: fit-content;
     max-height: fit-content;
     margin-top: 20px;
@@ -177,6 +285,12 @@ ul {
     grid-template-columns: repeat(3, 1fr); /* Display three columns per row */
     align-self: center;
     gap: 20px; 
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
 }
 
 .button {
@@ -204,6 +318,20 @@ table .button {
     background-color:#DBB28C;
     padding-top: 8px;
     padding-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .column {
+    display: grid;
+    grid-template-columns: 1fr; 
+    align-self: center;
+    gap: 20px; 
+  }
+
+  .card {
+    width: 300px; /* Set a fixed width for cards in mobile view */
+  }
+
 }
 
 /*
