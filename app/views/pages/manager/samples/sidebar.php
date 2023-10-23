@@ -12,8 +12,8 @@
     <!-- Sidebar -->
     <div class="sidebar">        
         <ul>
-            <li><a href="<?php echo URLROOT; ?>/samples/add">Add New Sample</a></li>
-            <li><a href="#">Edit Exsisting Sample</a></li>
+            <li><a href="<?php echo URLROOT; ?>/samples/add"><i class="fas fa-plus-circle"></i><span>Add New Sample</a><span></li>
+            <li><span><a href="#"><i class="fas fa-edit"></i><span>Edit Exsisting Sample</a></span></li>
         </ul>
     </div>
 </body>
