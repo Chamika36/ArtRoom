@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Calendar</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/calendar.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.min.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.midnight-blue-min.css"/>
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.midnight-blue.css"/>
 </head>
 <body>
     <div class="hero">
@@ -18,8 +18,7 @@
     <script src="<?php echo URLROOT ?>/js/evo-calendar.js"></script>
 
     <!-- Event Data -->
-    <?php echo "<script>console.log('PHP: " . json_encode($data['requests']) . "');</script>"; ?>
-    
+
     <script>
         var eventData = <?php echo json_encode($data['requests']); ?>;
         console.log("Event Data:", eventData);

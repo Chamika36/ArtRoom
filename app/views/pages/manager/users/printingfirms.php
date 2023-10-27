@@ -13,7 +13,7 @@
         </div>
 
         <div id="main">
-            <table>
+            <table class="table">
                 <thead>
                     <th>Printing Firms ID</th>
                     <th>First Name</th>
