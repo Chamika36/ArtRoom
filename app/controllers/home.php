@@ -27,6 +27,13 @@ class Home extends Controller {
         $this->view('pages/customer/home3', $data);
     }
 
+    public function index4() {
+        $data = [
+            'title' => 'Home'
+        ];
+        $this->view('pages/customer/announcements', $data);
+    }
+
     public function manager() {
         $data = [
             'title' => 'Home'
