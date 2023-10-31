@@ -1,6 +1,5 @@
 <?php
 
-
 class Home extends Controller {
 
     public function __construct() {
@@ -28,13 +27,12 @@ class Home extends Controller {
         $this->view('pages/customer/home3', $data);
     }
 
-    public function dash() {
+    public function manager() {
         $data = [
             'title' => 'Home'
         ];
         $this->view('pages/manager/dashboard', $data);
     }
 }
-
 
 ?>

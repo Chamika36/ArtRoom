@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home-02</title>    
+    <title>User Login</title>
     <link rel="stylesheet" href="../../../../public/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link rel="stylesheet" href="../../../../public/css/logo.css">
@@ -12,7 +12,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
 <style>
-    
 
     .background{
         background: url('<?php echo URLROOT ?>/images/login-backgroung.png'); 

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtRoom</title>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/navbar.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/manager-styles.css">
 </head>
 
 
@@ -24,7 +24,7 @@
                 <li><a href="<?php echo URLROOT ?>/events">Events</a></li>
                 <li><a href="<?php echo URLROOT ?>/packages">Packages</a></li>
                 <li><a href="<?php echo URLROOT ?>/samples">Gallery</a></li>
-                <li><a href="<?php echo URLROOT ?>/profiles">Users</a></li>
+                <li><a href="<?php echo URLROOT ?>/users">Users</a></li>
 
                 <?php
                     if (isset($_SESSION['user_id'])) {

@@ -1,6 +1,5 @@
 <head>
     <title>Packages</title>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/package.css">
 </head>
 
 <body>
