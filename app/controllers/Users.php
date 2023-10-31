@@ -213,7 +213,13 @@
                     redirect('home/index');
                     break;
                 case 2: 
-                    redirect('home/dash');
+                    redirect('home/manager');
+                    break;
+                case 3: case 4: case 5:
+                    redirect('home/partner');
+                    break;
+                case 6:
+                    redirect('home/admin');
                     break;
                 default:
                     redirect('home/index');

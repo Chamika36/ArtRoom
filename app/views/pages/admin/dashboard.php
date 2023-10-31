@@ -22,7 +22,7 @@
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
                             <div class="box-content">
-                                <a href="<?php echo URLROOT ?>/events"><h2>Event Requests</h2></a>
+                                <h2>Event Requests</h2>
                                 <p>39</p>
                             </div>
                         </a>

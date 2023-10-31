@@ -67,8 +67,7 @@
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-        letter-spacing: 1.1px;
-        
+        letter-spacing: 1.1px;        
        }
 
        .textBox{
@@ -114,7 +113,7 @@
                 </div>
             </form>
             <a href="">Forgot Password?</a>
-            <h4>Don't have an account? <a href="">Sign Up</a></h4>
+            <h4>Don't have an account? <a href="<?php echo URLROOT; ?>/users/register">Sign Up</a></h4>
             
         </div>
 

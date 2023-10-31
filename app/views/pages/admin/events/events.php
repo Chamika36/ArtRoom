@@ -3,7 +3,6 @@
 <head>
     <link rel="stylesheet" href="evo-calendar.css" />
     <link rel="stylesheet" href="evo-calendar.midnight-blue.css"/>
-    <title>Events</title>
 </head>
 
 <body>

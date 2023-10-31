@@ -163,20 +163,22 @@ nav {
   background-image: url('../images/navbar-bg.png');
   background-size: cover;
   background-position: center;
+  text-align: center;
   width: 100%;
   position: relative; /* Add this line */
 }
 
 nav ul {
+  height: 40px;
   list-style: none;
   padding: 0;
-  display: flex;
+  display: inline-block;
   flex-grow: 1;
   justify-content: center;
 }
 
 nav ul li {
-  height: 25px;
+  height: 40px;
   display: inline-block;
   display: inline;
   padding: 20px;
