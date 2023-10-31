@@ -2,6 +2,7 @@
     class Events extends Controller{
         public function __construct() {
             $this->eventModel = $this->model('Event');
+            $this->userModel = $this->model('User');
         }
 
         public function index() {
@@ -60,6 +61,23 @@
         
             $this->view('pages/manager/events/calendar', $data);
         }
-        
 
+        // Manage event
+        public function manageEvent($id) {
+            $event = $this->eventModel->getEventById($id);
+            $photographers = $this->userModel->getPhotographers();
+            $editors = $this->userModel->getEditors();
+            $printingFirms = $this->userModel->getPrintingFirms();
+
+            $data = [
+                'event' => $event,
+                'photographers' => $photographers,
+                'editors' => $editors,
+                'printingFirms' => $printingFirms
+            ];
+
+            
+
+            $this->view('pages/manager/events/manageEvent', $data);
+        }
     }

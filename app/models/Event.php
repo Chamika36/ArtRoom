@@ -17,4 +17,11 @@
             $results = $this->db->resultSet();
             return $results;
         }
+
+        public function getEventById($id) {
+            $this->db->query('SELECT * FROM Event WHERE EventID = :id');
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            return $row;
+        }
     }

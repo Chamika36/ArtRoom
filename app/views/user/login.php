@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login</title>
-    <link rel="stylesheet" href="style.css"> <!-- You can link to your CSS file here -->
 
 </head>
 <body>

@@ -19,6 +19,16 @@ body {
   height: 100%;
 }
 
+.event-container {
+  display: grid;
+  grid-template-rows: 0.25fr 1fr;
+  grid-template-columns: 1fr; /* Remove the second column definition for the menu */
+  grid-template-areas: "header" "main"; /* Remove the "menu" area */
+  column-gap: 1%;
+  height: 100%;
+}
+
+
 #header {
   grid-area: header;
 }

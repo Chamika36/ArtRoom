@@ -12,7 +12,6 @@
             <?php include(APPROOT . '/views/include/navbar.php'); ?>
         </div>
 
-        <div id="menu">Sidebar</div>
 
         <div id="main">
             <!-- Calendar -->
