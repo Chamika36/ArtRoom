@@ -9,7 +9,7 @@ class Packages extends Controller {
         $data = [
             'packages' => $packages
         ];
-        $this->view('pages/manager/packages', $data);
+        $this->view('pages/manager/packages/packages', $data);
     }
 
     public function add() {
@@ -64,11 +64,11 @@ class Packages extends Controller {
                 }
             } else {
                 // Load view with errors
-                $this->view('pages/manager/addpackage', $data);
+                $this->view('pages/manager/packages/addpackage', $data);
             }
 
         } else {
-            $this->view('pages/manager/addpackage', $data);
+            $this->view('pages/manager/packages/addpackage', $data);
         }
     }
 
@@ -115,7 +115,7 @@ class Packages extends Controller {
                 }
             } else {
                 // Load view with errors
-                $this->view('pages/manager/editpackage', $data);
+                $this->view('pages/manager/packages/editpackage', $data);
             }
 
         } else {
@@ -131,7 +131,7 @@ class Packages extends Controller {
                 'price_err' => '',
                 'description_err' => ''
             ];
-            $this->view('pages/manager/editpackage', $data);
+            $this->view('pages/manager/packages/editpackage', $data);
         }
     }
 

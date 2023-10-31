@@ -1,6 +1,5 @@
 <head>
-    <title>Add Package</title>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/package.css">
+    <title>Edit Package</title>
 </head>
 <body>
     <div class="container">

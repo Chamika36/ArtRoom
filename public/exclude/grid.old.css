@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +9,7 @@ body {
   grid-template-rows: 0.25fr 1fr; 
   grid-template-columns: 0.2fr 0.8fr;
   grid-template-areas: "header2 header2" "menu main";
-  column-gap: 5%;
+  column-gap: 1%;
   height: 100%;
 }
 
