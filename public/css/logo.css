@@ -1,0 +1,9 @@
+.logo{
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+    fill: #1E1E1E;
+    position: absolute;
+    top: 15%;
+    left:90%;
+}

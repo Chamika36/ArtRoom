@@ -1,0 +1,111 @@
+/* Navbar Styles */
+nav {
+  text-align: center;
+  color: #FFF;
+  font-family: Otomanopee One;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 118.9%;
+  letter-spacing: 0.68px;
+  align-items: normal;
+  display: grid;
+  justify-content: space-between;
+}
+
+.navbar {
+  background-image: url('../images/navbar-bg.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  position: relative; /* Add this line */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+nav ul li {
+  height: 25px;
+  display: inline-block;
+  display: inline;
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 10px;
+  border-radius: 28px;
+  background: #423026;
+}
+
+nav a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+nav ul li.active {
+  background: #7D5945;
+}
+
+nav ul li.right {
+  margin-left: auto;
+}
+
+nav ul li:hover {
+  background: #7D5945;
+}
+
+.title {
+  display: flex;
+  width: 259px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Istok Web;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.6px;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+/* Responsive Styles */
+/* Small Screens */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    position: absolute; /* Add this line */
+    top: 70px; /* Adjust the top position to your liking */
+    left: 0;
+    right: 0;
+    background: #423026;
+    display: none; /* Initially hide the menu items */
+    z-index: 1; /* Place the menu above the content */
+  }
+
+  nav ul.show {
+    display: flex; /* Show the menu items when the menu is active */
+  }
+
+  .menu-icon {
+    display: block;
+    align-self: flex-end;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  nav ul li {
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%; /* Make the menu items full-width */
+    border: none; /* Remove the background color */
+  }
+}
