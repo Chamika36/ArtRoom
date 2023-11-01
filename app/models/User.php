@@ -130,14 +130,14 @@
 
         // Get only photographers
         public function getPhotographers() {
-            $this->db->query('SELECT * FROM user WHERE UserTypeID = 2');
+            $this->db->query('SELECT * FROM user WHERE UserTypeID = 3');
             $results = $this->db->resultSet();
             return $results;
         }
 
         // Get only printing firms
         public function getPrintingFirms() {
-            $this->db->query('SELECT * FROM user WHERE UserTypeID = 3');
+            $this->db->query('SELECT * FROM user WHERE UserTypeID = 5');
             $results = $this->db->resultSet();
             return $results;
         }

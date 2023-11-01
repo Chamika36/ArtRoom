@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="">
         <div id="header">
             <!-- Navbar -->
             <?php include(APPROOT . '/views/include/navbar.php'); ?>

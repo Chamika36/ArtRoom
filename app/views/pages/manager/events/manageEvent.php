@@ -12,10 +12,13 @@
         <div class="event-details">
             <h3>Event Details</h3>
             <ul>
-                <li><strong>Event Name:</strong> <?php echo $data['event']->EventID; ?></li>
+                <li><strong>Event Name:</strong> <?php echo $data['package']->Name; ?></li>
+                <li><strong>Event Id:</strong> <?php echo $data['event']->EventID; ?></li>
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
+                <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
+                <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
             </ul>
         </div>
         <div class="partners">
@@ -52,10 +55,6 @@
                     <input type="submit" value="Allocate">
                 </div>
             </form>
-        </div>
-        <div class="budget">
-            <h3>Calculate Budget</h3>
-            <p>Budget Calculation Logic Goes Here</p>
         </div>
     </div>
 </body>

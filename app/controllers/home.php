@@ -4,6 +4,7 @@ class Home extends Controller {
 
     public function __construct() {
         $this->userModel = $this->model('User');
+        $this->eventModel = $this->model('Event');
     }
 
    public function index() {
@@ -28,8 +29,13 @@ class Home extends Controller {
     }
 
     public function manager() {
+        $eventCount = $this->eventModel->getEventCount();
+        $requestCount = $this->eventModel->getRequestCount();
+
         $data = [
-            'title' => 'Home'
+            'title' => 'Home',
+            'eventCount' => $eventCount,
+            'requestCount' => $requestCount
         ];
         $this->view('pages/manager/dashboard', $data);
     }
