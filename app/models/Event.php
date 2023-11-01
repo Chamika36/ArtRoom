@@ -90,5 +90,17 @@
                 return false;
             }
         }
+
+        // delete request
+        public function deleteRequest($id) {
+            $this->db->query('DELETE FROM Event WHERE EventID = :id');
+            $this->db->bind(':id', $id);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         
     }

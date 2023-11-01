@@ -4,10 +4,16 @@
 
 */
 
-body {
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  overflow: hidden; /* To prevent any unwanted scrolling */
 }
 
 .container{
@@ -19,16 +25,6 @@ body {
   height: 100%;
 }
 
-.event-container {
-  display: grid;
-  grid-template-rows: 0.25fr 1fr;
-  grid-template-columns: 1fr; /* Remove the second column definition for the menu */
-  grid-template-areas: "header" "main"; /* Remove the "menu" area */
-  column-gap: 1%;
-  height: 100%;
-}
-
-
 #header {
   grid-area: header;
 }
@@ -37,9 +33,13 @@ body {
   grid-area: menu;
 }
 
+
 #main {
   grid-area: main;
   margin-right: 5%;
+  /* Set full height and width for main content */
+  height: 100%;
+  width: 100%;
 }
 
 /*
@@ -300,7 +300,7 @@ ul {
 }
 
 .card img {
-    width: 100%;
+    width: 300px;
     height: 200px;
     border-radius: 8px;
 }

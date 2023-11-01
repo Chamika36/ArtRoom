@@ -173,6 +173,16 @@
             $this->view('pages/customer/requestStatus', $data);
         }
 
+        // Delete requests
+        public function deleteRequest($id) {
+            if($this->eventModel->deleteRequest($id)) {
+                flash('event_message', 'Request removed');
+                redirect('events');
+            } else {
+                die('Something went wrong');
+            }
+        }
+
         // Event count
         public function eventCount() {
             $eventCount = $this->eventModel->getEventCount();

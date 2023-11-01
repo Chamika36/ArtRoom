@@ -17,7 +17,6 @@
                 <?php foreach ($data['samples'] as $sample) : ?>
                     <div class="card">
                         <h2><?php echo $sample->SampleName ?></h2>
-                        <h3><?php echo $sample->ImagePath; ?></h3>
                         <div style="align:center;"><img src="<?php echo URLROOT ?>/images/samples/<?php echo $sample->ImagePath; ?>" alt="sample image"></div>
                         <p><?php echo $sample->Description; ?></p>
                         <p><?php echo $sample->Date; ?></p>

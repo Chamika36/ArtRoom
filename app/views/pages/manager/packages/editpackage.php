@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Price:</label>
-                        <input type="number" name="price" value="<?php echo $data['price']; ?>" required>
+                        <input type="number" name="price" value="<?php echo $data['price']; ?>" step="any" required>
                         <span class="invalid-feedback"><?php echo $data['price_err']; ?></span>
                     </div>
                     <div class="form-group">
