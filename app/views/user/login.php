@@ -66,8 +66,7 @@
         font-style: bold;
         font-weight: 700;
         line-height: normal;
-        letter-spacing: 1.1px;
-        
+        letter-spacing: 1.1px;        
        }
 
        .textBox {
@@ -152,9 +151,9 @@
                     <input class="logInButton" type="submit" value="Log In">
                 </div>
             </form>
+
             <a class="forgotPass" href="">Forgot Password?</a>
-            <h4 class="forgotPass">Don't have an account? <a href="" style="color: blue;">Sign Up</a></h4>
-            
+            <h4 class="forgotPass">Don't have an account? <a href="a href="<?php echo URLROOT; ?>/users/register" style="color: blue;">Sign Up</a></h4>     
         </div>
 
     </div>
