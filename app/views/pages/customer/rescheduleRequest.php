@@ -76,34 +76,62 @@
         }
 
         .status {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-top: 20px;
-        }
+        display: flex;
+        justify-content: space-between; /* This will create a two-column layout */
+    }
+
 
         .status-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-top: 20px;
-            background-color: #f0f0f0; /* Background color for the square shape */
-            padding: 20px; /* Add padding to give space around the status items */
-            border-radius: 10px; /* Add rounded corners to the background */
-            margin-left: 10%; /* Move the container somewhat to the right */
-            width: 50%; /* Increase the width of the container */
-        }
-
+        flex: 0.8; /* This will make the status-container take up 50% of the available space */
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        margin-left: 10%;
+        
+        
+    }
         .status-item {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+            margin-left: 5%;
         }
 
         .status-item i {
             font-size: 24px;
             margin-right: 10px;
         }
+
+        .status-buttons {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; /* Center buttons vertically */
+    justify-content: center; /* Center buttons horizontally */
+    margin-right: 13%;
+}
+
+.status-buttons button {
+    padding: 10px 20px;
+    margin: 10px 0; /* Add some spacing between the buttons and stack them vertically */
+    background-color: #E7D1B6;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #000;
+    font-family: Radio Canada;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48.5px; /* 303.125% */
+    letter-spacing: 0.96px;
+}
+
+.status-buttons button:hover {
+    background-color: #774001;
+}
+
 
         /* Add individual colors for status items */
         .request-sent {
@@ -125,23 +153,26 @@
 </head>
 <body>
     <div>
-    <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
+        <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
     </div>
     <div class="container">
         <div class="bottom-row">
-        <div class="left-area">
-            <div style="text-align: center;"><img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo"></div>
-            <div class="x">
-                <div class="button">User Profile</div>
-                <div class="button">Request Quote</div>
-                <div class="button">Event Upgrade</div>
-                <div class="button">Log Out</div>
+            <div class="left-area">
+                <div style="text-align: center;">
+                    <img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo">
+                </div>
+                <div class="x">
+                    <div class="button">User Profile</div>
+                    <div class="button">Request Quote</div>
+                    <div class="button">Event Upgrade</div>
+                    <div class="button">Log Out</div>
+                </div>
             </div>
-        </div>
             <div class="bottom-column">
-            <h2 class="rescheduleRequest">Status of the Request</h2>
-            <div class="status">
-                <div class="status-container">
+                <h2 class="rescheduleRequest">Status of the Request</h2>
+                <div class="status">
+                    <div class="status-container">
+                        
                 <div class="status-item request-sent">
                     <i class="fas fa-check-circle"></i> Request sent
                 </div>
@@ -178,10 +209,15 @@
                 <div class="status-item order-completed">
                     <i class="fas fa-check-circle"></i> Order Completed
                 </div>
+                    </div>
+                    <div class="status-buttons">
+                        <button><b>Cancel Request</b></button>
+                        <button><b>Reschedule Request</b></button>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

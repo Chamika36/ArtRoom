@@ -18,8 +18,9 @@
         background-image: url('../images/customer-home-bg.png'); 
         background-size: cover;
         background-position: center; /* Center the background image */
-        width: 50%;
-        height: 420px; 
+        width: 100%;
+        height: 325px%; 
+        margin-top:0%;
         }
 
         img {
@@ -27,7 +28,7 @@
             height: 330px;
             transform: rotate(0.084deg);
             flex-shrink: 0;
-            border-radius: 249.016px;
+           
             
             }
 
