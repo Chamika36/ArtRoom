@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS UserType (
 -- Create the User table
 CREATE TABLE IF NOT EXISTS User (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Email VARCHAR(255) NOT NULL UNIQUE,
+    Email VARCHAR(100s) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
     UserTypeID INT NOT NULL,
     FirstName VARCHAR(255) NOT NULL,
@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS Package (
     Name VARCHAR(255),
     Description TEXT,
     Price DECIMAL(10, 2),
-    ServicesIncluded TEXT
+    ServicesIncluded TEXT,
+    `Type` VARCHAR(100) NULL DEFAULT 'Other'
 );
 
 -- Create the Event table
