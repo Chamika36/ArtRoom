@@ -12,6 +12,14 @@ class Packages extends Controller {
         $this->view('pages/manager/packages/packages', $data);
     }
 
+    public function customerView(){
+        $packages = $this->packageModel->getPackages();
+        $data = [
+            'packages' => $packages
+        ];
+        $this->view('pages/customer/packages/packages', $data);
+    }
+
     public function add() {
         $data = [
             'name' => '',

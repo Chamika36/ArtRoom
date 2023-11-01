@@ -1,0 +1,75 @@
+/*
+* CARDS CSSS --------------------------------------------------------------------------------------
+* Package cards, Sales cards
+*/
+
+ul {
+    list-style-type: none; /* Remove bullets */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: fit-content;
+    max-height: fit-content;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #D4C5BE;
+}
+
+.column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Display three columns per row */
+    align-self: center;
+    gap: 20px; 
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.button {
+    color: #FFF;
+    background-color: #423026;
+    display: inline-block;
+    padding: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-right: 10px;
+    border-radius: 28px;
+}
+
+.button a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.button:hover{
+    opacity: 50%;
+}
+
+table .button {
+    color: #000;
+    background-color:#DBB28C;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .column {
+    display: grid;
+    grid-template-columns: 1fr; 
+    align-self: center;
+    gap: 20px; 
+  }
+
+  .card {
+    width: 300px; /* Set a fixed width for cards in mobile view */
+  }
+
+}

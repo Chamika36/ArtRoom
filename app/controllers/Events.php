@@ -29,6 +29,16 @@
             $this->view('pages/manager/events/events', $data);
         }
 
+        // event request
+        public function request() {
+            $data = [
+                'title' => 'Home'
+            ];
+
+            $this->view('pages/customer/requestPage', $data);
+        }
+
+
         public function calendar() {
             $data = [
                 'title' => 'Home'

@@ -11,36 +11,43 @@ class Home extends Controller {
         $data = [
             'title' => 'Home'
         ];
-        $this->view('pages/customer/rescheduleRequest', $data);
+        $this->view('pages/customer/home', $data);
     }
 
-    public function index2() {
+    public function aboutUs() {
         $data = [
             'title' => 'Home'
         ];
         $this->view('pages/customer/home2', $data);
     }
 
-    public function index3() {
+    public function services(){
         $data = [
             'title' => 'Home'
         ];
         $this->view('pages/customer/home3', $data);
     }
 
-    public function index4() {
-        $data = [
-            'title' => 'Home'
-        ];
-        $this->view('pages/customer/announcements', $data);
-    }
+    // public function index3() {
+    //     $data = [
+    //         'title' => 'Home'
+    //     ];
+    //     $this->view('pages/customer/home3', $data);
+    // }
 
-    public function index5() {
-        $data = [
-            'title' => 'Home'
-        ];
-        $this->view('pages/customer/requestPage', $data);
-    }
+    // public function index4() {
+    //     $data = [
+    //         'title' => 'Home'
+    //     ];
+    //     $this->view('pages/customer/announcements', $data);
+    // }
+
+    // public function index5() {
+    //     $data = [
+    //         'title' => 'Home'
+    //     ];
+    //     $this->view('pages/customer/requestPage', $data);
+    // }
 
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
@@ -52,6 +59,13 @@ class Home extends Controller {
             'requestCount' => $requestCount
         ];
         $this->view('pages/manager/dashboard', $data);
+    }
+
+    public function partner(){
+        $data = [
+            'title' => 'Home'
+        ];
+        $this->view('pages/partner/requests', $data);
     }
 }
 

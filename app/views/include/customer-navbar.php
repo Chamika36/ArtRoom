@@ -27,11 +27,11 @@
                         echo '<li class="right"><a href="'. URLROOT .'/users/login">Log In</a></li>';
                     }
                 ?>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">gallery</a></li>
+                <li><a href="<?php echo URLROOT ?>/home">Home</a></li>
+                <li><a href="<?php echo URLROOT ?>/packages/customerView">Packages</a></li>
+                <li><a href="<?php echo URLROOT ?>/samples/customerView"">Gallery</a></li>
                 <li><a href="#">Reviews</a></li>
-                <li><a href="#">Request</a></li>
+                <li><a href="<?php echo URLROOT ?>/events/request">Request</a></li>
                 <li><a href="#">Contact Us</a></li>
 
                 

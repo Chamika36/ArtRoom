@@ -153,7 +153,7 @@
             </form>
 
             <a class="forgotPass" href="">Forgot Password?</a>
-            <h4 class="forgotPass">Don't have an account? <a href="a href="<?php echo URLROOT; ?>/users/register" style="color: blue;">Sign Up</a></h4>     
+            <h4 class="forgotPass">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" style="color: blue;">Sign Up</a></h4>     
         </div>
 
     </div>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>    
-    <link rel="stylesheet" href="../../../../public/css/customer-navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link
       rel="stylesheet"
@@ -197,11 +197,11 @@
     </div>
 
     <div style="position: absolute; top: 90%;  left: 75%;">
-        <p class="bottomText">About Us</p>
+        <a href="<?php echo URLROOT ?>/home/aboutUs"> <p class="bottomText">About Us</p></a>
     </div>
 
     <div style="position: absolute; top: 90%;  left: 85%;">
-        <p class="bottomText">Our Services</p>
+        <a href="<?php echo URLROOT ?>/home/services"><p class="bottomText">Our Services</p></a>
     </div>
 
         

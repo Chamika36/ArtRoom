@@ -16,6 +16,14 @@ class Samples extends Controller{
         $this->view('pages/manager/samples/samples', $data);
     }
 
+    public function customerView(){
+        $samples = $this->sampleModel->getSamples();
+        $data = [
+            'samples' => $samples
+        ];
+        $this->view('pages/customer/samples/samples', $data);
+    }
+
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
