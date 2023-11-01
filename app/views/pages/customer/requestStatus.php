@@ -181,7 +181,7 @@
                 </div>
                 <div class="status-item editor-accepted">
                     <i class="fas fa-check-circle"></i> Editor accepted the Request
-                </div> requestStatus rescheduleRequest
+                </div>
                 <div class="status-item manager-accepted">
                     <i class="fas fa-check-circle"></i> Manager accepted the Request
                 </div>
@@ -211,8 +211,8 @@
                 </div>
                     </div>
                     <div class="status-buttons">
-                        <button><b>Cancel Request</b></button>
-                        <button><b>Reschedule Request</b></button>
+                        <a href="<?php echo URLROOT ?>/events/deleterequest/<?php echo $data['event']->EventID ?>"><button><b>Cancel Request</b></button></a>
+                        <a href="<?php echo URLROOT ?>/events/rescheduleRequest/<?php echo $data['event']->EventID ?>"><button><b>Reschedule Request</b></button></a>
                     </div>
                 </div>
             </div>

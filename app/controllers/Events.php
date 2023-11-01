@@ -141,6 +141,25 @@
             $this->view('pages/manager/events/viewRequests', $data);
         }
 
+        // View event by id
+        public function viewEvent($id) {
+            $event = $this->eventModel->getEventById($id);
+            $package = $this->packageModel->getPackageById($event->PackageID);
+            $photographer = $this->userModel->getUserById($event->PhotographerID);
+            $editor = $this->userModel->getUserById($event->EditorID);
+            $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
+
+            $data = [
+                'event' => $event,
+                'package' => $package,
+                'photographer' => $photographer,
+                'editor' => $editor,
+                'printingFirm' => $printingFirm
+            ];
+
+            $this->view('pages/customer/requestStatus', $data);
+        }
+
         //view all requests
         public function viewRequests() {
             $requests = $this->eventModel->getRequests();
@@ -170,16 +189,77 @@
                 'requests' => $requests
             ];
         
-            $this->view('pages/customer/requestStatus', $data);
+            $this->view('pages/customer/events', $data);
+        }
+
+        // View events by each customer
+        public function viewCustomerEvents($id) {
+            $events = $this->eventModel->getEventsByCustomer($id);
+            $data = [
+                'events' => $events
+            ];
+        
+            $this->view('pages/customer/events', $data);
         }
 
         // Delete requests
         public function deleteRequest($id) {
             if($this->eventModel->deleteRequest($id)) {
                 flash('event_message', 'Request removed');
-                redirect('events');
+                redirect('event/request');
             } else {
                 die('Something went wrong');
+            }
+        }
+
+        // Reschedule requests
+        public function rescheduleRequest($id) {
+            // Check for POST
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                // Init data
+                $data = [
+                    'id' => $id,
+                    'date' => trim($_POST['date']),
+                    'startTime' => trim($_POST['startTime']),
+                    'endTime' => trim($_POST['endTime']),
+                    'location' => trim($_POST['location']),
+                ];
+
+                // Validate event date
+                if(empty($data['date'])) {
+                    $data['eventDate_err'] = 'Please enter event date';
+                }
+
+                //  Make sure errors are empty
+                if(empty($data['eventDate_err'])) {
+                    if($this->eventModel->rescheduleRequest($data)) {
+                        flash('event_message', 'Request rescheduled');
+                        redirect('events');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('pages/customer/rescheduleRequest', $data);
+                }
+            } else {
+                // Init data
+                $event = $this->eventModel->getEventById($id);
+                $data = [
+                    'id' => $id,
+                    'date' => $event->EventDate,
+                    'startTime' => $event->StartTime,
+                    'endTime' => $event->EndTime,
+                    'location' => $event->Location,
+                    'eventDate_err' => ''
+                ];
+
+                // Load view
+                $this->view('pages/customer/rescheduleRequest', $data);
             }
         }
 

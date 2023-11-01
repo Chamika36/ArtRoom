@@ -71,7 +71,17 @@
 
             <div class="bottom-column">
                 <h2 class="requestQuote">All Events</h2>
-                <div class="event">
+                <?php foreach($data['events'] as $event) : ?>
+                    <div class="event">
+                        <div class="event-details">
+                            <p>Event ID: <?php echo $event->EventID; ?></p>
+                            <p>Date: <?php echo $event->EventDate; ?></p>
+                            <p>Status: <?php echo $event->Status; ?></p>
+                        </div>
+                        <a href="<?php echo URLROOT ?>/events/viewEvent/<?php echo $event->EventID; ?>" class="view-details-button">View Details</a>
+                </div>
+                <?php endforeach; ?>
+                <!-- <div class="event">
                     <div class="event-details">
                         <p>Date: October 15, 2023</p>
                         <p>Status: Upcoming</p>
@@ -91,7 +101,7 @@
                         <p>Status: Scheduled</p>
                     </div>
                     <a href="event_details.php" class="view-details-button">View Details</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

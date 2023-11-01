@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event reschedule page</title>
-    <link rel="stylesheet" href="../../../../public/css/customer-navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
-    <link rel="stylesheet" href="../../../../public/css/logo.css">
-    <link rel="stylesheet" href="../../../../public/css/customer-mainPages.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -96,13 +96,19 @@
         </div>
             <div class="bottom-column">
             <h2 class="rescheduleRequest">Reschedule Request</h2>
-                <form>
-                    
+            <form action="<?php echo URLROOT; ?>/events/rescheduleRequest/<?php echo $data['$id']; ?>" method="POST">
+
                     <label for="event-date">Event Date</label>
-                    <input type="date" id="event-date" name="event-date">
+                    <input type="date" id="EventDate" name="EventDate" required>
                     
-                    <label for="event-time">Event Time</label>
-                    <input type="time" id="event-time" name="event-time">
+                    <label for="event-time">Start Time</label>
+                    <input type="time" id="StartTime" name="StartTime">
+
+                    <label for="event-time">End Time</label>
+                    <input type="time" id="EndTime" name="EndTime">
+
+                    <label for="location">Location</label>
+                    <input type="text" id="Location" name="Location">
 
                     <input type="submit" value="Send Request">
                 </form>

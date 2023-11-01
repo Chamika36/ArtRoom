@@ -26,6 +26,7 @@
             }
         }
 
+
         public function getEvents() {
             $this->db->query('SELECT * FROM Event where Status != "Pencil"');
             $results = $this->db->resultSet();
