@@ -60,12 +60,14 @@ CREATE TABLE IF NOT EXISTS Event (
     PhotographerID INT,
     EditorID INT,
     PrintingFirmID INT,
+    RequestedPhotographer INT,
     FOREIGN KEY (PackageID) REFERENCES Package(PackageID),
     FOREIGN KEY (CustomerID) REFERENCES User(UserID),
     FOREIGN KEY (ManagerID) REFERENCES User(UserID),
     FOREIGN KEY (PhotographerID) REFERENCES User(UserID),
     FOREIGN KEY (EditorID) REFERENCES User(UserID),
-    FOREIGN KEY (PrintingFirmID) REFERENCES User(UserID)
+    FOREIGN KEY (PrintingFirmID) REFERENCES User(UserID),
+    FOREIGN KEY (RequestedPhotographer) REFERENCES User(UserID)
 );
 
 -- Create the Payment table
