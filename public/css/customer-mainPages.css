@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: rgba(148, 121, 79, 0.7);
+    height: 61px;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.bottom-row {
+    flex: 4; /* Adjust the flex value to achieve a 1:4 ratio */
+    display: flex;
+}
+
+.left-area {
+    flex: 1; /* Adjust the flex value for the left area */
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 261px; /* Set the width for the left area */
+    background-image: url('<?php echo URLROOT ?>/images/customer-sideNavBarBG.png'); /* Add your image URL */
+    background-size: cover; /* Adjust the background size as needed */
+    background-position: center; /* Adjust the background position as needed */
+     /* Set the opacity to 0.7 */
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    background-color: #504334;
+    color: #fff;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s, color 0.2s; /* Add transitions for smooth effects */
+}
+
+.button:hover {
+    transform: scale(1.1); /* Scale the button on hover */
+    background-color: #774001; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
+}
+
+.bottom-column {
+    flex: 4; /* Adjust the flex value for the right area */
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+.x{
+    margin-top: 20%;
+}

@@ -10,7 +10,7 @@ class Home extends Controller {
         $data = [
             'title' => 'Home'
         ];
-        $this->view('pages/customer/home', $data);
+        $this->view('pages/customer/requestPage', $data);
     }
 
     public function index2() {
@@ -32,6 +32,13 @@ class Home extends Controller {
             'title' => 'Home'
         ];
         $this->view('pages/customer/announcements', $data);
+    }
+
+    public function index5() {
+        $data = [
+            'title' => 'Home'
+        ];
+        $this->view('pages/customer/requestPage', $data);
     }
 
     public function manager() {
