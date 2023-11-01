@@ -1,5 +1,8 @@
-.hero{
-    width: 100%;
+.hero{  
+    width: 90%;
     height: 100vh;
+    margin-top: 5px;
+    margin-left: 80px;
+    margin-right: 0;    
     position: relative;
 }
