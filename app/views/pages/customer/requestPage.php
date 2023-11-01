@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three Areas Layout</title>
+    <title>Event Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
@@ -78,6 +78,11 @@
     </style>
 </head>
 <body>
+    <?php
+    $maxDate = date('Y-m-d', strtotime('+3 months'));  // Date 3 months from today
+    $minDate = date('Y-m-d', strtotime('+2 weeks')); // Date 2 weeks from today
+    ?>
+
     <div>
     <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
     </div>
@@ -86,53 +91,84 @@
         <div class="left-area">
             <div style="text-align: center;"><img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo"></div>
             <div class="x">
-                <div class="button">User Profile</div>
-                <div class="button">Request Quote</div>
-                <div class="button">Event Upgrade</div>
-                <div class="button">Log Out</div>
+                <a href=""><div class="button">User Profile</div></a>
+                <a href="<?php echo URLROOT ?>/events/request"><div class="button">Request Quote</div></a>
+                <a href="<?php echo URLROOT ?>/events/viewCustomerRequests/<?php echo $_SESSION['user_id']; ?>"><div class="button">Event Upgrade</div></a>
+                <a href="<?php echo URLROOT ?>/users/logout"><div class="button">Log Out</div></a>
             </div>
         </div>
 
             <div class="bottom-column">
                 <h2 class="requestQuote">Request Quote</h2>
-                <form>
-                    <label for="event-type">Event Type</label>
+                <form action="<?php echo URLROOT; ?>/events/request" method="POST">
+                    <!-- <label for="event-type">Event Type</label>
                     <select id="event-type" name="event-type">
                         <option value="option1">Option 1</option>
                         <option value="option2">Option 2</option>
-                    </select>
+                    </select> -->
 
-                    <label for="event-date">Event Date</label>
-                    <input type="date" id="event-date" name="event-date">
+                    <label for="date">Event Date</label>
+                    <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
+                    <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
+
+                    <label for="startTime">Start Time</label>
+                    <input type="time" id="startTime" name="startTime" required>
+
+                    <label for="endTime">End Time</label>
+                    <input type="time" id="endTime" name="endTime" required>
 
                     <label for="location">Location</label>
-                    <input type="text" id="location" name="location">
+                    <input type="text" id="location" name="location" required>
+                    <span class="invalid-feedback"><?php echo $data['location_err']; ?></span>
 
-                    <label for="select-photographer">Select Photographer</label>
-                    <select id="select-photographer" name="select-photographer">
-                        <option value="photographer1">Photographer 1</option>
-                        <option value="photographer2">Photographer 2</option>
+                    <label for="requestedPhotographer">Request Photographer</label>
+                    <select id="requestedPhotographer" name="requestedPhotographer">
+                    <option value="">Select a photographer</option>
+                        <?php foreach ($data['photographers'] as $photographer) : ?>
+                            <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
+                        <?php endforeach; ?>
                     </select>
 
-                    <label for="selected-package">Selected Package</label>
-                    <select id="selected-package" name="selected-package">
-                        <option value="package1">Package 1</option>
-                        <option value="package2">Package 2</option>
+                    <label for="package">Selected Package</label>
+                    <select id="package" name="package" required>
+                        <option value="">Select a package</option>
+                        <?php foreach ($data['packages'] as $package) : ?>
+                            <option value="<?php echo $package->PackageID; ?>" data-price="<?php echo $package->Price; ?>"><?php echo $package->Name . " - Rs. " . $package->Price ; ?></option>
+                        <?php endforeach; ?>
                     </select>
 
-                    <label for="additional-request">Additional Request</label>
-                    <textarea id="additional-request" name="additional-request" rows="4"></textarea>
+                    <label for="additionalRequest">Additional Request</label>
+                    <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
 
-                    <label for="special-request">Special Request</label>
-                    <textarea id="special-request" name="special-request" rows="4"></textarea>
+                    <label for="budget">Rough Calculated Budget: $<span id="budget">0.00</span></label>
+                    <input type="hidden" id="budget" name="budget" value="0.00">
 
-                    <label for="budget">Rough Calculated Budget</label>
-                    <input type="number" id="budget" name="budget" min="0">
+
+                    <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
 
                     <input type="submit" value="Send Request">
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+    // Function to update the budget based on the selected package
+        function updateBudget() {
+            // Get the selected package's price
+            var selectedPackage = document.getElementById("package");
+            var selectedPackageOption = selectedPackage.options[selectedPackage.selectedIndex];
+            var packagePrice = selectedPackageOption.getAttribute("data-price");
+
+            // Update the budget input field with the package price
+            var budgetInput = document.getElementById("budget");
+            budgetSpan.textContent = packagePrice;
+        }
+
+        // Attach the updateBudget function to the package dropdown's change event
+        document.getElementById("package").addEventListener("change", updateBudget);
+    </script>
+
+
 </body>
 </html>
