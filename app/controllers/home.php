@@ -11,7 +11,7 @@ class Home extends Controller {
         $data = [
             'title' => 'Home'
         ];
-        $this->view('pages/customer/rescheduleRequest', $data);
+        $this->view('pages/customer/home', $data);
     }
 
     public function index2() {
