@@ -84,7 +84,7 @@
     <div class="container">
         <div class="bottom-row">
         <div class="left-area">
-            <div><img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo"></div>
+            <div style="text-align: center;"><img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo"></div>
             <div class="x">
                 <div class="button">User Profile</div>
                 <div class="button">Request Quote</div>
@@ -108,7 +108,13 @@
                     <label for="location">Location</label>
                     <input type="text" id="location" name="location">
 
-                    <label for "selected-package">Selected Package</label>
+                    <label for="select-photographer">Select Photographer</label>
+                    <select id="select-photographer" name="select-photographer">
+                        <option value="photographer1">Photographer 1</option>
+                        <option value="photographer2">Photographer 2</option>
+                    </select>
+
+                    <label for="selected-package">Selected Package</label>
                     <select id="selected-package" name="selected-package">
                         <option value="package1">Package 1</option>
                         <option value="package2">Package 2</option>

@@ -34,6 +34,8 @@ body {
      /* Set the opacity to 0.7 */
     display: flex;
     flex-direction: column;
+    margin-top: 0%;
+    background-color: #EDE5DB;
 }
 
 .button {
@@ -44,6 +46,7 @@ body {
     border-radius: 20px;
     text-align: center;
     cursor: pointer;
+    margin-top: 5%;
     transition: transform 0.2s, background-color 0.2s, color 0.2s; /* Add transitions for smooth effects */
 }
 
@@ -59,5 +62,13 @@ body {
     border: 1px solid #ccc;
 }
 .x{
-    margin-top: 20%;
+    margin-top: 15%;
+}
+
+.logo {
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+    fill: #1E1E1E;
+    margin-top: 15%;
 }
