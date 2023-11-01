@@ -11,13 +11,6 @@ INSERT INTO `sample` (`SampleName`, `ImagePath`, `CustomerID`, `Description`, `D
 ('Landscape View', 'landscape.jpg', 1, 'Beautiful landscape shot', '2023-09-10'),
 ('Wedding Moments', 'wedding.jpg', 1, 'Wedding ceremony photos', '2023-08-28');
 
-
--- Insert data into the user table
-INSERT INTO `user` (`Email`, `Password`, `UserTypeID`, `FirstName`, `LastName`, `ContactNumber`, `Address`, `Availability`, `Specialization`, `RegistrationDate`) VALUES
-('manager@gmail.com', '$2y$10$93V9lt42/yUpoVpmVzx.3elGfKarJk/mKWt6IN04aYOKpvki8YBHK', 2, 'Chamika', 'Madhushan', '0768507780', NULL, 1, NULL, '2023-11-01 08:54:05'),
-('customer@gmail.com', '$2y$10$mr3qQx1pKNZDbc/Nyykk7Uzu9e2X9.xZZdxAcQI6SbaOaknNR3tIM.q', 1, 'Thevindu', 'Rathnayake', '0768507781', NULL, 1, NULL, '2023-11-01 08:56:21');
-('photographer@gmail.com', '$2y$10$mr3qQx1pKNZDbc/Nyykk7Uzu9e2X9.xZZdxAcQI6SbaOaknNR3tIM.q', 3, 'Sathurshika', 'Rathnayake', '0768507781', NULL, 1, 'Indoor', '2023-11-01 08:56:21'))
-
 INSERT INTO `usertype` (`UserTypeID`, `UserType`, `PermissionID`) VALUES
 (1, 'Customer', NULL),
 (2, 'Manager', NULL),
@@ -25,4 +18,3 @@ INSERT INTO `usertype` (`UserTypeID`, `UserType`, `PermissionID`) VALUES
 (4, 'Editor', NULL),
 (5, 'Printing Firm', NULL),
 (6, 'Admin', NULL);
-
