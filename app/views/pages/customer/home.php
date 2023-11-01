@@ -15,12 +15,12 @@
     <style>
 
         .background_pic{
-        background-image: url('../images/customer-home-bg.png'); 
+        background-image: url('<?php echo URLROOT ?>/images/customer-home-bg.png'); 
         background-size: cover;
         background-position: center; /* Center the background image */
         width: 100%;
-        height: 325px%; 
-        margin-top:0%;
+        height: 325px; 
+        margin: 0%;
         }
 
         img {
@@ -30,6 +30,12 @@
             flex-shrink: 0;
            
             
+            }
+
+            .container {
+            position: relative;
+            width: 100%;
+            height: 400px;
             }
 
         .responsive-image01 {
@@ -160,15 +166,15 @@
 
     <div class="container">
         <!-- Navbar -->
-        <div id="header">
+        
+
+        <div id="header" class="background_pic">
             <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
         </div>
-        
+
     </div>
 
-    <div>
-    <img class="background_pic" src="<?php echo URLROOT ?>/images/customer-home-bg.png">
-    </div> 
+     
 
     <div>
     <img class="responsive-image01" src="<?php echo URLROOT ?>/images/customer-home-pic.svg">
