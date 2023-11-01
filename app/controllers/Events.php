@@ -31,11 +31,95 @@
 
         // event request
         public function request() {
-            $data = [
-                'title' => 'Home'
-            ];
+            // Check for POST
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                // Init data
+                $data = [
+                    'date' => trim($_POST['date']),
+                    'startTime' => trim($_POST['startTime']),
+                    'endTime' => trim($_POST['endTime']),
+                    'customer' => $_POST['customer'],
+                    'location' => trim($_POST['location']),
+                    'requestedPhotographer' => trim($_POST['requestedPhotographer']),
+                    'package' => trim($_POST['package']),
+                    'additionalRequests' => trim($_POST['additionalRequests']),
+                    'budget' => $_POST['budget'],
+                    'status' => 'Pencil',
+                    'eventDate_err' => '',
+                    'location_err' => '',
+                    'photographer_err' => '',
+                    'package_err' => '',
+                    'additionalRequest_err' => ''
+                ];
 
-            $this->view('pages/customer/requestPage', $data);
+                // Validate event date
+                if(empty($data['date'])) {
+                    $data['eventDate_err'] = 'Please enter event date';
+                }
+
+                // Validate location
+                if(empty($data['location'])) {
+                    $data['location_err'] = 'Please enter location';
+                }
+
+                // Validate photographer
+                if(empty($data['photographer'])) {
+                    $data['photographer_err'] = 'Please select photographer';
+                }
+
+                // Validate package
+                if(empty($data['package'])) {
+                    $data['package_err'] = 'Please select package';
+                }
+
+                // Validate additional request
+                if(empty($data['additionalRequest'])) {
+                    $data['additionalRequest_err'] = 'Please enter additional request';
+                }
+
+                // Validate budget
+
+                // Make sure errors are empty
+                if(empty($data['eventDate_err']) && empty($data['location_err'])) {
+                    if($this->eventModel->requestEvent($data)) {
+                        $data['location_err'] = 'Not executed';
+                        flash('event_message', 'Event requested');
+                        redirect('events');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('pages/customer/requestPage', $data);
+                }
+            }
+            else {
+                // Init data
+                $data = [
+                    'date' => '',
+                    'startTime' => '',
+                    'endTime' => '',
+                    'customer' => '',
+                    'location' => '',
+                    'requestedPhotographer' => '',
+                    'photographers' => $this->userModel->getPhotographers(),
+                    'package' => '',
+                    'packages' => $this->packageModel->getPackages(),
+                    'additionalRequests' => '',
+                    'eventDate_err' => '',
+                    'location_err' => '',
+                    'photographer_err' => '',
+                    'package_err' => '',
+                    'additionalRequest_err' => ''
+                ];
+
+                // Load view
+                $this->view('pages/customer/requestPage', $data);
+            }
         }
 
 
@@ -73,6 +157,22 @@
             $this->view('pages/manager/events/calendar', $data);
         }
 
+        // View requests by each customer
+        public function viewCustomerRequests($id) {
+            $requests = $this->eventModel->getRequestsByCustomer($id);
+        
+            // Loop through the requests and format the date
+            foreach ($requests as $request) {
+                $request->EventDate = date('F j, Y', strtotime($request->EventDate));
+            }
+        
+            $data = [
+                'requests' => $requests
+            ];
+        
+            $this->view('pages/customer/requestStatus', $data);
+        }
+
         // Event count
         public function eventCount() {
             $eventCount = $this->eventModel->getEventCount();
@@ -90,7 +190,7 @@
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
             $photographers = $this->userModel->getPhotographers();
-            $requestedPhotographer = $this->userModel->getUserById($event->PhotographerID);
+            $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
             $editors = $this->userModel->getEditors();
             $printingFirms = $this->userModel->getPrintingFirms();
 

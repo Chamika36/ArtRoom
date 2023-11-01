@@ -28,33 +28,7 @@ class Home extends Controller {
         $this->view('pages/customer/home3', $data);
     }
 
-    public function events(){
-        $data = [
-            'title' => 'Home'
-        ];
-        $this->view('pages/customer/events', $data);
-    }
-
-    // public function index3() {
-    //     $data = [
-    //         'title' => 'Home'
-    //     ];
-    //     $this->view('pages/customer/home3', $data);
-    // }
-
-    // public function index4() {
-    //     $data = [
-    //         'title' => 'Home'
-    //     ];
-    //     $this->view('pages/customer/announcements', $data);
-    // }
-
-    // public function index5() {
-    //     $data = [
-    //         'title' => 'Home'
-    //     ];
-    //     $this->view('pages/customer/requestPage', $data);
-    // }
+    
 
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
