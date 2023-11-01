@@ -28,6 +28,13 @@ class Home extends Controller {
         $this->view('pages/customer/home3', $data);
     }
 
+    public function events(){
+        $data = [
+            'title' => 'Home'
+        ];
+        $this->view('pages/customer/events', $data);
+    }
+
     // public function index3() {
     //     $data = [
     //         'title' => 'Home'

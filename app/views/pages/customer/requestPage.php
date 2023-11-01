@@ -44,7 +44,7 @@
         }
 
         .bottom-column input[type="date"] {
-            width: 100%;
+            
             background-color: rgba(189, 179, 32, 0.08);
             padding: 10px;
             margin-bottom: 10px;

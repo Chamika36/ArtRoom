@@ -13,12 +13,23 @@ ul {
     flex-wrap: wrap;
     max-width: fit-content;
     max-height: fit-content;
-    margin-top: 20px;
+    margin-top: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
     background-color: #D4C5BE;
+    margin-left: 14%;
+    border-radius: 15px;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Add transitions for a smooth effect */
+
+    
+    &:hover {
+        transform: scale(1.05); 
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Change box shadow on hover */
+        background-color: #948044; /* Change background color on hover */
+    }
 }
+
 
 .column {
     display: grid;
@@ -72,4 +83,12 @@ table .button {
     width: 300px; /* Set a fixed width for cards in mobile view */
   }
 
+}
+
+.navbar {
+    background-color: rgba(148, 121, 79, 0.7);
+    height: 61px;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
 }

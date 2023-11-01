@@ -74,7 +74,7 @@
         height: 40px;
         flex-shrink: 0;
         border-radius: 15px;
-        border: 1px solid transparent; /* Set the initial border to transparent */
+        border: 1px solid transparent; 
         color: #000;
         transition: border-color 0.3s; 
         line-height: 40px;
@@ -82,32 +82,32 @@
         }
 
         .textBox:hover {
-        border-color: #000; /* Change border color to black on hover */
+        border-color: #000; 
         }
 
         .textBox:focus {
-        border-color: #000; /* Keep the border black when the input is in focus */
-        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow on focus */
+        border-color: #000; 
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); 
         }
 
         .logInButton {
     width: 103px;
     height: 45px;
     flex-shrink: 0;
-    background-color: rgba(30, 30, 30, 0.7); /* Set initial opacity to 0.7 */
+    background-color: rgba(30, 30, 30, 0.7); 
     color: #ffffff;
     margin-left: auto;
     border-radius: 25px;
-    transition: background-color 0.2s; /* Add transition for smoother color change */
+    transition: background-color 0.2s; 
 }
 
 .logInButton:hover {
-    background-color: rgba(30, 30, 30, 1); /* Increase opacity on hover to 1.0 */
+    background-color: rgba(30, 30, 30, 1); 
 }
 
 .logInButton:focus {
-    background-color: rgba(30, 30, 30, 1); /* Keep increased opacity on focus */
-    outline: none; /* Remove the default focus outline */
+    background-color: rgba(30, 30, 30, 1); 
+    outline: none; 
 }
 
 
@@ -139,12 +139,12 @@
             <form name="logInForm" style="display:flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; "  action="<?php echo URLROOT; ?>/users/login" method="POST">
                 <div class="form-group" style="margin-bottom:10px">
                     <label class="email" for="email">Email </label>
-                    <input class="textBox" type="email" name="email" required>
+                    <input class="textBox" type="email" name="email" required></br>
                     <span class="invalid-feedback"><?php echo $data['email_err']?></span>
                 </div> 
                 <div class="form-group" style="margin-bottom:10px">
                     <label class="email" for="password">Password </label>
-                    <input class="textBox" type="password" name="password" required>
+                    <input class="textBox" type="password" name="password" required></br>
                     <span class="invalid-feedback"><?php echo $data['password_err']?></span>
                 </div>
                 <div class="form-group">
