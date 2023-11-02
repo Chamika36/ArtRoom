@@ -1,8 +1,6 @@
-.hero{  
-    width: 90%;
-    height: 100vh;
-    margin-top: 5px;
-    margin-left: 80px;
-    margin-right: 0;    
+.hero {
+    width: 70%;
+    height: 70vh;
+    margin: 5px auto;
     position: relative;
 }

@@ -6,9 +6,18 @@ body {
 
 .dash {
     width: 70%;
-    margin-top: 50px;
-    margin-left: 50px;
+    height: 70vh;
+    margin: 5px auto;
+    position: relative;
 }
+
+.hero {
+    width: 70%;
+    height: 70vh;
+    margin: 5px auto;
+    position: relative;
+}
+
 
 .main-box {
     width: 70%;

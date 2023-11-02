@@ -29,8 +29,26 @@
             $this->view('pages/manager/events/events', $data);
         }
 
+        // check login
+        public function isLoggedIn() {
+            if(isset($_SESSION['user_id'])) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
         // event request
         public function request() {
+
+            if (!$this->isLoggedIn()) {
+                // If not logged in, display a message and redirect to the login page
+                flash('event_message', 'Please log in to place a request');
+                redirect('users/login');
+                return;
+            }
+
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Process form

@@ -14,7 +14,7 @@
         </div>
         <!-- Dashboard -->
         <div id="main">
-            <div class="dash"
+            <div class="dash">
                 <div class="horizontal-box">
                     <div class="box">
                         <a href="<?php echo URLROOT ?>/events">
