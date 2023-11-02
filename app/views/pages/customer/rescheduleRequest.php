@@ -86,29 +86,23 @@
     <div class="container">
         <div class="bottom-row">
         <div class="left-area">
-            <div style="text-align: center;"><img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo"></div>
-            <div class="x">
-                <div class="button">User Profile</div>
-                <div class="button">Request Quote</div>
-                <div class="button">Event Upgrade</div>
-                <div class="button">Log Out</div>
-            </div>
+            <?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
         </div>
             <div class="bottom-column">
             <h2 class="rescheduleRequest">Reschedule Request</h2>
-            <form action="<?php echo URLROOT; ?>/events/rescheduleRequest/<?php echo $data['$id']; ?>" method="POST">
+                <form action="<?php echo URLROOT ;?>/events/rescheduleRequest/<?php echo $data['id'];?>" method="POST">
 
                     <label for="event-date">Event Date</label>
-                    <input type="date" id="EventDate" name="EventDate" required>
+                    <input type="date" id="date" name="date" value="<?php echo $data['date'];?>" required>
                     
                     <label for="event-time">Start Time</label>
-                    <input type="time" id="StartTime" name="StartTime">
+                    <input type="time" id="startTime" name="startTime" value="<?php echo $data['startTime'];?>">
 
                     <label for="event-time">End Time</label>
-                    <input type="time" id="EndTime" name="EndTime">
+                    <input type="time" id="endTime" name="endTime" value="<?php echo $data['endTime'];?>">
 
                     <label for="location">Location</label>
-                    <input type="text" id="Location" name="Location">
+                    <input type="text" id="location" name="location" value="<?php echo $data['location'];?>">
 
                     <input type="submit" value="Send Request">
                 </form>

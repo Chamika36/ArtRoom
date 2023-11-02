@@ -236,9 +236,9 @@
 
                 //  Make sure errors are empty
                 if(empty($data['eventDate_err'])) {
-                    if($this->eventModel->rescheduleRequest($data)) {
+                    if($this->eventModel->rescheduleEvent($data)) {
                         flash('event_message', 'Request rescheduled');
-                        redirect('events');
+                        redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
                     } else {
                         die('Something went wrong');
                     }

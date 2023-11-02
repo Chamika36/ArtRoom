@@ -158,15 +158,7 @@
     <div class="container">
         <div class="bottom-row">
             <div class="left-area">
-                <div style="text-align: center;">
-                    <img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo">
-                </div>
-                <div class="x">
-                    <div class="button">User Profile</div>
-                    <div class="button">Request Quote</div>
-                    <div class="button">Event Upgrade</div>
-                    <div class="button">Log Out</div>
-                </div>
+                <?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
             </div>
             <div class="bottom-column">
                 <h2 class="rescheduleRequest">Status of the Request</h2>
