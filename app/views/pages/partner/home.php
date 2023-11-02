@@ -114,6 +114,75 @@
 
     </style>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Container */
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 100vh;
+            max-height: 100vh;
+            margin: 0 auto;
+            margin-top: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Label and radio buttons */
+        .label-container {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .radio-button {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .radio-button input[type="radio"] {
+            display: none;
+        }
+
+        .radio-button label {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .radio-button input[type="radio"]:checked + label {
+            background-color: #ff8c00;
+        }
+
+        /* Floating button */
+        .floating-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #ff8c00;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-button svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+        }
+    </style>
 </head>
 <body>
     <?php include(APPROOT . '/views/include/partner-navbar.php'); ?>

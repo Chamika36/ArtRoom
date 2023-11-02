@@ -80,6 +80,11 @@
     
 </head>
 <body>
+    <?php
+        $maxDate = date('Y-m-d', strtotime('+3 months'));  // Date 3 months from today
+        $minDate = date('Y-m-d', strtotime('+2 weeks')); // Date 2 weeks from today
+    ?>
+
     <div>
     <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
     </div>
@@ -93,7 +98,7 @@
                 <form action="<?php echo URLROOT ;?>/events/rescheduleRequest/<?php echo $data['id'];?>" method="POST">
 
                     <label for="event-date">Event Date</label>
-                    <input type="date" id="date" name="date" value="<?php echo $data['date'];?>" required>
+                    <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
                     
                     <label for="event-time">Start Time</label>
                     <input type="time" id="startTime" name="startTime" value="<?php echo $data['startTime'];?>">
