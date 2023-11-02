@@ -160,6 +160,27 @@
             $this->view('pages/customer/requestStatus', $data);
         }
 
+        // View event by id
+        public function viewEventbyManager($id) {
+            $event = $this->eventModel->getEventById($id);
+            $package = $this->packageModel->getPackageById($event->PackageID);
+            $photographer = $this->userModel->getUserById($event->PhotographerID);
+            $editor = $this->userModel->getUserById($event->EditorID);
+            $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
+            $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
+
+            $data = [
+                'event' => $event,
+                'package' => $package,
+                'photographer' => $photographer,
+                'editor' => $editor,
+                'printingFirm' => $printingFirm,
+                'requestedPhotographer' => $requestedPhotographer
+            ];
+
+            $this->view('pages/manager/events/viewEvent', $data);
+        }
+
         //view all requests
         public function viewRequests() {
             $requests = $this->eventModel->getRequests();
@@ -236,9 +257,9 @@
 
                 //  Make sure errors are empty
                 if(empty($data['eventDate_err'])) {
-                    if($this->eventModel->rescheduleRequest($data)) {
+                    if($this->eventModel->rescheduleEvent($data)) {
                         flash('event_message', 'Request rescheduled');
-                        redirect('events');
+                        redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
                     } else {
                         die('Something went wrong');
                     }
@@ -283,6 +304,10 @@
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
             $editors = $this->userModel->getEditors();
             $printingFirms = $this->userModel->getPrintingFirms();
+
+            if($event->PhotographerID != NULL && $event->EditorID != NULL && $event->PrintingFirmID != NULL) {
+                redirect('events/viewEventbyManager/' . $id . '');
+            }
 
             $data = [
                 'event' => $event,
@@ -360,4 +385,6 @@
                 $this->view('pages/manager/events/events', $data);
             }
         }
+
+
     }

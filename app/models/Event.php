@@ -26,6 +26,22 @@
             }
         }
 
+        // reschedule event
+        public function rescheduleEvent($data) {
+            $this->db->query('UPDATE Event SET EventDate = :date, StartTime = :startTime, EndTime = :endTime, Location = :location, Status = "Pencil" WHERE EventID = :eventID');
+            $this->db->bind(':date', $data['date']);
+            $this->db->bind(':startTime', $data['startTime']);
+            $this->db->bind(':endTime', $data['endTime']);
+            $this->db->bind(':location', $data['location']);
+            $this->db->bind(':eventID', $data['id']);
+
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
         public function getEvents() {
             $this->db->query('SELECT * FROM Event where Status != "Pencil"');

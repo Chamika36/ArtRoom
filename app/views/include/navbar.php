@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_SESSION['user_type_id']) || ($_SESSION['user_type_id'] !== 2 && $_SESSION['user_type_id'] !== 6)) {
+    header('Location: ' . URLROOT . '/home/error');
+    exit(); // Stop further execution
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -46,6 +46,14 @@ class Home extends Controller {
         ];
         $this->view('pages/partner/requests', $data);
     }
+
+    // error page
+    public function error() {
+        $data = [
+            'title' => 'Error'
+        ];
+        $this->view('errors/404.view', $data);
+    }
 }
 
 ?>

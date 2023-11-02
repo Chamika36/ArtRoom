@@ -17,12 +17,7 @@
                         <h3>Rs. <?php echo $package->Price; ?></h3>
                         <p><?php echo $package->Description; ?></p>
                         <p><?php echo $package->ServicesIncluded; ?></p>
-                        <!-- <div>
-                            <button class="button"><a href="<?php echo URLROOT ?>/packages/edit/<?php echo $package->PackageID; ?>">Edit Package</a></button>
-                            <!-- <form style="display: inline;" action="<?php echo URLROOT ?>/packages/delete/<?php echo $package->PackageID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $package->Name ?> package?');">
-                                <input type="hidden" name="package_id" value="<?php echo $package->PackageID; ?>">
-                                <input class="button" type="submit" value="Delete Package">
-                            </form> -->
+                        <a href="<?php echo URLROOT ?>/events/request/<?php echo $package->PackageID; ?>"><button class="button">Select Package</button></a>
                     </div>
                 <?php endforeach; ?>
             </div>

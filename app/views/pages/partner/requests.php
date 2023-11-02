@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/requests.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.18.0/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Bootstrap Icons CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.18.0/font/bootstrap-icons.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    
-
-
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/manager-styles.css">
     <title>Requests</title>
 </head>
 <body>
@@ -43,7 +35,7 @@
         </div>
       </div>
     <main>
-        <table class="requests">
+        <table class="table">
           <thead class="thead">
             <tr>
               <th class="eve">Event ID</th>
@@ -55,6 +47,20 @@
             </tr>
           </thead>
           <tbody class="tbody">
+            <?php foreach($data['events'] as $event) : ?>
+            <tr class="tr with-border">
+              <td class="box"><?php echo $event->EventID; ?></td>
+              <td><?php echo $event->Date; ?></td>
+              <td><?php echo $event->StartTime; ?></td>
+              <td><?php echo $event->Location; ?></td>
+              <td><?php echo $package->PackageName; ?></td>
+              <td class="">
+                <a href="#"><button class="button" style="{color: #000; background-color:#DBB28C; padding-top: 8px; padding-bottom: 8px;}">Decline</button></a>
+                <a href="#"><button class="button" style="{color: #000; background-color:#DBB28C; padding-top: 8px; padding-bottom: 8px;}">View Details</button></a>
+              </td> 
+            </tr>
+            <?php endforeach; ?>
+
             <tr class="tr with-border">
               <td class="box">01</td>
               <td>18/11/2022</td>
