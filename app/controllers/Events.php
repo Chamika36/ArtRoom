@@ -106,7 +106,7 @@
                     if($this->eventModel->requestEvent($data)) {
                         $data['location_err'] = 'Not executed';
                         flash('event_message', 'Event requested');
-                        redirect('events');
+                        redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
                     } else {
                         die('Something went wrong');
                     }
