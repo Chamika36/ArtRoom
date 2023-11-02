@@ -44,7 +44,7 @@ class Home extends Controller {
         $data = [
             'title' => 'Home'
         ];
-        $this->view('pages/partner/events', $data);
+        $this->view('pages/partner/home', $data);
     }
 
     // error page

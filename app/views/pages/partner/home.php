@@ -50,28 +50,7 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="topimg">
-        <div class="container mt-4">
-            <ul class="nav nav-justified gap-3 ">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Requests</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Assigned Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">My Profile</a>
-                </li>
-                <li class="nav-item logout"> 
-                    <a class="nav-link active" aria-current="page" href="#">Logout</a>
-                </li>
-            </ul>
-            <h1>Home</h1>
-        </div>
-    </div>
+    <?php include(APPROOT . '/views/include/partner-navbar.php'); ?>
 
     <div class="container bg-orange text-center text-brown p-3 mt-5 col-4" style="border-radius: 50px;">
         <div class="row">

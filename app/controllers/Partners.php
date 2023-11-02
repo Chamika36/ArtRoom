@@ -13,7 +13,7 @@ class Partners extends Controller {
         $data = [
             'title' => 'Home'
         ];
-        $this->view('pages/partner/events', $data);
+        $this->view('pages/partner/home', $data);
     }
 
     // View event by ech Partner
