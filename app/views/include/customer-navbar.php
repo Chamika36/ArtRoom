@@ -28,10 +28,11 @@
                     }
                 ?>
                 <li><a href="<?php echo URLROOT ?>/home">Home</a></li>
+                <li><a href="<?php echo URLROOT ?>/events/request">Request</a></li>
                 <li><a href="<?php echo URLROOT ?>/packages/customerView">Packages</a></li>
                 <li><a href="<?php echo URLROOT ?>/samples/customerView"">Gallery</a></li>
                 <li><a href="#">Reviews</a></li>
-                <li><a href="<?php echo URLROOT ?>/events/request">Request</a></li>
+                
                 <li><a href="#">Contact Us</a></li>
 
                 

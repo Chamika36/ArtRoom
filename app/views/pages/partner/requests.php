@@ -7,34 +7,7 @@
     <title>Requests</title>
 </head>
 <body>
-    <div class="">
-        <div class="row">
-          <div class="mt-0 topimg">
-            <div class="container mt-4">
-                <ul class="nav nav-pills nav-justified gap-3 ">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Requests</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Assigned Evenets</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="#">My Profile</a>
-                      </li>
-                      <li class="nav-item logout"> 
-                        <a class="nav-link active" aria-current="page" href="#">Logout</a>
-                      </li>
-                  </ul>
-
-                  <h1 class="mt-5">Requests</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    <main>
+        <?php include(APPROOT . '/views/include/partner-navbar.php'); ?>
         <table class="table">
           <thead class="thead">
             <tr>
