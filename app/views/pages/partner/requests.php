@@ -16,7 +16,7 @@
                       <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo URLROOT ?>/viewPartnerEvents/<?php echo $_SESSION('user_id'); ?>">Requests</a>
+                        <a class="nav-link active" aria-current="page" href="#">Requests</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Assigned Evenets</a>
@@ -25,7 +25,7 @@
                         <a class="nav-link active " aria-current="page" href="#">My Profile</a>
                       </li>
                       <li class="nav-item logout"> 
-                        <a class="nav-link active" aria-current="page" href="<?php echo URLROOT ?>/users/logout">Logout</a>
+                        <a class="nav-link active" aria-current="page" href="#">Logout</a>
                       </li>
                   </ul>
 

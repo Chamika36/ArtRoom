@@ -164,8 +164,10 @@ nav {
   background-position: center;
   text-align: center;
   width: 100%;
-  position: relative; /* Add this line */
+  position: relative;
+  height: 150px; /* Adjust the height to your desired value */
 }
+
 
 nav ul {
   height: 40px;
@@ -219,7 +221,7 @@ nav ul li:hover {
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1.6px;
-  margin-top: 5%;
+  margin-top: 0%;
   margin-left: 5%;
 }
 
@@ -292,16 +294,46 @@ ul {
 }
 
 .column {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Display three columns per row */
-    align-self: center;
-    gap: 20px; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Display four rows */
+  align-self: center;
+  gap: 20px; /* Set the desired gap between grid items */
 }
+
+.rows {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr); /* Display four rows */
+  align-self: center;
+  gap: 20px; /* Set the desired gap between grid items */
+  
+}
+
+
 
 .card img {
     width: 300px;
     height: 200px;
     border-radius: 8px;
+}
+
+.card-users img {
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.card-users{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 60% ;
+  max-height: fit-content;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #D4C5BE;
 }
 
 .button {
