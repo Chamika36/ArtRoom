@@ -245,7 +245,7 @@
         public function deleteRequest($id) {
             if($this->eventModel->deleteRequest($id)) {
                 flash('event_message', 'Request removed');
-                redirect('event/request');
+                redirect('events/request');
             } else {
                 die('Something went wrong');
             }

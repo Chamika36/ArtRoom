@@ -126,5 +126,16 @@
                 return false;
             }
         }
+
+        // update event status as accepted
+        public function acceptEvent($id) {
+            $this->db->query('UPDATE Event SET Status = "Accepted" WHERE EventID = :id');
+            $this->db->bind(':id', $id);
         
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

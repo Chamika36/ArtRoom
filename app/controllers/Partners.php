@@ -32,4 +32,11 @@ class Partners extends Controller {
     
         $this->view('pages/partner/events', $data);
     }
+
+    // Partner accepted event
+    public function acceptEvent($id) {
+        $this->eventModel->acceptEvent($id);
+        
+        $this->viewPartnerEvents($_SESSION['user_id']);
+    }
 }

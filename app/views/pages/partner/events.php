@@ -86,19 +86,8 @@
     <title>Requests</title>
 </head>
 <body>
-    <div class="topimg">
-        <div class="container">
-            <ul class="nav">
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="<?php echo URLROOT ?>/partners/getPackageById/<?php $_SESSION('user_type_id') ?>">Requests</a></li>
-                <li><a href="./assignedEvents.html">Assigned Events</a></li>
-                <li><a href="./myProfile.html">My Profile</a></li>
-                <li class="logout"><a href="./loginPage.html">Logout</a></li>
-            </ul>
-            <h1>Requests</h1>
-        </div>
-    </div>
     
+    <?php include(APPROOT . '/views/include/partner-navbar.php'); ?>
     <main>
         <table class="requests">
             <thead class="thead">
@@ -111,18 +100,24 @@
                 </tr>
             </thead>
             <tbody class="tbody">
-                <?php foreach($data['events'] as $event) : ?>
+                <?php foreach ($data['events'] as $event) : ?>
                     <tr class="tr with-border">
-                    <td class="box"><?php echo $event->EventID; ?></td>
-                    <td><?php echo $event->EventDate; ?></td>
-                    <td><?php echo $event->StartTime; ?></td>
-                    <td><?php echo $event->Location; ?></td>
-                    <td class="">
-                        <a href="#"><button class="button">Decline</button></a>
-                        <a href="#"><button class="button">Accept</button></a>
-                    </td> 
+                        <td class="box"><?php echo $event->EventID; ?></td>
+                        <td><?php echo $event->EventDate; ?></td>
+                        <td><?php echo $event->StartTime; ?></td>
+                        <td><?php echo $event->Location; ?></td>
+                        <td class="">
+                            <?php if ($event->Status == 'Accepted') : ?>
+                                <button class="button">Accepted</button>
+                            <?php else : ?>
+                                <a href=""><button class="button">Decline</button></a>
+                                <a href="<?php echo URLROOT ?>/partners/acceptEvent/$event->EventID"><button class="button">Accept</button></a>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
+            </tbody>
+
                 <!-- <tr class="tr with-border">
                     <td class="box">02</td>
                     <td>18/11/2022</td>

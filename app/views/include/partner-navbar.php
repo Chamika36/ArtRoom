@@ -18,7 +18,7 @@
         <nav>          
             <ul>
                 <li><a href="<?php echo URLROOT ?>/home/manager" onclick="changeActiveItem(0)">Home</a></li>
-                <li><a href="<?php echo URLROOT ?>/partners/viewPartnerEvents/events" onclick="changeActiveItem(1)">Events</a></li>
+                <li><a href="<?php echo URLROOT ?>/partners/viewPartnerEvents/2" onclick="changeActiveItem(1)">Events</a></li>
                 <li><a href="<?php echo URLROOT ?>/packages" onclick="changeActiveItem(2)">Packages</a></li>
                 <li><a href="<?php echo URLROOT ?>/samples" onclick="changeActiveItem(3)">Gallery</a></li>
                 <li><a href="<?php echo URLROOT ?>/users" onclick="changeActiveItem(4)">Users</a></li>
