@@ -28,8 +28,6 @@ class Home extends Controller {
         $this->view('pages/customer/home3', $data);
     }
 
-    
-
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
