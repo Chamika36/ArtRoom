@@ -4,7 +4,7 @@
             $this->eventModel = $this->model('Event');
             $this->userModel = $this->model('User');
             $this->packageModel = $this->model('Package');
-        }
+        } 
 
         public function index() {
             $requests = $this->eventModel->getRequests();
@@ -404,5 +404,13 @@
             }
         }
 
-
+        // View event by ech Partner
+        public function viewPartnerEvents($id) {
+            $events = $this->eventModel->getEventsByPartner($id);
+            $data = [
+                'events' => $events
+            ];
+        
+            $this->view('pages/partner/events', $data);
+        }
     }

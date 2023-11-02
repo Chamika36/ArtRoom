@@ -156,6 +156,15 @@ class Packages extends Controller {
         }
     }
 
+    // get package by id
+    public function getPackageById($id) {
+        $package = $this->packageModel->getPackageById($id);
+        $data = [
+            'package' => $package
+        ];
+        $this->view('pages/customer/packages/package', $data);
+    }
+
 
 }
 

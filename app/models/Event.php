@@ -42,7 +42,6 @@
             }
         }
 
-
         public function getEvents() {
             $this->db->query('SELECT * FROM Event where Status != "Pencil"');
             $results = $this->db->resultSet();
@@ -66,6 +65,14 @@
         // Get all requests of a customer
         public function getRequestsByCustomer($id) {
             $this->db->query('SELECT * FROM Event WHERE CustomerID = :id AND Status = "Pencil"');
+            $this->db->bind(':id', $id);
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        //Get events by partner
+        public function getEventsByPartner($id) {
+            $this->db->query('SELECT * FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id');
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
