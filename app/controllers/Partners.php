@@ -16,6 +16,12 @@ class Partners extends Controller {
         $this->view('pages/partner/home', $data);
     }
 
+    public function index2() {
+        $data = [
+            'title' => 'Home'
+        ];
+        $this->view('pages/partner/eventdetails', $data);
+    }
     // View event by ech Partner
     public function viewPartnerEvents($id) {
         $events = $this->eventModel->getEventsByPartner($id);

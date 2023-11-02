@@ -4,49 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/home.css">
-    <style>
-        /* Add your custom styles here */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff; /* Set your background color */
-        }
-        
-        .topimg {
-            background-color: #d27408; /* Adjust the background color to your preferred shade of orange */
-            color: #8B4513; /* Set text color */
-            padding: 20px;
-        }
-        
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            list-style: none;
-            padding: 0;
-        }
-        
-        .nav-item {
-            margin: 0;
-        }
-        
-        .nav-link {
-            text-decoration: none;
-            color: #ffffff; /* Set the link text color */
-        }
-        
-        .nav-link.active {
-            font-weight: bold;
-        }
-        
-        h1 {
-            margin: 10px 0;
-        }
-        
-        .bg-orange {
-            background-color: #d27408; /* Adjust the hex code for your preferred shade of orange */
-        }
-    </style>
     <title>Home</title>
 </head>
 <body>
