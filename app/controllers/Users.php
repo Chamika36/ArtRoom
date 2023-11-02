@@ -219,7 +219,7 @@
                     redirect('home/partner');
                     break;
                 case 6:
-                    redirect('home/admin');
+                    redirect('home/manager');
                     break;
                 default:
                     redirect('home/index');

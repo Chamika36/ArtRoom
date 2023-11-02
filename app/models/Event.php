@@ -42,8 +42,9 @@
             }
         }
 
-        public function getEvents() {
-            $this->db->query('SELECT * FROM Event where Status != "Pencil"');
+        // get all events
+        public function getAllEvents() {
+            $this->db->query('SELECT * FROM Event');
             $results = $this->db->resultSet();
             return $results;
         }
@@ -130,6 +131,18 @@
         // update event status as accepted
         public function acceptEvent($id) {
             $this->db->query('UPDATE Event SET Status = "Accepted" WHERE EventID = :id');
+            $this->db->bind(':id', $id);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // update event status as canceled
+        public function declineEvent($id) {
+            $this->db->query('UPDATE Event SET Status = "Canceled" WHERE EventID = :id');
             $this->db->bind(':id', $id);
         
             if ($this->db->execute()) {

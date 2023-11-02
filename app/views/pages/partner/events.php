@@ -109,9 +109,11 @@
                         <td class="">
                             <?php if ($event->Status == 'Accepted') : ?>
                                 <button class="button">Accepted</button>
+                            <?php elseif ($event->Status == 'Canceled') : ?>
+                                <button class="button">Canceled</button>
                             <?php else : ?>
-                                <a href=""><button class="button">Decline</button></a>
-                                <a href="<?php echo URLROOT ?>/partners/acceptEvent/$event->EventID"><button class="button">Accept</button></a>
+                                <a href="<?php echo URLROOT ?>/partners/declineEvent/<?php echo $event->EventID?>"><button class="button">Decline</button></a>
+                                <a href="<?php echo URLROOT ?>/partners/acceptEvent/<?php echo $event->EventID?>"><button class="button">Accept</button></a>
                             <?php endif; ?>
                         </td>
                     </tr>

@@ -6,6 +6,7 @@ class Partners extends Controller {
         $this->userModel = $this->model('User');
         $this->eventModel = $this->model('Event');
         $this->packageModel = $this->model('Package'); 
+        $this->sampleModel = $this->model('Sample');
     }
 
     // view index
@@ -39,4 +40,19 @@ class Partners extends Controller {
         
         $this->viewPartnerEvents($_SESSION['user_id']);
     }
+
+    // Partner declined event
+    public function declineEvent($id) {
+        $this->eventModel->declineEvent($id);
+        
+        $this->viewPartnerEvents($_SESSION['user_id']);
+    }
+
+    public function samples(){
+        $samples = $this->sampleModel->getSamples();
+        $data = [
+            'samples' => $samples
+        ];
+        $this->view('pages/partner/samples', $data);
+    } 
 }

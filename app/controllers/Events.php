@@ -7,9 +7,8 @@
         } 
 
         public function index() {
-            $requests = $this->eventModel->getRequests();
-            $events = $this->eventModel->getEvents();
-        
+            $events = $this->eventModel->getAllEvents();
+            $requests = $this->eventModel->getAllEvents();
             // Loop through the requests and format the date
             foreach ($requests as $request) {
                 $request->EventDate = date('F j, Y', strtotime($request->EventDate));
