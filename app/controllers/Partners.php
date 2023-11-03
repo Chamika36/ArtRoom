@@ -55,4 +55,14 @@ class Partners extends Controller {
         ];
         $this->view('pages/partner/samples', $data);
     } 
+
+    public function viewEvent($id){
+        $event = $this->eventModel->getEventById($id);
+        $package = $this->packageModel->getPackageById($event->PackageID);
+        $data = [
+            'event' => $event,
+            'package' => $package
+        ];
+        $this->view('pages/partner/eventdetails', $data);
+    }
 }

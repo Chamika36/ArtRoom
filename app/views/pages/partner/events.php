@@ -96,6 +96,7 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Location</th>
+                    <th>Details</th>
                     <th class="act">Actions</th>
                 </tr>
             </thead>
@@ -106,6 +107,9 @@
                         <td><?php echo $event->EventDate; ?></td>
                         <td><?php echo $event->StartTime; ?></td>
                         <td><?php echo $event->Location; ?></td>
+                        <td class="act">
+                            <a href="<?php echo URLROOT ?>/partners/viewEvent/<?php echo $event->EventID?>"><button class="button">View Details</button></a>
+                        </td>
                         <td class="">
                             <?php if ($event->Status == 'Accepted') : ?>
                                 <button class="button">Accepted</button>
