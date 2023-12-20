@@ -5,7 +5,7 @@
             $this->userModel = $this->model('User');
             $this->packageModel = $this->model('Package');
         } 
-
+        
         public function index() {
             $events = $this->eventModel->getAllEvents();
             $requests = $this->eventModel->getAllEvents();

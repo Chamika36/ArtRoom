@@ -17,9 +17,8 @@ html, body {
 
 .container{
   display: grid;
-  grid-template-rows: 0.25fr 1fr; 
   grid-template-columns: 0.2fr 0.8fr;
-  grid-template-areas: "header header" "menu main";
+  grid-template-areas: "menu main";
   column-gap: 1%;
   min-height: 100vh; 
   width: 100%;
@@ -48,7 +47,7 @@ html, body {
 
 */
 
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -89,13 +88,13 @@ body {
 }
 
 /* Font Awesome Icons */
-.sidebar ul li a i {
+/* .sidebar ul li a i {
   margin-right: 10px;
   font-size: 18px;
-}
+} */
 
 /* Hide text and show only icons on mobile view */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .sidebar {
     width: 60px;
     transition: 0.3s;
@@ -136,14 +135,14 @@ body {
   .sidebar ul li a:hover {
     background-color: #333;
   }
-}
+} */ 
 
 /*
 
 * NAVBAR CSSS --------------------------------------------------------------------------------------
 
 */
-
+/* 
 nav {
   text-align: center;
   color: #FFF;
@@ -170,7 +169,7 @@ nav {
 }
 
 
-nav ul {
+/* nav ul {
   height: 40px;
   list-style: none;
   padding: 0;
@@ -231,26 +230,26 @@ nav ul li:hover {
   align-self: flex-end;
   font-size: 24px;
   cursor: pointer;
-}
+} */
 
 
 /* Responsive Styles */
 /* Small Screens */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
     align-items: center;
-    position: absolute; /* Add this line */
-    top: 70px; /* Adjust the top position to your liking */
+    position: absolute; 
+    top: 70px; 
     left: 0;
     right: 0;
     background: #423026;
-    display: none; /* Initially hide the menu items */
-    z-index: 1; /* Place the menu above the content */
+    display: none; 
+    z-index: 1;
   }
 
   nav ul.show {
-    display: flex; /* Show the menu items when the menu is active */
+    display: flex; 
   }
 
   .menu-icon {
@@ -268,9 +267,9 @@ nav ul li:hover {
     width: 100%; 
     border: none; 
   }
-}
+} */
 
-
+ */
 
 /*
 * CARDS CSSS --------------------------------------------------------------------------------------

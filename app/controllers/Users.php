@@ -12,8 +12,6 @@
             $this->view('pages/manager/users/users', $data);
         }
 
-        
-
         public function register() {
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,10 +19,10 @@
 
                 // Sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                
+
                 // Init data
                 $data = [
-                    'firstName' => trim($_POST['firstName']), 
+                    'firstName' => trim($_POST['firstName']),
                     'lastName' => trim($_POST['lastName']),
                     'contactNumber' => trim($_POST['contactNumber']),
                     'email' => trim($_POST['email']),

@@ -7,10 +7,10 @@
 </head>
 
 <body>
-    <div class="">
+    <div class="container">
         <!-- Navbar -->
-        <div id="header">
-            <?php include(APPROOT . '/views/include/navbar.php'); ?>
+        <div id="menu">
+            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
         <!-- Dashboard -->
         <div id="main">
