@@ -11,8 +11,46 @@ class Home extends Controller {
         $data = [
             'title' => 'Home'
         ];
-        $this->view('pages/customer/home', $data);
+        if(isset($_SESSION['user_type_id'])) {
+            switch($_SESSION['user_type_id']) {
+                case 1:
+                    $this->view('pages/customer/home', $data);
+                    break;
+                case 2:
+                    redirect('home/manager');
+                    break;
+                case 3: case 4: case 5:
+                    redirect('home/partner');
+                    break;
+                case 6:
+                    redirect('home/manager');
+                    break;
+                default:
+                    $this->view('pages/customer/home', $data);
+                    break;
+            }
+        }else{
+            $this->view('pages/customer/home', $data);
+        }
     }
+
+    // switch($_SESSION['user_type_id']) {
+    //     case 1:
+    //         redirect('home/index');
+    //         break;
+    //     case 2: 
+    //         redirect('home/manager');
+    //         break;
+    //     case 3: case 4: case 5:
+    //         redirect('home/partner');
+    //         break;
+    //     case 6:
+    //         redirect('home/manager');
+    //         break;
+    //     default:
+    //         redirect('home/index');
+    //         break;
+    // }
 
     public function aboutUs() {
         $data = [

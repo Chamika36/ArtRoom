@@ -13,16 +13,13 @@ class Samples extends Controller{
             'samples' => $samples,
             'customers' => $customers
         ];
-        $this->view('pages/manager/samples/samples', $data);
+        if($_SESSION['user_type_id'] == 2) {
+            $this->view('pages/manager/samples/samples', $data);
+        } else {
+            $this->view('pages/customer/samples/samples', $data);
+        }
     }
 
-    public function customerView(){
-        $samples = $this->sampleModel->getSamples();
-        $data = [
-            'samples' => $samples
-        ];
-        $this->view('pages/customer/samples/samples', $data);
-    }
 
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
