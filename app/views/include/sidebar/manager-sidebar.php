@@ -81,12 +81,23 @@
     </div>
 
     <div class="bottom-content">
-      <li class="">
+      <!-- <li class="">
         <a href="#">
           <i class='bx bx-log-out icon'></i>
           <span class="text nav-text">Logout</span>
         </a>
-      </li>
+      </li> -->
+
+      <?php
+        if (isset($_SESSION['user_id'])) {
+            // User is logged in
+            echo '<li class=""><a href="'. URLROOT .'/users/login"><span class="text nav-text">Logout</span></a></li>';
+        } else {
+            // User is not logged in
+            echo '<li class=""><a href="'. URLROOT .'/users/login"></i><span class="text nav-text">Login</span></a></li>';
+            // echo '<li class="right"><a href="'. URLROOT .'/users/login">Log In</a></li>';
+        }
+      ?>    
 
 <!-- 
       <li class="mode">
