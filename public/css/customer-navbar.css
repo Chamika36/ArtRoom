@@ -1,53 +1,63 @@
 /* Navbar Styles */
-nav {
-    text-align: center;
-    color: #FFF;
-    font-family: Otomanopee One;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 118.9%;
-    letter-spacing: 0.68px;
-    position: relative;
-    align-items: normal;
-    display: flex;
-    justify-content: space-between;
-  }
-    
-  nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-  }
+
+header img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+header {
+  background-color: #242526;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 20px 0 rgb(255, 255, 255);
+  padding: 0 20px;
+  color: #e4e3e3;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+header .branding {
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  font-weight: 780;
+}
+
+header * {
+  display: inline;
+}
+
+header li {
+  margin: 5px;
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 1;
   
-  nav ul li {
-    height: 25px;
-    display: inline-block;
-    display: inline; 
-    padding: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-right: 10px; 
-    border-radius: 28px;
-    background: #423026;
-  }
+}
+
+header li a {
+  color: #ccc;
+  background-color: #3b3d3e;
+  text-decoration: none;
+  padding: 10px 20px; /* Adjust padding values as needed */
+  border-radius: 6px;
+  transition: color 0.3s, background-color 0.3s; /* Add smooth transition effect */
+  box-sizing: border-box;
+  font-weight: 780;
+}
+
+header li a:hover {
+  color: #242526; /* Change text color on hover */
+  background-color: #3a3b3c; /* Change background color on hover */
   
-  nav a {
-    text-decoration: none; 
-    color: #FFF; 
-  }
-  
-  nav ul li.active {
-    background: #7D5945;
-  }
-  
-  nav ul li.left {
-    margin-left: auto;
-  }
-  
-  nav ul li:hover {
-    background: #7D5945;
-  }
-  
+}
+
+
