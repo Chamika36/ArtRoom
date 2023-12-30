@@ -11,9 +11,9 @@
     <style>
         .modal {
             display: none;
-            position: fixed;
+            position: absolute;
             z-index: 1;
-            left: 0;
+            left: 100px;
             top: 0;
             width: 100%;
             height: 100%;

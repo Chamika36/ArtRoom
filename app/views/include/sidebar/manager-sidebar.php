@@ -1,3 +1,12 @@
+<?php
+
+if (!isset($_SESSION['user_type_id']) || ($_SESSION['user_type_id'] !== 2 && $_SESSION['user_type_id'] !== 6)) {
+    header('Location: ' . URLROOT . '/home/error');
+    exit(); // Stop further execution
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -44,28 +53,28 @@
 
         <li class="nav-link">
           <a href="<?php echo URLROOT ?>/events">
-            <i class='bx bx-bar-chart-alt-2 icon'></i>
+            <i class='bx bx-calendar-event icon'></i>
             <span class="text nav-text">Events</span>
           </a>
         </li>
 
         <li class="nav-link">
           <a href="<?php echo URLROOT ?>/packages">
-            <i class='bx bx-bell icon'></i>
+            <i class='bx bx-package icon'></i>
             <span class="text nav-text">Packages</span>
           </a>
         </li>
 
         <li class="nav-link">
           <a href="<?php echo URLROOT ?>/samples">
-            <i class='bx bx-pie-chart-alt icon'></i>
+            <i class='bx bx-photo-album icon'></i>
             <span class="text nav-text">Samples</span>
           </a>
         </li>
 
         <li class="nav-link">
           <a href="<?php echo URLROOT ?>/users">
-            <i class='bx bx-heart icon'></i>
+            <i class='bx bxs-user-detail icon'></i>
             <span class="text nav-text">Users</span>
           </a>
         </li>
@@ -91,10 +100,10 @@
       <?php
         if (isset($_SESSION['user_id'])) {
             // User is logged in
-            echo '<li class=""><a href="'. URLROOT .'/users/login"><span class="text nav-text">Logout</span></a></li>';
+            echo '<li class=""><i class="bx bx-log-out icon"></i><a href="'. URLROOT .'/users/login"><span class="text nav-text">Logout</span></a></li>';
         } else {
             // User is not logged in
-            echo '<li class=""><a href="'. URLROOT .'/users/login"></i><span class="text nav-text">Login</span></a></li>';
+            echo '<li class=""><i class="bx bx-log-in icon"><a href="'. URLROOT .'/users/login"></i><span class="text nav-text">Login</span></a></li>';
             // echo '<li class="right"><a href="'. URLROOT .'/users/login">Log In</a></li>';
         }
       ?>    
