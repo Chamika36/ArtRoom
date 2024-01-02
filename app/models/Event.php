@@ -116,6 +116,43 @@
             }
         }
 
+        // Event Actions
+        public function photographerAction($data){
+            $this->db->query('INSERT INTO photographeraction (PhotographerID, EventID) VALUES (:photographer, :eventID)');
+            $this->db->bind(':photographer', $data['photographer']);
+            $this->db->bind(':eventID', $data['eventID']);
+            
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function editorAction($data){
+            $this->db->query('INSERT INTO editoraction (EditorID, EventID) VALUES (:editor, :eventID)');
+            $this->db->bind(':editor', $data['editor']);
+            $this->db->bind(':eventID', $data['eventID']);
+            
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function printingFirmAction($data){
+            $this->db->query('INSERT INTO printingfirmaction (PrintingFirmID, EventID) VALUES (:printingFirm, :eventID)');
+            $this->db->bind(':printingFirm', $data['printingFirm']);
+            $this->db->bind(':eventID', $data['eventID']);
+            
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         // delete request
         public function deleteRequest($id) {
             $this->db->query('DELETE FROM Event WHERE EventID = :id');
@@ -151,4 +188,6 @@
                 return false;
             }
         }
+
+        
     }

@@ -64,7 +64,7 @@
                     'requestedPhotographer' => trim($_POST['requestedPhotographer']),
                     'package' => trim($_POST['package']),
                     'additionalRequests' => trim($_POST['additionalRequests']),
-                    'budget' => $_POST['budget'],
+                    // 'budget' => $_POST['budget'],
                     'status' => 'Pencil',
                     'eventDate_err' => '',
                     'location_err' => '',
@@ -374,9 +374,14 @@
 
                 // Make sure errors are empty
                 if(empty($data['printingFirm_err']) && empty($data['editor_err']) && empty($data['photographer_err']) ) {
-                    if($this->eventModel->allocatePartners($data)) {
-                        flash('event_message', 'Event allocated');
-                        redirect('events');
+                    if(
+                        $this->eventModel->allocatePartners($data) &&
+                        $this->eventModel->photographerAction($data) &&
+                        $this->eventModel->editorAction($data) &&
+                        $this->eventModel->printingFirmAction($data)
+                        ) {
+                            flash('event_message', 'Event allocated');
+                            redirect('events');
                     } else {
                         die('Something went wrong');
                     }
