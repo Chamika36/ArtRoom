@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
 
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>    
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
+    <link rel="stylesheet" href="<//?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link
       rel="stylesheet"
@@ -15,7 +15,7 @@
     <style>
 
         .background_pic{
-        background-image: url('<?php echo URLROOT ?>/images/customer-home-bg.png'); 
+        background-image: url('<//?php echo URLROOT ?>/images/customer-home-bg.png'); 
         background-size: cover;
         background-position: center; /* Center the background image */
         width: 100%;
@@ -154,7 +154,7 @@
             text-decoration-line: underline;
         }
         
-    </style>
+    </style> 
 
 </head>
 
@@ -165,11 +165,11 @@
         
 
     <div class="container">
-        <!-- Navbar -->
+       //  Navbar
         
 
         <div id="header" class="background_pic">
-            <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
+            <//?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
         </div>
 
     </div>
@@ -177,11 +177,11 @@
      
 
     <div>
-    <img class="responsive-image01" src="<?php echo URLROOT ?>/images/customer-home-pic.svg">
+    <img class="responsive-image01" src="<//?php echo URLROOT ?>/images/customer-home-pic.svg">
     </div>
 
     <div>
-    <img class="logo" src="<?php echo URLROOT ?>/images/logo.png">
+    <img class="logo" src="<//?php echo URLROOT ?>/images/logo.png">
     </div>
 
     <div>
@@ -200,18 +200,87 @@
     </div>
 
     <div>
-    <img class="cameraLogo" src="<?php echo URLROOT ?>/images/cameraLogo.svg">
+    <img class="cameraLogo" src="<//?php echo URLROOT ?>/images/cameraLogo.svg">
     </div>
 
     <div style="position: absolute; top: 90%;  left: 75%;">
-        <a href="<?php echo URLROOT ?>/home/aboutUs"> <p class="bottomText">About Us</p></a>
+        <a href="<//?php echo URLROOT ?>/home/aboutUs"> <p class="bottomText">About Us</p></a>
     </div>
 
     <div style="position: absolute; top: 90%;  left: 85%;">
-        <a href="<?php echo URLROOT ?>/home/services"><p class="bottomText">Our Services</p></a>
-    </div>
+        <a href="<//?php echo URLROOT ?>/home/services"><p class="bottomText">Our Services</p></a>
+    </div> -->
 
-        
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
+    <title>Home</title>
+
+        <style>
+
+        body {
+            
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+            #container {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            
+        }
+
+        #left-side {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0; /* Adjust the color as needed */
+        }
+
+        #right-side {
+            flex: 1;
+            padding: 20px;
+            background-color: #e0e0e0; /* Adjust the color as needed */
+            background: url('<?php echo URLROOT ?>/images/customer-home-pic.svg') center/cover;
+
+        }
+        </style>
+
+
+    </head>
+
+<body>
+
+        <div class="container">
+       //  Navbar
+            <div id="header" class="background_pic">
+                <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
+            </div>
+
+        </div>
+
+        <div id="container">
+            <div id="left-side">
+                <!-- Content for the left side goes here -->
+
+                <h2>Welcome to Your Studio</h2>
+                <p>This is the left side of your webpage.</p>
+            </div>
+
+            <div id="right-side">
+                <!-- Content for the right side goes here -->
+                <h2>Latest Projects</h2>
+                <p>Check out our latest work and projects here.</p>
+                <p>Check out our latest work and projects here.</p>
+                <p>Check out our latest work and projects here.</p>
+                <p>Check out our latest work and projects here.</p>
+                <p>Check out our latest work and projects here.</p>
+            </div>
+        </div>
 
 </body>
 </html>    
