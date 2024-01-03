@@ -4,6 +4,7 @@
             $this->eventModel = $this->model('Event');
             $this->userModel = $this->model('User');
             $this->packageModel = $this->model('Package');
+            $this->partnermodel = $this->model('Partner');
         } 
         
         public function index() {
@@ -165,13 +166,19 @@
             $photographer = $this->userModel->getUserById($event->PhotographerID);
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
+            $photographerAction = $this->partnermodel->getPhotographerAction($id);
+            $editorAction = $this->partnermodel->getEditorAction($id);
+            $printingFirmAction = $this->partnermodel->getPrintingFirmAction($id);
 
             $data = [
                 'event' => $event,
                 'package' => $package,
                 'photographer' => $photographer,
                 'editor' => $editor,
-                'printingFirm' => $printingFirm
+                'printingFirm' => $printingFirm,
+                'photographerAction' => $photographerAction,
+                'editorAction' => $editorAction,
+                'printingFirmAction' => $printingFirmAction
             ];
 
             $this->view('pages/customer/requestStatus', $data);
@@ -185,6 +192,9 @@
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
+            $photographerAction = $this->partnermodel->getPhotographerAction($id);
+            $editorAction = $this->partnermodel->getEditorAction($id);
+            $printingFirmAction = $this->partnermodel->getPrintingFirmAction($id);
 
             $data = [
                 'event' => $event,
@@ -192,7 +202,10 @@
                 'photographer' => $photographer,
                 'editor' => $editor,
                 'printingFirm' => $printingFirm,
-                'requestedPhotographer' => $requestedPhotographer
+                'requestedPhotographer' => $requestedPhotographer,
+                'photographerAction' => $photographerAction,
+                'editorAction' => $editorAction,
+                'printingFirmAction' => $printingFirmAction
             ];
 
             $this->view('pages/manager/events/viewEvent', $data);

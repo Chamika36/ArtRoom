@@ -47,4 +47,34 @@
                 return false;
             }
         }
+
+        // get photographer action
+        public function getPhotographerAction($event_id) {
+            $this->db->query('SELECT * FROM photographeraction WHERE EventID = :id');
+            $this->db->bind(':id', $event_id);
+
+            $row = $this->db->single();
+
+            return $row;
+        }
+
+        // get editor action
+        public function getEditorAction($event_id) {
+            $this->db->query('SELECT * FROM editoraction WHERE EventID = :id');
+            $this->db->bind(':id', $event_id);
+
+            $row = $this->db->single();
+
+            return $row;
+        }
+
+        // get printing firm action
+        public function getPrintingFirmAction($event_id) {
+            $this->db->query('SELECT * FROM printingfirmaction WHERE EventID = :id');
+            $this->db->bind(':id', $event_id);
+
+            $row = $this->db->single();
+
+            return $row;
+        }
     }
