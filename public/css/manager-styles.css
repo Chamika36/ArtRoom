@@ -4,30 +4,25 @@
 
 */
 
-body {
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
 }
 
 .container{
   display: grid;
-  grid-template-rows: 0.25fr 1fr; 
   grid-template-columns: 0.2fr 0.8fr;
-  grid-template-areas: "header header" "menu main";
+  grid-template-areas: "menu main";
   column-gap: 1%;
-  height: 100%;
+  min-height: 100vh; 
+  width: 100%;
 }
-
-.event-container {
-  display: grid;
-  grid-template-rows: 0.25fr 1fr;
-  grid-template-columns: 1fr; /* Remove the second column definition for the menu */
-  grid-template-areas: "header" "main"; /* Remove the "menu" area */
-  column-gap: 1%;
-  height: 100%;
-}
-
 
 #header {
   grid-area: header;
@@ -37,9 +32,13 @@ body {
   grid-area: menu;
 }
 
+
 #main {
   grid-area: main;
   margin-right: 5%;
+  /* Set full height and width for main content */
+  height: 100%;
+  width: 100%;
 }
 
 /*
@@ -48,7 +47,7 @@ body {
 
 */
 
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -89,13 +88,13 @@ body {
 }
 
 /* Font Awesome Icons */
-.sidebar ul li a i {
+/* .sidebar ul li a i {
   margin-right: 10px;
   font-size: 18px;
-}
+} */
 
 /* Hide text and show only icons on mobile view */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .sidebar {
     width: 60px;
     transition: 0.3s;
@@ -136,14 +135,14 @@ body {
   .sidebar ul li a:hover {
     background-color: #333;
   }
-}
+} */ 
 
 /*
 
 * NAVBAR CSSS --------------------------------------------------------------------------------------
 
 */
-
+/* 
 nav {
   text-align: center;
   color: #FFF;
@@ -165,10 +164,12 @@ nav {
   background-position: center;
   text-align: center;
   width: 100%;
-  position: relative; /* Add this line */
+  position: relative;
+  height: 150px; /* Adjust the height to your desired value */
 }
 
-nav ul {
+
+/* nav ul {
   height: 40px;
   list-style: none;
   padding: 0;
@@ -220,7 +221,7 @@ nav ul li:hover {
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1.6px;
-  margin-top: 5%;
+  margin-top: 0%;
   margin-left: 5%;
 }
 
@@ -229,26 +230,26 @@ nav ul li:hover {
   align-self: flex-end;
   font-size: 24px;
   cursor: pointer;
-}
+} */
 
 
 /* Responsive Styles */
 /* Small Screens */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
     align-items: center;
-    position: absolute; /* Add this line */
-    top: 70px; /* Adjust the top position to your liking */
+    position: absolute; 
+    top: 70px; 
     left: 0;
     right: 0;
     background: #423026;
-    display: none; /* Initially hide the menu items */
-    z-index: 1; /* Place the menu above the content */
+    display: none; 
+    z-index: 1;
   }
 
   nav ul.show {
-    display: flex; /* Show the menu items when the menu is active */
+    display: flex; 
   }
 
   .menu-icon {
@@ -266,9 +267,9 @@ nav ul li:hover {
     width: 100%; 
     border: none; 
   }
-}
+} */
 
-
+ */
 
 /*
 * CARDS CSSS --------------------------------------------------------------------------------------
@@ -293,16 +294,46 @@ ul {
 }
 
 .column {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Display three columns per row */
-    align-self: center;
-    gap: 20px; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Display four rows */
+  align-self: center;
+  gap: 20px; /* Set the desired gap between grid items */
 }
 
+.rows {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr); /* Display four rows */
+  align-self: center;
+  gap: 20px; /* Set the desired gap between grid items */
+  
+}
+
+
+
 .card img {
-    width: 100%;
+    width: 300px;
     height: 200px;
     border-radius: 8px;
+}
+
+.card-users img {
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.card-users{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 60% ;
+  max-height: fit-content;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #D4C5BE;
 }
 
 .button {

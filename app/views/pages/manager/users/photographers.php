@@ -4,13 +4,13 @@
 
 <body>
     <div class="container">
-        <div id="header">
-            <?php include(APPROOT . '/views/include/navbar.php'); ?>
-        </div>
-
         <div id="menu">
-            <?php include('sidebar.php'); ?>
+            <!-- Sidebar -->
+            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
+        <!-- <div id="menu">
+            <//?php include('sidebar.php'); ?>
+        </div> -->
 
         <div id="main">
             <table class="table">

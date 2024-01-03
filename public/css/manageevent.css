@@ -1,6 +1,5 @@
 .container2 {
-    width: 1200px;
-    margin: 0 auto;
+    width: 70vw;
     padding: 0 15px;
 }
 
@@ -68,3 +67,35 @@ input[type="submit"] {
     color: #333;
     margin-bottom: 10px;
 }
+
+/* For larger screens */
+@media only screen and (min-width: 768px) {
+    .container2 {
+      width: 80%; /* Adjust width as needed */
+    }
+  }
+  
+  /* For smaller screens */
+  @media only screen and (max-width: 767px) {
+    .container2 {
+      width: 70vw;
+    }
+  
+    .event-details h3,
+    .partners h3,
+    .form-group label,
+    .budget h3 {
+      font-size: 16px; /* Decrease font size for smaller screens */
+    }
+  
+    .event-details ul li {
+      font-size: 14px; /* Decrease font size for list items */
+    }
+  
+    select,
+    input[type="submit"] {
+      width: 70vw;
+      font-size: 14px; /* Adjust font size for form elements */
+    }
+  }
+  

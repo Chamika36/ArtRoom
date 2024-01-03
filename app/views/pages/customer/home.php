@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>    
-    <link rel="stylesheet" href="../../../../public/css/customer-navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link
       rel="stylesheet"
@@ -15,11 +15,12 @@
     <style>
 
         .background_pic{
-        background-image: url('../images/customer-home-bg.png'); 
+        background-image: url('<?php echo URLROOT ?>/images/customer-home-bg.png'); 
         background-size: cover;
         background-position: center; /* Center the background image */
-        width: 50%;
-        height: 420px; 
+        width: 100%;
+        height: 325px; 
+        margin: 0%;
         }
 
         img {
@@ -27,8 +28,14 @@
             height: 330px;
             transform: rotate(0.084deg);
             flex-shrink: 0;
-            border-radius: 249.016px;
+           
             
+            }
+
+            .container {
+            position: relative;
+            width: 100%;
+            height: 400px;
             }
 
         .responsive-image01 {
@@ -159,15 +166,15 @@
 
     <div class="container">
         <!-- Navbar -->
-        <div id="header">
+        
+
+        <div id="header" class="background_pic">
             <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
         </div>
-        
+
     </div>
 
-    <div>
-    <img class="background_pic" src="<?php echo URLROOT ?>/images/customer-home-bg.png">
-    </div> 
+     
 
     <div>
     <img class="responsive-image01" src="<?php echo URLROOT ?>/images/customer-home-pic.svg">
@@ -197,11 +204,11 @@
     </div>
 
     <div style="position: absolute; top: 90%;  left: 75%;">
-        <p class="bottomText">About Us</p>
+        <a href="<?php echo URLROOT ?>/home/aboutUs"> <p class="bottomText">About Us</p></a>
     </div>
 
     <div style="position: absolute; top: 90%;  left: 85%;">
-        <p class="bottomText">Our Services</p>
+        <a href="<?php echo URLROOT ?>/home/services"><p class="bottomText">Our Services</p></a>
     </div>
 
         

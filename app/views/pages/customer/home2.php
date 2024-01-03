@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home-02</title>    
-    <link rel="stylesheet" href="../../../../public/css/customer-navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
-    <link rel="stylesheet" href="../../../../public/css/logo.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -75,6 +75,21 @@
         top: 40%; 
         left: 30%; 
       }
+
+      .bottomText{
+            width: 140px;
+            height: 20px;
+            flex-shrink: 0;
+            color: #000;
+            text-align: center;
+            font-family: Istok Web;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.8px;
+            text-decoration-line: underline;
+        }
       
 
     </style>
@@ -95,6 +110,10 @@
 We offer wedding photography, wedding videography, commercial photo shoots, personel portfolio shoots and etc.</br></br>
 
  If you like our work and feel you would like to meet and discuss your wedding, or if you have any questions you would like to ask, please contact me via the contact page and I will contact you shortly.</b></p></div>
+
+    <div style="position: absolute; top: 90%;  left: 85%;">
+        <a href="<?php echo URLROOT ?>/home/services"><p class="bottomText">Our Services</p></a>
+    </div>
 
   </body>
 </html>

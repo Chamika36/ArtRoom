@@ -7,10 +7,15 @@
 </head>
 
 <body>
-    <div class="">
-        <div id="header">
-            <!-- Navbar -->
-            <?php include(APPROOT . '/views/include/navbar.php'); ?>
+    <div class="container">
+        <!-- Header -->
+        <!-- <div id="header">
+            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
+        </div> -->
+        
+        <div id="menu">
+            <!-- Sidebar -->
+            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
 
 

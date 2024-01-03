@@ -1,8 +1,47 @@
-.hero{  
+.hero {
     width: 90%;
-    height: 100vh;
-    margin-top: 5px;
-    margin-left: 80px;
-    margin-right: 0;    
+    height: 30%;
+    margin: 5px auto;
     position: relative;
+    padding: 10px;
+    border-radius: 5px;
 }
+
+/* Modal */
+
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    left: 0px;
+    right: 0px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    background-color: #fff;
+    top: 20%;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 80%; /* Set a maximum height for responsiveness */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+  /* For smaller screens */
+  @media only screen and (max-width: 767px) {
+    .modal {
+      padding: 0;
+    }
+  
+    .modal-content {
+      width: 50%;
+      max-width: 90%;
+      padding: 10px;
+    }
+  }

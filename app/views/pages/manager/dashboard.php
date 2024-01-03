@@ -7,14 +7,18 @@
 </head>
 
 <body>
-    <div class="">
+    <div class="container">
+        <!-- Header -->
+        <!-- <div id="header">
+            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
+        </div> -->
         <!-- Navbar -->
-        <div id="header">
-            <?php include(APPROOT . '/views/include/navbar.php'); ?>
+        <div id="menu">
+            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
         <!-- Dashboard -->
         <div id="main">
-            <div class="dash"
+            <div class="dash">
                 <div class="horizontal-box">
                     <div class="box">
                         <a href="<?php echo URLROOT ?>/events">

@@ -124,32 +124,32 @@
         <form name="registrationForm" style="display:flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;" action="<?php echo URLROOT; ?>/users/register" method="POST">
             <div class="form-group" style="margin-bottom:10px">
                 <label class="text" for="firstName">First Name  </label>
-                <input class="textBox" type="text" name="firstName" value="<?php echo $data['firstName']?>" required> 
+                <input class="textBox" type="text" name="firstName" value="<?php echo $data['firstName']?>" required><br>
                 <span class="invalid-feedback"><?php echo $data['first_name_err']?></span>
             </div>
             <div class="form-group" style="margin-bottom:10px">
                 <label class="text" for="lastName">Last Name  </label>
-                <input class="textBox" type="text" name="lastName" value="<?php echo $data['lastName']?>" required>
+                <input class="textBox" type="text" name="lastName" value="<?php echo $data['lastName']?>" required><br />
                 <span class="invalid-feedback"><?php echo $data['last_name_err']?></span>
             </div>
             <div class="form-group" style="margin-bottom:10px">
                 <label class="text" for="email">Email  </label>
-                <input class="textBox" type="email" name="email" value="<?php echo $data['email']?>" required>
+                <input class="textBox" type="email" name="email" value="<?php echo $data['email']?>" required><br />
                 <span class="invalid-feedback"><?php echo $data['email_err']?></span>
             </div>
             <div class="form-group" style="margin-bottom:10px">
                 <label class="text" for="contactNumber">Contact Number  </label>
-                <input class="textBox" type="tel" name="contactNumber" pattern="([0-9]{10})" value="<?php echo $data['contactNumber']?>" required>
+                <input class="textBox" type="tel" name="contactNumber" pattern="([0-9]{10})" value="<?php echo $data['contactNumber']?>" required><br />
                 <span class="invalid-feedback"><?php echo $data['contact_err']?></span>
             </div>
             <div class="form-group" style="margin-bottom:10px">
                 <label class="text" for="password">Password  </label>
-                <input class="textBox" type="password" name="password" value="<?php echo $data['password']?>" required>
+                <input class="textBox" type="password" name="password" value="<?php echo $data['password']?>" required><br />
                 <span class="invalid-feedback"><?php echo $data['password_err']?></span>
             </div>
             <div class="form-group" style="margin-bottom:10px">
                 <label class="text" for="confirmPassword">Confirm Password  </label>
-                <input class="textBox" type="password" name="confirmPassword" value="<?php echo $data['confirmPassword']?>" required>
+                <input class="textBox" type="password" name="confirmPassword" value="<?php echo $data['confirmPassword']?>" required><br />
                 <span class="invalid-feedback"><?php echo $data['confirm_password_err']?></span>
             </div>
 

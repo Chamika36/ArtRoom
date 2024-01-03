@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Cancellation page</title>
-    <link rel="stylesheet" href="../../../../public/css/customer-navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
-    <link rel="stylesheet" href="../../../../public/css/logo.css">
-    <link rel="stylesheet" href="../../../../public/css/customer-mainPages.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -86,13 +86,7 @@
     <div class="container">
         <div class="bottom-row">
         <div class="left-area">
-            <div style="text-align: center;"><img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image" class="logo"></div>
-            <div class="x">
-                <div class="button">User Profile</div>
-                <div class="button">Request Quote</div>
-                <div class="button">Event Upgrade</div>
-                <div class="button">Log Out</div>
-            </div>
+            <?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
         </div>
             <div class="bottom-column">
             <h2 class="cancelRequest">Cancel Request</h2>

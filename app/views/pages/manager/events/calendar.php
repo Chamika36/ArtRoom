@@ -8,28 +8,6 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.midnight-blue.css"/>
 
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.7);
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="hero">

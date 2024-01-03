@@ -4,26 +4,23 @@
 
 <body>
     <div class="container">
-        <div id="header">
-            <?php include(APPROOT . '/views/include/navbar.php'); ?>
-        </div>
-
         <div id="menu">
-                <?php include('sidebar.php'); ?>
+            <!-- Sidebar -->
+            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
 
         <div id="main">
-            <div class ="column">
-                <div class="card">
+            <div class ="rows">
+                <div class="card-users">
                     <h2><a href="<?php echo URLROOT; ?>/users/getcustomers">Customers</a></h2>
                 </div>
-                <div class="card">
+                <div class="card-users">
                     <h2><a href="<?php echo URLROOT; ?>/users/getPhotographers">Photographers</a></h2>
                 </div>
-                <div class="card">
+                <div class="card-users">
                     <h2><a href="<?php echo URLROOT; ?>/users/getPrintingfirms">Printing Firms</a></h2>
                 </div>
-                <div class="card">
+                <div class="card-users">
                     <h2><a href="<?php echo URLROOT; ?>/users/getEditors">Editors</a></h2>
                 </div>
             </div>
