@@ -341,11 +341,11 @@
                         switch($data['user_type_id']) {
                             case 1:
                                 redirect('users/getCustomers'); break;
-                            case 2:
-                                redirect('users/getPhotographers'); break;
                             case 3:
-                                redirect('users/getEditors'); break;
+                                redirect('users/getPhotographers'); break;
                             case 4:
+                                redirect('users/getEditors'); break;
+                            case 5:
                                 redirect('users/getPrintingFirms'); break;
                             default:
                                 redirect('users/'); break;

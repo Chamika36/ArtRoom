@@ -7,6 +7,7 @@ class Partners extends Controller {
         $this->eventModel = $this->model('Event');
         $this->packageModel = $this->model('Package'); 
         $this->sampleModel = $this->model('Sample');
+        $this->partnerModel = $this->model('Partner'); 
     }
 
     // view index
@@ -32,6 +33,22 @@ class Partners extends Controller {
         ];
     
         $this->view('pages/partner/events', $data);
+    }
+
+    // photographer action handler
+    public function updatePartnerAction($user_type_id, $event_id, $action , $comment) {
+        switch ($user_type_id) {
+            case 3:
+                $this->partnerModel->updatePhotographerAction($event_id, $action , $comment);
+                break;
+            case 4:
+                $this->partnerModel->updateEditorAction($event_id, $action, $comment);
+                break;
+            case 5:
+                $this->partnerModel->updatePrintingFirmAction($event_id, $action, $comment);
+                break;
+        }
+        $this->viewPartnerEvents($_SESSION['user_id']);
     }
 
     // Partner accepted event
