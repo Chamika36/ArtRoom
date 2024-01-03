@@ -116,8 +116,8 @@
                             <?php elseif ($event->Status == 'Canceled') : ?>
                                 <button class="button">Canceled</button>
                             <?php else : ?>
-                                <a href="<?php echo URLROOT ?>/partners/declineEvent/<?php echo $event->EventID?>"><button class="button">Decline</button></a>
-                                <a href="<?php echo URLROOT ?>/partners/acceptEvent/<?php echo $event->EventID?>"><button class="button">Accept</button></a>
+                                <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Accepted/Ok/"><button class="button">Accept</button></a>
+                                <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Declined/Busy/"><button class="button">Decline</button></a>
                             <?php endif; ?>
                         </td>
                     </tr>

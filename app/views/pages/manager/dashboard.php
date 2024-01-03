@@ -8,6 +8,10 @@
 
 <body>
     <div class="container">
+        <!-- Header -->
+        <!-- <div id="header">
+            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
+        </div> -->
         <!-- Navbar -->
         <div id="menu">
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>

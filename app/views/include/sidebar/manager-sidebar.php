@@ -100,7 +100,7 @@ if (!isset($_SESSION['user_type_id']) || ($_SESSION['user_type_id'] !== 2 && $_S
       <?php
         if (isset($_SESSION['user_id'])) {
             // User is logged in
-            echo '<li class=""><i class="bx bx-log-out icon"></i><a href="'. URLROOT .'/users/login"><span class="text nav-text">Logout</span></a></li>';
+            echo '<li class=""><i class="bx bx-log-out icon"></i><a href="'. URLROOT .'/users/logout"><span class="text nav-text">Logout</span></a></li>';
         } else {
             // User is not logged in
             echo '<li class=""><i class="bx bx-log-in icon"><a href="'. URLROOT .'/users/login"></i><span class="text nav-text">Login</span></a></li>';
