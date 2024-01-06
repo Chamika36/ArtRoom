@@ -217,37 +217,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
     <title>Home</title>
 
         <style>
-
-        body {
+            body {
             
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
         }
-
-            #container {
+        
+        #container-main {
             display: flex;
+            flex-direction: row;
             flex-wrap: nowrap;
             height: 100%;
             
+            height: 100vh;
+            
         }
 
+        .container-01{
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container-02{
+            display: flex;
+            flex-direction: row;
+            gap:12px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container-02{
+            display: flex;
+            flex-direction: row;
+            gap:12px;
+            
+            justify-content: start;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            
+            
+        }
+
+        .topic {
+            color: #2E2626;
+            font-family: Otomanopee One;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 118.9%; /* 76.096px */
+            letter-spacing: 2.56px;
+            mix-blend-mode: darken;
+            
+            
+        }
+        
         #left-side {
             flex: 1;
             padding: 20px;
-            background-color: #f0f0f0; /* Adjust the color as needed */
+            background-color: white; /* Adjust the color as needed */
         }
-
+        
         #right-side {
             flex: 1;
             padding: 20px;
-            background-color: #e0e0e0; /* Adjust the color as needed */
-            background: url('<?php echo URLROOT ?>/images/customer-home-pic.svg') center/cover;
-
+            background-color: #b31414; /* Adjust the color as needed */
+            background: url('<?php echo URLROOT ?>/images/customer-home2-bg.png') center/cover;
+            
+        
         }
+        
         </style>
 
 
@@ -263,22 +313,32 @@
 
         </div>
 
-        <div id="container">
+        <div id="container-main">
             <div id="left-side">
                 <!-- Content for the left side goes here -->
+                <div class="container-01">
+                    <div class=container-02>
+                        <div>
+                            <img class="logo" src="<?php echo URLROOT ?>/images/logo.png">
+                        </div>
+                        <div>
+                            <p class="topic"><b>Art Room <br>Photography</b></p>
+                        </div>
+                    </div>
+                    
+                    <div class=container-03>
+                    welcome<br/>
+                    We are committed to providing you an exceptional services that<br> exceed expectations.
+                    </div>
+                </div>
 
-                <h2>Welcome to Your Studio</h2>
-                <p>This is the left side of your webpage.</p>
+                
             </div>
 
             <div id="right-side">
                 <!-- Content for the right side goes here -->
-                <h2>Latest Projects</h2>
-                <p>Check out our latest work and projects here.</p>
-                <p>Check out our latest work and projects here.</p>
-                <p>Check out our latest work and projects here.</p>
-                <p>Check out our latest work and projects here.</p>
-                <p>Check out our latest work and projects here.</p>
+                
+                
             </div>
         </div>
 
