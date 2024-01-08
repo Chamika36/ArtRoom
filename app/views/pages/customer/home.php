@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
 
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>    
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
+    <link rel="stylesheet" href="<//?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link
       rel="stylesheet"
@@ -15,7 +15,7 @@
     <style>
 
         .background_pic{
-        background-image: url('<?php echo URLROOT ?>/images/customer-home-bg.png'); 
+        background-image: url('<//?php echo URLROOT ?>/images/customer-home-bg.png'); 
         background-size: cover;
         background-position: center; /* Center the background image */
         width: 100%;
@@ -154,7 +154,7 @@
             text-decoration-line: underline;
         }
         
-    </style>
+    </style> 
 
 </head>
 
@@ -165,11 +165,11 @@
         
 
     <div class="container">
-        <!-- Navbar -->
+       //  Navbar
         
 
         <div id="header" class="background_pic">
-            <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
+            <//?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
         </div>
 
     </div>
@@ -177,11 +177,11 @@
      
 
     <div>
-    <img class="responsive-image01" src="<?php echo URLROOT ?>/images/customer-home-pic.svg">
+    <img class="responsive-image01" src="<//?php echo URLROOT ?>/images/customer-home-pic.svg">
     </div>
 
     <div>
-    <img class="logo" src="<?php echo URLROOT ?>/images/logo.png">
+    <img class="logo" src="<//?php echo URLROOT ?>/images/logo.png">
     </div>
 
     <div>
@@ -200,18 +200,147 @@
     </div>
 
     <div>
-    <img class="cameraLogo" src="<?php echo URLROOT ?>/images/cameraLogo.svg">
+    <img class="cameraLogo" src="<//?php echo URLROOT ?>/images/cameraLogo.svg">
     </div>
 
     <div style="position: absolute; top: 90%;  left: 75%;">
-        <a href="<?php echo URLROOT ?>/home/aboutUs"> <p class="bottomText">About Us</p></a>
+        <a href="<//?php echo URLROOT ?>/home/aboutUs"> <p class="bottomText">About Us</p></a>
     </div>
 
     <div style="position: absolute; top: 90%;  left: 85%;">
-        <a href="<?php echo URLROOT ?>/home/services"><p class="bottomText">Our Services</p></a>
-    </div>
+        <a href="<//?php echo URLROOT ?>/home/services"><p class="bottomText">Our Services</p></a>
+    </div> -->
 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
+    <title>Home</title>
+
+        <style>
+            body {
+            
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
         
+        #container-main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: 100%;
+            
+            height: 100vh;
+            
+        }
+
+        .container-01{
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container-02{
+            display: flex;
+            flex-direction: row;
+            gap:12px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container-02{
+            display: flex;
+            flex-direction: row;
+            gap:12px;
+            
+            justify-content: start;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            
+            
+        }
+
+        .topic {
+            color: #2E2626;
+            font-family: Otomanopee One;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 118.9%; /* 76.096px */
+            letter-spacing: 2.56px;
+            mix-blend-mode: darken;
+            
+            
+        }
+        
+        #left-side {
+            flex: 1;
+            padding: 20px;
+            background-color: white; /* Adjust the color as needed */
+        }
+        
+        #right-side {
+            flex: 1;
+            padding: 20px;
+            background-color: #b31414; /* Adjust the color as needed */
+            background: url('<?php echo URLROOT ?>/images/customer-home2-bg.png') center/cover;
+            
+        
+        }
+        
+        </style>
+
+
+    </head>
+
+<body>
+
+        <div class="container">
+       //  Navbar
+            <div id="header" class="background_pic">
+                <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
+            </div>
+
+        </div>
+
+        <div id="container-main">
+            <div id="left-side">
+                <!-- Content for the left side goes here -->
+                <div class="container-01">
+                    <div class=container-02>
+                        <div>
+                            <img class="logo" src="<?php echo URLROOT ?>/images/logo.png">
+                        </div>
+                        <div>
+                            <p class="topic"><b>Art Room <br>Photography</b></p>
+                        </div>
+                    </div>
+                    
+                    <div class=container-03>
+                    welcome<br/>
+                    We are committed to providing you an exceptional services that<br> exceed expectations.
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div id="right-side">
+                <!-- Content for the right side goes here -->
+                
+                
+            </div>
+        </div>
 
 </body>
 </html>    
