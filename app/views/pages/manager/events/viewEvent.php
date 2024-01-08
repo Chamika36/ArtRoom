@@ -18,8 +18,7 @@
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
-                <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
-                <li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?> <Strong>Status : </Strong><?php echo $data['photographerAction']->Action; ?></li> 
+                <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li><li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?> <Strong>Status : </Strong><?php echo $data['photographerAction']->Action; ?></li>
                 <li><strong>Assigned Editor:</strong> <?php echo $data['editor']->FirstName . ' ' . $data['editor']->LastName; ?> <Strong>Status : </Strong><?php echo $data['editorAction']->Action; ?></li>
                 <li><strong>Assigned Printing Firm:</strong> <?php echo $data['printingFirm']->FirstName . ' ' . $data['printingFirm']->LastName; ?> <Strong>Status : </Strong><?php echo $data['printingFirmAction']->Action; ?></li>
             </ul>
