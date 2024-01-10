@@ -141,23 +141,23 @@
             }
         }
 
-        // public function getAvailablePhotographers() {
-        //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectedDate'])) {
-        //         $selectedDate = $_POST['selectedDate'];
+        public function getAvailablePhotographers() {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectedDate'])) {
+                $selectedDate = $_POST['selectedDate'];
         
-        //         // Call UserModel method to fetch available photographers
-        //         $availablePhotographers = $this->partnerModel->getAvailablePhotographers($selectedDate);
+                // Call UserModel method to fetch available photographers
+                $availablePhotographers = $this->partnerModel->getAvailablePartners(3,$selectedDate);
         
-        //         // Generate HTML options for the select dropdown
-        //         $options = '<option value="">Select a photographer</option>';
-        //         foreach ($availablePhotographers as $photographer) {
-        //             $options .= '<option value="' . $photographer->UserID . '">' . $photographer->FirstName . ' ' . $photographer->LastName . '</option>';
-        //         }
+                // Generate HTML options for the select dropdown
+                $options = '<option value="">Select a photographer</option>';
+                foreach ($availablePhotographers as $photographer) {
+                    $options .= '<option value="' . $photographer->UserID . '">' . $photographer->FirstName . ' ' . $photographer->LastName . '</option>';
+                }
         
-        //         // Return HTML options
-        //         echo $options;
-        //     }
-        // }
+                // Return HTML options
+                echo $options;
+            }
+        }
 
 
         public function calendar() {

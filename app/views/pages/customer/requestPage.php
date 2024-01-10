@@ -108,7 +108,7 @@
                     </select> -->
 
                     <label for="date">Event Date</label>
-                    <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
+                    <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" onChange="updatePhotographers()" required>
                     <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
 
                     <label for="startTime">Start Time</label>
@@ -149,7 +149,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
     // Function to update the budget based on the selected package
         function updateBudget() {
             // Get the selected package's price
@@ -164,7 +164,37 @@
 
         // Attach the updateBudget function to the package dropdown's change event
         document.getElementById("package").addEventListener("change", updateBudget);
+
+        function updatePhotographers() {
+            
+        }
+
+
+
+ //       document.getElementById("package").addEventListener("change", updateBudget);
+
+    </script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#date').change(function() {
+            var selectedDate = $(this).val();
+
+            $.ajax({
+                url: '<?php echo URLROOT; ?>/events/getAvailablePhotographers', // Update with your server endpoint
+                method: 'POST',
+                data: { selectedDate: selectedDate },
+                success: function(response) {
+                    $('#requestedPhotographer').html(response); // Replace dropdown options with updated list
+                },
+                error: function(xhr, status, error) {
+                    console.error(error); // Handle errors if needed
+                }
+            });
+        });
+    });
     </script>
+
 
 
 </body>
