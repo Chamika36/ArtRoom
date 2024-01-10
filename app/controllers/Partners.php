@@ -5,9 +5,9 @@ class Partners extends Controller {
     public function __construct() {
         $this->userModel = $this->model('User');
         $this->eventModel = $this->model('Event');
-        $this->packageModel = $this->model('Package'); 
+        $this->packageModel = $this->model('Package');
         $this->sampleModel = $this->model('Sample');
-        $this->partnerModel = $this->model('Partner'); 
+        $this->partnerModel = $this->model('Partner');
     }
 
     // view index
@@ -51,19 +51,19 @@ class Partners extends Controller {
         $this->viewPartnerEvents($_SESSION['user_id']);
     }
 
-    // Partner accepted event
-    public function acceptEvent($id) {
-        $this->eventModel->acceptEvent($id);
+    // // Partner accepted event
+    // public function acceptEvent($id) {
+    //     $this->eventModel->acceptEvent($id);
         
-        $this->viewPartnerEvents($_SESSION['user_id']);
-    }
+    //     $this->viewPartnerEvents($_SESSION['user_id']);
+    // }
 
-    // Partner declined event
-    public function declineEvent($id) {
-        $this->eventModel->declineEvent($id);
+    // // Partner declined event
+    // public function declineEvent($id) {
+    //     $this->eventModel->declineEvent($id);
         
-        $this->viewPartnerEvents($_SESSION['user_id']);
-    }
+    //     $this->viewPartnerEvents($_SESSION['user_id']);
+    // }
 
     public function samples(){
         $samples = $this->sampleModel->getSamples();
@@ -82,4 +82,5 @@ class Partners extends Controller {
         ];
         $this->view('pages/partner/eventdetails', $data);
     }
+
 }

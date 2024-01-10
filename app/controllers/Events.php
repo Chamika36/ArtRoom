@@ -4,7 +4,7 @@
             $this->eventModel = $this->model('Event');
             $this->userModel = $this->model('User');
             $this->packageModel = $this->model('Package');
-            $this->partnermodel = $this->model('Partner');
+            $this->partnerModel = $this->model('Partner');
         } 
         
         public function index() {
@@ -39,6 +39,8 @@
         }
 
 
+
+
         // event request
         public function request() {
 
@@ -65,7 +67,6 @@
                     'requestedPhotographer' => trim($_POST['requestedPhotographer']),
                     'package' => trim($_POST['package']),
                     'additionalRequests' => trim($_POST['additionalRequests']),
-                    // 'budget' => $_POST['budget'],
                     'status' => 'Pencil',
                     'eventDate_err' => '',
                     'location_err' => '',
@@ -140,6 +141,24 @@
             }
         }
 
+        // public function getAvailablePhotographers() {
+        //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selectedDate'])) {
+        //         $selectedDate = $_POST['selectedDate'];
+        
+        //         // Call UserModel method to fetch available photographers
+        //         $availablePhotographers = $this->partnerModel->getAvailablePhotographers($selectedDate);
+        
+        //         // Generate HTML options for the select dropdown
+        //         $options = '<option value="">Select a photographer</option>';
+        //         foreach ($availablePhotographers as $photographer) {
+        //             $options .= '<option value="' . $photographer->UserID . '">' . $photographer->FirstName . ' ' . $photographer->LastName . '</option>';
+        //         }
+        
+        //         // Return HTML options
+        //         echo $options;
+        //     }
+        // }
+
 
         public function calendar() {
             $data = [
@@ -192,9 +211,9 @@
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
-            $photographerAction = $this->partnermodel->getPhotographerAction($id);
-            $editorAction = $this->partnermodel->getEditorAction($id);
-            $printingFirmAction = $this->partnermodel->getPrintingFirmAction($id);
+            $photographerAction = $this->partnerModel->getPhotographerAction($id);
+            $editorAction = $this->partnerModel->getEditorAction($id);
+            $printingFirmAction = $this->partnerModel->getPrintingFirmAction($id);
 
             $data = [
                 'event' => $event,
@@ -330,10 +349,12 @@
         public function manageEvent($id) {                      
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
-            $photographers = $this->userModel->getPhotographers();
+            //$photographers = $this->userModel->getPhotographers();
+            $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
-            $editors = $this->userModel->getEditors();
-            $printingFirms = $this->userModel->getPrintingFirms();
+            $editors = $this->partnerModel->getAvailablePartners(4,$event->EventDate);
+            $printingFirms = $this->partnerModel->getAvailablePartners(5,$event->EventDate);
+            $events = $this->partnerModel->getEvents($event->EventDate);
 
             if($event->PhotographerID != NULL && $event->EditorID != NULL && $event->PrintingFirmID != NULL) {
                 redirect('events/viewEventbyManager/' . $id . '');
@@ -345,7 +366,8 @@
                 'photographers' => $photographers,
                 'requestedPhotographer' => $requestedPhotographer,
                 'editors' => $editors,
-                'printingFirms' => $printingFirms
+                'printingFirms' => $printingFirms,
+                'events' => $events
             ];           
 
             $this->view('pages/manager/events/manageEvent', $data);
