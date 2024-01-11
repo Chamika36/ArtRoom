@@ -190,9 +190,9 @@
             $photographer = $this->userModel->getUserById($event->PhotographerID);
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
-            $photographerAction = $this->partnermodel->getPhotographerAction($id);
-            $editorAction = $this->partnermodel->getEditorAction($id);
-            $printingFirmAction = $this->partnermodel->getPrintingFirmAction($id);
+            $photographerAction = $this->partnerModel->getPhotographerAction($id);
+            $editorAction = $this->partnerModel->getEditorAction($id);
+            $printingFirmAction = $this->partnerModel->getPrintingFirmAction($id);
 
             $data = [
                 'event' => $event,
@@ -219,6 +219,9 @@
             $photographerAction = $this->partnerModel->getPhotographerAction($id);
             $editorAction = $this->partnerModel->getEditorAction($id);
             $printingFirmAction = $this->partnerModel->getPrintingFirmAction($id);
+            $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
+            $editors = $this->partnerModel->getAvailablePartners(4,$event->EventDate);
+            $printingFirms = $this->partnerModel->getAvailablePartners(5,$event->EventDate);
 
             $data = [
                 'event' => $event,
@@ -445,6 +448,18 @@
 
                 // Load view
                 $this->view('pages/manager/events/events', $data);
+            }
+        }
+
+        // Reallocate partners
+
+        // Send quota and accept event
+        public function sendQuota($id) {
+            if($this->eventModel->acceptEvent($id)) {
+                flash('event_message', 'Quota sent');
+                redirect('events');
+            } else {
+                die('Something went wrong');
             }
         }
 
