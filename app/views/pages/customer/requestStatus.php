@@ -203,7 +203,17 @@
                 </div>
                     </div>
                     <div class="status-buttons">
-                        <a href="<?php echo URLROOT ?>/events/deleterequest/<?php echo $data['event']->EventID ?>"><button><b>Cancel Request</b></button></a>
+                        <?php
+                        if ($data['event']->Status == 'Accepted') { 
+                            echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                            $advancedPayment = $data['event']->TotalBudget*0.5;
+                            echo '<p> Advanced Payment : ' . $advancedPayment . '</p>';
+                            echo '<a href="' . URLROOT . '/events/makePayment/' . $data['event']->EventID . '"><button><b>Make Payment</b></button></a>';
+                        } else {
+                            echo '<p> Yet to confirm the request </p> ';
+                        }
+                        ?>
+                        <a href="<?php echo URLROOT ?>/events/deleteRequest/<?php echo $data['event']->EventID ?>"><button><b>Cancel Request</b></button></a>
                         <a href="<?php echo URLROOT ?>/events/rescheduleRequest/<?php echo $data['event']->EventID ?>"><button><b>Reschedule Request</b></button></a>
                     </div>
                 </div>

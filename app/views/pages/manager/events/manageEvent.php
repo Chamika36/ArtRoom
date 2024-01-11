@@ -22,9 +22,6 @@
             </ul>
         </div>
         <div class="partners">
-        <?php echo var_dump($data['photographers']);?>
-        <?php echo $data['event']->EventDate; ?>
-        <?php echo var_dump($data['events']);?>
             <h3>Allocate Partners</h3>
             <form action="<?php echo URLROOT; ?>/events/allocate/<?php echo $data['event']->EventID; ?>" method="POST">
                 <div class="form-group">
