@@ -30,7 +30,7 @@
                         echo '</div>';
                         echo '<div class="dropdown-content" id="dropdownMenu">';
                         echo '<a href="'. URLROOT .'/users/logout">Log Out</a>';
-                        echo '<a href="'. URLROOT .'/requests">Requests</a>';
+                        echo '<a href="'. URLROOT .'/events/request">Requests</a>';
                         echo '</div>';
                         echo '</li>';
                     } else {
