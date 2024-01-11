@@ -5,21 +5,22 @@
             $this->userModel = $this->model('User');
             $this->packageModel = $this->model('Package');
             $this->partnerModel = $this->model('Partner');
-        } 
-        
+        }
+                
         public function index() {
             $events = $this->eventModel->getAllEvents();
             $requests = $this->eventModel->getAllEvents();
             // Loop through the requests and format the date
             foreach ($requests as $request) {
                 $request->EventDate = date('F j, Y', strtotime($request->EventDate));
+                $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
             }
 
             // Loop through the events and format the date
             foreach ($events as $event) {
                 $event->EventDate = date('F j, Y', strtotime($event->EventDate));
             }
-        
+
             $data = [
                 'title' => 'Home',
                 'requests' => $requests,
