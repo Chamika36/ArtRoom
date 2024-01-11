@@ -8,7 +8,7 @@
 
         // request event
         public function requestEvent($data) {
-            $this->db->query('INSERT INTO Event (EventDate, StartTime, EndTime, CustomerID, Location, RequestedPhotographer, PackageID, AdditionalRequests, FullAmount, Status) VALUES (:date, :startTime, :endTime, :customer, :location, :requestedPhotographer, :package, :additionalRequests, :budget, "Pencil")');
+            $this->db->query('INSERT INTO Event (EventDate, StartTime, EndTime, CustomerID, Location, RequestedPhotographer, PackageID, SelectedExtras, TotalBudget, AdditionalRequests, Status) VALUES (:date, :startTime, :endTime, :customer, :location, :requestedPhotographer, :package, :selectedExtras, :totalBudget, :additionalRequests, "Pencil")');
             $this->db->bind(':date', $data['date']);
             $this->db->bind(':startTime', $data['startTime']);
             $this->db->bind(':endTime', $data['endTime']);
@@ -16,15 +16,17 @@
             $this->db->bind(':location', $data['location']);
             $this->db->bind(':requestedPhotographer', $data['requestedPhotographer']);
             $this->db->bind(':package', $data['package']);
+            $this->db->bind(':selectedExtras', $data['selectedExtras']); // Convert to JSON string
+            $this->db->bind(':totalBudget', $data['totalBudget']);
             $this->db->bind(':additionalRequests', $data['additionalRequests']);
-            $this->db->bind(':budget', $data['budget']);
-
+        
             if ($this->db->execute()) {
                 return true;
             } else {
                 return false;
             }
         }
+        
 
         // reschedule event
         public function rescheduleEvent($data) {

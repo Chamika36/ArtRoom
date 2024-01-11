@@ -13,8 +13,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
-        
        .bottom-column {
             flex: 4;
             padding: 20px;
@@ -44,7 +45,6 @@
         }
 
         .bottom-column input[type="date"] {
-            
             background-color: rgba(189, 179, 32, 0.08);
             padding: 10px;
             margin-bottom: 10px;
@@ -94,9 +94,9 @@
     </div>
     <div class="container">
         <div class="bottom-row">
-        <div class="left-area">
-            <?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
-        </div>
+        <!-- <div class="left-area">
+            <//?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
+        </div> -->
 
             <div class="bottom-column">
                 <h2 class="requestQuote">Request Quote</h2>
@@ -108,14 +108,14 @@
                     </select> -->
 
                     <label for="date">Event Date</label>
-                    <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" onChange="updatePhotographers()" required>
+                    <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
                     <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
 
                     <label for="startTime">Start Time</label>
                     <input type="time" id="startTime" name="startTime" required>
 
                     <label for="endTime">End Time</label>
-                    <input type="time" id="endTime" name="endTime" required>
+                    <input type="time" id="endTime" name="endTime" min="" required>
 
                     <label for="location">Location</label>
                     <input type="text" id="location" name="location" required>
@@ -137,9 +137,34 @@
                         <?php endforeach; ?>
                     </select>
 
+                    <!-- Additional Items -->
+                    <label for="extras">Select Extras:</label>
+                    <select id="extras" name="extras">
+                        <option value="1500.00">Additional Album Page - Rs. 1,500.00</option>
+                        <option value="70.00">Thanking Card - Rs. 70.00</option>
+                        <option value="8500.00">20 x 30 Enlagement - Rs. 8,500.00</option>
+                        <option value="7000.00">16 x 24 Enlagement - Rs. 7,000.00</option>
+                        <option value="2500.00">12 x 18 Enlagement - Rs. 2,500.00</option>
+                        <option value="4000.00">Signature Board - Rs. 4,000.00</option>
+                        <option value="10000.00">Family Album - Rs. 10,000.00</option>
+                    </select>
+
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" step="1">
+
+                    <button type="button" onclick="addExtra()">Add Extra</button>
+
+                    <div id="selectedExtrasDisplay">
+                        <!-- Display selected extras with quantities -->
+                    </div>
+
                     <label for="additionalRequest">Additional Request</label>
                     <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
 
+                    <label for="totalBudget">Total Budget:</label>
+                    <input type="text" id="totalBudget" name="totalBudget" readonly>
+
+                    <input type="" id="selectedExtras" name="selectedExtras" value="" readonly>
 
                     <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
 
@@ -149,34 +174,17 @@
         </div>
     </div>
 
-    <!-- <script>
-    // Function to update the budget based on the selected package
-        function updateBudget() {
-            // Get the selected package's price
-            var selectedPackage = document.getElementById("package");
-            var selectedPackageOption = selectedPackage.options[selectedPackage.selectedIndex];
-            var packagePrice = selectedPackageOption.getAttribute("data-price");
-
-            // Update the budget input field with the package price
-            var budgetInput = document.getElementById("budget");
-            budgetSpan.textContent = packagePrice;
-        }
-
-        // Attach the updateBudget function to the package dropdown's change event
-        document.getElementById("package").addEventListener("change", updateBudget);
-
-        function updatePhotographers() {
-            
-        }
-
-
-
- //       document.getElementById("package").addEventListener("change", updateBudget);
-
-    </script> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </script>
     <script>
+
     $(document).ready(function() {
+
+        // Set the minimum time for end time based on start time
+        $('#startTime').change(function () {
+            $('#endTime').attr('min', $(this).val());
+        });
+
+        // Get available photographers based on selected date
         $('#date').change(function() {
             var selectedDate = $(this).val();
 
@@ -192,10 +200,63 @@
                 }
             });
         });
+
+        // Set total budget to package price when package is selected
+        $('#package').change(function() {
+            updateTotalBudget();
+        })
     });
+
+    // Calcualte total budget
+    let selectedExtras = [];
+
+        function addExtra() {
+            let selectedExtra = $('#extras').val();
+            let quantity = $('#quantity').val();
+            let totalofEach = selectedExtra * quantity;
+
+            if (quantity > 0) {
+                selectedExtras.push({
+                    name: $('#extras option:selected').text(),
+                    price: selectedExtra,
+                    quantity: quantity,
+                    totalofEach: totalofEach
+                });
+
+                displaySelectedExtras();
+                updateTotalBudget();
+
+                $('#selectedExtras').val(JSON.stringify(selectedExtras));
+            }
+
+            // Reset the form fields
+            $('#extras').val('');
+            $('#quantity').val('');
+        }
+
+        function displaySelectedExtras() {
+            let selectedExtrasDiv = $('#selectedExtrasDisplay');
+            selectedExtrasDiv.empty();
+
+            selectedExtras.forEach(extra => {
+                selectedExtrasDiv.append(`<p>${extra.name} - Quantity: ${extra.quantity} - Total: ${extra.totalofEach}</p>`);
+            });
+        }
+
+        function updateTotalBudget() {
+            let totalBudget = calculateTotalBudget();
+            $('#totalBudget').val(totalBudget);
+        }
+
+        function calculateTotalBudget() {
+            let packagePrice = parseFloat($('#package option:selected').data('price')) || 0;
+            let extrasTotal = selectedExtras.reduce((total, extra) => {
+                return total + (parseFloat(extra.price) * parseInt(extra.quantity));
+            }, 0);
+
+            return packagePrice + extrasTotal;
+        }
     </script>
-
-
 
 </body>
 </html>
