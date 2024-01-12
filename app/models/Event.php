@@ -51,6 +51,13 @@
             return $results;
         }
 
+        public function getLastFiveEvents() {
+            $this->db->query('SELECT * FROM Event ORDER BY EventDate DESC LIMIT 5');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+        
+
         public function getRequests() {
             $this->db->query('SELECT * FROM Event where Status = "Pencil"');
             $results = $this->db->resultSet();

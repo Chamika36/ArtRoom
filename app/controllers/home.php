@@ -70,7 +70,7 @@ class Home extends Controller {
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
-        $events = $this->eventModel->getAllEvents();
+        $events = $this->eventModel->getLastFiveEvents();
 
         foreach ($events as $request) {
             $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;

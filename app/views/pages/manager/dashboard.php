@@ -35,7 +35,7 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 
-			<label for="switch-mode" class="switch-mode"></label>-->
+			<label for="switch-mode" class="switch-mode"></label>
 			
 			<a href="#" class="profile">
 				<img src="img/people.png" align="right">
@@ -45,7 +45,7 @@
 				<span class="num">8</span>
 			</a>
 
-		</nav>
+		</nav>-->
 		<!-- NAVBAR -->
 
         <!-- MAIN -->
@@ -123,42 +123,9 @@
 										<p><?php echo $event->Package; ?></p>
 									</td>
 									<td><?php echo $event->EventDate; ?></td>
-									<td><span class="status completed"><?php echo $event->Status; ?></span></td>
+									<td><span class="status <?php echo $event->Status; ?>"><?php echo $event->Status; ?></span></td>
 								</tr>
 							<?php endforeach; ?>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							
 						</tbody>
 					</table>
 				</div>

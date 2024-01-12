@@ -31,15 +31,17 @@ body {    margin: 0;
     
         --light: #F9F9F9;
         --blue: #f9b234;
-        --light-blue: #CFE8FF;
+        --light-blue: #3a3b3c;
         --grey: #eee;
         --dark-grey: #AAAAAA;
         --dark: #342E37;
-        --red: #f9b234;
+        --red: #f93e34;
         --yellow: #FFCE26;
         --light-yellow: #FFF2C6;
-        --orange: #FD7238;
-        --light-orange: #FFE0D3;
+        --orange: #f9b234;
+        --light-orange: #3a3b3c;
+        --blue1 : #2f2283;
+        
     }
     
     html {
@@ -486,14 +488,14 @@ body {    margin: 0;
         border-radius: 20px;
         font-weight: 700;
     }
-    #content main .table-data .order table tr td .status.completed {
-        background: var(--blue);
+    #content main .table-data .order table tr td .status.Accepted {
+        background: var(--blue1);
     }
-    #content main .table-data .order table tr td .status.process {
+    #content main .table-data .order table tr td .status.Pencil {
         background: var(--yellow);
     }
-    #content main .table-data .order table tr td .status.pending {
-        background: var(--orange);
+    #content main .table-data .order table tr td .status.Canceled {
+        background: var(--red);
     }
     
     

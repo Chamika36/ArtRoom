@@ -451,12 +451,7 @@
         .ag-format-container {
             width: 1200px;
             margin: 0 auto;
-            
-            
-            
-            }
-
-
+        }
 
         .ag-courses_box {
         display: -webkit-box;
@@ -475,12 +470,8 @@
         .ag-courses_item {
         -ms-flex-preferred-size: calc(33.33333% - 30px);
         flex-basis: calc(33.33333% - 30px);
-
         margin: 0 15px 32px;
-
         overflow: hidden;
-        
-        
         border-radius: 28px;
         
         }
@@ -489,10 +480,8 @@
         display: block;
         padding: 30px 20px;
         background-color: #242526;
-        
         overflow: hidden;
         text-decoration: none;
-
         position: relative;
         }
 
@@ -695,9 +684,11 @@
                 <div class=container-02-left>
                 Your Special Moments</br> Deserve to be</br> Celebrated in Style...
                 </div>
+                <a href="<?php echo URLROOT ?>/events/request">
                 <div class="buttons-container">
                     <button class="button-arounder">Make a Request</button>
                 </div>
+                </a>
             </div>
             <div id="right-side-02">
                 <div class=container-02-right>
