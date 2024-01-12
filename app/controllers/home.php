@@ -5,6 +5,7 @@ class Home extends Controller {
     public function __construct() {
         $this->userModel = $this->model('User');
         $this->eventModel = $this->model('Event');
+        $this->packageModel = $this->model('Package');
     }
 
    public function index() {
@@ -69,11 +70,18 @@ class Home extends Controller {
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
+        $events = $this->eventModel->getAllEvents();
+
+        foreach ($events as $request) {
+            $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+        }
+
 
         $data = [
             'title' => 'Home',
             'eventCount' => $eventCount,
-            'requestCount' => $requestCount
+            'requestCount' => $requestCount,
+            'events' => $events
         ];
         $this->view('pages/manager/dashboard', $data);
     }

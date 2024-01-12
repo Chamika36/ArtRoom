@@ -23,8 +23,9 @@
 </section>
     <section id="content">
 		<!-- NAVBAR -->
-		<nav>
-			<!--<i class='bx bx-menu' ></i>
+
+		<!-- <nav>
+			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
 				<div class="form-input">
@@ -33,6 +34,7 @@
 				</div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
+
 			<label for="switch-mode" class="switch-mode"></label>-->
 			
 			<a href="#" class="profile">
@@ -68,25 +70,31 @@
 			</div>
 
             <ul class="box-info">
+				<a href="<?php echo URLROOT ?>/events">
+					<li>
+						<i class='bx bxs-calendar-plus' ></i>
+						<span class="text">
+							<h3><?php echo is_array($data['eventCount']) ? count($data['eventCount']) : $data['eventCount']; ?></h3>
+							<p>Event Requests</p>
+						</span>
+					</li>
+				</a>
+
+				<a href="<?php echo URLROOT ?>/events">
+					<li>
+						<i class='bx bxs-calendar-check' ></i>
+						<span class="text">
+							<h3><?php echo is_array($data['requestCount']) ? count($data['requestCount']) : $data['requestCount']; ?></h3>
+							<p>Ongoing Events</p>
+						</span>
+					</li>
+				</a>
+
 				<li>
-					<i class='bx bxs-calendar-check' ></i>
+					<i class='bx bx-message-rounded-error'></i>
 					<span class="text">
-						<h3>10</h3>
-						<p>Event Requests</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<h3>28</h3>
-						<p>Ongoing Requests</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>100</h3>
-						<p>Events completed</p>
+						<h3>2</h3>
+						<p>Reschedule Requests</p>
 					</span>
 				</li>
 			</ul>
@@ -102,12 +110,22 @@
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
+								<th>Event </th>
 								<th>Date Order</th>
 								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody>
+							<?php foreach($data['events'] as $event) : ?>
+								<tr>
+									<td>
+										<i class='bx bxs-user-circle' ></i>
+										<p><?php echo $event->Package; ?></p>
+									</td>
+									<td><?php echo $event->EventDate; ?></td>
+									<td><span class="status completed"><?php echo $event->Status; ?></span></td>
+								</tr>
+							<?php endforeach; ?>
 							<tr>
 								<td>
 									<img src="img/people.png">
@@ -151,22 +169,30 @@
 						<i class='bx bx-filter' ></i>-->
 					</div>
 					<ul class="todo-list">
-						<li class="completed">
-                        <h2>PHOTOGRAPHERS</h2>
-                        <p>10</p>
-							<!--<i class='bx bx-dots-vertical-rounded' ></i>-->
-						</li>
-						<li class="completed">
-                        <h2>EDITORS</h2>
-                        <p>5</p>
-							<!--<i class='bx bx-dots-vertical-rounded' ></i>-->
-						</li>
-						<li class="not-completed">
-                        <h2>PRINTING FIRMS</h2>
-                            <p>2</p>
-							<!--<i class='bx bx-dots-vertical-rounded' ></i>-->
-						</li>
-						
+
+						<a href="<?php echo URLROOT ?>/users/getPhotographers">
+							<li class="completed">
+							<h2>Photographers</h2>
+							<p>10</p>
+								<i class='bx bx-dots-vertical-rounded' ></i>
+							</li>
+						</a>
+
+						<a href="<?php echo URLROOT ?>/users/getEditors">
+							<li class="completed">
+							<h2>Editors</h2>
+							<p>5</p>
+								<i class='bx bx-dots-vertical-rounded' ></i>
+							</li>
+						</a>
+
+						<a href="<?php echo URLROOT ?>/users/getPrintingFirms">	
+							<li class="not-completed">
+							<h2>Printing Firms</h2>
+								<p>2</p>
+								<i class='bx bx-dots-vertical-rounded' ></i>
+							</li>
+						</a>
 					</ul>
 				</div>
 			</div>
