@@ -83,17 +83,22 @@
 
         // Get event count
         public function getEventCount() {
-            $this->db->query('SELECT COUNT(*) FROM Event where Status <> "Pencil"');
-            $results = $this->db->resultSet();
-            return $results;
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE Status <> "Pencil"');
+            $result = $this->db->single();
+            
+            // Access the count value using the alias "count"
+            return $result->count;
         }
 
         // Get request count
         public function getRequestCount() {
-            $this->db->query('SELECT COUNT(*) FROM Event where Status = "Pencil"');
-            $results = $this->db->resultSet();
-            return $results;
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE Status = "Pencil"');
+            $result = $this->db->single();
+            
+            // Access the count value using the alias "count"
+            return $result->count;
         }
+        
 
 
         public function getEventById($id) {
