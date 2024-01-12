@@ -24,8 +24,8 @@
     <section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<!--<a href="#" class="nav-link">Categories</a>
+			<!--<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -34,13 +34,15 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>-->
-			<a href="#" class="notification">
+			
+			<a href="#" class="profile">
+				<img src="img/people.png" align="right">
+			</a>
+            <a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
 			</a>
-			<a href="#" class="profile">
-				<img src="img/people.png">
-			</a>
+
 		</nav>
 		<!-- NAVBAR -->
 
@@ -138,38 +140,31 @@
 								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>
 				<div class="todo">
 					<div class="head">
 						<h3>Partners</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
+						<!--<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>-->
 					</div>
 					<ul class="todo-list">
 						<li class="completed">
                         <h2>PHOTOGRAPHERS</h2>
                         <p>10</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+							<!--<i class='bx bx-dots-vertical-rounded' ></i>-->
 						</li>
 						<li class="completed">
                         <h2>EDITORS</h2>
                         <p>5</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+							<!--<i class='bx bx-dots-vertical-rounded' ></i>-->
 						</li>
 						<li class="not-completed">
                         <h2>PRINTING FIRMS</h2>
                             <p>2</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+							<!--<i class='bx bx-dots-vertical-rounded' ></i>-->
 						</li>
 						
 					</ul>
@@ -181,7 +176,7 @@
 	<!-- CONTENT -->
 	
 
-	<script src="script.js"></script>
+	<script src="/js/manager/script.js"></script>
 </body>
 </html>
 
