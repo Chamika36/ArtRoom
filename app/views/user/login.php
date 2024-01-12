@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 <style>
 
     .background{
-        background: url('<?php echo URLROOT ?>/images/login-backgroung.png'); 
+        background: url('<//?php echo URLROOT ?>/images/login-backgroung.png'); 
         max-width: 100%;
         height: auto;
         background-size: cover;
@@ -132,20 +133,20 @@
 </head>
 <body class="background">
     <div >
-    <!-- <img src="images/login-backgroung.png" alt="background img" class="background"> -->
+     //<img src="images/login-backgroung.png" alt="background img" class="background"> 
         <h2 class="login"><b>Login</b></h2>
         <div class="form">
-            <?php flash('register_success'); ?>
+            <//?php flash('register_success'); ?>
             <form name="logInForm" style="display:flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; "  action="<?php echo URLROOT; ?>/users/login" method="POST">
                 <div class="form-group" style="margin-bottom:10px">
                     <label class="email" for="email">Email </label>
                     <input class="textBox" type="email" name="email" required></br>
-                    <span class="invalid-feedback"><?php echo $data['email_err']?></span>
+                    <span class="invalid-feedback"><//?php echo $data['email_err']?></span>
                 </div> 
                 <div class="form-group" style="margin-bottom:10px">
                     <label class="email" for="password">Password </label>
                     <input class="textBox" type="password" name="password" required></br>
-                    <span class="invalid-feedback"><?php echo $data['password_err']?></span>
+                    <span class="invalid-feedback"><//?php echo $data['password_err']?></span>
                 </div>
                 <div class="form-group">
                     <input class="logInButton" type="submit" value="Log In">
@@ -153,9 +154,193 @@
             </form>
 
             <a class="forgotPass" href="">Forgot Password?</a>
-            <h4 class="forgotPass">Don't have an account? <a href="<?php echo URLROOT; ?>/users/register" style="color: blue;">Sign Up</a></h4>     
+            <h4 class="forgotPass">Don't have an account? <a href="<//?php echo URLROOT; ?>/users/register" style="color: blue;">Sign Up</a></h4>     
         </div>
 
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>art roomLogin</title>
+    <link rel="icon" type="image/x-icon" href="<?php echo URLROOT?>/images/TravelEase_logo.png">
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/login/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
+    <script src="index.js"></script>
+    <style>
+        body{
+    background-color:#FBF9F3;
+    font-family: "Poppins", sans-serif;
+}
+.main1 .registerForm{
+    background-color: #FEFEFE;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin: 20px 100px 20px 100px;
+    
+}
+.image{
+   height: 93vh;
+}
+.registerForm .image img{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+    border-radius: 20px;
+}
+
+.formLeft{
+    display: grid;
+    grid-template-rows: 40% 60%;
+    padding: 30px;
+}
+.formLeft .c1{
+    display: grid;
+    grid-template-rows: 60% 40%;
+}
+.c1 .c1_1{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.c1_1_1{
+    max-width: 70%; /* Ensure the div does not exceed its parent's width */
+    max-height: 70%; /* Ensure the div does not exceed its parent's height */
+    overflow: hidden; /* Hide any overflow if the image is larger than the div */
+    text-align: center; /* Center the image horizontally (optional) */
+    margin-left: 90px;
+}
+.c1_1 .c1_1_1 img{
+    max-width: 50%; /* Keep the image width within the div */
+    max-height: 100%;
+    float: right;
+    
+}
+.c1_1_2{
+    color: #2E2626;
+    font-family: Otomanopee One;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 118.9%; /* 76.096px */
+    letter-spacing: 2.56px;
+    mix-blend-mode: darken;
+    font-weight: bold;
+    margin-top: 25px;
+    
+}
+.c1_2{
+    color: #605D5D;
+text-align: center;
+font-size: 26px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.c2{
+    
+    /* Center the child horizontally */
+   padding-left: 10%;
+   padding-right: 10%;
+   
+}
+
+.formcontainer input{
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    
+}
+
+.login-button button{
+    border-radius: 20px;
+    background: #706F6C;
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    padding: 10px 30px 10px 30px;
+    transition: background 0.3s ease;
+}
+
+.login-button button:hover {
+    background: #242526; /* Change the background color on hover */
+}
+
+.login-button #forgot{
+    float: right;
+    
+}
+.login-button a{
+    text-decoration: none; /* Remove underline */
+    color: inherit;
+    font-weight: bold;
+}
+.login-button button{
+    cursor: pointer;
+}
+.login-button .buttonCA{
+  
+   display: flex;
+   justify-content: center;
+} 
+
+.formcontainer .invalid-feedback{
+    color:red;
+    
+}
+
+    </style>
+</head>
+<body>
+    <section class="main1">
+        <div class="registerForm">
+            <div class="formLeft">
+                <div class="c1">
+                    <div class="c1_1">
+                    
+                        <div class="c1_1_1">
+                            <div style="text-align: center;color: red;"><?php echo flash('register_success')?></div>
+                        
+                            <img src="<?php echo URLROOT?>/images/logo.png" alt="logo"></div>
+                       <div class="c1_1_2">Art Room</div>
+                    </div>
+                    <div class="c1_2">Login to book your moments.</br> Your personalized studio experience is just a click away.</div>
+                </div>
+                
+                <div class="c2">
+                    <form action="<?php echo URLROOT; ?>/users/login" method="POST"> <!-- Specify the action attribute here -->
+                        <div class="formcontainer">
+                            <div class="logincred">
+                                <p>Email</p>
+                                <input type="email" id="email" placeholder="Email" name="email" <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>" ><br>
+                                <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
+
+                                <p>Password</p>
+                                <input type="password" id="login-password" name="password" placeholder="Password"  <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>" ><br>
+                                <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
+                            </div>
+                        </div>
+                        <div class="login-button">
+                            <br>
+                            <input type="checkbox" ><span>Remember me</span><span id="forgot"> <a href="" style="font-weight:normal">Forgot Password</a></span><br><br>
+                            <div class="buttonCA"><button type="submit">Log In</button></div><br>
+                            <span class="buttonCA">Don't have an Account? <a href="<?php echo URLROOT?>users/register"> Create Account</a></span>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="image">
+                <img src="<?php echo URLROOT?>/images/login-img.jpg" alt="image">
+            </div>
+        </div>
+    </section>
+   
 </body>
 </html>

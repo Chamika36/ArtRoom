@@ -16,7 +16,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 0 20px 0 rgb(255, 255, 255);
+  box-shadow: 0 0 10px 0 rgb(255, 255, 255);
   padding: 0 20px;
   color: #e4e3e3;
   font-family: "Poppins", sans-serif;
