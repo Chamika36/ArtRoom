@@ -53,7 +53,7 @@
         }
 
         .bottom-column input[type="submit"] {
-            background-color: #504334;
+            background-color: #242526;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -63,7 +63,8 @@
         }
 
         .bottom-column input[type="submit"]:hover {
-            background-color: #774001;
+            background-color: #f9b234;
+            color: #242526
         }
 
         .requestQuote{
