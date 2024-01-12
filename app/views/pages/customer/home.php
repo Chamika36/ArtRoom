@@ -383,6 +383,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 5px;
         }
 
         button {
@@ -395,16 +396,17 @@
 
         .button-arounder {
         font-size: 2rem;
-        background: #b78727;
+        background: #f9b234;
         color: hsl(190deg, 10%, 95%);
         border-radius: 5px;
+        font-weight: bold;
         
         box-shadow: 0 0px 0px hsla(190deg, 15%, 5%, .2);
         transfrom: translateY(0);
-        border-top-left-radius: 0px;
+        border-top-left-radius: 7px;
         border-top-right-radius: 0px;
         border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
+        border-bottom-right-radius: 7px;
         
         --dur: .15s;
         --delay: .15s;
@@ -424,7 +426,8 @@
         .button-arounder:focus {
         box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
         transform: translateY(-4px);
-        background: #b78727;
+        background: #f9b234;
+        color: #242526;
         border-top-left-radius: var(--radius);
         border-top-right-radius: var(--radius);
         border-bottom-left-radius: var(--radius);
@@ -433,7 +436,7 @@
 
         .gallery-topic{
             
-            font-size: 34px;
+            font-size: 36px;
             position: relative;
             font-family: "Poppins", sans-serif;
             color: #333; /* Text color */
@@ -690,10 +693,10 @@
         <div id="container-main-01">
             <div id="left-side-02">
                 <div class=container-02-left>
-                Your special moments</br> deserve to be</br> celebrated in style.
+                Your Special Moments</br> Deserve to be</br> Celebrated in Style...
                 </div>
                 <div class="buttons-container">
-                    <button class="button-arounder">Request</br>Now</button>
+                    <button class="button-arounder">Make a Request</button>
                 </div>
             </div>
             <div id="right-side-02">
