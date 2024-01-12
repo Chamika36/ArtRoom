@@ -59,7 +59,8 @@
     <div class="container">
         <div class="bottom-row">
         <div class="left-area">
-            <?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
+            <?php //include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
+            <P>sidebar</P>
         </div>
 
             <div class="bottom-column">

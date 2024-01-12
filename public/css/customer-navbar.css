@@ -3,6 +3,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 header img {
   height: 50px;
   width: 50px;

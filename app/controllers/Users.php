@@ -231,7 +231,7 @@
             unset($_SESSION['user_type_id']);
             unset($_SESSION['user_name']);
             session_destroy();
-            redirect('users/login');
+            redirect('home/index');
         }
 
         public function isLoggedIn() {

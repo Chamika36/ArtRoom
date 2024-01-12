@@ -10,11 +10,13 @@
 <body>
     <!-- Navbar -->
     <header>
+        <a href="<?php echo URLROOT ?>">
         <div class="branding">
             <img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image">
             <span>Art Room</span>
         </div>
-        
+        </a>
+
         <nav>
             <ul>
                 <!-- Common Items for All Users -->
@@ -24,13 +26,14 @@
                         
                         echo '<li class="profile-dropdown">';
                         echo '<div class="profile-info" id="profileTrigger">';
-                        echo '<div class="user-greeting">Hello User</div>'; // Move greeting here
+                        echo '<div class="user-greeting">Hello ' . $_SESSION['user_name'] .'</div>'; // Move greeting here
                         echo '<img src="' . URLROOT . '/images/pp.png" alt="Profile Picture">';
                         echo '<div class="arrow-icon">&#9660;</div>';
                         echo '</div>';
                         echo '<div class="dropdown-content" id="dropdownMenu">';
                         echo '<a href="'. URLROOT .'/users/logout">Log Out</a>';
-                        echo '<a href="'. URLROOT .'/events/request">Requests</a>';
+                        echo '<a href="'. URLROOT .'/events/request">Make a Request</a>';
+                        echo '<a href="'. URLROOT .'/events/viewCustomerEvents/' . $_SESSION['user_id'] . '">Requests</a>';
                         echo '</div>';
                         echo '</li>';
                     } else {

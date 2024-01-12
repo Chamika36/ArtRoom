@@ -158,7 +158,7 @@
     <div class="container">
         <div class="bottom-row">
             <div class="left-area">
-                <?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
+                <?php //include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
             </div>
             <div class="bottom-column">
                 <h2 class="rescheduleRequest">Status of the Request</h2>
