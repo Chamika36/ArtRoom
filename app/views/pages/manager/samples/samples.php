@@ -1,5 +1,6 @@
 <head>
     <title>Samples</title>
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/samples.css">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
                         <div class="column">
                             <div class="card">
                                 <h2><?php echo $data['samples'][$j]->SampleName ?></h2>
-                                <div style="align:center;"><img src="<?php echo URLROOT ?>/images/samples/<?php echo $data['samples'][$j]->ImagePath; ?>" alt="sample image"></div>
+                                <div style="text-align:center;"><img src="<?php echo URLROOT ?>/images/samples/<?php echo $data['samples'][$j]->ImagePath; ?>" alt="sample image"></div>
                                 <p><?php echo $data['samples'][$j]->Description; ?></p>
                                 <p><?php echo $data['samples'][$j]->Date; ?></p>
                                 <div>
