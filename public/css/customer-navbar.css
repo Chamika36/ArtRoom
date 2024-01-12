@@ -35,6 +35,8 @@ header .branding {
   align-items: center;
   font-size: 23px;
   font-weight: 780;
+  text-decoration: none;
+  color: #e4e3e3;
 }
 
 header * {

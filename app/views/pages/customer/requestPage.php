@@ -60,11 +60,13 @@
             cursor: pointer;
             transition: background-color 0.2s;
             align-self: flex-end; /* Move the submit button to the right bottom corner */
+            font-family: "Poppins", sans-serif;
         }
 
         .bottom-column input[type="submit"]:hover {
             background-color: #f9b234;
-            color: #242526
+            color: #242526;
+            font-family: "Poppins", sans-serif;
         }
 
         .requestQuote{
@@ -73,7 +75,7 @@
             flex-shrink: 0;
             color: #000;
             text-align: center;
-            font-family: Istok Web;
+            font-family: "Poppins", sans-serif;
             font-size: 32px;
             font-style: normal;
             font-weight: 700;

@@ -227,7 +227,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 118.9%; /* 76.096px */
-    letter-spacing: 2.56px;
+    
     mix-blend-mode: darken;
     font-weight: bold;
     margin-top: 25px;
