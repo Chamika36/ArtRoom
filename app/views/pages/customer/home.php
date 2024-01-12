@@ -695,9 +695,11 @@
                 <div class=container-02-left>
                 Your Special Moments</br> Deserve to be</br> Celebrated in Style...
                 </div>
+                <a href="<?php echo URLROOT ?>/events/request">
                 <div class="buttons-container">
                     <button class="button-arounder">Make a Request</button>
                 </div>
+                </a>
             </div>
             <div id="right-side-02">
                 <div class=container-02-right>

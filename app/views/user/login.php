@@ -227,7 +227,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 118.9%; /* 76.096px */
-    letter-spacing: 2.56px;
+    
     mix-blend-mode: darken;
     font-weight: bold;
     margin-top: 25px;
@@ -305,7 +305,7 @@ line-height: normal;
                     <div class="c1_1">
                     
                         <div class="c1_1_1">
-                            <div style="text-align: center;color: red;"><?php echo flash('register_success')?></div>
+                            <div style="text-align: center;color: red;"><?//php echo flash('register_success')?></div>
                         
                             <img src="<?php echo URLROOT?>/images/logo.png" alt="logo"></div>
                        <div class="c1_1_2">Art Room</div>
@@ -330,7 +330,7 @@ line-height: normal;
                             <br>
                             <input type="checkbox" ><span>Remember me</span><span id="forgot"> <a href="" style="font-weight:normal">Forgot Password</a></span><br><br>
                             <div class="buttonCA"><button type="submit">Log In</button></div><br>
-                            <span class="buttonCA">Don't have an Account? <a href="<?php echo URLROOT?>users/register"> Create Account</a></span>
+                            <span class="buttonCA">Don't have an Account? <a href="<?php echo URLROOT?>/users/register"> Create Account</a></span>
                         </div>
                     </form>
                 </div>
