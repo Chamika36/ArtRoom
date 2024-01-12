@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh; /* Ensure at least 100% of the viewport height */
+}
+
+#menu {
+    /* Add styling for your sidebar */
+}
+
+#main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.rows {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card-users {
+    background-color: #f9b234; /* Change the background color */
+    border: 1px solid #242526;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden; /* Hide any overflow content */
+}
+
+.card-users img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.card-users h2 {
+    margin: 0;
+}
+
+.card-users a {
+    text-decoration: none;
+    color: #333;
+}

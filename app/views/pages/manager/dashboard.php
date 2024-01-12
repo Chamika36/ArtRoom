@@ -23,6 +23,7 @@
 </section>
     <section id="content">
 		<!-- NAVBAR -->
+
 		<!-- <nav>
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
@@ -33,15 +34,18 @@
 				</div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
+
+			<label for="switch-mode" class="switch-mode"></label>-->
+			
+			<a href="#" class="profile">
+				<img src="img/people.png" align="right">
+			</a>
+            <a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
 			</a>
-			<a href="#" class="profile">
-				<img src="img/people.png">
-			</a>
-		</nav> -->
+
+		</nav>
 		<!-- NAVBAR -->
 
         <!-- MAIN -->
@@ -154,24 +158,18 @@
 								<td>01-10-2021</td>
 								<td><span class="status pending">Pending</span></td>
 							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>
 				<div class="todo">
 					<div class="head">
 						<h3>Partners</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
+						<!--<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>-->
 					</div>
 					<ul class="todo-list">
+
 						<a href="<?php echo URLROOT ?>/users/getPhotographers">
 							<li class="completed">
 							<h2>Photographers</h2>
@@ -204,7 +202,7 @@
 	<!-- CONTENT -->
 	
 
-	<script src="script.js"></script>
+	<script src="/js/manager/script.js"></script>
 </body>
 </html>
 
