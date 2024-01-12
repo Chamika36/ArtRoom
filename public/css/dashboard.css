@@ -61,7 +61,7 @@ body {    margin: 0;
     
     
     
-    /* SIDEBAR 
+    /* SIDEBAR */
     #sidebar {
         position: fixed;
         top: 0;
@@ -78,7 +78,7 @@ body {    margin: 0;
     #sidebar::--webkit-scrollbar {
         display: none;
     }
-    #sidebar.hide {
+    /*#sidebar.hide {
         width: 60px;
     }
     #sidebar .brand {
