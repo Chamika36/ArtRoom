@@ -27,7 +27,9 @@
     <script src="<?php echo URLROOT ?>/js/evo-calendar.js"></script>
 
     <script>
-        var eventData = <?php echo json_encode($data['requests']); ?>;
+        var eventData = <?php echo json_encode($data['events']); ?>;
+        var ongoingData = <?php echo json_encode($data['ongoing']); ?>;
+        var requestData = <?php echo json_encode($data['requests']); ?>;
         var manageUrl = <?php echo json_encode(URLROOT . '/events/manageevent/'); ?>;
         console.log("Event Data:", eventData);
     </script>
@@ -46,6 +48,19 @@
                 console.log("Date: " + event.EventDate);
                 console.log("Type: " + event.Type);
 
+                var color = '#63d8677';
+                var type = 'event';
+
+                if(event.Status != 'Pencil') {
+                    type = 'event';
+                    color = 'lightgreen';
+                }else{
+                    type = 'holiday';
+                    color = '#63d8677';
+                }
+
+
+
                 // Add events to the calendar
                 $('#calendar').evoCalendar('addCalendarEvent', {
                     id: event.EventID,
@@ -53,9 +68,12 @@
                     badge: event.StartTime,
                     description: event.Location,
                     date: event.EventDate,
-                    type: 'event',
+                    type: type,
+                    color: color
                 });
             });
+
+
 
             // Add a click event handler for calendar events
             $('#calendar').on('selectEvent', function (event, eventData) {

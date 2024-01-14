@@ -9,7 +9,8 @@
                 
         public function index() {
             $events = $this->eventModel->getAllEvents();
-            $requests = $this->eventModel->getAllEvents();
+            $ongoing = $this->eventModel->getOngoingEvents();
+            $requests = $this->eventModel->getOnlyRequests();
             // Loop through the requests and format the date
             foreach ($requests as $request) {
                 $request->EventDate = date('F j, Y', strtotime($request->EventDate));
@@ -19,10 +20,12 @@
             // Loop through the events and format the date
             foreach ($events as $event) {
                 $event->EventDate = date('F j, Y', strtotime($event->EventDate));
+                $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
             }
 
             $data = [
                 'title' => 'Home',
+                'ongoing' => $ongoing,
                 'requests' => $requests,
                 'events' => $events
             ];

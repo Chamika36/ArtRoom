@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dashboard.css">
 </head>
 <body>
-<section id="sidebar">
+<!-- <section id="sidebar"> -->
         
          <!--<div id="header">
             <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
@@ -20,7 +20,8 @@
         </div>
 
           <!-- !!!!!!!!!!!!!!! -->
-</section>
+<!-- </section> -->
+	<div id="main">
     <section id="content">
 		<!-- NAVBAR -->
 
@@ -168,7 +169,7 @@
 	</section>
 	<!-- CONTENT -->
 	
-
+							</div>
 	<script src="/js/manager/script.js"></script>
 </body>
 </html>
