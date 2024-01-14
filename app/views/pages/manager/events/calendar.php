@@ -59,8 +59,6 @@
                     color = '#63d8677';
                 }
 
-
-
                 // Add events to the calendar
                 $('#calendar').evoCalendar('addCalendarEvent', {
                     id: event.EventID,
