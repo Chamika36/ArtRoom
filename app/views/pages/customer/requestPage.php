@@ -12,6 +12,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
+     <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -119,8 +124,12 @@
                     <input type="time" id="endTime" name="endTime" min="" required>
 
                     <label for="location">Location</label>
-                    <input type="text" id="location" name="location" required>
+                    <input type="text" id="location" name="location" value="Choose location" required readonly>
+                    <input type="hidden" id="latitude" name="latitude" value="" required>
+                    <input type="hidden" id="longitude" name="longitude" value="" required>
                     <span class="invalid-feedback"><?php echo $data['location_err']; ?></span>
+                    <!-- Map container -->
+                    <div id="map" style="height: 300px;"></div>
 
                     <label for="requestedPhotographer">Request Photographer</label>
                     <select id="requestedPhotographer" name="requestedPhotographer">
@@ -257,6 +266,32 @@
 
             return packagePrice + extrasTotal;
         }
+    </script>
+
+    <script>
+        var map = L.map('map').setView([0, 0], 2); // Set an initial view
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker when the user clicks on the map
+        map.on('click', function (e) {
+            var locationInput = document.getElementById('location');
+            var latitudeInput = document.getElementById('latitude');
+            var longitudeInput = document.getElementById('longitude');
+
+            // Use Nominatim for reverse geocoding
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${e.latlng.lat}&lon=${e.latlng.lng}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.display_name) {
+                    locationInput.value = data.display_name;
+                    latitudeInput.value = e.latlng.lat;
+                    longitudeInput.value = e.latlng.lng;
+                }
+            });
+        });
     </script>
 
 </body>
