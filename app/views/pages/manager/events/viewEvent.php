@@ -66,13 +66,51 @@
             </ul>
         </div>
 
-        <div class="event-details">
+<?php
+$json = trim($data['event']->SelectedExtras);
+$json = html_entity_decode($json);
+$jsonDecoded = json_decode($json, true);
+?>
+            <div class="event-details">
             <h3>Budget</h3>
-            <ul>
-                <li><strong>Package Name:</strong> <?php echo $data['package']->Name; ?></li>
-                <li><strong>Extras Selected:</strong> <?php echo $data['event']->SelectedExtras; ?></li>
-                <li><strong>Total Budget:</strong> <?php echo $data['event']->TotalBudget; ?></li>
-            </ul>
+            <table>
+                <tr>
+                    <th>Package Name</th>
+                    <td><?php echo $data['package']->Name . ' - ' . $data['package']->Price; ?></td>
+                </tr>
+                <tr>
+                    <th>Extras Selected</th>
+                    <td>
+                        <?php 
+                        $json = $data['event']->SelectedExtras;
+                        $json = html_entity_decode($json);
+                        $extrasSelected = json_decode($json, true);
+                        
+                        if (!empty($extrasSelected)) {
+                            echo '<table>';
+                            echo '<tr><th>Name</th><th>Price</th><th>Quantity</th><th>Total</th></tr>';
+                            
+                            foreach ($extrasSelected as $extra) {
+                                echo '<tr>';
+                                echo '<td>' . $extra['name'] . '</td>';
+                                echo '<td>' . $extra['price'] . '</td>';
+                                echo '<td>' . $extra['quantity'] . '</td>';
+                                echo '<td>' . $extra['totalofEach'] . '</td>';
+                                echo '</tr>';
+                            }
+                            
+                            echo '</table>';
+                        } else {
+                            echo 'No extras selected.';
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Total Budget</th>
+                    <td><?php echo $data['event']->TotalBudget; ?></td>
+                </tr>
+            </table>
         </div>
 
         <button class="button" onclick="window.location.href='<?php echo URLROOT; ?>/events/sendQuota/<?php echo $data['event']->EventID; ?>'">Send Quota to Customer</button>

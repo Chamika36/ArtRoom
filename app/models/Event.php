@@ -57,8 +57,14 @@
             return $results;
         }
         
+        // Get all events except requests
+        public function getOngoingEvents() {
+            $this->db->query('SELECT * FROM Event where Status <> "Pencil"');
+            $results = $this->db->resultSet();
+            return $results;
+        }
 
-        public function getRequests() {
+        public function getOnlyRequests() {
             $this->db->query('SELECT * FROM Event where Status = "Pencil"');
             $results = $this->db->resultSet();
             return $results;

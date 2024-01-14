@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="photographer">Photographer:</label>
                     <select name="photographer" id="photographer" required>
-                        <option value="">Select a photographer</option>
+                        <option value="<?php echo $data['requestedPhotographer']->UserID?>"><?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></option>
                         <?php foreach ($data['photographers'] as $photographer) : ?>
                             <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
                         <?php endforeach; ?>

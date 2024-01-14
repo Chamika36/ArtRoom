@@ -663,7 +663,7 @@
                     
                     <div class=container-03>
                         <div>Welcome to Art Room!</div>
-                        <div>We are committed to providing you an</div>
+                        <div>We are committed in providing you an</div>
                         <div>exceptional service that exceeds expectations. </div>
                         
                         <div class="cursor"></div> <!-- Cursor element -->
