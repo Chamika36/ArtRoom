@@ -208,7 +208,7 @@
                             echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                             $advancedPayment = $data['event']->TotalBudget*0.5;
                             echo '<p> Advanced Payment : ' . $advancedPayment . '</p>';
-                            echo '<a href="' . URLROOT . '/events/makePayment/' . $data['event']->EventID . '"><button><b>Make Payment</b></button></a>';
+                            echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '"><button><b>Make Payment</b></button></a>';
                         } else {
                             echo '<p> Yet to confirm the request </p> ';
                         }

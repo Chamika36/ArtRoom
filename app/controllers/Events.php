@@ -43,7 +43,10 @@
         }
 
 
-
+        public function pay(){
+            echo "pay method called";
+            return "pay method called";
+        }
 
         // event request
         public function request() {
