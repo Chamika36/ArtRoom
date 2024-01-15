@@ -8,12 +8,14 @@
 
         // request event
         public function requestEvent($data) {
-            $this->db->query('INSERT INTO Event (EventDate, StartTime, EndTime, CustomerID, Location, RequestedPhotographer, PackageID, SelectedExtras, TotalBudget, AdditionalRequests, Status) VALUES (:date, :startTime, :endTime, :customer, :location, :requestedPhotographer, :package, :selectedExtras, :totalBudget, :additionalRequests, "Pencil")');
+            $this->db->query('INSERT INTO Event (EventDate, StartTime, EndTime, CustomerID, Location, Latitude, Longitude, RequestedPhotographer, PackageID, SelectedExtras, TotalBudget, AdditionalRequests, Status) VALUES (:date, :startTime, :endTime, :customer, :location, :latitude, :longitude, :requestedPhotographer, :package, :selectedExtras, :totalBudget, :additionalRequests, "Pencil")');
             $this->db->bind(':date', $data['date']);
             $this->db->bind(':startTime', $data['startTime']);
             $this->db->bind(':endTime', $data['endTime']);
             $this->db->bind(':customer', $data['customer']);
             $this->db->bind(':location', $data['location']);
+            $this->db->bind(':latitude', $data['latitude']);
+            $this->db->bind(':longitude', $data['longitude']);
             $this->db->bind(':requestedPhotographer', $data['requestedPhotographer']);
             $this->db->bind(':package', $data['package']);
             $this->db->bind(':selectedExtras', $data['selectedExtras']); // Convert to JSON string
@@ -57,8 +59,14 @@
             return $results;
         }
         
+        // Get all events except requests
+        public function getOngoingEvents() {
+            $this->db->query('SELECT * FROM Event where Status <> "Pencil"');
+            $results = $this->db->resultSet();
+            return $results;
+        }
 
-        public function getRequests() {
+        public function getOnlyRequests() {
             $this->db->query('SELECT * FROM Event where Status = "Pencil"');
             $results = $this->db->resultSet();
             return $results;

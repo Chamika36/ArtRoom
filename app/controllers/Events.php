@@ -9,7 +9,8 @@
                 
         public function index() {
             $events = $this->eventModel->getAllEvents();
-            $requests = $this->eventModel->getAllEvents();
+            $ongoing = $this->eventModel->getOngoingEvents();
+            $requests = $this->eventModel->getOnlyRequests();
             // Loop through the requests and format the date
             foreach ($requests as $request) {
                 $request->EventDate = date('F j, Y', strtotime($request->EventDate));
@@ -19,10 +20,12 @@
             // Loop through the events and format the date
             foreach ($events as $event) {
                 $event->EventDate = date('F j, Y', strtotime($event->EventDate));
+                $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
             }
 
             $data = [
                 'title' => 'Home',
+                'ongoing' => $ongoing,
                 'requests' => $requests,
                 'events' => $events
             ];
@@ -40,7 +43,10 @@
         }
 
 
-
+        public function pay(){
+            echo "pay method called";
+            return "pay method called";
+        }
 
         // event request
         public function request() {
@@ -65,6 +71,8 @@
                     'endTime' => trim($_POST['endTime']),
                     'customer' => $_POST['customer'],
                     'location' => trim($_POST['location']),
+                    'longitude' => trim($_POST['longitude']),
+                    'latitude' => trim($_POST['latitude']),
                     'requestedPhotographer' => trim($_POST['requestedPhotographer']),
                     'package' => trim($_POST['package']),
                     'selectedExtras' => trim($_POST["selectedExtras"]),
@@ -127,6 +135,8 @@
                     'endTime' => '',
                     'customer' => '',
                     'location' => '',
+                    'longitude' => '',
+                    'latitude' => '',
                     'requestedPhotographer' => '',
                     'photographers' => $this->userModel->getPhotographers(),
                     'package' => '',
