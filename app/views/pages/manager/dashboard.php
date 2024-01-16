@@ -9,18 +9,14 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dashboard.css">
 </head>
 <body>
-<!-- <section id="sidebar"> -->
+
         
-         <!--<div id="header">
-            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
-        </div> -->
-        <!-- Navbar -->
+		<!--sidebar-->
         <div id="menu">
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
 
-          <!-- !!!!!!!!!!!!!!! -->
-<!-- </section> -->
+
 	<div id="main">
     <section id="content">
 		<!-- NAVBAR -->
@@ -54,20 +50,8 @@
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
-					<!--<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
-					</ul>-->
 				</div>
-				<!--<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download PDF</span>
-				</a>-->
+
 			</div>
 
             <ul class="box-info">
@@ -133,8 +117,7 @@
 				<div class="todo">
 					<div class="head">
 						<h3>Partners</h3>
-						<!--<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>-->
+				
 					</div>
 					<ul class="todo-list">
 
@@ -155,7 +138,7 @@
 						</a>
 
 						<a href="<?php echo URLROOT ?>/users/getPrintingFirms">	
-							<li class="not-completed">
+							<li class="completed">
 							<h2>Printing Firms</h2>
 								<p>2</p>
 								<i class='bx bx-dots-vertical-rounded' ></i>
