@@ -9,7 +9,10 @@
     <div class="body">
         <button type="submit" id="payhere-payment" onClick="paymentGateway()">PayHere Pay</button>
     </div>
-    <script>var baseURL = "<?php echo URLROOT; ?>";</script>   
+    <script>
+        var baseURL = "<?php echo URLROOT; ?>";
+        var eventID = "<?php echo $data['event']->EventID; ?>";
+    </script>   
     <script src="https://www.payhere.lk/lib/payhere.js"></script>
     <script type="text/javascript" src="<?php echo URLROOT;?>/js/customer/payments.js"></script>
     
