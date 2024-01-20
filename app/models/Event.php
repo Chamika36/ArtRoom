@@ -187,6 +187,7 @@
             }
         }
 
+
         // update event status as accepted
         public function acceptEvent($id) {
             $this->db->query('UPDATE Event SET Status = "Accepted" WHERE EventID = :id');
@@ -203,6 +204,19 @@
         public function declineEvent($id) {
             $this->db->query('UPDATE Event SET Status = "Canceled" WHERE EventID = :id');
             $this->db->bind(':id', $id);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // update event status
+        public function updateEventStatus($id, $status) {
+            $this->db->query('UPDATE Event SET Status = :status WHERE EventID = :id');
+            $this->db->bind(':id', $id);
+            $this->db->bind(':status', $status);
         
             if ($this->db->execute()) {
                 return true;

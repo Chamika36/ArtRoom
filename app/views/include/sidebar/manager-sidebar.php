@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_type_id']) || ($_SESSION['user_type_id'] !== 2 && $_S
   <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap'>
   <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/sidebar.css">
-  <link rel="stylesheet" href="<?php echo URLROOT ?>/public/css/manager-styles.css">
+  <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/manager-styles.css">
 
 </head>
 <body>
