@@ -19,31 +19,19 @@
 
 	<div id="main">
     <section id="content">
-		<!-- NAVBAR -->
+		
 
-		<!-- <nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-
-			<label for="switch-mode" class="switch-mode"></label>
-			
-			<a href="#" class="profile">
-				<img src="img/people.png" align="right">
-			</a>
-            <a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
+		<!-- Notification Icon -->
+		<div class="notification-wrapper">
+        <div class="notification-icon">
+            <i class='bx bxs-bell'></i>
+            <span class="num"><b>8</b></span>
+        </div>
+    </div>
 
 
-        <!-- MAIN -->
+
+        <!--MAIN -->
 		<main>
 			<div class="head-title">
 				<div class="left">
@@ -154,16 +142,3 @@
 	<script src="/js/manager/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
