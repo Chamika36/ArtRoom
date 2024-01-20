@@ -83,4 +83,12 @@ class Partners extends Controller {
         $this->view('pages/partner/eventdetails', $data);
     }
 
+    public function profile($id){
+        $partner = $this->userModel->getUserById($id);
+        $data = [
+            'partner' => $partner
+        ];
+        $this->view('pages/partner/profile', $data);
+    }
+
 }
