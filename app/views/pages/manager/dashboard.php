@@ -9,65 +9,35 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dashboard.css">
 </head>
 <body>
-<!-- <section id="sidebar"> -->
+
         
-         <!--<div id="header">
-            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
-        </div> -->
-        <!-- Navbar -->
+		<!--sidebar-->
         <div id="menu">
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
 
-          <!-- !!!!!!!!!!!!!!! -->
-<!-- </section> -->
+
 	<div id="main">
     <section id="content">
-		<!-- NAVBAR -->
+		
 
-		<!-- <nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
+		<!-- Notification Icon -->
+		<div class="notification-wrapper">
+        <div class="notification-icon">
+            <i class='bx bxs-bell'></i>
+            <span class="num"><b>8</b></span>
+        </div>
+    </div>
 
-			<label for="switch-mode" class="switch-mode"></label>
-			
-			<a href="#" class="profile">
-				<img src="img/people.png" align="right">
-			</a>
-            <a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
 
-		</nav>-->
-		<!-- NAVBAR -->
 
-        <!-- MAIN -->
+        <!--MAIN -->
 		<main>
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
-					<!--<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
-					</ul>-->
 				</div>
-				<!--<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download PDF</span>
-				</a>-->
+
 			</div>
 
             <ul class="box-info">
@@ -133,8 +103,7 @@
 				<div class="todo">
 					<div class="head">
 						<h3>Partners</h3>
-						<!--<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>-->
+				
 					</div>
 					<ul class="todo-list">
 
@@ -155,7 +124,7 @@
 						</a>
 
 						<a href="<?php echo URLROOT ?>/users/getPrintingFirms">	
-							<li class="not-completed">
+							<li class="completed">
 							<h2>Printing Firms</h2>
 								<p>2</p>
 								<i class='bx bx-dots-vertical-rounded' ></i>
@@ -165,24 +134,11 @@
 				</div>
 			</div>
 		</main>
-		<!-- MAIN -->
+
 	</section>
-	<!-- CONTENT -->
+
 	
 							</div>
 	<script src="/js/manager/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
