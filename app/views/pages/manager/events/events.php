@@ -3,16 +3,21 @@
 <head>
     <link rel="stylesheet" href="evo-calendar.css" />
     <link rel="stylesheet" href="evo-calendar.midnight-blue.css"/>
+    <title>Events</title>
 </head>
 
 <body>
     <div class="container">
-        <div id="header">
-            <!-- Navbar -->
-            <?php include(APPROOT . '/views/include/navbar.php'); ?>
+        <!-- Header -->
+        <!-- <div id="header">
+            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
+        </div> -->
+        
+        <div id="menu">
+            <!-- Sidebar -->
+            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
 
-        <div id="menu">Sidebar</div>
 
         <div id="main">
             <!-- Calendar -->

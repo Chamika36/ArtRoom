@@ -1,0 +1,129 @@
+.container2 {
+    width: 70vw;
+    padding: 0 15px;
+}
+
+.event-details {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.event-details h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+.event-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-details ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+.partners h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #007BFF;
+}
+
+.reallocate-button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.budget h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* For larger screens */
+@media only screen and (min-width: 768px) {
+    .container2 {
+      width: 80%; /* Adjust width as needed */
+    }
+  }
+  
+  /* For smaller screens */
+  @media only screen and (max-width: 767px) {
+    .container2 {
+      width: 70vw;
+    }
+  
+    .event-details h3,
+    .partners h3,
+    .form-group label,
+    .budget h3 {
+      font-size: 16px; /* Decrease font size for smaller screens */
+    }
+  
+    .event-details ul li {
+      font-size: 14px; /* Decrease font size for list items */
+    }
+  
+    select,
+    input[type="submit"] {
+      width: 70vw;
+      font-size: 14px; /* Adjust font size for form elements */
+    }
+  }
+  

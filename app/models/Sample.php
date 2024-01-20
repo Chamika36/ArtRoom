@@ -48,4 +48,21 @@
             }
         }
 
+        // Update Sample
+        public function updateSample($data){
+            $this->db->query('UPDATE Sample SET SampleName = :name, ImagePath = :imagePath, Description = :description, Date = :date WHERE SampleID = :id');
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':imagePath', $data['imagePath']);
+            $this->db->bind(':description', $data['description']);
+            $this->db->bind(':date', $data['date']);
+
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
     }

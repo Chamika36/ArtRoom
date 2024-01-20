@@ -3,13 +3,14 @@
 </head>
 <body>
     <div class="container">
-        <div id="header">
-            <?php include(APPROOT . '/views/include/navbar.php'); ?>
+        <div id="menu">
+            <!-- Sidebar -->
+            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
 
-        <div id="menu">
-                <?php include('sidebar.php'); ?>
-        </div>
+        <!-- <div id="menu">
+                </?php include('sidebar.php'); ?>
+        </div> -->
 
         <div id="main">
             <div  class="card">

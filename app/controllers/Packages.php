@@ -9,8 +9,20 @@ class Packages extends Controller {
         $data = [
             'packages' => $packages
         ];
-        $this->view('pages/manager/packages/packages', $data);
+        if($_SESSION['user_type_id'] == 2) {
+            $this->view('pages/manager/packages/packages', $data);
+        } else {
+            $this->view('pages/customer/packages/packages', $data);
+        }
     }
+
+    // public function customerView(){
+    //     $packages = $this->packageModel->getPackages();
+    //     $data = [
+    //         'packages' => $packages
+    //     ];
+    //     $this->view('pages/customer/packages/packages', $data);
+    // }
 
     public function add() {
         $data = [
@@ -146,6 +158,15 @@ class Packages extends Controller {
         } else {
             redirect('packages');
         }
+    }
+
+    // get package by id
+    public function getPackageById($id) {
+        $package = $this->packageModel->getPackageById($id);
+        $data = [
+            'package' => $package
+        ];
+        $this->view('pages/customer/packages/package', $data);
     }
 
 

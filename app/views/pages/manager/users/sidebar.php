@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <div class="sidebar">        
         <ul>
-            <li><a href="<?php echo URLROOT; ?>/samples/add"><i class="fas fa-plus-circle"></i><span>Add New User</a><span></li>
+            <li><a href="<?php echo URLROOT; ?>/users/register"><i class="fas fa-plus-circle"></i><span>Add New User</a><span></li>
             <li><span><a href="#"><i class="fas fa-edit"></i><span>Edit Exsisting User</a></span></li>
         </ul>
     </div>

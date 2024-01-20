@@ -9,39 +9,63 @@
 
 <body>
     <!-- Navbar -->
-    <div class="navbar">
-        <nav>          
+    <header>
+        <a href="<?php echo URLROOT ?>">
+        <div class="branding">
+            <img src="<?php echo URLROOT ?>/images/logo.png" alt="Your Image">
+            <span>Art Room</span>
+        </div>
+        </a>
+
+        <nav>
             <ul>
-                <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    </a>
-                </li>
                 <!-- Common Items for All Users -->
                 <?php
                     if (isset($_SESSION['user_id'])) {
                         // User is logged in
-                        echo '<li class="right"><a href="'. URLROOT .'/users/logout">Log Out</a></li>';
+                        
+                        echo '<li class="profile-dropdown">';
+                        echo '<div class="profile-info" id="profileTrigger">';
+                        echo '<div class="user-greeting">Hello ' . $_SESSION['user_name'] .'</div>'; // Move greeting here
+                        echo '<img src="' . URLROOT . '/images/pp.png" alt="Profile Picture">';
+                        echo '<div class="arrow-icon">&#9660;</div>';
+                        echo '</div>';
+                        echo '<div class="dropdown-content" id="dropdownMenu">';
+                        echo '<a href="'. URLROOT .'/users/logout">Log Out</a>';
+                        echo '<a href="'. URLROOT .'/events/request">Make a Request</a>';
+                        echo '<a href="'. URLROOT .'/events/viewCustomerEvents/' . $_SESSION['user_id'] . '">Requests</a>';
+                        echo '</div>';
+                        echo '</li>';
                     } else {
                         // User is not logged in
-                        echo '<li class="right"><a href="'. URLROOT .'/users/login">Log In</a></li>';
+                        echo '<li>You are not Logged In</li>';
+                        echo '<li><a href="'. URLROOT .'/users/login">Log In</a></li>';
                     }
                 ?>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">gallery</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Request</a></li>
-                <li><a href="#">Contact Us</a></li>
-
-                
-                
-                <!-- User-Specific Items (Added Dynamically using PHP) -->
             </ul>
         </nav>
+    </header>
 
-       
-    </div>
     <!-- Content of the Page Goes Here -->
+
+    <script>
+        document.getElementById('profileTrigger').addEventListener('click', function() {
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('#profileTrigger, #profileTrigger *')) {
+                var dropdown = document.getElementById('dropdownMenu');
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        };
+    </script>
 </body>
+
+
+
 </html>

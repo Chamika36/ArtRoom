@@ -12,8 +12,6 @@
             $this->view('pages/manager/users/users', $data);
         }
 
-        
-
         public function register() {
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,10 +19,10 @@
 
                 // Sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                
+
                 // Init data
                 $data = [
-                    'firstName' => trim($_POST['firstName']), 
+                    'firstName' => trim($_POST['firstName']),
                     'lastName' => trim($_POST['lastName']),
                     'contactNumber' => trim($_POST['contactNumber']),
                     'email' => trim($_POST['email']),
@@ -213,7 +211,13 @@
                     redirect('home/index');
                     break;
                 case 2: 
-                    redirect('home/dash');
+                    redirect('home/manager');
+                    break;
+                case 3: case 4: case 5:
+                    redirect('home/partner');
+                    break;
+                case 6:
+                    redirect('home/manager');
                     break;
                 default:
                     redirect('home/index');
@@ -227,7 +231,7 @@
             unset($_SESSION['user_type_id']);
             unset($_SESSION['user_name']);
             session_destroy();
-            redirect('users/login');
+            redirect('home/index');
         }
 
         public function isLoggedIn() {
@@ -337,11 +341,11 @@
                         switch($data['user_type_id']) {
                             case 1:
                                 redirect('users/getCustomers'); break;
-                            case 2:
-                                redirect('users/getPhotographers'); break;
                             case 3:
-                                redirect('users/getEditors'); break;
+                                redirect('users/getPhotographers'); break;
                             case 4:
+                                redirect('users/getEditors'); break;
+                            case 5:
                                 redirect('users/getPrintingFirms'); break;
                             default:
                                 redirect('users/'); break;
