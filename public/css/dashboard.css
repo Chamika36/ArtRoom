@@ -36,8 +36,6 @@ body {    margin: 0;
         --light-yellow: #FFF2C6;
         --orange: #f9b234;
         --light-orange: #3a3b3c;
-        --blue1 : #2f2283;
-        
     }
     
     html {
@@ -55,46 +53,13 @@ body {    margin: 0;
         overflow-x: hidden;
     }
     
-    
-    
-    
-    
-    /* SIDEBAR */
-    #sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 280px;
-        height: 100%;
-        background: var(--light);
-        z-index: 2000;
-        font-family: var(--lato);
-        transition: .3s ease;
-        overflow-x: hidden;
-        scrollbar-width: none;
-    }
-    #sidebar::--webkit-scrollbar {
-        display: none;
-    }
-    
-    
-    
-    
-    
-    
-    /* CONTENT */
     #content {
         position: relative;
         width: calc(100% - 280px);
         left: 280px;
         transition: .3s ease;
     }
-    
-    
-    
-    
-    
-    /* NAVBAR */
+   
     #content nav {
         height: 56px;
         background: #f9b234;
@@ -179,16 +144,7 @@ body {    margin: 0;
         border-radius: 50%;
         transition: all .3s ease;
     }
-    #content nav #switch-mode:checked + .switch-mode::before {
-        left: calc(100% - (25px - 4px) - 2px);
-    }
-    /* NAVBAR */
     
-    
-    
-    
-    
-    /* MAIN */
     #content main {
         width: 100%;
         padding: 36px 24px;
@@ -209,38 +165,7 @@ body {    margin: 0;
         margin-bottom: 10px;
         color: var(--dark);
     }
-    #content main .head-title .left .breadcrumb {
-        display: flex;
-        align-items: center;
-        grid-gap: 16px;
-    }
-    #content main .head-title .left .breadcrumb li {
-        color: var(--dark);
-    }
-    #content main .head-title .left .breadcrumb li a {
-        color: var(--dark-grey);
-        pointer-events: none;
-    }
-    #content main .head-title .left .breadcrumb li a.active {
-        color: var(--blue);
-        pointer-events: unset;
-    }
-    #content main .head-title .btn-download {
-        height: 36px;
-        padding: 0 16px;
-        border-radius: 36px;
-        background: var(--blue);
-        color: var(--light);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-gap: 10px;
-        font-weight: 500;
-    }
-    
-    
-    
-    
+   
     #content main .box-info {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -284,10 +209,6 @@ body {    margin: 0;
     #content main .box-info li .text p {
         color: var(--dark);	
     }
-    
-    
-    
-    
     
     #content main .table-data {
         display: flex;
