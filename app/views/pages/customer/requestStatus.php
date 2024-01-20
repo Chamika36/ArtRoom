@@ -206,14 +206,33 @@
                         <?php
                         if ($data['event']->Status == 'Accepted') { 
                             echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
-                            $advancedPayment = $data['event']->TotalBudget*0.5;
+                            $advancedPayment = $data['event']->TotalBudget*0.1;
                             echo '<p> Advanced Payment : ' . $advancedPayment . '</p>';
                             echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '"><button><b>Make Payment</b></button></a>';
-                        } else {
-                            echo '<p> Yet to confirm the request </p> ';
+                        } else if($data['event']->Status == 'Advanced'){
+                            echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                            $advancedPayment = $data['event']->TotalBudget*0.1;
+                            $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
+                            echo '<p> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
+                            echo '<P> Remaining Payment : ' . $remainingPayment . '</p>';
+                            echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '"><button><b>Make Payment</b></button></a>';
+                        } else if($data['event']->Status == 'FullPaid'){
+                            echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                            $advancedPayment = $data['event']->TotalBudget*0.1;
+                            $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
+                            echo '<p> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
+                            echo '<P> Remaining Payment : ' . $remainingPayment . ' *paid </p>';
+                            echo '<p> Fully Paid </p>';
+                        } else if($data['event']->Status == 'Canceled'){
+                            echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                            echo '<p> Canceled </p>';
+                        } else if($data['event']->Status == 'Pencil'){
+                            echo '<p> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
+                            echo '<p> Yet to confirm the event </p>';
                         }
+
                         ?>
-                        <a href="<?php echo URLROOT ?>/events/deleteRequest/<?php echo $data['event']->EventID ?>"><button><b>Cancel Request</b></button></a>
+                        <a href="<?php echo URLROOT ?>/events/updateEventStatus/<?php echo $data['event']->EventID ?>/Canceled"><button><b>Cancel Request</b></button></a>
                         <a href="<?php echo URLROOT ?>/events/rescheduleRequest/<?php echo $data['event']->EventID ?>"><button><b>Reschedule Request</b></button></a>
                     </div>
                 </div>

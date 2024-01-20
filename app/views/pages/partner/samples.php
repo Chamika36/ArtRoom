@@ -4,9 +4,9 @@
 </head>
 
 <body>
-    <div class="">
+    <div class="container">
         <div id="header">
-            <?php include(APPROOT . '/views/include/partner-navbar.php'); ?>
+            <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
         </div>
 
         <div id="main">

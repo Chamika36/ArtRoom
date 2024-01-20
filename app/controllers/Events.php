@@ -300,6 +300,16 @@
             }
         }
 
+        // update event status
+        public function updateEventStatus($id, $status) {
+            if($this->eventModel->updateEventStatus($id, $status)) {
+                flash('event_message', 'Event status updated');
+                redirect('events/viewEvent/' . $id . '');
+            } else {
+                die('Something went wrong');
+            }
+        }
+
         // Reschedule requests
         public function rescheduleRequest($id) {
             // Check for POST
@@ -482,4 +492,6 @@
         
             $this->view('pages/partner/events', $data);
         }
+
+    
     }
