@@ -239,6 +239,9 @@
                 'photographer' => $photographer,
                 'editor' => $editor,
                 'printingFirm' => $printingFirm,
+                'photographers' => $photographers,
+                'editors' => $editors,
+                'printingFirms' => $printingFirms,
                 'requestedPhotographer' => $requestedPhotographer,
                 'photographerAction' => $photographerAction,
                 'editorAction' => $editorAction,
@@ -377,7 +380,6 @@
         public function manageEvent($id) {                      
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
-            //$photographers = $this->userModel->getPhotographers();
             $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
             $editors = $this->partnerModel->getAvailablePartners(4,$event->EventDate);
@@ -472,6 +474,50 @@
         }
 
         // Reallocate partners
+        public function reallocate($eventId){
+            // Assuming you are using POST method
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $json_data = file_get_contents("php://input");
+
+                $data = json_decode($json_data);
+                if ($data === null) {
+                    http_response_code(400); // Bad Request
+                    echo json_encode(['error' => 'Invalid JSON data']);
+                    return;
+                }
+
+                $partnerType = $data->partnerType;
+                $selectedPartner = $data->selectedPartner;
+                $data = [
+                    'eventID' => $eventId
+                ];
+
+                $success = $this->eventModel->reallocatePartner($eventId, $partnerType, $selectedPartner);
+                // update partner actions
+                if($partnerType == 3) {
+                    $data['photographer'] = $selectedPartner;
+                    $this->eventModel->photographerAction($data);
+                } else if($partnerType == 4) {
+                    $data['editor'] = $selectedPartner;
+                    $this->eventModel->editorAction($data);
+                } else if($partnerType == 5) {
+                    $data['printingFirm'] = $selectedPartner;
+                    $this->eventModel->printingFirmAction($data);
+                }
+
+                if ($success) {
+                    $response = ['success' => true, 'message' => 'Reallocated successfully'];
+                } else {
+                    $response = ['success' => false, 'message' => 'Failed to reallocate'];
+                }
+
+                header('Content-Type: application/json');
+                echo json_encode($response);
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid request method']);
+            }
+        }
 
         // Send quota and accept event
         public function sendQuota($id) {

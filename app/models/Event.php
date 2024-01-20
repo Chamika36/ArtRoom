@@ -138,6 +138,33 @@
             }
         }
 
+        // Reallocate partners to an event
+        public function reallocatePartner($eventId, $partnerType, $selectedPartner){
+            switch ($partnerType) {
+                case 3:
+                    $this->db->query('UPDATE Event SET PhotographerID = :selectedPartner WHERE EventID = :eventId');
+                    $this->db->bind(':selectedPartner', $selectedPartner);
+                    $this->db->bind(':eventId', $eventId);
+                    break;
+                case 4:
+                    $this->db->query('UPDATE Event SET EditorID = :selectedPartner WHERE EventID = :eventId');
+                    $this->db->bind(':selectedPartner', $selectedPartner);
+                    $this->db->bind(':eventId', $eventId);
+                    break;
+                case 5:
+                    $this->db->query('UPDATE Event SET PrintingFirmID = :selectedPartner WHERE EventID = :eventId');
+                    $this->db->bind(':selectedPartner', $selectedPartner);
+                    $this->db->bind(':eventId', $eventId);
+                    break;
+            }
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         // Event Actions
         public function photographerAction($data){
             $this->db->query('INSERT INTO photographeraction (PhotographerID, EventID) VALUES (:photographer, :eventID)');
