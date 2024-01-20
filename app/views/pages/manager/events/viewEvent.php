@@ -32,7 +32,7 @@
                                 <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="button reallocate-button" data-partner-type="3">Reallocate</button>
+                        <button class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reallocate</button>
                     </div>
                 <?php endif; ?>
 
@@ -46,7 +46,7 @@
                                 <option value="<?php echo $editor->UserID; ?>"><?php echo $editor->FirstName . ' ' . $editor->LastName; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="reallocate-button" data-partner-type="4">Reallocate</button>
+                        <button class="reallocate-button" data-partner-type="4" data-partner-type-name="editor">Reallocate</button>
                     </div>
                 <?php endif; ?>
 
@@ -60,7 +60,7 @@
                                 <option value="<?php echo $printingFirm->UserID; ?>"><?php echo $printingFirm->FirstName . ' ' . $printingFirm->LastName; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="reallocate-button" data-partner-type="5">Reallocate</button>
+                        <button class="reallocate-button" data-partner-type="5" data-partner-type-name="printingFirm">Reallocate</button>
                     </div>
                 <?php endif; ?>
             </ul>
@@ -121,57 +121,38 @@ $jsonDecoded = json_decode($json, true);
     <script>
         $(document).ready(function () {
             $('.reallocate-button').on('click', function (e) {
-                e.preventDefault();
+                // e.preventDefault();
 
                 var partnerType = $(this).data('partner-type');
+                var partnerTypeName = $(this).data('partner-type-name');
                 var eventId = <?php echo $data['event']->EventID; ?>;
-                var selectedPartner = $('select[name="' + partnerType + '"]').val();
+                var selectedPartner = $('select[name="' + partnerTypeName + '"]').val();
 
-                // Send AJAX request to update the allocated partner
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo URLROOT; ?>/events/reallocate/' + eventId,
-                    data: {
+                console.log(partnerType);
+                console.log(eventId);
+                console.log(selectedPartner);
+
+                // Send AJAX request using Fetch API
+                fetch('<?php echo URLROOT; ?>/events/reallocate/' + eventId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
                         partnerType: partnerType,
-                        selectedPartner: selectedPartner
-                    },
-                    success: function (response) {
-                        // Update the view based on the response
-                        // You can display a success message or handle the view update as needed
-                        console.log(response);
-                    },
-                    error: function (error) {
-                        console.error(error);
-                    }
+                        selectedPartner: selectedPartner,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Update the view based on the response
+                    // You can display a success message or handle the view update as needed
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                 });
             });
         });
     </script>
 </body>
-
-        <!-- <div class="event-details">
-            <h3>Budget</h3>
-            <ul>
-                <li><strong>Package Name:</strong> <//?php echo $data['package']->Name; ?></li>
-                <li><strong>Extras Selected:</strong>
-                <?php 
-                    // $extrasSelected = $data['event']->SelectedExtras;
-                    // if (!empty($extrasSelected)) {
-                    //     echo '<ul>';
-                    //     foreach ($extrasSelected as $extra) {
-                    //         echo '<li>';
-                    //         echo '<strong>Name:</strong> ' . $extra['name'] . ', ';
-                    //         echo '<strong>Price:</strong> ' . $extra['price'] . ', ';
-                    //         echo '<strong>Quantity:</strong> ' . $extra['quantity'] . ', ';
-                    //         echo '<strong>Total:</strong> ' . $extra['totalofEach'];
-                    //         echo '</li>';
-                    //     }
-                    //     echo '</ul>';
-                    // } else {
-                    //     echo 'No extras selected.';
-                    // }
-                    ?>
-                </li>
-                <li><strong>Total Budget:</strong> <//?php echo $data['event']->TotalBudget; ?></li>
-            </ul>
-        </div> -->
