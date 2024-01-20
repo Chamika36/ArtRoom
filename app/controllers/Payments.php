@@ -17,14 +17,20 @@
             $this->view('pages/customer/payments/paymentGateway', $data);
         }
 
-        public function pay(){
-            // $event = $this->eventModel->getEventById($id);
-            $amount = 10000;
+        public function pay($id){
+            $event = $this->eventModel->getEventById($id);
+            if($event->Status == 'Accepted'){
+                $amount = $event->TotalBudget / 10;
+            } else if($event->Status == 'Advanced'){
+                $amount = $event->TotalBudget - ($event->TotalBudget / 10);
+            } else if($event->Status == 'FullPaid'){
+                $amount = 0;
+            }
             $merchant_id = '1225181'; // Replace your Merchant ID
             $order_id = uniqid();
             $currency = 'LKR';
             $merchant_secret = 'Mjg2OTkzNTAyNzM1NTY1NTQwNzMzNjk1NDY1ODUxMzMwNzcwMDU3'; 
-
+        
             $hash = strtoupper(
                 md5(
                     $merchant_id . 
@@ -34,17 +40,17 @@
                     strtoupper(md5($merchant_secret)) 
                 ) 
             );
-
+        
             $array = [];
-
+        
             $array['amount'] = $amount;
             $array['merchant_id'] = $merchant_id;
             $array['order_id'] = $order_id;
             $array['currency'] = $currency;
             $array['hash'] = $hash;
-
+        
             $json = json_encode($array);
-
+        
             echo $json;
         }
 
@@ -57,12 +63,20 @@
                 // Extract necessary data from the request
                 $EventID = $requestData['EventID'];
                 $Amount = $requestData['Amount'];
+                $Event = $this->eventModel->getEventById($EventID);
+                if($Event->Status == 'Accepted'){
+                    $Status = 'Advanced';
+                    $this->eventModel->updateEventStatus($EventID, 'Advanced');
+                } else  if($Event->Status == 'Advanced'){
+                    $Status = 'FullPaid';
+                    $this->eventModel->updateEventStatus($EventID, 'FullPaid');
+                }
         
                 $data = [
                     'EventID' => $EventID,
                     'Amount' => $Amount,
                     'CustomerID' => $this->eventModel->getEventById($EventID)->CustomerID,
-                    'Status' => 'Paid'
+                    'Status' =>  $Status
                 ];
         
                 if($this->paymentModel->paymentSuccess($data)){
@@ -77,6 +91,5 @@
                 echo json_encode(['status' => 'error', 'message' => 'Invalid request data']);
             }
         }
-
-
     }
+

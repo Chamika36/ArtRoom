@@ -1,6 +1,6 @@
 function paymentGateway() {
     // Fetch data from the server using Fetch API
-    fetch(baseURL + '/payments/pay', {
+    fetch(baseURL + '/payments/pay/' + eventID, {
         method: 'POST',
     })
     .then(response => {
