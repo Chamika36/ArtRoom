@@ -42,8 +42,6 @@
 				<span class="num">8</span>
 			</a>
 
-		</nav>-->
-		<!-- NAVBAR -->
 
         <!-- MAIN -->
 		<main>
@@ -148,9 +146,9 @@
 				</div>
 			</div>
 		</main>
-		<!-- MAIN -->
+
 	</section>
-	<!-- CONTENT -->
+
 	
 							</div>
 	<script src="/js/manager/script.js"></script>
