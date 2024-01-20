@@ -87,7 +87,12 @@
 </head>
 <body>
     
-    <?php include(APPROOT . '/views/include/partner-navbar.php'); ?>
+<div class="container">
+        <div id="header">
+            <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
+        </div>
+
+    <div id="main">
     <main>
         <table class="requests">
             <thead class="thead">
@@ -173,5 +178,7 @@
             </tbody>
         </table>
     </main>
+    </div>
+</div>
 </body>
 </html>
