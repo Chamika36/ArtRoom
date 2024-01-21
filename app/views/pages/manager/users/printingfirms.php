@@ -1,22 +1,30 @@
-<head>
-    <title>Printing Firms</title>
-</head>
-
-<body>
-    <div class="container">
+<!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Printing Firms Details</title>
+     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/photographertable.css">
+ </head>
+ 
+ <body>
         <div id="menu">
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
         </div>
 
-        <!-- <div id="menu">
-            <//?php include('sidebar.php'); ?>
-        </div> -->
+     <main class="table" id="customers_table">
+         <section class="table__header">
+             <h1>Printing Firms Details</h1>
 
-        <div id="main">
-            <table class="table">
-                <thead>
-                    <th>Printing Firms ID</th>
+         </section>
+         <section class="table__body">
+             <table>
+                 <thead>
+                     <tr>
+                     <th>Printing Firms ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Contact Number</th>
@@ -24,21 +32,34 @@
                     <th>Orders</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                </thead>
-                <?php foreach ($data['printingFirms'] as $printingfirm) : ?>
+                     </tr>
+                 </thead>
+
+                 <?php foreach ($data['printingFirms'] as $printingfirm) : ?>
                     <tbody>
-                        <td><?php echo $printingfirm->UserID; ?></td>
+                     <tr>
+                     <td><?php echo $printingfirm->UserID; ?></td>
                         <td><?php echo $printingfirm->FirstName; ?></td>
                         <td><?php echo $printingfirm->LastName; ?></td>
                         <td><?php echo $printingfirm->ContactNumber; ?></td>
                         <td><?php echo $printingfirm->Email; ?></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $printingfirm->UserID; ?>"><button class="button">Orders</button></a></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/edit/<?php echo $printingfirm->UserID; ?>"><button class="button">Edit</button></a></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/delete/<?php echo $printingfirm->UserID; ?>"><button class="button">Delete</button></a></td>
-                    </tbody>
-                <?php endforeach; ?>
-            </table>
-        </div>
-    </div>
-</body>
-</html>
+                        <td>
+                        <a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $printingfirm->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a>
+                        </td>
+                        <td>
+                        <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $printingfirm->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a>
+                        </td>
+                        <td>
+                        <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $printingfirm->UserID; ?>"><p class="status cancelled"><b>Delete</b></p></a>
+                        </td> 
+                     </tr>
+                 </tbody>
+                 <?php endforeach; ?>
+             </table>
+         </section>
+     </main>
+     <script src="script.js"></script>
+ 
+ </body>
+ 
+ </html>
