@@ -26,16 +26,16 @@ body {    margin: 0;
         --lato: 'Lato', sans-serif;
     
         --light: #F9F9F9;
-        --blue: #f9b234;
-        --light-blue: #3a3b3c;
+        --gold: #f9b234;
+        --dark-ash: #3a3b3c;
         --grey: #eee;
-        --dark-grey: #AAAAAA;
+        --light-ash: #AAAAAA;
         --dark: #342E37;
         --red: #f93e34;
         --yellow: #FFCE26;
         --light-yellow: #FFF2C6;
         --orange: #f9b234;
-        --light-orange: #3a3b3c;
+        --dark-grey: #3a3b3c;
     }
     
     html {
@@ -60,7 +60,7 @@ body {    margin: 0;
         transition: .3s ease;
     }
    
-    #content nav {
+    /*#content nav {
         height: 56px;
         background: #f9b234;
         padding: 0 24px;
@@ -86,7 +86,7 @@ body {    margin: 0;
         transition: .3s ease;
     }
     #content nav .nav-link:hover {
-        color: var(--blue);
+        color: var(--gold);
     }
     #content nav form {
         max-width: 400px;
@@ -115,7 +115,7 @@ body {    margin: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: var(--blue);
+        background: var(--gold);
         color: var(--light);
         font-size: 18px;
         border: none;
@@ -140,10 +140,10 @@ body {    margin: 0;
         left: 2px;
         bottom: 2px;
         width: calc(25px - 4px);
-        background: var(--blue);
+        background: var(--gold);
         border-radius: 50%;
         transition: all .3s ease;
-    }
+    }*/
     
     #content main {
         width: 100%;
@@ -190,15 +190,15 @@ body {    margin: 0;
         align-items: center;
     }
     #content main .box-info li:nth-child(1) .bx {
-        background: var(--light-blue);
-        color: var(--blue);
+        background: var(--dark-ash);
+        color: var(--gold);
     }
     #content main .box-info li:nth-child(2) .bx {
         background: var(--light-yellow);
         color: var(--yellow);
     }
     #content main .box-info li:nth-child(3) .bx {
-        background: var(--light-orange);
+        background: var(--dark-grey);
         color: var(--orange);
     }
     #content main .box-info li .text h3 {
@@ -279,7 +279,7 @@ body {    margin: 0;
         font-weight: 700;
     }
     #content main .table-data .order table tr td .status.Accepted {
-        background: var(--blue1);
+        background: var(--gold1);
     }
     #content main .table-data .order table tr td .status.Pencil {
         background: var(--yellow);
@@ -293,6 +293,53 @@ body {    margin: 0;
         flex-grow: 1;
         flex-basis: 300px;
     }
+
+
+
+
+
+
+
+    #content main .table-data .todo .partner-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    #content main .table-data .todo .partner-table td {
+        padding: 14px 20px;
+        text-align: left;
+        border-bottom: 1px solid var(--grey);
+    }
+
+    #content main .table-data .todo .partner-row {
+        background-color: var(--grey); /* Set the background color for the grey box */
+        border-radius: 10px; /* Adjust the border-radius for rounded corners */
+        overflow: hidden; /* Ensure overflow is hidden to properly display rounded corners */
+        margin-bottom: 10px; /* Add space between rows, adjust as needed */
+    }
+    
+    #content main .table-data .todo .partner-table td a {
+        color: var(--dark);
+    }
+    
+    #content main .table-data .todo .partner-table td a:hover {
+        color: var(--gold);
+    }
+    
+    #content main .table-data .todo .partner-table td i {
+        cursor: pointer;
+    }
+    
+
+    #content main .table-data .todo .partner-table tbody tr:hover {
+        background: var(--grey);
+    }
+    
+
+
+
+
+    
     #content main .table-data .todo .todo-list {
         width: 100%;
     }
@@ -310,7 +357,7 @@ body {    margin: 0;
         cursor: pointer;
     }
     #content main .table-data .todo .todo-list li.completed {
-        border-left: 10px solid var(--blue);
+        border-left: 10px solid var(--gold);
     }
     
 
