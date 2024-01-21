@@ -20,6 +20,9 @@
 	<div id="main">
     <section id="content">
 		
+	<!--MAIN -->
+		<main>
+
 
 		<!-- Notification Icon -->
 		<div class="notification-wrapper">
@@ -28,11 +31,6 @@
             <span class="num"><b>8</b></span>
         </div>
     </div>
-
-
-
-        <!--MAIN -->
-		<main>
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
@@ -100,38 +98,36 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="todo">
-					<div class="head">
-						<h3>Partners</h3>
 				
-					</div>
-					<ul class="todo-list">
+	<div class="todo">
+    <div class="head">
+        <h3>Partners</h3>
+    </div>
+    <table class="partner-table">
+ 
+        <tbody>
+            <tr class="partner-row">
+                <td><a href="<?php echo URLROOT ?>/users/getPhotographers">Photographers</b></a></td>
+                <td>10</td>
+                
+            </tr>
+            <tr class="partner-row">
+                <td><a href="<?php echo URLROOT ?>/users/getEditors">Editors</a></td>
+                <td>5</td>
+            </tr>
+            <tr class="partner-row">
+                <td><a href="<?php echo URLROOT ?>/users/getPrintingFirms">Printing Firms</a></td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    	</table>
+	</div>
 
-						<a href="<?php echo URLROOT ?>/users/getPhotographers">
-							<li class="completed">
-							<h2>Photographers</h2>
-							<p>10</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-						</a>
 
-						<a href="<?php echo URLROOT ?>/users/getEditors">
-							<li class="completed">
-							<h2>Editors</h2>
-							<p>5</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-						</a>
 
-						<a href="<?php echo URLROOT ?>/users/getPrintingFirms">	
-							<li class="completed">
-							<h2>Printing Firms</h2>
-								<p>2</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-						</a>
-					</ul>
-				</div>
+
+
+
 			</div>
 		</main>
 
