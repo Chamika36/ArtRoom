@@ -521,12 +521,29 @@
 
         // Send quota and accept event
         public function sendQuota($id) {
-            if($this->eventModel->acceptEvent($id)) {
-                flash('event_message', 'Quota sent');
-                redirect('events');
-            } else {
-                die('Something went wrong');
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $data = [
+                    'eventID' => $id,
+                    'AdditionalCharges' => trim($_POST['additionalCharges']),
+                    'RevisedBudget' => trim($_POST['revisedBudget']),
+                ];
+
+                // Make sure errors are empty
+                if($this->eventModel->acceptEvent($id)
+                    && $this->eventModel->sendQuota($data)) 
+                {
+                    flash('event_message', 'Quota sent');
+                    redirect('events');
+                } else {
+                    die('Something went wrong');
+                }
             }
+            
         }
 
         // View event by ech Partner

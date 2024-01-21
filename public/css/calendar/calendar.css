@@ -26,10 +26,10 @@
     position: relative;
     margin: auto;
     background-color: #fff;
-    top: 20%;
+    top: 5%;
     padding: 20px;
     max-width: 90%;
-    max-height: 80%; /* Set a maximum height for responsiveness */
+    max-height: 95%; /* Set a maximum height for responsiveness */
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
