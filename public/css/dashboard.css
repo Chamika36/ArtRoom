@@ -36,6 +36,10 @@ body {    margin: 0;
         --light-yellow: #FFF2C6;
         --orange: #f9b234;
         --dark-grey: #3a3b3c;
+        --green: #0eed42;
+        --right-blue: #0d0dd6;
+        --dark-red: #b93b3b;
+        --dark-yellow: #e1d33f;
     }
     
     html {
@@ -60,91 +64,6 @@ body {    margin: 0;
         transition: .3s ease;
     }
    
-    /*#content nav {
-        height: 56px;
-        background: #f9b234;
-        padding: 0 24px;
-        display: flex;
-        align-items: center;
-        grid-gap: 30px;
-        font-family: var(--lato);
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-    }
-   
-    #content nav a {
-        color: var(--dark);
-    }
-    #content nav .bx.bx-menu {
-        cursor: pointer;
-        color: var(--dark);
-    }
-    #content nav .nav-link {
-        font-size: 16px;
-        transition: .3s ease;
-    }
-    #content nav .nav-link:hover {
-        color: var(--gold);
-    }
-    #content nav form {
-        max-width: 400px;
-        width: 100%;
-        margin-right: auto;
-    }
-    #content nav form .form-input {
-        display: flex;
-        align-items: center;
-        height: 36px;
-    }
-    #content nav form .form-input input {
-        flex-grow: 1;
-        padding: 0 16px;
-        height: 100%;
-        border: none;
-        background: var(--grey);
-        border-radius: 36px 0 0 36px;
-        outline: none;
-        width: 100%;
-        color: var(--dark);
-    }
-    #content nav form .form-input button {
-        width: 36px;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--gold);
-        color: var(--light);
-        font-size: 18px;
-        border: none;
-        outline: none;
-        border-radius: 0 36px 36px 0;
-        cursor: pointer;
-    }
-
-    #content nav .switch-mode {
-        display: block;
-        min-width: 50px;
-        height: 25px;
-        border-radius: 25px;
-        background: var(--grey);
-        cursor: pointer;
-        position: relative;
-    }
-    #content nav .switch-mode::before {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        bottom: 2px;
-        width: calc(25px - 4px);
-        background: var(--gold);
-        border-radius: 50%;
-        transition: all .3s ease;
-    }*/
-    
     #content main {
         width: 100%;
         padding: 36px 24px;
@@ -272,20 +191,26 @@ body {    margin: 0;
         background: var(--grey);
     }
     #content main .table-data .order table tr td .status {
-        font-size: 10px;
+        font-size: 13px;
         padding: 6px 16px;
-        color: var(--light);
+        color: black;
         border-radius: 20px;
         font-weight: 700;
+        display: inline-block; 
+        min-width: 100px; 
+        text-align: center; 
     }
     #content main .table-data .order table tr td .status.Accepted {
-        background: var(--gold1);
+        background: var(--right-blue);
     }
     #content main .table-data .order table tr td .status.Pencil {
-        background: var(--yellow);
+        background: var(--dark-yellow);
     }
     #content main .table-data .order table tr td .status.Canceled {
-        background: var(--red);
+        background: var(--dark-red);
+    }
+    #content main .table-data .order table tr td .status.FullPaid {
+        background: var(--green);
     }
     
     
@@ -293,12 +218,6 @@ body {    margin: 0;
         flex-grow: 1;
         flex-basis: 300px;
     }
-
-
-
-
-
-
 
     #content main .table-data .todo .partner-table {
         width: 100%;
@@ -309,13 +228,6 @@ body {    margin: 0;
         padding: 14px 20px;
         text-align: left;
         border-bottom: 1px solid var(--grey);
-    }
-
-    #content main .table-data .todo .partner-row {
-        background-color: var(--grey); /* Set the background color for the grey box */
-        border-radius: 10px; /* Adjust the border-radius for rounded corners */
-        overflow: hidden; /* Ensure overflow is hidden to properly display rounded corners */
-        margin-bottom: 10px; /* Add space between rows, adjust as needed */
     }
     
     #content main .table-data .todo .partner-table td a {
@@ -332,17 +244,13 @@ body {    margin: 0;
     
 
     #content main .table-data .todo .partner-table tbody tr:hover {
-        background: var(--grey);
+        background: var(--light-ash);
     }
-    
-
-
-
-
-    
+  
     #content main .table-data .todo .todo-list {
         width: 100%;
     }
+
     #content main .table-data .todo .todo-list li {
         width: 100%;
         margin-bottom: 16px;
