@@ -129,7 +129,7 @@
                 <label for="revisedBudget">Revised Budget:</label>
                 <input type="number" id="revisedBudget" name="revisedBudget" value="<?php echo $data['event']->TotalBudget; ?>" readonly>
 
-                <input type="hidden" id="additionalCharges" name="additionalCharges" value="" readonly>
+                <input id="additionalCharges" name="additionalCharges" value="" readonly>
 
                 <button type="submit" class="button">Send Quota to Customer</button>
             </form>
@@ -188,7 +188,7 @@
 
             let total = price * quantity;
 
-            if(quantity > 0){
+            if(quantity > 0 && price > 0 && reason != ''){
                 let additionalCharge = {
                     reason: reason,
                     price: price,

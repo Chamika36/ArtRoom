@@ -14,13 +14,13 @@
             // Loop through the requests and format the date
             foreach ($requests as $request) {
                 $request->EventDate = date('F j, Y', strtotime($request->EventDate));
-                $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+                // $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
             }
 
             // Loop through the events and format the date
             foreach ($events as $event) {
                 $event->EventDate = date('F j, Y', strtotime($event->EventDate));
-                $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+                // $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
             }
 
             $data = [
@@ -529,21 +529,20 @@
                 // Init data
                 $data = [
                     'eventID' => $id,
-                    'AdditionalCharges' => trim($_POST['additionalCharges']),
-                    'RevisedBudget' => trim($_POST['revisedBudget']),
+                    'additionalCharges' => trim($_POST['additionalCharges']),
+                    'revisedBudget' => $_POST['revisedBudget'],
                 ];
 
+                error_log(print_r($data, true));
+
                 // Make sure errors are empty
-                if($this->eventModel->acceptEvent($id)
-                    && $this->eventModel->sendQuota($data)) 
-                {
+                if($this->eventModel->sendQuota($data)) {
                     flash('event_message', 'Quota sent');
-                    redirect('events');
+                    redirect('events/viewEventbyManager/' . $id . '');
                 } else {
                     die('Something went wrong');
                 }
             }
-            
         }
 
         // View event by ech Partner
