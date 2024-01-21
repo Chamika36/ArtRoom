@@ -15,6 +15,7 @@
 
     <div id="main">
     <main>
+        var_dump($data);
         <table class="requests">
             <thead class="thead">
                 <tr>
