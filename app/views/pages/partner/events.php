@@ -3,92 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/requests.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        .topimg {
-            background-color: brown;
-            color: white;
-            padding: 10px 0;
-        }
-
-        .container {
-            margin: 0 auto;
-            max-width: 1200px;
-            padding: 0 15px;
-        }
-
-        .nav {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: white;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        main {
-            margin: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            border-radius: 5px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .thead {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .tbody .tr {
-            border-bottom: 1px solid #ccc;
-        }
-
-        .act button {
-            padding: 5px 10px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .but {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .but1 {
-            background-color: #007bff;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="<?php echo URLROOT ?>\css\partner\events.css">
     <title>Requests</title>
 </head>
 <body>
     
 <div class="container">
-        <div id="header">
+        <div id="menu">
             <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
         </div>
 

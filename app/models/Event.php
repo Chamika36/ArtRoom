@@ -28,6 +28,20 @@
                 return false;
             }
         }
+
+        // send qouta
+        public function sendQuota($data) {
+            $this->db->query('UPDATE Event SET AdditionalCharges = :additionalCharges, TotalBudget = :revisedBudget WHERE EventID = :eventID');
+            $this->db->bind(':additionalCharges', $data['additionalCharges']);
+            $this->db->bind(':revisedBudget', $data['revisedBudget']);
+            $this->db->bind(':eventID', $data['eventID']);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         
 
         // reschedule event

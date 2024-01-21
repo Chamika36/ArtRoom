@@ -36,7 +36,6 @@ html, body {
 #main {
   grid-area: main;
   margin-right: 5%;
-  /* Set full height and width for main content */
   height: 100%;
   width: 100%;
 }
