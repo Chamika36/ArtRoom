@@ -32,7 +32,7 @@
                                 <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reallocate</button>
+                        <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reallocate</button>
                     </div>
                 <?php endif; ?>
 
@@ -46,7 +46,7 @@
                                 <option value="<?php echo $editor->UserID; ?>"><?php echo $editor->FirstName . ' ' . $editor->LastName; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="reallocate-button" data-partner-type="4" data-partner-type-name="editor">Reallocate</button>
+                        <button type="button" class="reallocate-button" data-partner-type="4" data-partner-type-name="editor">Reallocate</button>
                     </div>
                 <?php endif; ?>
 
@@ -60,18 +60,13 @@
                                 <option value="<?php echo $printingFirm->UserID; ?>"><?php echo $printingFirm->FirstName . ' ' . $printingFirm->LastName; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="reallocate-button" data-partner-type="5" data-partner-type-name="printingFirm">Reallocate</button>
+                        <button type="button" class="reallocate-button" data-partner-type="5" data-partner-type-name="printingFirm">Reallocate</button>
                     </div>
                 <?php endif; ?>
             </ul>
         </div>
 
-<?php
-$json = trim($data['event']->SelectedExtras);
-$json = html_entity_decode($json);
-$jsonDecoded = json_decode($json, true);
-?>
-            <div class="event-details">
+        <div class="event-details">
             <h3>Budget</h3>
             <table>
                 <tr>
@@ -111,15 +106,42 @@ $jsonDecoded = json_decode($json, true);
                     <td><?php echo $data['event']->TotalBudget; ?></td>
                 </tr>
             </table>
-        </div>
 
-        <button class="button" onclick="window.location.href='<?php echo URLROOT; ?>/events/sendQuota/<?php echo $data['event']->EventID; ?>'">Send Quota to Customer</button>
+            <form id="additionalChargesForm" action="<?php echo URLROOT; ?>/events/sendQuota/<?php echo $data['event']->EventID; ?>" method="post">
+                <div class="additional-charges">
+                    <h3>Additional Charges</h3>
+                    <label for="charge-name">Reason:</label>
+                    <input type="text" id="reason">
+
+                    <label for="charge-price">Price per each:</label>
+                    <input type="number" id="price" min="0">
+
+                    <label for="charge-quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="0" value="1">
+
+                    <button type="button" class="button" onclick="addAdditionalCharge()">Add Charge</button>
+                </div>
+
+                <div id="additionalChargesDisplay">
+                    <!-- Display selected extras with quantities -->
+                </div>
+
+                <label for="revisedBudget">Revised Budget:</label>
+                <input type="number" id="revisedBudget" name="revisedBudget" value="<?php echo $data['event']->TotalBudget; ?>" readonly>
+
+                <input type="hidden" id="additionalCharges" name="additionalCharges" value="" readonly>
+
+                <button type="submit" class="button">Send Quota to Customer</button>
+            </form>
+
+        </div>
 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function () {
+            // Reallocate partners
             $('.reallocate-button').on('click', function (e) {
                 // e.preventDefault();
 
@@ -148,11 +170,58 @@ $jsonDecoded = json_decode($json, true);
                     // Update the view based on the response
                     // You can display a success message or handle the view update as needed
                     console.log(data);
+                    location.reload();
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
             });
         });
+
+        // Add additional charge
+        let additionalCharges = [];
+
+        function addAdditionalCharge() {
+            let reason = document.getElementById('reason').value;
+            let price = document.getElementById('price').value;
+            let quantity = document.getElementById('quantity').value;
+
+            let total = price * quantity;
+
+            if(quantity > 0){
+                let additionalCharge = {
+                    reason: reason,
+                    price: price,
+                    quantity: quantity,
+                    total: total,
+                };
+
+                additionalCharges.push(additionalCharge);
+                displayadditionalCharges();
+                updateRevisedBudget();
+
+                document.getElementById('additionalCharges').value = JSON.stringify(additionalCharges);
+
+                $('#reason').val('');
+                $('#price').val('');
+                $('#quantity').val('1');
+            }
+        }
+
+        function displayadditionalCharges() {
+            let additionalChargesDiv = $('#additionalChargesDisplay');
+            additionalChargesDiv.empty();
+
+            additionalCharges.forEach(additionalCharge => {
+                additionalChargesDiv.append(`<p>${additionalCharge.reason} - Price: ${additionalCharge.price} - Quantity: ${additionalCharge.quantity}  - Total: ${additionalCharge.total}</p>`);
+            });
+        }
+
+        function updateRevisedBudget() {
+            let revisedBudget = document.getElementById('revisedBudget');
+            let totalBudget = <?php echo $data['event']->TotalBudget; ?>;
+            let additionalChargesTotal = additionalCharges.reduce((total, charge) => total + charge.total, 0);
+            revisedBudget.value = totalBudget + additionalChargesTotal;
+        }
     </script>
 </body>
