@@ -84,10 +84,12 @@
 								<th>Status</th>
 							</tr>
 						</thead>
+						
 						<tbody>
 							<?php foreach($data['events'] as $event) : ?>
 								<tr>
 									<td>
+									
 										<i class='bx bxs-user-circle' ></i>
 										<p><?php echo $event->Package; ?></p>
 									</td>
@@ -104,12 +106,11 @@
         <h3>Partners</h3>
     </div>
     <table class="partner-table">
- 
+	<hr/>
         <tbody>
             <tr class="partner-row">
-                <td><a href="<?php echo URLROOT ?>/users/getPhotographers">Photographers</b></a></td>
+                <td><a href="<?php echo URLROOT ?>/users/getPhotographers">Photographers</a></td>
                 <td>10</td>
-                
             </tr>
             <tr class="partner-row">
                 <td><a href="<?php echo URLROOT ?>/users/getEditors">Editors</a></td>
@@ -122,14 +123,8 @@
         </tbody>
     	</table>
 	</div>
-
-
-
-
-
-
-			</div>
-		</main>
+	</div>
+	</main>
 
 	</section>
 
