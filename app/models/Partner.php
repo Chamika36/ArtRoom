@@ -50,7 +50,7 @@
 
         // get photographer action
         public function getPhotographerAction($event_id) {
-            $this->db->query('SELECT * FROM photographeraction WHERE EventID = :id');
+            $this->db->query('SELECT * FROM photographeraction WHERE EventID = :id ORDER BY ActionDateTime DESC LIMIT 1');
             $this->db->bind(':id', $event_id);
 
             $row = $this->db->single();
@@ -60,7 +60,7 @@
 
         // get editor action
         public function getEditorAction($event_id) {
-            $this->db->query('SELECT * FROM editoraction WHERE EventID = :id');
+            $this->db->query('SELECT * FROM editoraction WHERE EventID = :id ORDER BY ActionDateTime DESC LIMIT 1');
             $this->db->bind(':id', $event_id);
 
             $row = $this->db->single();
@@ -70,7 +70,7 @@
 
         // get printing firm action
         public function getPrintingFirmAction($event_id) {
-            $this->db->query('SELECT * FROM printingfirmaction WHERE EventID = :id');
+            $this->db->query('SELECT * FROM printingfirmaction WHERE EventID = :id ORDER BY ActionDateTime DESC LIMIT 1');
             $this->db->bind(':id', $event_id);
 
             $row = $this->db->single();
