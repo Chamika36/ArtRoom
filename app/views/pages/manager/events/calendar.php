@@ -44,7 +44,7 @@
 
             eventData.forEach(function(event) {
                 console.log("ID: " + event.EventID);
-                console.log("Name: " + event.Package);
+                console.log("Name: " + event.EventDate);
                 console.log("Date: " + event.EventDate);
                 console.log("Type: " + event.Type);
 
@@ -62,7 +62,7 @@
                 // Add events to the calendar
                 $('#calendar').evoCalendar('addCalendarEvent', {
                     id: event.EventID,
-                    name: event.Package,
+                    name: event.EventDate,
                     badge: event.StartTime,
                     description: event.Location,
                     date: event.EventDate,
