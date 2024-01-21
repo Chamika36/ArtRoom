@@ -46,13 +46,13 @@
                         <td><?php echo $photographer->Email; ?></td>
                         <td><?php echo $photographer->Specialization; ?></td> 
                         <td>
-                        <a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $photographer->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a>
+                        <a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $photographer->UserID; ?>"><p class="status delivered">Orders</p></a>
                         </td>
                         <td>
-                        <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $photographer->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a>
+                        <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $photographer->UserID; ?>"><p class="status shipped">Edit</p></a>
                         </td>
                         <td>
-                        <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $photographer->UserID; ?>"><p class="status cancelled" onsubmit="return confirm('Are you sure you want to delete <?php echo $photographer->FirstName ?>');"><b>Delete</b></p></a>
+                        <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $photographer->UserID; ?>"><p class="status cancelled" onsubmit="return confirm('Are you sure you want to delete <?php echo $photographer->FirstName ?>');">Delete</p></a>
                         </td> 
                      </tr>
                  </tbody>

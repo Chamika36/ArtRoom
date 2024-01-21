@@ -5,6 +5,8 @@
 :root {
     --poppins: 'Poppins', sans-serif;
     --lato: 'Lato', sans-serif;
+
+    --light: #F9F9F9;
 }
 
   
@@ -153,21 +155,27 @@ tbody tr.hide td img {
 }
 
 .status.delivered {
-    background-color: #44d15b;
+    background-color: #028017;
     color: black;
     min-width:80px;   
+    color: var(--light);
+
 }
 
 .status.cancelled {
-    background-color: #b06767;
+    background-color: #970404;
     color: black;
     min-width: 50px; 
+    color: var(--light);
+
 }
 
 .status.shipped {
-    background-color: #6999e1;
+    background-color: #033074;
     color: black;
     min-width: 70px; 
+    color: var(--light);
+
     
 }
 

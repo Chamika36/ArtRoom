@@ -1,106 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>\css\partner\events.css">
-    <title>Requests</title>
-</head>
-<body>
-    
-<div class="container">
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title> Requests</title>
+     <link rel="stylesheet" href="<?php echo URLROOT ?>\css\partner\events.css">
+ </head>
+ 
+ <body>
         <div id="menu">
+            <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
         </div>
 
-    <div id="main">
-    <main>
-        var_dump($data);
-        <table class="requests">
-            <thead class="thead">
-                <tr>
-                    <th class="eve">Event ID</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Location</th>
-                    <th>Details</th>
-                    <th class="act">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="tbody">
-                <?php foreach ($data['events'] as $event) : ?>
-                    <tr class="tr with-border">
-                        <td class="box"><?php echo $event->EventID; ?></td>
+     <main class="table" id="customers_table">
+
+         <section class="table__header">
+             <h1>Event Details</h1>
+
+         </section>
+         <section class="table__body">
+             <table>
+                 <thead>
+                     <tr>
+                        <th class="eve">Event ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Details</th>
+                        <th>Actions</th>
+                     </tr>
+                 </thead>
+
+                    <tbody>
+                    <?php foreach ($data['events'] as $event) : ?>
+                     <tr>
+                     <td class="box"><?php echo $event->EventID; ?></td>
                         <td><?php echo $event->EventDate; ?></td>
                         <td><?php echo $event->StartTime; ?></td>
                         <td><?php echo $event->Location; ?></td>
-                        <td class="act">
-                            <a href="<?php echo URLROOT ?>/partners/viewEvent/<?php echo $event->EventID?>"><button class="button">View Details</button></a>
+                        <td>
+                        <a href="<?php echo URLROOT ?>/partners/viewEvent/<?php echo $event->EventID?>"><p class="status shipped">View Details</p></a>
                         </td>
-                        <td class="">
-                            <?php if ($event->Status == 'Accepted') : ?>
-                                <button class="button">Accepted</button>
-                            <?php elseif ($event->Status == 'Canceled') : ?>
-                                <button class="button">Canceled</button>
-                            <?php else : ?>
-                                <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Accepted/Ok/"><button class="button">Accept</button></a>
-                                <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Declined/Busy/"><button class="button">Decline</button></a>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-
-                <!-- <tr class="tr with-border">
-                    <td class="box">02</td>
-                    <td>18/11/2022</td>
-                    <td>8.00 a.m</td>
-                    <td>Colombo 07</td>
-                    <td>Wedding</td>
-                    <td class="act">
-                        <button class="but"><a style="color: #fff;" href="#">Decline</a></button>
-                        <button class="but1"><a style="color: #fff;" href="#">View Details</a></button>
-                    </td>
-                </tr>
-                <tr class="tr with-border">
-                    <td class="box">03</td>
-                    <td>18/11/2022</td>
-                    <td>8.00 a.m</td>
-                    <td>Colombo 07</td>
-                    <td>Party</td>
-                    <td class="act">
-                        <button class="but"><a style="color: #fff;" href="#">Decline</a></button>
-                        <button class="but1"><a style="color: #fff;" href="#">View Details</a></button>
-                    </td>
-                </tr>
-                <!-- Additional rows you provided -->
-                <!-- <tr class="tr with-border">
-                    <td class="box">04</td>
-                    <td>18/11/2022</td>
-                    <td>9.00 a.m</td>
-                    <td>Kandy</td>
-                    <td>Meeting</td>
-                    <td class="act">
-                        <button class="but"><a style="color: #fff;" href="#">Decline</a></button>
-                        <button class="but1"><a style="color: #fff;" href="#">View Details</a></button>
-                    </td>
-                </tr>
-                <tr class="tr with-border">
-                    <td class="box">05</td>
-                    <td>18/11/2022</td>
-                    <td>10.00 a.m</td>
-                    <td>Galle</td>
-                    <td>Conference</td>
-                    <td class="act">
-                        <button class="but"><a style="color: #fff;" href="#">Decline</a></button>
-                        <button class="but1"><a style="color: #fff;" href="#">View Details</a></button>
-                    </td>
-                </tr>
-                Add more rows as needed --> 
-            </tbody>
-        </table>
-    </main>
-    </div>
-</div>
-</body>
-</html>
+                        <td>
+                        <?php if ($event->Status == 'Accepted') : ?>
+                            <p class="status delivered">Accepted</p>
+                        <?php elseif ($event->Status == 'Canceled') : ?>
+                            <p class="status cancelled">Cancelled</p>
+                        <?php else : ?>
+                            <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Accepted/Ok/"><p class="status do">Accept</p></a>
+                            <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Declined/Busy/"><p class="status dont">Decline</p></a>
+                        <?php endif; ?>
+                        </td> 
+                     </tr>
+                     <?php endforeach; ?>
+                 </tbody>
+             </table>
+         </section>
+     </main>
+     <script src="script.js"></script>
+ 
+ </body>
+ 
+ </html>
