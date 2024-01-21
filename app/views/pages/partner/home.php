@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-        <div id="header">
+        <div id="menu">
             <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
         </div>
 

@@ -1,5 +1,4 @@
 .bottom-container {
-    margin: -100px 20px 20px; /* Adjust the top margin */
     display: flex;
     flex-direction: column;
     height: 100%; /* Ensure the container takes up the full height of the viewport */
