@@ -127,9 +127,7 @@
 	</main>
 
 	</section>
-
-	
-							</div>
+</div>
 	<script src="/js/manager/script.js"></script>
 </body>
 </html>

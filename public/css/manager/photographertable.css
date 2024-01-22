@@ -1,83 +1,3 @@
-/*body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-}
-
-.topimg {
-    background-color: brown;
-    color: white;
-    padding: 10px 0;
-}
- 
-.container {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 15px;
-} 
-
-.nav {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.nav a {
-    text-decoration: none;
-    color: white;
-}
-
-h1 {
-    text-align: center;
-}
-
-main {
-    margin: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 5px;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-}
-
-.thead {
-    background-color: #007bff;
-    color: white;
-}
-
-.tbody .tr {
-    border-bottom: 1px solid #ccc;
-}
-
-.act button {
-    padding: 5px 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.but {
-    background-color: #dc3545;
-    color: white;
-}
-
-.but1 {
-    background-color: #007bff;
-    color: white;
-}*/
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
 
 
@@ -108,7 +28,7 @@ th, td {
 
 body {
     min-height: 100vh;
-    background: rgba(0, 0, 0, 0.3) url(https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/140761567/original/0b89ebe22d1f2ca3e9aaa2f6557fb3cf7b878177/take-amazing-photos-of-your-event-or-show.jpg) center / cover;
+    background: rgba(0, 0, 0, 0.3) url(https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/amateur-vs-professional-photographer-1-1.jpg?fit=1500%2C1000&ssl=1) center / cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -180,7 +100,7 @@ table, th, td {
 
 thead th {
     position: sticky;
-    font-size: 18px;
+    font-size: 15px;
     top: 0;
     left: 0;
     background-color: #f9b234;
@@ -211,14 +131,14 @@ tbody tr td,
 tbody tr td p,
 tbody tr td img {
     transition: .2s ease-in-out;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 tbody tr.hide td,
 tbody tr.hide td p {
     padding: 0;
     font-family: Arial, sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     transition: .2s ease-in-out .5s;
 }
 
@@ -235,15 +155,15 @@ tbody tr.hide td img {
 }
 
 .status.delivered {
-    background-color: #11a32a;
+    background-color: #028017;
     color: black;
-    min-width:50px;  
+    min-width:80px;   
     color: var(--light);
 
 }
 
 .status.cancelled {
-    background-color: #bd2323;
+    background-color: #970404;
     color: black;
     min-width: 50px; 
     color: var(--light);
@@ -251,27 +171,11 @@ tbody tr.hide td img {
 }
 
 .status.shipped {
-    background-color: #0949a9;
+    background-color: #033074;
     color: black;
-    min-width: 50px; 
+    min-width: 70px; 
     color: var(--light);
-    
-}
 
-.status.do {
-    background-color: #420869;
-    color: black;
-    min-width: 50px; 
-    margin-bottom: 5px;
-    color: var(--light);
-    
-}
-
-.status.dont {
-    background-color: #420869;
-    color: black;
-    min-width: 50px;
-    color: var(--light);
     
 }
 
