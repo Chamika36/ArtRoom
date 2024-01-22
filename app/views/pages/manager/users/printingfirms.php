@@ -10,10 +10,13 @@
  </head>
  
  <body>
-        <div id="menu">
+     <!-- <div class="container"> -->
+        <!-- <div id="menu"> -->
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
+
+    <div class="home">
 
      <main class="table" id="customers_table">
          <section class="table__header">
@@ -24,7 +27,7 @@
              <table>
                  <thead>
                      <tr>
-                     <th>Printing Firms ID</th>
+                     <th>Printing Firm ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Contact Number</th>
@@ -58,6 +61,7 @@
              </table>
          </section>
      </main>
+    </div>
      <script src="script.js"></script>
  
  </body>

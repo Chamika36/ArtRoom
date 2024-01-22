@@ -1,20 +1,28 @@
-<head>
-    <title>Customers</title>
-</head>
-
+<!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Photographer Details</title>
+     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/photographertable.css">
+ </head>
 <body>
-    <div class="container">
-        <div id="menu">
+    <!-- <div class="container"> -->
+        <!-- <div id="menu"> -->
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
 
-        <!-- <div id="menu">
-            <//?php include('sidebar.php'); ?>
-        </div> -->
+        <div class="home">
+        <main class="table" id="customers_table">
+            <section class="table__header">
+                <h1>Customer Details</h1>
 
-        <div id="main">
-            <table class="table">
+            </section>
+            <section class="table__body">
+            <table>
                 <thead>
                     <th>Customer ID</th>
                     <th>First Name</th>
@@ -32,12 +40,14 @@
                         <td><?php echo $customer->LastName; ?></td>
                         <td><?php echo $customer->ContactNumber; ?></td>
                         <td><?php echo $customer->Email; ?></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $customer->UserID; ?>"><button class="button">Orders</button></a></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/edit/<?php echo $customer->UserID; ?>"><button class="button">Edit</button></a></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/delete/<?php echo $customer->UserID; ?>"><button class="button" onsubmit="return confirm('Are you sure you want to delete <?php echo $customer->FirstName ?>');">Delete</button></a></td>
+                        <td><a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $customer->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a></td>
+                        <td><a href="<?php echo URLROOT; ?>/users/edit/<?php echo $customer->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a></td>
+                        <td><a href="<?php echo URLROOT; ?>/users/delete/<?php echo $customer->UserID; ?>"><p class="status cancelled"><b>Delete</b></p></a></td>
                     </tbody>
                 <?php endforeach; ?>
             </table>
+            </section>
+        </main>
         </div>
     </div>
 </body>

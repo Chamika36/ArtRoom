@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/usercard.css">
 </head>
 <body>
-    <div class="container">
-        <div id="menu">
+    <!-- <div class="container"> -->
+        <!-- <div id="menu"> -->
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
 
-        <div id="main">
+        <div class="main">
             <div class="rows">
                 <div class="card-users">
                     <img src="path_to_customers_image.jpg" alt="Customers Image">

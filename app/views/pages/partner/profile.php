@@ -12,6 +12,9 @@
 <body>
     <!-- sidebar -->
     <!-- main content -->
+    <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
+    
+    <div class="home">
     <main>
         <!--header-->
         
@@ -40,8 +43,8 @@
         
 
         <!-- work section -->
-        <div class = "title">
-            <h2>specialiation</h2>
+        <div class = "title" style="left:30px">
+            <h2>Specialiation</h2>
         </div>
         <section id = "work" class = "vh-100 flex py-7">
             <div class = "container">
@@ -152,7 +155,6 @@
     <!-- end of main content -->
 
 </div> 
-</div>
     <!-- end of sidebar -->
 
 </body>

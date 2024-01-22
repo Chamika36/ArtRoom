@@ -55,13 +55,10 @@
 <body>
 
         
-		<!--sidebar-->
-    <div id="menu">
-            <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
-        </div>
-
-
-	<div id="main">
+	<!--sidebar-->
+	<?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
+    
+    <div class="home">
     <section id="content">
 		
 	<!--MAIN -->

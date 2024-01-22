@@ -61,8 +61,8 @@ body {    margin: 0;
     
     #content {
         position: relative;
-        width: calc(100% - 280px);
-        left: 280px;
+        /* width: calc(100% - 280px); */
+        /* left: 280px; */
         transition: .3s ease;
     }
    
