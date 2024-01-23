@@ -107,7 +107,7 @@
                 </tr>
             </table>
 
-            <?php if ($data['event']->Status === 'Accepted') : ?>
+            <?php if ($data['event']->Status === 'Pencil') : ?>
                 <form id="additionalChargesForm" action="<?php echo URLROOT; ?>/events/sendQuota/<?php echo $data['event']->EventID; ?>" method="post">
                     <div class="additional-charges">
                         <h3>Additional Charges</h3>
