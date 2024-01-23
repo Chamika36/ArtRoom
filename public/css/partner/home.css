@@ -1,9 +1,9 @@
-body {
+/*body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
 
-/* Container */
+ Container */
 /* .container {
     background-color: #fff;
     border-radius: 10px;
@@ -15,7 +15,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 } */
 
-/* Label and radio buttons */
+/* Label and radio buttons 
 .label-container {
     font-size: 24px;
     font-weight: bold;
@@ -45,7 +45,7 @@ body {
     background-color: #ff8c00;
 }
 
-/* Floating button */
+/* Floating button
 .floating-button {
     position: fixed;
     top: 30px;
@@ -69,8 +69,8 @@ body {
 .availability-container {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center horizontally */
-    margin: 20px auto; /* Center horizontally, set vertical margin as needed */
+    justify-content: center; /* Center horizontally 
+    margin: 20px auto; /* Center horizontally, set vertical margin as needed 
     padding: 20px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
@@ -85,23 +85,23 @@ body {
   }
   
   .availability-container input[type="checkbox"] {
-    width: 20px; /* Reduce the width of the checkbox */
-    height: 20px; /* Set the height of the checkbox */
-    margin: 0; /* Remove default margin */
-    transform: scale(1); /* Reset the scale for the checkbox */
+    width: 20px; /* Reduce the width of the checkbox 
+    height: 20px; /* Set the height of the checkbox 
+    margin: 0; /* Remove default margin 
+    transform: scale(1); /* Reset the scale for the checkbox 
   }
   
-  /* Style the checkbox when it's checked */
+  /* Style the checkbox when it's checked 
   .availability-container input[type="checkbox"]:checked + label::before {
-    content: '\2714'; /* Unicode checkmark symbol */
-    color: #00b300; /* Green color */
+    content: '\2714'; /* Unicode checkmark symbol 
+    color: #00b300; /* Green color *
     font-size: 20px;
   }
   
-  /* Style the checkbox when it's not checked */
+  /* Style the checkbox when it's not checked 
   .availability-container input[type="checkbox"] + label::before {
-    content: '\2717'; /* Unicode cross symbol */
-    color: #ff0000; /* Red color */
+    content: '\2717'; /* Unicode cross symbol 
+    color: #ff0000; /* Red color 
     font-size: 20px;
   }
   
@@ -142,8 +142,8 @@ body {
   
   .shape-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    margin-top: 4%; /* Adjust the margin as needed to move it down */
+    justify-content: center; /* Center horizontally /
+    margin-top: 4%; /* Adjust the margin as needed to move it down 
   }
   
   
@@ -161,11 +161,322 @@ body {
     font-weight: bold;
     font-size: 25px;
     border-radius: 15px;
+  }
     transition: transform 0.3s; /* Add a smooth transition for the transform property */
-  }
-  
-  .shape:hover {
-    transform: scale(1.1); /* Scale the shape when the mouse is over it */
-  }
   
   
+  
+ 
+  
+
+
+
+
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+
+  body {    margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #d1c5c5;
+      }
+  
+  
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      
+      a {
+          text-decoration: none;
+      }
+      
+      li {
+          list-style: none;
+      }
+      
+      :root {
+          --poppins: 'Poppins', sans-serif;
+          --lato: 'Lato', sans-serif;
+      
+          --light: #F9F9F9;
+          --gold: #f9b234;
+          --dark-ash: #3a3b3c;
+          --grey: #eee;
+          --light-ash: #AAAAAA;
+          --dark: #342E37;
+          --red: #f93e34;
+          --yellow: #FFCE26;
+          --light-yellow: #FFF2C6;
+          --orange: #f9b234;
+          --dark-grey: #3a3b3c;
+          --green: #0eed42;
+          --right-blue: #0d0dd6;
+          --dark-red: #b93b3b;
+          --dark-yellow: #e1d33f;
+      }
+      
+      html {
+          overflow-x: hidden;
+      }
+      
+      body.dark {
+          --light: #0C0C1E;
+          --grey: #060714;
+          --dark: #FBFBFB;
+      }
+      
+      body {
+          background: var(--grey);
+          overflow-x: hidden;
+      }
+      
+      #content {
+          position: relative;
+          width: calc(100% - 280px);
+          left: 280px;
+          transition: .3s ease;
+      }
+     
+      #content main {
+          width: 100%;
+          padding: 36px 24px;
+          font-family: var(--poppins);
+          max-height: calc(100vh - 56px);
+          overflow-y: auto;
+      }
+      #content main .head-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          grid-gap: 16px;
+          flex-wrap: wrap;
+      }
+      #content main .head-title .left h1 {
+          font-size: 36px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          color: var(--dark);
+      }
+     
+      #content main .box-info {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          grid-gap: 24px;
+          margin-top: 36px;
+      }
+      #content main .box-info li {
+          padding: 24px;
+          background: var(--light);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          grid-gap: 24px;
+      }
+      #content main .box-info li .bx {
+          width: 80px;
+          height: 80px;
+          border-radius: 10px;
+          font-size: 36px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      #content main .box-info li:nth-child(1) .bx {
+          background: var(--dark-ash);
+          color: var(--gold);
+      }
+      #content main .box-info li:nth-child(2) .bx {
+          background: var(--light-yellow);
+          color: var(--yellow);
+      }
+      #content main .box-info li:nth-child(3) .bx {
+          background: var(--dark-grey);
+          color: var(--orange);
+      }
+      #content main .box-info li .text h3 {
+          font-size: 24px;
+          font-weight: 600;
+          color: var(--dark);
+      }
+      #content main .box-info li .text p {
+          color: var(--dark);	
+      }
+      
+      #content main .table-data {
+          display: flex;
+          flex-wrap: wrap;
+          grid-gap: 24px;
+          margin-top: 24px;
+          width: 100%;
+          color: var(--dark);
+      }
+      #content main .table-data > div {
+          border-radius: 20px;
+          background: var(--light);
+          padding: 24px;
+          overflow-x: auto;
+      }
+      #content main .table-data .head {
+          display: flex;
+          align-items: center;
+          grid-gap: 16px;
+          margin-bottom: 24px;
+      }
+      #content main .table-data .head h3 {
+          margin-right: auto;
+          font-size: 24px;
+          font-weight: 600;
+      }
+      #content main .table-data .head .bx {
+          cursor: pointer;
+      }
+      
+      #content main .table-data .order {
+          flex-grow: 1;
+          flex-basis: 500px;
+      }
+      #content main .table-data .order table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+      #content main .table-data .order table th {
+          padding-bottom: 12px;
+          font-size: 13px;
+          text-align: left;
+          border-bottom: 1px solid var(--grey);
+      }
+      #content main .table-data .order table td {
+          padding: 16px 0;
+      }
+      #content main .table-data .order table tr td:first-child {
+          display: flex;
+          align-items: center;
+          grid-gap: 12px;
+          padding-left: 6px;
+      }
+      #content main .table-data .order table td img {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          object-fit: cover;
+      }
+      #content main .table-data .order table tbody tr:hover {
+          background: var(--grey);
+      }
+      #content main .table-data .order table tr td .status {
+          font-size: 13px;
+          padding: 6px 16px;
+          color: black;
+          border-radius: 20px;
+          font-weight: 700;
+          display: inline-block; 
+          min-width: 100px; 
+          text-align: center; 
+      }
+      #content main .table-data .order table tr td .status.Accepted {
+          background: var(--right-blue);
+      }
+      #content main .table-data .order table tr td .status.Pencil {
+          background: var(--dark-yellow);
+      }
+      #content main .table-data .order table tr td .status.Canceled {
+          background: var(--dark-red);
+      }
+      #content main .table-data .order table tr td .status.FullPaid {
+          background: var(--green);
+      }
+      
+      
+      #content main .table-data .todo {
+          flex-grow: 1;
+          flex-basis: 300px;
+      }
+  
+      #content main .table-data .todo .partner-table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+      
+      #content main .table-data .todo .partner-table td {
+          padding: 14px 20px;
+          text-align: left;
+          border-bottom: 1px solid var(--grey);
+      }
+      
+      #content main .table-data .todo .partner-table td a {
+          color: var(--dark);
+      }
+      
+      #content main .table-data .todo .partner-table td a:hover {
+          color: var(--gold);
+      }
+      
+      #content main .table-data .todo .partner-table td i {
+          cursor: pointer;
+      }
+      
+  
+      #content main .table-data .todo .partner-table tbody tr:hover {
+          background: var(--light-ash);
+      }
+    
+      #content main .table-data .todo .todo-list {
+          width: 100%;
+      }
+  
+      #content main .table-data .todo .todo-list li {
+          width: 100%;
+          margin-bottom: 16px;
+          background: var(--grey);
+          border-radius: 10px;
+          padding: 14px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      #content main .table-data .todo .todo-list li .bx {
+          cursor: pointer;
+      }
+      #content main .table-data .todo .todo-list li.completed {
+          border-left: 10px solid var(--gold);
+      }
+      
+  
+      .notification-wrapper {
+          position: fixed;
+          top: 20px;
+          right: 40px; /* Adjusted to move 5px to the left */
+          cursor: pointer;
+          z-index: 999; /* Adjust the z-index to make sure it's on top of other elements */
+      }
+      
+      .notification-icon {
+          position: relative;
+          width: 40px; /* Set the width and height of the yellow circle */
+          height: 40px;
+          background-color: #242526;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      .notification-icon i {
+          font-size: 20px;
+          color: white; /* Set the color of the bell icon to white */
+      }
+      
+      .notification-icon .num {
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          background-color: #f9b234;
+          color: #242526;
+          border-radius: 50%;
+          padding: 4px 8px;
+          font-size: 11px;
+      }
+      

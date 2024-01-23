@@ -5,7 +5,8 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>Photographer Details</title>
+
+     <title>Customers</title>
      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/photographertable.css">
  </head>
 <body>
@@ -35,7 +36,8 @@
                 </thead>
                 <?php foreach ($data['customers'] as $customer) : ?>
                     <tbody>
-                        <td><?php echo $customer->UserID; ?></td>
+                     <tr>
+                     <td><?php echo $customer->UserID; ?></td>
                         <td><?php echo $customer->FirstName; ?></td>
                         <td><?php echo $customer->LastName; ?></td>
                         <td><?php echo $customer->ContactNumber; ?></td>
