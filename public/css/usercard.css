@@ -46,6 +46,8 @@ img {
 .card__container {
   display: grid;
   row-gap: 3.5rem;
+  margin-left : 200px;
+  margin-top: 50px;
 }
 
 .card__article {
