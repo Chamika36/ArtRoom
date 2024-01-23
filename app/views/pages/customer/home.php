@@ -630,9 +630,111 @@
             font-size: 16px;
         }
         }
+
+        .packages-container {
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
         
+        .package {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            max-width: 100%;
+            margin: 20px;
+            overflow: hidden;
+            width: 70%;
+            
+            
+        }
+
+        .package h6 {
+            opacity: 0.6;
+            margin: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .package h2 {
+            letter-spacing: 1px;
+            margin: 10px 0;
+        }
         
+        .package-preview {
+            background-color: #f9b234;
+            color: #242526;
+            padding: 40px;
+            max-width: 250px;
+            width: 25%;
+        }
+
+        .package-info {
+            background-color: #242526;
+            color: #ccc;
+            padding: 30px;
+            position: relative;
+            width: 100%;
+            z-index: 0;
+        }
         
+        .btn {
+            background-color: #3b3d3e;
+            border: 0;
+            border-radius: 50px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 25px;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #f9b234;
+            color: #242526;
+        }
+
+        footer {
+            background-color: #242526;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            
+            margin-right: 50px;
+        }
+
+        .footer-info {
+            /* Add margin between the "About" and "Contact Us" links */
+            margin-right: 20px;
+        }
+
+        .footer-link {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+
         </style>
 
 
@@ -763,6 +865,70 @@
 
         </div>
         </div>
+
+        <div class=gallery-topic>
+            Packages
+        </div>
+        <div class="packages-container">
+            <div class="package">
+                <div class="package-preview">
+                    <h6>Package</h6>
+                    <h2>Wedding</h2>
+                </div>
+                <div class="package-info">
+                    <h3>Full-day wedding photography package ceremony coverage, Reception coverage, 300 edited photos, Online gallery</h3>
+                    <h3>Rs.199,990.00</h3>
+                    <button class="btn">Select Package</button>
+                </div>
+            </div>
+            <div class="package">
+                <div class="package-preview">
+                    <h6>Package</h6>
+                    <h2>Portrait</h2>
+                </div>
+                <div class="package-info">
+                    <h3>Portrait photography session 1-hour session, 10 edited photos, Studio or outdoor location</h3>
+                    <h3>Rs.9,990.00</h3>
+                    <button class="btn">Select Package</button>
+                </div>
+            </div>
+            <div class="package">
+                <div class="package-preview">
+                    <h6>Package</h6>
+                    <h2>Event</h2>
+                </div>
+                <div class="package-info">
+                    <h3>Event photography coverage 4-hour coverage, Unlimited photos, Candid shots</h3>
+                    <h3>Rs.99,990.00</h3>
+                    <button class="btn">Select Package</button>
+                </div>
+            </div>
+            <div class="package">
+                <div class="package-preview">
+                    <h6>Package</h6>
+                    <h2>Travel</h2>
+                    
+                </div>
+                <div class="package-info">
+                    <h3>Travel photography adventure 3-day adventure, 100 edited photos, Customized itinerary</h3>
+                    <h3>Rs.399,990.00</h3>
+                    <button class="btn">Select Package</button>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <!-- Additional links can be added here if needed -->
+            </div>
+            <div class="footer-info">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Contact Us</a>
+            </div>
+        </div>
+        </footer>
 
     <script>
         // JavaScript code for the typing effect

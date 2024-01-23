@@ -87,8 +87,14 @@ class Home extends Controller {
     }
 
     public function partner(){
+        $eventCount = $this->eventModel->getEventCountByPartner($_SESSION['user_id']);
+        $requestCount = $this->eventModel->getRequestCountByPartner($_SESSION['user_id']);
+        $events = $this->eventModel->getLastFiveEventsByPartner($_SESSION['user_id']);
+
         $data = [
-            'title' => 'Home'
+            'title' => 'Home',
+            'eventCount' => $eventCount,
+            'requestCount' => $requestCount
         ];
         $this->view('pages/partner/home', $data);
     }

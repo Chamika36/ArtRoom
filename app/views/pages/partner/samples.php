@@ -4,12 +4,9 @@
 </head>
 
 <body>
-    <div class="container">
-        <div id="menu">
-            <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
-        </div>
-
-        <div id="main">
+    <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
+    
+    <div class="home">
             <div class ="column">
                 <?php foreach ($data['samples'] as $sample) : ?>
                     <div class="card">

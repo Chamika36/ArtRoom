@@ -4,13 +4,13 @@
 </head>
 
 <body>
-    <div class="container">
-        <div id="menu">
+    <!-- <div class="container"> -->
+        <!-- <div id="menu"> -->
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
 
-        <div id="main">
+        <div class="home">
             <?php $sampleCount = count($data['samples']); ?>
             <?php for ($i = 0; $i < $sampleCount; $i += 2) : ?>
                 <div class="row">

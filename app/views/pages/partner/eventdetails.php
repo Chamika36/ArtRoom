@@ -7,11 +7,10 @@
     <title>Home</title>
 </head>
 <body>
-<div class="container">
-        <div id="menu">
-            <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
-        </div>
-    <div id="main">
+
+    <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
+    
+    <div class="home">
         <div class="bottom-container">
             <div class="row" style="flex: 1; align-items: flex-start;">
                 <div class="column">

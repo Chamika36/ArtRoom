@@ -109,6 +109,34 @@
             return $results;
         }
 
+        // Get event count by partner
+        public function getEventCountByPartner($id) {
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id');
+            $this->db->bind(':id', $id);
+            $result = $this->db->single();
+            
+            // Access the count value using the alias "count"
+            return $result->count;
+        }
+
+        // Get request count by partner
+        public function getRequestCountByPartner($id) {
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE (PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id) AND Status = "Pencil"');
+            $this->db->bind(':id', $id);
+            $result = $this->db->single();
+            
+            // Access the count value using the alias "count"
+            return $result->count;
+        }
+
+        // Get last five events by partner
+        public function getLastFiveEventsByPartner($id) {
+            $this->db->query('SELECT * FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id ORDER BY EventDate DESC LIMIT 5');
+            $this->db->bind(':id', $id);
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
         // Get event count
         public function getEventCount() {
             $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE Status <> "Pencil"');

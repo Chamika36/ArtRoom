@@ -15,7 +15,7 @@ html, body {
   padding: 0;
 }
 
-.container{
+.container1{
   display: grid;
   grid-template-columns: 0.2fr 0.8fr;
   grid-template-areas: "menu main";
