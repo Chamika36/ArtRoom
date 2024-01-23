@@ -10,10 +10,12 @@
  </head>
  
  <body>
-        <div id="menu">
+        <!-- <div id="menu"> -->
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
+
+    <div class="home">
 
      <main class="table" id="customers_table">
          <section class="table__header">
@@ -60,6 +62,7 @@
              </table>
          </section>
      </main>
+     </div>
      <script src="script.js"></script>
  
  </body>

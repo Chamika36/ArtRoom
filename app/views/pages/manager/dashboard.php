@@ -9,15 +9,14 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dashboard.css">
 </head>
 <body>
-
         
 		<!--sidebar-->
-        <div id="menu">
+        <!-- <div id="menu"> -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
 
 
-	<div id="main">
+	<div class="home">
     <section id="content">
 		
 	<!--MAIN -->

@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/usercard.css">
 </head>
 <body>
-    <div class="container">
-        <div id="menu">
+    <!-- <div class="container"> -->
+        <!-- <div id="menu"> -->
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
 
+    <div class="home">
         <div class="card__container">
             <article class="card__article">
                <img src="https://img.grouponcdn.com/iam/nd6zqNhs1PAbWxotqFii/mQ-2290x1526/v1/c870x524.jpg" alt="image" class="card__img">
@@ -49,6 +50,7 @@
                   <a href="<?php echo URLROOT; ?>/users/getEditors" class="card__button">Details</a>
                </div>
             </article>
+
             </div>
       </div>
    </body>

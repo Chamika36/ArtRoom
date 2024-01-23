@@ -7,24 +7,24 @@
 </head>
 
 <body>
-    <div class="container">
+    <!-- <div class="container"> -->
         <!-- Header -->
         <!-- <div id="header">
             <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
         </div> -->
         
-        <div id="menu">
+        <!-- <div id="menu"> -->
             <!-- Sidebar -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
 
 
-        <div id="main">
+        <div class="home">
             <!-- Calendar -->
             <?php include('calendar.php'); ?>
         </div>
-
-    </div>
+<!-- 
+    </div> -->
 
 
 </body>

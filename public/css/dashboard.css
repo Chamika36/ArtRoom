@@ -38,8 +38,10 @@ body {    margin: 0;
         --dark-grey: #3a3b3c;
         --green: #0eed42;
         --right-blue: #0d0dd6;
+        --light-blue: #4a8cef;
         --dark-red: #b93b3b;
         --dark-yellow: #e1d33f;
+        --green: #24ae44;
     }
     
     html {
@@ -59,8 +61,8 @@ body {    margin: 0;
     
     #content {
         position: relative;
-        width: calc(100% - 280px);
-        left: 280px;
+        /* width: calc(100% - 280px); */
+        /* left: 280px; */
         transition: .3s ease;
     }
    
@@ -203,7 +205,7 @@ body {    margin: 0;
         text-align: center; 
     }
     #content main .table-data .order table tr td .status.Accepted {
-        background: var(--right-blue);
+        background: var(--green);
     }
     #content main .table-data .order table tr td .status.Pencil {
         background: var(--dark-yellow);
@@ -211,8 +213,11 @@ body {    margin: 0;
     #content main .table-data .order table tr td .status.Canceled {
         background: var(--dark-red);
     }
+    #content main .table-data .order table tr td .status.Advanced {
+        background: var(--light-blue);
+    }
     #content main .table-data .order table tr td .status.FullPaid {
-        background: var(--green);
+        background: var(--right-blue);
     }
     
     
