@@ -21,6 +21,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
+
+        form {
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha value for transparency */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
        .bottom-column {
             flex: 4;
             padding: 20px;
@@ -58,7 +67,7 @@
         }
 
         .bottom-column input[type="submit"] {
-            background-color: #242526;
+            background-color: #3b3d3e;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -75,7 +84,7 @@
         }
 
         .requestQuote{
-            width: 281px;
+            width: 500px;
             height: 48px;
             flex-shrink: 0;
             color: #000;
@@ -87,8 +96,47 @@
             line-height: normal;
             letter-spacing: 1.6px;
             mix-blend-mode: darken;
-            margin-left: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+            margin-left: 33%;
         }
+
+        .submit-btn{
+            background-color: #3b3d3e;
+            border: 0;
+            border-radius: 50px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 25px;
+            align-self: flex-end;
+            
+            
+            letter-spacing: 1px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #f9b234;
+            color: #242526;
+        }
+
+        .extras-section{
+            display: flex;
+            flex-direction: row;
+            margin-top: 15px;
+            
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .extra-btn{
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -107,7 +155,7 @@
         </div> -->
 
             <div class="bottom-column">
-                <h2 class="requestQuote">Request Quote</h2>
+                <h2 class="requestQuote">Request for a Booking</h2>
                 <form action="<?php echo URLROOT; ?>/events/request" method="POST">
                     <!-- <label for="event-type">Event Type</label>
                     <select id="event-type" name="event-type">
@@ -150,21 +198,27 @@
                     </select>
 
                     <!-- Additional Items -->
-                    <label for="extras">Select Extras:</label>
-                    <select id="extras" name="extras">
-                        <option value="1500.00">Additional Album Page - Rs. 1,500.00</option>
-                        <option value="70.00">Thanking Card - Rs. 70.00</option>
-                        <option value="8500.00">20 x 30 Enlagement - Rs. 8,500.00</option>
-                        <option value="7000.00">16 x 24 Enlagement - Rs. 7,000.00</option>
-                        <option value="2500.00">12 x 18 Enlagement - Rs. 2,500.00</option>
-                        <option value="4000.00">Signature Board - Rs. 4,000.00</option>
-                        <option value="10000.00">Family Album - Rs. 10,000.00</option>
-                    </select>
-
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" step="1">
-
-                    <button type="button" onclick="addExtra()">Add Extra</button>
+                    <div class= extras-section>
+                        <div style="flex-grow: 2">
+                            <label for="extras">Select Extras:</label></br>
+                            <select id="extras" name="extras">
+                                <option value="1500.00">Additional Album Page - Rs. 1,500.00</option>
+                                <option value="70.00">Thanking Card - Rs. 70.00</option>
+                                <option value="8500.00">20 x 30 Enlagement - Rs. 8,500.00</option>
+                                <option value="7000.00">16 x 24 Enlagement - Rs. 7,000.00</option>
+                                <option value="2500.00">12 x 18 Enlagement - Rs. 2,500.00</option>
+                                <option value="4000.00">Signature Board - Rs. 4,000.00</option>
+                                <option value="10000.00">Family Album - Rs. 10,000.00</option>
+                            </select>
+                        </div>
+                        <div style="flex-grow: 5">
+                            <label for="quantity">Quantity:</label></br>
+                            <input type="number" id="quantity" name="quantity" min="1" step="1">
+                        </div>  
+                        <div style="flex-grow: 0"> 
+                            <button class="extra-btn" type="button" onclick="addExtra()">Add Extra</button>
+                        </div>    
+                    </div>        
 
                     <div id="selectedExtrasDisplay">
                         <!-- Display selected extras with quantities -->
@@ -180,7 +234,7 @@
 
                     <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
 
-                    <input type="submit" value="Send Request">
+                    <input class=submit-btn type="submit" value="Send Request">
                 </form>
             </div>
         </div>
