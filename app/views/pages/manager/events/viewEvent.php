@@ -107,32 +107,35 @@
                 </tr>
             </table>
 
-            <form id="additionalChargesForm" action="<?php echo URLROOT; ?>/events/sendQuota/<?php echo $data['event']->EventID; ?>" method="post">
-                <div class="additional-charges">
-                    <h3>Additional Charges</h3>
-                    <label for="charge-name">Reason:</label>
-                    <input type="text" id="reason">
+            <?php if ($data['event']->Status === 'Pencil') : ?>
+                <form id="additionalChargesForm" action="<?php echo URLROOT; ?>/events/sendQuota/<?php echo $data['event']->EventID; ?>" method="post">
+                    <div class="additional-charges">
+                        <h3>Additional Charges</h3>
+                        <label for="charge-name">Reason:</label>
+                        <input type="text" id="reason">
 
-                    <label for="charge-price">Price per each:</label>
-                    <input type="number" id="price" min="0">
+                        <label for="charge-price">Price per each:</label>
+                        <input type="number" id="price" min="0">
 
-                    <label for="charge-quantity">Quantity:</label>
-                    <input type="number" id="quantity" min="0" value="1">
+                        <label for="charge-quantity">Quantity:</label>
+                        <input type="number" id="quantity" min="0" value="1">
 
-                    <button type="button" class="button" onclick="addAdditionalCharge()">Add Charge</button>
-                </div>
+                        <button type="button" class="button" onclick="addAdditionalCharge()">Add Charge</button>
+                    </div>
 
-                <div id="additionalChargesDisplay">
-                    <!-- Display selected extras with quantities -->
-                </div>
+                    <div id="additionalChargesDisplay">
+                        <!-- Display selected extras with quantities -->
+                    </div>
 
-                <label for="revisedBudget">Revised Budget:</label>
-                <input type="number" id="revisedBudget" name="revisedBudget" value="<?php echo $data['event']->TotalBudget; ?>" readonly>
+                    <label for="revisedBudget">Revised Budget:</label>
+                    <input type="number" id="revisedBudget" name="revisedBudget" value="<?php echo $data['event']->TotalBudget; ?>" readonly>
 
-                <input id="additionalCharges" name="additionalCharges" value="" readonly>
+                    <input id="additionalCharges" name="additionalCharges" value="" readonly>
 
-                <button type="submit" class="button">Send Quota to Customer</button>
-            </form>
+                    <button type="submit" class="button">Send Quota to Customer</button>
+                </form>
+            <?php endif; ?>
+
 
         </div>
 
