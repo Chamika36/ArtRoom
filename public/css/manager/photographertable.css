@@ -29,7 +29,7 @@
 body {
     min-height: 100vh;
     left: 20px;
-    background: rgba(0, 0, 0, 0.3) url(https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/amateur-vs-professional-photographer-1-1.jpg?fit=1500%2C1000&ssl=1) center / cover;
+    background: rgba(0, 0, 0, 0.6) url(https://img.freepik.com/free-photo/gray-painted-background_53876-94041.jpg) center / cover;
     display: flex;
     justify-content: center;
     align-items: center;
