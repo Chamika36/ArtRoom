@@ -221,11 +221,11 @@
     <title>Home</title>
 
         <style>
-            body {
-            
+        body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
         
         #container-main-01 {
@@ -743,7 +743,6 @@
 <body>
 
         <div class="container">
-       //  Navbar
             <div id="header" class="background_pic">
                 <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
             </div>
@@ -870,7 +869,21 @@
             Packages
         </div>
         <div class="packages-container">
+            <?php foreach ($data['packages'] as $package) : ?>
             <div class="package">
+                <div class="package-preview">
+                    <h6>Package</h6>
+                    <h2><?php echo $package->Name ?></h2>
+                </div>
+                <div class="package-info">
+                    <h3><?php echo $package->ServicesIncluded; ?></h3>
+                    <h3>Rs. <?php echo $package->Price; ?></h3>
+                    <button class="btn">Select Package</button>
+                </div>
+            </div>
+            <?php endforeach; ?>
+
+            <!-- <div class="package">
                 <div class="package-preview">
                     <h6>Package</h6>
                     <h2>Wedding</h2>
@@ -914,7 +927,7 @@
                     <h3>Rs.399,990.00</h3>
                     <button class="btn">Select Package</button>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
