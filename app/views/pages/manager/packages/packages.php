@@ -48,6 +48,17 @@
                 </div>
             </div>
         <?php endforeach; ?>
+        <div class="item-container">
+                <div class="img-container">
+                    <img src="https://evertale.lk/wp-content/uploads/2022/11/274587332_4603337946444852_9067674197972451056_n-e1668319668755-770x770.jpg" alt="Event image">
+                </div>
+
+                <div class="body-container">
+                    <div class="overlay"></div>
+                    <button class="action"><a href="<?php echo URLROOT ?>/packages/add ?>">Add New Package</a></button>
+                    </form>
+                </div>
+            </div>
 
         </div>
     </div>

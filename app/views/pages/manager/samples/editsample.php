@@ -3,17 +3,10 @@
 </head>
 </head>
 <body>
-    <div class="container">
-        <div id="menu">
-            <!-- Sidebar -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+    <!-- Sidebar -->
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
-        <!-- <div id="menu">
-                <//?php include('sidebar.php'); ?>
-        </div> -->
-
-        <div id="main">
+    <div class="home">
             <div  class="card">
                 <h2>Edit Samples</h2>
                 <form action="<?php echo URLROOT; ?>/samples/edit/<?php echo $data['id']; ?>" method="POST">

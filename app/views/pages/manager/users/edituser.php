@@ -2,11 +2,8 @@
     <title>Edit User</title>
 </head>
 <body>
-        <!-- <div class="container"> -->
-        <!-- <div id="menu"> -->
-            <!-- Sidebar -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        <!-- </div> -->
+
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
     <div class="home">
             <div  class="card">
