@@ -9,65 +9,32 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dashboard.css">
 </head>
 <body>
-<!-- <section id="sidebar"> -->
         
-         <!--<div id="header">
-            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
-        </div> -->
-        <!-- Navbar -->
-        <div id="menu">
+		<!--sidebar-->
+        <!-- <div id="menu"> -->
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
+        <!-- </div> -->
 
-          <!-- !!!!!!!!!!!!!!! -->
-<!-- </section> -->
-	<div id="main">
+
+	<div class="home">
     <section id="content">
-		<!-- NAVBAR -->
-
-		<!-- <nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-
-			<label for="switch-mode" class="switch-mode"></label>
-			
-			<a href="#" class="profile">
-				<img src="img/people.png" align="right">
-			</a>
-            <a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-
-		</nav>-->
-		<!-- NAVBAR -->
-
-        <!-- MAIN -->
+		
+	<!--MAIN -->
 		<main>
+
+
+		<!-- Notification Icon -->
+		<div class="notification-wrapper">
+        <div class="notification-icon">
+            <i class='bx bxs-bell'></i>
+            <span class="num"><b>8</b></span>
+        </div>
+    </div>
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
-					<!--<ul class="breadcrumb">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li>
-					</ul>-->
 				</div>
-				<!--<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download PDF</span>
-				</a>-->
+
 			</div>
 
             <ul class="box-info">
@@ -116,10 +83,12 @@
 								<th>Status</th>
 							</tr>
 						</thead>
+						
 						<tbody>
 							<?php foreach($data['events'] as $event) : ?>
 								<tr>
 									<td>
+									
 										<i class='bx bxs-user-circle' ></i>
 										<p><?php echo $event->Package; ?></p>
 									</td>
@@ -130,59 +99,34 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="todo">
-					<div class="head">
-						<h3>Partners</h3>
-						<!--<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>-->
-					</div>
-					<ul class="todo-list">
+				
+	<div class="todo">
+    <div class="head">
+        <h3>Partners</h3>
+    </div>
+    <table class="partner-table">
+	<hr/>
+        <tbody>
+            <tr class="partner-row">
+                <td><a href="<?php echo URLROOT ?>/users/getPhotographers">Photographers</a></td>
+                <td>10</td>
+            </tr>
+            <tr class="partner-row">
+                <td><a href="<?php echo URLROOT ?>/users/getEditors">Editors</a></td>
+                <td>5</td>
+            </tr>
+            <tr class="partner-row">
+                <td><a href="<?php echo URLROOT ?>/users/getPrintingFirms">Printing Firms</a></td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    	</table>
+	</div>
+	</div>
+	</main>
 
-						<a href="<?php echo URLROOT ?>/users/getPhotographers">
-							<li class="completed">
-							<h2>Photographers</h2>
-							<p>10</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-						</a>
-
-						<a href="<?php echo URLROOT ?>/users/getEditors">
-							<li class="completed">
-							<h2>Editors</h2>
-							<p>5</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-						</a>
-
-						<a href="<?php echo URLROOT ?>/users/getPrintingFirms">	
-							<li class="not-completed">
-							<h2>Printing Firms</h2>
-								<p>2</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-						</a>
-					</ul>
-				</div>
-			</div>
-		</main>
-		<!-- MAIN -->
 	</section>
-	<!-- CONTENT -->
-	
-							</div>
+</div>
 	<script src="/js/manager/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

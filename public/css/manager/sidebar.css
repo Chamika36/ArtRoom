@@ -295,14 +295,15 @@
     left: 250px;
     height: 100vh;
     width: calc(100% - 250px);
-    background-color: var(--body-color);
+    /* background-color: var(--body-color); */
     transition: var(--tran-05);
   }
+
   .home .text {
-    font-size: 30px;
+    /* font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
-    padding: 12px 60px;
+    padding: 12px 60px; */
   }
   
   .sidebar.close ~ .home {

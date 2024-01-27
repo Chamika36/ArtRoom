@@ -22,7 +22,7 @@
             if($event->Status == 'Accepted'){
                 $amount = $event->TotalBudget / 10;
             } else if($event->Status == 'Advanced'){
-                $amount = $event->TotalBudget - ($event->TotalBudget / 10);
+                $amount = ($event->TotalBudget - ($event->TotalBudget / 10))/10;
             } else if($event->Status == 'FullPaid'){
                 $amount = 0;
             }

@@ -14,13 +14,13 @@
             // Loop through the requests and format the date
             foreach ($requests as $request) {
                 $request->EventDate = date('F j, Y', strtotime($request->EventDate));
-                $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+                // $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
             }
 
             // Loop through the events and format the date
             foreach ($events as $event) {
                 $event->EventDate = date('F j, Y', strtotime($event->EventDate));
-                $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+                // $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
             }
 
             $data = [
@@ -239,6 +239,9 @@
                 'photographer' => $photographer,
                 'editor' => $editor,
                 'printingFirm' => $printingFirm,
+                'photographers' => $photographers,
+                'editors' => $editors,
+                'printingFirms' => $printingFirms,
                 'requestedPhotographer' => $requestedPhotographer,
                 'photographerAction' => $photographerAction,
                 'editorAction' => $editorAction,
@@ -377,7 +380,6 @@
         public function manageEvent($id) {                      
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
-            //$photographers = $this->userModel->getPhotographers();
             $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
             $editors = $this->partnerModel->getAvailablePartners(4,$event->EventDate);
@@ -472,14 +474,74 @@
         }
 
         // Reallocate partners
+        public function reallocate($eventId){
+            // Assuming you are using POST method
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $json_data = file_get_contents("php://input");
+
+                $data = json_decode($json_data);
+                if ($data === null) {
+                    http_response_code(400); // Bad Request
+                    echo json_encode(['error' => 'Invalid JSON data']);
+                    return;
+                }
+
+                $partnerType = $data->partnerType;
+                $selectedPartner = $data->selectedPartner;
+                $data = [
+                    'eventID' => $eventId
+                ];
+
+                $success = $this->eventModel->reallocatePartner($eventId, $partnerType, $selectedPartner);
+                // update partner actions
+                if($partnerType == 3) {
+                    $data['photographer'] = $selectedPartner;
+                    $this->eventModel->photographerAction($data);
+                } else if($partnerType == 4) {
+                    $data['editor'] = $selectedPartner;
+                    $this->eventModel->editorAction($data);
+                } else if($partnerType == 5) {
+                    $data['printingFirm'] = $selectedPartner;
+                    $this->eventModel->printingFirmAction($data);
+                }
+
+                if ($success) {
+                    $response = ['success' => true, 'message' => 'Reallocated successfully'];
+                } else {
+                    $response = ['success' => false, 'message' => 'Failed to reallocate'];
+                }
+
+                header('Content-Type: application/json');
+                echo json_encode($response);
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid request method']);
+            }
+        }
 
         // Send quota and accept event
         public function sendQuota($id) {
-            if($this->eventModel->acceptEvent($id)) {
-                flash('event_message', 'Quota sent');
-                redirect('events');
-            } else {
-                die('Something went wrong');
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $data = [
+                    'eventID' => $id,
+                    'additionalCharges' => trim($_POST['additionalCharges']),
+                    'revisedBudget' => $_POST['revisedBudget'],
+                ];
+
+                error_log(print_r($data, true));
+
+                // Make sure errors are empty
+                if($this->eventModel->sendQuota($data)) {
+                    flash('event_message', 'Quota sent');
+                    redirect('events/viewEventbyManager/' . $id . '');
+                } else {
+                    die('Something went wrong');
+                }
             }
         }
 

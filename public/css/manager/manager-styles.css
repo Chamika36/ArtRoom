@@ -15,7 +15,7 @@ html, body {
   padding: 0;
 }
 
-.container{
+.container1{
   display: grid;
   grid-template-columns: 0.2fr 0.8fr;
   grid-template-areas: "menu main";
@@ -36,7 +36,6 @@ html, body {
 #main {
   grid-area: main;
   margin-right: 5%;
-  /* Set full height and width for main content */
   height: 100%;
   width: 100%;
 }
@@ -165,7 +164,7 @@ nav {
   text-align: center;
   width: 100%;
   position: relative;
-  height: 150px; /* Adjust the height to your desired value */
+  height: 150px; /* Adjust the height to your desired value 
 }
 
 
@@ -274,10 +273,10 @@ nav ul li:hover {
 /*
 * CARDS CSSS --------------------------------------------------------------------------------------
 * Package cards, Sales cards
-*/
+
 
 ul {
-    list-style-type: none; /* Remove bullets */
+    list-style-type: none; /* Remove bullets 
 }
 
 .card {
@@ -295,16 +294,16 @@ ul {
 
 .column {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Display four rows */
+  grid-template-columns: repeat(3, 1fr); /* Display four rows 
   align-self: center;
-  gap: 20px; /* Set the desired gap between grid items */
+  gap: 20px; /* Set the desired gap between grid items 
 }
 
 .rows {
   display: grid;
-  grid-template-rows: repeat(4, 1fr); /* Display four rows */
+  grid-template-rows: repeat(4, 1fr); /* Display four rows /
   align-self: center;
-  gap: 20px; /* Set the desired gap between grid items */
+  gap: 20px; /* Set the desired gap between grid items 
   
 }
 
@@ -383,7 +382,7 @@ table .button {
 
 */
 
-.form-group {
+/* .form-group {
   display: flex;
   justify-content: space-between; 
   align-items: center;
@@ -391,7 +390,7 @@ table .button {
 }
   
   label {
-    flex: 1; /* Allow labels to take 50% of the available space */
+    flex: 1; Allow labels to take 50% of the available space 
     font-weight: bold;
     padding-right: 10px; 
     text-align: left; 
@@ -400,7 +399,7 @@ table .button {
   input[type="text"],
   input[type="number"],
   textarea {
-    flex: 1; /* Allow input fields to take 50% of the available space */
+    flex: 1; /* Allow input fields to take 50% of the available space 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -422,7 +421,7 @@ table .button {
     font-size: 14px;
   }
 
-  /* .form-group [type="submit"] {
+   .form-group [type="submit"] {
     background-color: #423026;
     color: white;
     padding: 10px 20px;
@@ -450,7 +449,7 @@ table .button {
 
 * TABLE CSSS --------------------------------------------------------------------------------------
 
-*/
+
 
 .table {
   width: 90%;
@@ -481,9 +480,9 @@ table .button {
 .table td, .table th {
   flex: 1;
   padding: 10px 20px 10px;
-}
+}*/
 
-  /* Adjust the styling for small screens (e.g., mobile devices) as needed */
+  /* Adjust the styling for small screens (e.g., mobile devices) as needed 
   @media (max-width: 768px) {
     .container {
       flex-direction: column;
@@ -499,4 +498,4 @@ table .button {
     label {
       text-align: left;
     }
-  }
+  }*/

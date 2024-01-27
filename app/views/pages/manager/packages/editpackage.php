@@ -2,17 +2,10 @@
     <title>Edit Package</title>
 </head>
 <body>
-    <div class="container">
-        <div id="menu">
-            <!-- Sidebar -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
-<!-- 
-        <div id="menu">
-                <// ?php include('sidebar.php'); ?>
-        </div> -->
+    <!-- Sidebar -->
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
-        <div id="main">
+    <div class="home">
             <div  class="card">
                 <h2>Edit Package</h2>
                 <form action="<?php echo URLROOT; ?>/packages/edit/<?php echo $data['id']; ?>" method="POST">

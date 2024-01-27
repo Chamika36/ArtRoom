@@ -51,20 +51,6 @@ class Partners extends Controller {
         $this->viewPartnerEvents($_SESSION['user_id']);
     }
 
-    // // Partner accepted event
-    // public function acceptEvent($id) {
-    //     $this->eventModel->acceptEvent($id);
-        
-    //     $this->viewPartnerEvents($_SESSION['user_id']);
-    // }
-
-    // // Partner declined event
-    // public function declineEvent($id) {
-    //     $this->eventModel->declineEvent($id);
-        
-    //     $this->viewPartnerEvents($_SESSION['user_id']);
-    // }
-
     public function samples(){
         $samples = $this->sampleModel->getSamples();
         $data = [

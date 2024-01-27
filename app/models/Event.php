@@ -28,7 +28,20 @@
                 return false;
             }
         }
-        
+
+        // send qouta
+        public function sendQuota($data) {
+            $this->db->query('UPDATE Event SET AdditionalCharges = :additionalCharges, Status = "Accepted", TotalBudget = :revisedBudget WHERE EventID = :eventID');
+            $this->db->bind(':additionalCharges', $data['additionalCharges']);
+            $this->db->bind(':revisedBudget', $data['revisedBudget']);
+            $this->db->bind(':eventID', $data['eventID']);
+
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         // reschedule event
         public function rescheduleEvent($data) {
@@ -96,6 +109,34 @@
             return $results;
         }
 
+        // Get event count by partner
+        public function getEventCountByPartner($id) {
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id');
+            $this->db->bind(':id', $id);
+            $result = $this->db->single();
+            
+            // Access the count value using the alias "count"
+            return $result->count;
+        }
+
+        // Get request count by partner
+        public function getRequestCountByPartner($id) {
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE (PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id) AND Status = "Pencil"');
+            $this->db->bind(':id', $id);
+            $result = $this->db->single();
+            
+            // Access the count value using the alias "count"
+            return $result->count;
+        }
+
+        // Get last five events by partner
+        public function getLastFiveEventsByPartner($id) {
+            $this->db->query('SELECT * FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id ORDER BY EventDate DESC LIMIT 5');
+            $this->db->bind(':id', $id);
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
         // Get event count
         public function getEventCount() {
             $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE Status <> "Pencil"');
@@ -130,6 +171,33 @@
             $this->db->bind(':editor', $data['editor']);
             $this->db->bind(':printingFirm', $data['printingFirm']);
             $this->db->bind(':eventID', $data['eventID']);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Reallocate partners to an event
+        public function reallocatePartner($eventId, $partnerType, $selectedPartner){
+            switch ($partnerType) {
+                case 3:
+                    $this->db->query('UPDATE Event SET PhotographerID = :selectedPartner WHERE EventID = :eventId');
+                    $this->db->bind(':selectedPartner', $selectedPartner);
+                    $this->db->bind(':eventId', $eventId);
+                    break;
+                case 4:
+                    $this->db->query('UPDATE Event SET EditorID = :selectedPartner WHERE EventID = :eventId');
+                    $this->db->bind(':selectedPartner', $selectedPartner);
+                    $this->db->bind(':eventId', $eventId);
+                    break;
+                case 5:
+                    $this->db->query('UPDATE Event SET PrintingFirmID = :selectedPartner WHERE EventID = :eventId');
+                    $this->db->bind(':selectedPartner', $selectedPartner);
+                    $this->db->bind(':eventId', $eventId);
+                    break;
+            }
         
             if ($this->db->execute()) {
                 return true;

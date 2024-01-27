@@ -2,17 +2,10 @@
     <title>Edit User</title>
 </head>
 <body>
-    <div class="container">
-        <div id="menu">
-            <!-- Sidebar -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        </div>
 
-        <!-- <div id="menu">
-                </?php include('sidebar.php'); ?>
-        </div> -->
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
-        <div id="main">
+    <div class="home">
             <div  class="card">
                 <h2>Edit User</h2>
                 <form name="registrationForm" action="<?php echo URLROOT; ?>/users/edit/<?php echo $data['id']; ?>" method="POST">

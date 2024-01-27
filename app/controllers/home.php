@@ -9,8 +9,10 @@ class Home extends Controller {
     }
 
    public function index() {
+        $packages = $this->packageModel->getPackages();
         $data = [
-            'title' => 'Home'
+            'title' => 'Home',
+            'packages' => $packages
         ];
         if(isset($_SESSION['user_type_id'])) {
             switch($_SESSION['user_type_id']) {
@@ -87,8 +89,17 @@ class Home extends Controller {
     }
 
     public function partner(){
+        $eventCount = $this->eventModel->getEventCountByPartner($_SESSION['user_id']);
+        $requestCount = $this->eventModel->getRequestCountByPartner($_SESSION['user_id']);
+        $events = $this->eventModel->getLastFiveEventsByPartner($_SESSION['user_id']);
+        $packages = $this->packageModel->getPackages();
+
         $data = [
-            'title' => 'Home'
+            'title' => 'Home',
+            'eventCount' => $eventCount,
+            'requestCount' => $requestCount,
+            'events' => $events,
+            'packages' => $packages
         ];
         $this->view('pages/partner/home', $data);
     }

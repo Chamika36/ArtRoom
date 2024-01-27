@@ -1,47 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+:root {
+  --first-color: hsl(82, 60%, 28%);
+  --title-color: hsl(0, 0%, 15%);
+  --text-color: hsl(0, 0%, 35%);
+  --body-color: hsl(0, 0%, 95%);
+  --container-color: hsl(0, 0%, 100%);
+  --body-font: "Poppins", sans-serif;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+}
+
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .container {
-    display: flex;
-    min-height: 100vh; /* Ensure at least 100% of the viewport height */
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 0rem;
 }
 
-#menu {
-    /* Add styling for your sidebar */
+.card__container {
+  display: grid;
+  row-gap: 3.5rem;
+  margin-left : 200px;
+  margin-top: 50px;
 }
 
-#main {
-    flex-grow: 1;
-    padding: 20px;
+.card__article {
+  position: relative;
+  overflow: hidden;
 }
 
-.rows {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+.card__img {
+  width: 328px;
+  border-radius: 1.5rem;
+  height: 200px; /* Set a fixed height for all card images */
+  object-fit: cover;
 }
 
-.card-users {
-    background-color: #f9b234; /* Change the background color */
-    border: 1px solid #242526;
-    padding: 20px;
-    text-align: center;
-    overflow: hidden; /* Hide any overflow content */
+.card__data {
+  width: 280px;
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
 }
 
-.card-users img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
 }
 
-.card-users h2 {
-    margin: 0;
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
 }
 
-.card-users a {
-    text-decoration: none;
-    color: #333;
+.card__button {
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+}
+
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__container {
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+  }
+
+  .card__article:nth-child(1),
+  .card__article:nth-child(2) {
+    order: -1; /* Move Customer and Photographer cards to the top */
+  }
+
+  .card__article:nth-child(3),
+  .card__article:nth-child(4) {
+    order: 1; /* Move Editor and Printing Firm cards to the bottom */
+  }
+}
+
+@media screen and (min-width: 341px) and (max-width: 767px) {
+  .card__container {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.5rem;
+  }
+
+  .card__article:nth-child(1),
+  .card__article:nth-child(2) {
+    order: -1; /* Move Customer and Photographer cards to the top */
+  }
+
+  .card__article:nth-child(3),
+  .card__article:nth-child(4) {
+    order: 1; /* Move Editor and Printing Firm cards to the bottom */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+    row-gap: 3.5rem;
+  }
+
+  .card__article:nth-child(1),
+  .card__article:nth-child(2) {
+    order: -1; /* Move Customer and Photographer cards to the top */
+  }
+
+  .card__article:nth-child(3),
+  .card__article:nth-child(4) {
+    order: 1; /* Move Editor and Printing Firm cards to the bottom */
+  }
 }
