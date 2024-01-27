@@ -38,22 +38,22 @@
 			</div>
 
             <ul class="box-info">
-				<a href="<?php echo URLROOT ?>/events">
+				<a href="<?php echo URLROOT ?>/events/calendar/request">
 					<li>
 						<i class='bx bxs-calendar-plus' ></i>
 						<span class="text">
-							<h3><?php echo is_array($data['eventCount']) ? count($data['eventCount']) : $data['eventCount']; ?></h3>
+							<h3><?php echo is_array($data['requestCount']) ? count($data['requestCount']) : $data['requestCount']; ?></h3>
 							<p>Event Requests</p>
 						</span>
 					</li>
 				</a>
 
-				<a href="<?php echo URLROOT ?>/events">
+				<a href="<?php echo URLROOT ?>/events/calendar/ongoing">
 					<li>
 						<i class='bx bxs-calendar-check' ></i>
 						<span class="text">
-							<h3><?php echo is_array($data['requestCount']) ? count($data['requestCount']) : $data['requestCount']; ?></h3>
-							<p>Ongoing Events</p>
+							<h3><?php echo is_array($data['eventCount']) ? count($data['eventCount']) : $data['eventCount']; ?></h3>
+							<p>Accepted Events</p>
 						</span>
 					</li>
 				</a>

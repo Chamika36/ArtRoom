@@ -27,7 +27,35 @@
                 'title' => 'Home',
                 'ongoing' => $ongoing,
                 'requests' => $requests,
-                'events' => $events
+                'events' => $events,
+                'type' => 'all'
+            ];
+
+            $this->view('pages/manager/events/events', $data);
+        }
+
+        public function calendar($type) {
+            $events = $this->eventModel->getAllEvents();
+            $ongoing = $this->eventModel->getOngoingEvents();
+            $requests = $this->eventModel->getOnlyRequests();
+            // Loop through the requests and format the date
+            foreach ($requests as $request) {
+                $request->EventDate = date('F j, Y', strtotime($request->EventDate));
+                // $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+            }
+
+            // Loop through the events and format the date
+            foreach ($events as $event) {
+                $event->EventDate = date('F j, Y', strtotime($event->EventDate));
+                // $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+            }
+
+            $data = [
+                'title' => 'Home',
+                'ongoing' => $ongoing,
+                'requests' => $requests,
+                'events' => $events,
+                'type' => $type
             ];
 
             $this->view('pages/manager/events/events', $data);
@@ -175,7 +203,7 @@
         }
 
 
-        public function calendar() {
+        public function calendars() {
             $data = [
                 'title' => 'Home'
             ];
@@ -222,6 +250,7 @@
         public function viewEventbyManager($id) {
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
+            $customer = $this->userModel->getUserById($event->CustomerID);
             $photographer = $this->userModel->getUserById($event->PhotographerID);
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
@@ -236,6 +265,7 @@
             $data = [
                 'event' => $event,
                 'package' => $package,
+                'customer' => $customer,
                 'photographer' => $photographer,
                 'editor' => $editor,
                 'printingFirm' => $printingFirm,
@@ -380,6 +410,7 @@
         public function manageEvent($id) {                      
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
+            $customer = $this->userModel->getUserById($event->CustomerID);
             $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
             $editors = $this->partnerModel->getAvailablePartners(4,$event->EventDate);
@@ -393,6 +424,7 @@
             $data = [
                 'event' => $event,
                 'package' => $package,
+                'customer' => $customer,
                 'photographers' => $photographers,
                 'requestedPhotographer' => $requestedPhotographer,
                 'editors' => $editors,
