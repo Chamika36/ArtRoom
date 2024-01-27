@@ -10,6 +10,13 @@
 
 </head>
 <body>
+
+    <input type="checkbox" id="showEvents" checked>
+    <label for="showEvents">Show Events</label>
+
+    <input type="checkbox" id="showRequests" checked>
+    <label for="showRequests">Show Requests</label>
+    
     <div class="hero">
         <!-- Calendar -->
         <div id="calendar"></div>
@@ -53,10 +60,10 @@
 
                 if(event.Status != 'Pencil') {
                     type = 'event';
-                    color = 'lightgreen';
+                    color = 'orange';
                 }else{
                     type = 'holiday';
-                    color = '#63d8677';
+                    color = 'red';
                 }
 
                 // Add events to the calendar
@@ -71,7 +78,80 @@
                 });
             });
 
+            function updateCalendar() {
+                var active_date = $('#calendar').evoCalendar('getActiveDate');
+                var selectedMonth = active_date.split('-')[1];
+                var showEvents = $('#showEvents').prop('checked');
+                var showRequests = $('#showRequests').prop('checked');
+                console.log(selectedMonth)
 
+
+                $('#calendar').evoCalendar('destroy'); // Destroy the existing calendar
+                $('#calendar').evoCalendar({ // Re-initialize the calendar with updated data
+                    theme: 'Midnight Blue',
+                    format: 'yyyy-mm-dd'
+                });
+
+                $('#calendar').evoCalendar('selectMonth', selectedMonth - 1); 
+
+                if (showEvents) {
+                    ongoingData.forEach(function(event) {
+                        var color = '#63d8677';
+                        var type = 'event';
+
+                        if(event.Status != 'Pencil') {
+                            type = 'event';
+                            color = 'orange';
+                        }else{
+                            type = 'holiday';
+                            color = 'red';
+                        }
+
+                        // Add events to the calendar
+                        $('#calendar').evoCalendar('addCalendarEvent', {
+                            id: event.EventID,
+                            name: event.EventDate,
+                            badge: event.StartTime,
+                            description: event.Location,
+                            date: event.EventDate,
+                            type: type,
+                            color: color
+                        });
+                    });
+                }
+
+                if (showRequests) {
+                    requestData.forEach(function(event) {
+                        var color = '#63d8677';
+                        var type = 'event';
+
+                        if(event.Status != 'Pencil') {
+                            type = 'event';
+                            color = 'orange';
+                        }else{
+                            type = 'holiday';
+                            color = 'red';
+                        }
+
+                        // Add events to the calendar
+                        $('#calendar').evoCalendar('addCalendarEvent', {
+                            id: event.EventID,
+                            name: event.EventDate,
+                            badge: event.StartTime,
+                            description: event.Location,
+                            date: event.EventDate,
+                            type: type,
+                            color: color
+                        });
+                    });
+                }
+
+            }
+
+        // Event listeners for the checkboxes
+        $('#showEvents, #showRequests').change(function () {
+            updateCalendar();
+        });
 
             // Add a click event handler for calendar events
             $('#calendar').on('selectEvent', function (event, eventData) {
@@ -91,6 +171,8 @@
                     $(this).css('display', 'none');
                 }
             });
+
+
         });
     </script>
 </body>
