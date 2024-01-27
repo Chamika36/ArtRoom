@@ -8,73 +8,46 @@
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-events.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
 
-    <style>
-        
-       .bottom-column {
-            flex: 4;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-
-        .event {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #f5f5f5;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .event-details {
-            flex: 1;
-        }
-
-        .view-details-button {
-            background-color: #504334;
-            color: #fff;
-            padding: 5px 10px;
-            border: none;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.2s;
-        }
-
-        .view-details-button:hover {
-            background-color: #774001;
-        }
-
-    </style>
+    
 </head>
 <body>
     <div>
         <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
     </div>
-    <div class="container">
-        <div class="bottom-row">
-        <div class="left-area">
+    
+        
+        <div>
             <?php //include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
             <P>sidebar</P>
         </div>
 
-            <div class="bottom-column">
+            <div class="container">
                 <h2 class="requestQuote">All Events</h2>
                 <?php foreach($data['events'] as $event) : ?>
-                    <div class="event">
-                        <div class="event-details">
+                    <div class="event-container">
+                        <div>
                             <p>Event ID: <?php echo $event->EventID; ?></p>
                             <p>Date: <?php echo $event->EventDate; ?></p>
+                        </div>
+                        <div>
+                            <p>Location:</p>
+                        </div>
+                        <div>
                             <p>Status: <?php echo $event->Status; ?></p>
                         </div>
-                        <a href="<?php echo URLROOT ?>/events/viewEvent/<?php echo $event->EventID; ?>" class="view-details-button">View Details</a>
-                </div>
+                        <div>
+                            <a href="<?php echo URLROOT ?>/events/viewEvent/<?php echo $event->EventID; ?>" class="view-details-button">View Details</a>
+                        </div>
+                    </div>
+            
                 <?php endforeach; ?>
+            </div>
                 <!-- <div class="event">
                     <div class="event-details">
                         <p>Date: October 15, 2023</p>
@@ -96,8 +69,6 @@
                     </div>
                     <a href="event_details.php" class="view-details-button">View Details</a>
                 </div> -->
-            </div>
-        </div>
-    </div>
+            
 </body>
 </html>
