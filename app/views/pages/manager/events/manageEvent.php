@@ -18,8 +18,10 @@
             <h3>Event Details</h3>
             <ul>
                 <li><strong>Event Name:</strong> <?php echo $data['package']->Name; ?></li>
-                <li><strong>Event Id:</strong> <?php echo $data['event']->EventID; ?></li>
+                <li><strong>Event Id:</strong> <?php echo $data['event']->EventID; ?></li><li><strong>Customer Name:</strong> <?php echo $data['customer']->FirstName . ' ' . $data['customer']->LastName; ?></li>
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
+                <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
+                <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
                 <button id="viewLocationButton">View Location on Map</button>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>

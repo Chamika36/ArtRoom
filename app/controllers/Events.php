@@ -250,6 +250,7 @@
         public function viewEventbyManager($id) {
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
+            $customer = $this->userModel->getUserById($event->CustomerID);
             $photographer = $this->userModel->getUserById($event->PhotographerID);
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
@@ -264,6 +265,7 @@
             $data = [
                 'event' => $event,
                 'package' => $package,
+                'customer' => $customer,
                 'photographer' => $photographer,
                 'editor' => $editor,
                 'printingFirm' => $printingFirm,
@@ -408,6 +410,7 @@
         public function manageEvent($id) {                      
             $event = $this->eventModel->getEventById($id);
             $package = $this->packageModel->getPackageById($event->PackageID);
+            $customer = $this->userModel->getUserById($event->CustomerID);
             $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
             $requestedPhotographer = $this->userModel->getUserById($event->RequestedPhotographer);
             $editors = $this->partnerModel->getAvailablePartners(4,$event->EventDate);
@@ -421,6 +424,7 @@
             $data = [
                 'event' => $event,
                 'package' => $package,
+                'customer' => $customer,
                 'photographers' => $photographers,
                 'requestedPhotographer' => $requestedPhotographer,
                 'editors' => $editors,
