@@ -1,0 +1,10 @@
+.container{
+    margin-top: 50px;
+    
+}
+
+.event-container{
+    display: flex;
+    justify-content: space-between;
+    
+}
