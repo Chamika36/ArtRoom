@@ -37,7 +37,8 @@
             background: #fff;
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-top: 80px;
         }
 
         .container h2{
@@ -55,11 +56,13 @@
         .form .input-box{
             width: 100%;
             margin-top: 20px;
-
+        
+            
         }
 
         .input-box label{
             color: #333;
+            
         }
 
         .form .input-box input{
@@ -67,11 +70,38 @@
             height: 50px;
             width:100%;
             outline: none;
-            font-size: 1rem;
+            border: 1px solid #ddd;
+            font-size: 1.0rem;
             color: #707070;
             margin-top: 8px;
             border-radius: 6px;
+            padding: 0 0px;
+        }
+
+        .form .input-box select{
+            position: relative;
+            height: 50px;
+            width:100%;
+            outline: none;
+            font-size: 1rem;
+            color: #707070;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
             padding: 0 15px;
+        }
+
+        .form .input-box textarea{
+            position: relative;
+            height: 50px;
+            width:100%;
+            outline: none;
+            font-size: 1rem;
+            color: #707070;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 0 0px;
         }
 
         .form .time-box{
@@ -90,12 +120,12 @@
             }
         }
 
-        .form button{
+        .submit-button{
             height: 55px;
             width: 100%;
             background-color: #3a3b3c;
             color: #ccc;
-            font-size: 1rem;
+            font-size: 1.1rem;
             border: none;
             margin-top: 30px;
             cursor: pointer;
@@ -105,8 +135,26 @@
 
         }
 
-        .form button:hover{
+        .submit-button:hover{
             background-color:#f9b234;
+            color: black;
+        }
+
+        .extra-btn{
+            height: 50px;
+            width:100%;
+            background-color: #3a3b3c;
+            color: #ccc;
+            margin-top: 28px;
+            border-radius: 6px;
+            font-size: 1.0rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 300;
+        }
+
+        .extra-btn:hover{
+            background-color: #242526;
         }
 
     </style>
@@ -128,7 +176,7 @@
                         <h2>Request for a Booking</h2>
                     </div>    
         
-                <form action="<?php echo URLROOT; ?>/events/request" method="POST">
+                <form class="form" action="<?php echo URLROOT; ?>/events/request" method="POST">
                     <!-- <label for="event-type">Event Type</label>
                     <select id="event-type" name="event-type">
                         <option value="option1">Option 1</option>
@@ -220,7 +268,7 @@
                         <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
                     </div>
                     <div >
-                        <button type="submit" value="Send Request">Submit</button>
+                        <button class="submit-button" type="submit" value="Send Request">Send Request</button>
                     </div>
                 </form>
             
