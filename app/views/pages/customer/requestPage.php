@@ -22,123 +22,96 @@
 
     <style>
 
-        form {
-            margin: 0 auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha value for transparency */
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-       .bottom-column {
-            flex: 4;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-
-        .bottom-column form {
+        body {
+            background:#F9F9F9;
             display: flex;
-            flex-direction: column;
-            max-width: 60%; /* Adjust the maximum width as needed */
-            margin: 0 auto; /* Center the form horizontally */
-        }
-
-        .bottom-column label {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .bottom-column select,
-        .bottom-column input,
-        .bottom-column textarea {
-            background-color: rgba(189, 179, 32, 0.08);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .bottom-column input[type="date"] {
-            background-color: rgba(189, 179, 32, 0.08);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .bottom-column input[type="submit"] {
-            background-color: #3b3d3e;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            align-self: flex-end; /* Move the submit button to the right bottom corner */
-            font-family: "Poppins", sans-serif;
-        }
-
-        .bottom-column input[type="submit"]:hover {
-            background-color: #f9b234;
-            color: #242526;
-            font-family: "Poppins", sans-serif;
-        }
-
-        .requestQuote{
-            width: 500px;
-            height: 48px;
-            flex-shrink: 0;
-            color: #000;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
-            font-size: 32px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-            letter-spacing: 1.6px;
-            mix-blend-mode: darken;
-            display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            margin-top: 100px;
-            margin-left: 33%;
+            padding: 20px;
+        }   
+
+        .container {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
         }
 
-        .submit-btn{
-            background-color: #3b3d3e;
-            border: 0;
-            border-radius: 50px;
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-            color: #fff;
-            font-size: 16px;
-            padding: 12px 25px;
-            align-self: flex-end;
-            
-            
-            letter-spacing: 1px;
-            transition: background-color 0.3s, color 0.3s;
+        .container h2{
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 500;
+            text-align: center;
+
         }
 
-        .submit-btn:hover {
-            background-color: #f9b234;
-            color: #242526;
+        .container .form{
+            margin-top: 30px;
         }
 
-        .extras-section{
+        .form .input-box{
+            width: 100%;
+            margin-top: 20px;
+
+        }
+
+        .input-box label{
+            color: #333;
+        }
+
+        .form .input-box input{
+            position: relative;
+            height: 50px;
+            width:100%;
+            outline: none;
+            font-size: 1rem;
+            color: #707070;
+            margin-top: 8px;
+            border-radius: 6px;
+            padding: 0 15px;
+        }
+
+        .form .time-box{
             display: flex;
-            flex-direction: row;
-            margin-top: 15px;
-            
-            justify-content: space-between;
-            align-items: center;
+            column-gap: 15px;
         }
 
-        .extra-btn{
-            padding: 10px 20px;
-            border-radius: 5px;
+        .form .extras-section{
+            display: flex;
+            column-gap: 15px;
+        }
+
+        @media screen and (max-width: 500px){
+            .form .time-box {
+                flex-wrap: wrap;
+            }
+        }
+
+        .form button{
+            height: 55px;
+            width: 100%;
+            background-color: #3a3b3c;
+            color: #ccc;
+            font-size: 1rem;
+            border: none;
+            margin-top: 30px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+
+        }
+
+        .form button:hover{
+            background-color:#f9b234;
         }
 
     </style>
 </head>
+
 <body>
     <?php
     $maxDate = date('Y-m-d', strtotime('+3 months'));  // Date 3 months from today
@@ -148,59 +121,69 @@
     <div>
     <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
     </div>
-    <div class="container">
-        <div class="bottom-row">
-        <!-- <div class="left-area">
-            <//?php include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
-        </div> -->
 
-            <div class="bottom-column">
-                <h2 class="requestQuote">Request for a Booking</h2>
+            
+        <div class="container">   
+                    <div>
+                        <h2>Request for a Booking</h2>
+                    </div>    
+        
                 <form action="<?php echo URLROOT; ?>/events/request" method="POST">
                     <!-- <label for="event-type">Event Type</label>
                     <select id="event-type" name="event-type">
                         <option value="option1">Option 1</option>
                         <option value="option2">Option 2</option>
                     </select> -->
-
-                    <label for="date">Event Date</label>
-                    <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
-                    <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
-
-                    <label for="startTime">Start Time</label>
-                    <input type="time" id="startTime" name="startTime" required>
-
-                    <label for="endTime">End Time</label>
-                    <input type="time" id="endTime" name="endTime" min="" required>
-
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" value="Choose location" required readonly>
-                    <input type="hidden" id="latitude" name="latitude" value="" required>
-                    <input type="hidden" id="longitude" name="longitude" value="" required>
-                    <span class="invalid-feedback"><?php echo $data['location_err']; ?></span>
+                    
+                    <div class="input-box">
+                        <label for="date">Event Date</label>
+                        <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
+                        <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
+                    </div>
+                    <div class="time-box">
+                        <div class="input-box">
+                            <label for="startTime">Start Time</label>
+                            <input type="time" id="startTime" name="startTime" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="endTime">End Time</label>
+                            <input type="time" id="endTime" name="endTime" min="" required>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" value="Choose location" required readonly>
+                        <input type="hidden" id="latitude" name="latitude" value="" required>
+                        <input type="hidden" id="longitude" name="longitude" value="" required>
+                        <span class="invalid-feedback"><?php echo $data['location_err']; ?></span>
+                    </div>
                     <!-- Map container -->
-                    <div id="map" style="height: 300px;"></div>
+                    <div id="map" style="height: 250px;">
+                    </div>
 
-                    <label for="requestedPhotographer">Request Photographer</label>
-                    <select id="requestedPhotographer" name="requestedPhotographer">
-                    <option value="">Select a photographer</option>
-                        <?php foreach ($data['photographers'] as $photographer) : ?>
-                            <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <div class="input-box">
+                        <label for="requestedPhotographer">Request Photographer</label>
+                        <select id="requestedPhotographer" name="requestedPhotographer">
+                        <option value="">Select a photographer</option>
+                            <?php foreach ($data['photographers'] as $photographer) : ?>
+                                <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
 
-                    <label for="package">Selected Package</label>
-                    <select id="package" name="package" required>
-                        <option value="">Select a package</option>
-                        <?php foreach ($data['packages'] as $package) : ?>
-                            <option value="<?php echo $package->PackageID; ?>" data-price="<?php echo $package->Price; ?>"><?php echo $package->Name . " - Rs. " . $package->Price ; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-
+                    <div class="input-box">
+                        <label for="package">Selected Package</label>
+                        <select id="package" name="package" required>
+                            <option value="">Select a package</option>
+                            <?php foreach ($data['packages'] as $package) : ?>
+                                <option value="<?php echo $package->PackageID; ?>" data-price="<?php echo $package->Price; ?>"><?php echo $package->Name . " - Rs. " . $package->Price ; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     <!-- Additional Items -->
-                    <div class= extras-section>
-                        <div style="flex-grow: 2">
-                            <label for="extras">Select Extras:</label></br>
+                    <div class="extras-section">
+                        <div class="input-box">
+                            <label for="extras">Select Extras:</label>
                             <select id="extras" name="extras">
                                 <option value="1500.00">Additional Album Page - Rs. 1,500.00</option>
                                 <option value="70.00">Thanking Card - Rs. 70.00</option>
@@ -211,11 +194,11 @@
                                 <option value="10000.00">Family Album - Rs. 10,000.00</option>
                             </select>
                         </div>
-                        <div style="flex-grow: 5">
-                            <label for="quantity">Quantity:</label></br>
+                        <div class="input-box">
+                            <label for="quantity">Quantity:</label>
                             <input type="number" id="quantity" name="quantity" min="1" step="1">
                         </div>  
-                        <div style="flex-grow: 0"> 
+                        <div class="input-box"> 
                             <button class="extra-btn" type="button" onclick="addExtra()">Add Extra</button>
                         </div>    
                     </div>        
@@ -224,23 +207,27 @@
                         <!-- Display selected extras with quantities -->
                     </div>
 
-                    <label for="additionalRequest">Additional Request</label>
-                    <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
+                    <div class="input-box">
+                        <label for="additionalRequest">Additional Request</label>
+                        <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
+                    </div>
+                    <div class="input-box">
+                        <label for="totalBudget">Total Budget:</label>
+                        <input type="text" id="totalBudget" name="totalBudget" readonly>
 
-                    <label for="totalBudget">Total Budget:</label>
-                    <input type="text" id="totalBudget" name="totalBudget" readonly>
+                        <input type="" id="selectedExtras" name="selectedExtras" value="" readonly>
 
-                    <input type="" id="selectedExtras" name="selectedExtras" value="" readonly>
-
-                    <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
-
-                    <input class=submit-btn type="submit" value="Send Request">
+                        <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
+                    </div>
+                    <div >
+                        <button type="submit" value="Send Request">Submit</button>
+                    </div>
                 </form>
-            </div>
+            
+        
         </div>
-    </div>
 
-    </script>
+    
     <script>
 
     $(document).ready(function() {
