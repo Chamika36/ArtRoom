@@ -11,10 +11,10 @@
 </head>
 <body>
 
-    <input type="checkbox" id="showEvents" checked>
+    <input type="checkbox" id="showEvents" <?php if($data['type'] == 'ongoing' || $data['type'] == 'all') echo 'checked';?>>
     <label for="showEvents">Show Events</label>
 
-    <input type="checkbox" id="showRequests" checked>
+    <input type="checkbox" id="showRequests" <?php if($data['type'] == 'request' || $data['type'] == 'all') echo 'checked';?>>
     <label for="showRequests">Show Requests</label>
     
     <div class="hero">
@@ -39,6 +39,8 @@
         var requestData = <?php echo json_encode($data['requests']); ?>;
         var manageUrl = <?php echo json_encode(URLROOT . '/events/manageevent/'); ?>;
         console.log("Event Data:", eventData);
+        var showEvents = $('#showEvents').prop('checked');
+        var showRequests = $('#showRequests').prop('checked');
     </script>
  
     <script>
@@ -49,35 +51,59 @@
                 format: 'yyyy-mm-dd'
             });
 
-            eventData.forEach(function(event) {
-                console.log("ID: " + event.EventID);
-                console.log("Name: " + event.EventDate);
-                console.log("Date: " + event.EventDate);
-                console.log("Type: " + event.Type);
+            // Add events to the calendar
+            if (showEvents) {
+                ongoingData.forEach(function(event) {
+                    var color = '#63d8677';
+                    var type = 'event';
 
-                var color = '#63d8677';
-                var type = 'event';
+                    if(event.Status != 'Pencil') {
+                        type = 'event';
+                        color = 'orange';
+                    }else{
+                        type = 'holiday';
+                        color = 'red';
+                    }
 
-                if(event.Status != 'Pencil') {
-                    type = 'event';
-                    color = 'orange';
-                }else{
-                    type = 'holiday';
-                    color = 'red';
-                }
-
-                // Add events to the calendar
-                $('#calendar').evoCalendar('addCalendarEvent', {
-                    id: event.EventID,
-                    name: event.EventDate,
-                    badge: event.StartTime,
-                    description: event.Location,
-                    date: event.EventDate,
-                    type: type,
-                    color: color
+                    // Add events to the calendar
+                    $('#calendar').evoCalendar('addCalendarEvent', {
+                        id: event.EventID,
+                        name: event.EventDate,
+                        badge: event.StartTime,
+                        description: event.Location,
+                        date: event.EventDate,
+                        type: type,
+                        color: color
+                    });
                 });
-            });
+            }
 
+            if (showRequests) {
+                requestData.forEach(function(event) {
+                    var color = '#63d8677';
+                    var type = 'event';
+
+                    if(event.Status != 'Pencil') {
+                        type = 'event';
+                        color = 'orange';
+                    }else{
+                        type = 'holiday';
+                        color = 'red';
+                    }
+
+                    // Add events to the calendar
+                    $('#calendar').evoCalendar('addCalendarEvent', {
+                        id: event.EventID,
+                        name: event.EventDate,
+                        badge: event.StartTime,
+                        description: event.Location,
+                        date: event.EventDate,
+                        type: type,
+                        color: color
+                    });
+                });
+            }
+            
             function updateCalendar() {
                 var active_date = $('#calendar').evoCalendar('getActiveDate');
                 var selectedMonth = active_date.split('-')[1];
@@ -92,7 +118,7 @@
                     format: 'yyyy-mm-dd'
                 });
 
-                $('#calendar').evoCalendar('selectMonth', selectedMonth - 1); 
+                $('#calendar').evoCalendar('selectMonth', 1); 
 
                 if (showEvents) {
                     ongoingData.forEach(function(event) {

@@ -38,7 +38,7 @@
 			</div>
 
             <ul class="box-info">
-				<a href="<?php echo URLROOT ?>/events">
+				<a href="<?php echo URLROOT ?>/events/calendar/request">
 					<li>
 						<i class='bx bxs-calendar-plus' ></i>
 						<span class="text">
@@ -48,7 +48,7 @@
 					</li>
 				</a>
 
-				<a href="<?php echo URLROOT ?>/events">
+				<a href="<?php echo URLROOT ?>/events/calendar/ongoing">
 					<li>
 						<i class='bx bxs-calendar-check' ></i>
 						<span class="text">

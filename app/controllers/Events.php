@@ -27,7 +27,35 @@
                 'title' => 'Home',
                 'ongoing' => $ongoing,
                 'requests' => $requests,
-                'events' => $events
+                'events' => $events,
+                'type' => 'all'
+            ];
+
+            $this->view('pages/manager/events/events', $data);
+        }
+
+        public function calendar($type) {
+            $events = $this->eventModel->getAllEvents();
+            $ongoing = $this->eventModel->getOngoingEvents();
+            $requests = $this->eventModel->getOnlyRequests();
+            // Loop through the requests and format the date
+            foreach ($requests as $request) {
+                $request->EventDate = date('F j, Y', strtotime($request->EventDate));
+                // $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+            }
+
+            // Loop through the events and format the date
+            foreach ($events as $event) {
+                $event->EventDate = date('F j, Y', strtotime($event->EventDate));
+                // $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+            }
+
+            $data = [
+                'title' => 'Home',
+                'ongoing' => $ongoing,
+                'requests' => $requests,
+                'events' => $events,
+                'type' => $type
             ];
 
             $this->view('pages/manager/events/events', $data);
@@ -175,7 +203,7 @@
         }
 
 
-        public function calendar() {
+        public function calendars() {
             $data = [
                 'title' => 'Home'
             ];
