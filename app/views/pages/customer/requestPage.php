@@ -200,7 +200,7 @@
                     </div>
                     <div class="input-box">
                         <label for="location">Location</label>
-                        <input type="text" id="location" name="location" value="Choose location" required readonly>
+                        <input type="text" id="location" name="location" value="Choose location" required>
                         <input type="hidden" id="latitude" name="latitude" value="" required>
                         <input type="hidden" id="longitude" name="longitude" value="" required>
                         <span class="invalid-feedback"><?php echo $data['location_err']; ?></span>
@@ -360,7 +360,7 @@
     </script>
 
     <script>
-        var map = L.map('map').setView([0, 0], 2); // Set an initial view
+        var map = L.map('map').setView([7.8731, 80.7718], 7); // Set an initial view
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
@@ -380,6 +380,26 @@
                     locationInput.value = data.display_name;
                     latitudeInput.value = e.latlng.lat;
                     longitudeInput.value = e.latlng.lng;
+                }
+            });
+        });
+
+        // Add a marker when user types in a location
+        var locationInput = document.getElementById('location');
+        locationInput.addEventListener('change', function() {
+            var latitudeInput = document.getElementById('latitude');
+            var longitudeInput = document.getElementById('longitude');
+
+            // Use Nominatim for geocoding
+            fetch(`https://nominatim.openstreetmap.org/search?q=${locationInput.value}&format=jsonv2`)
+            .then(response => response.json())
+            .then(data => {
+                if (data[0]) {
+                    latitudeInput.value = data[0].lat;
+                    longitudeInput.value = data[0].lon;
+
+                    map.setView([data[0].lat, data[0].lon], 15); // Set the map view to the location
+                    L.marker([data[0].lat, data[0].lon]).addTo(map); // Add a marker to the location
                 }
             });
         });
