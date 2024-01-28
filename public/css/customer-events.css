@@ -1,10 +1,103 @@
-.container{
-    margin-top: 50px;
+
+body{
     
 }
 
-.event-container{
+.topic{
+    margin-top: 100px ;
+    margin-left: 5%;
+}
+
+.container{
+    font-family: "Poppins", sans-serif;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-top: 30px;
+}
+
+
+
+.event-container{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 100%;
+    margin: 20px;
+    overflow: hidden;
+    width: 80%;
+}
+
+.date-div{
+    background-color: #f9b234;
+    color: #242526;
+    padding: 20px;
+    max-width: 250px;
+    width: 20%;
+}
+
+.date-div h6{
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+.date-div h2{
+    letter-spacing: 1px;
+    margin: 8px 0;
+}
+
+.location-div{
+    background-color: #242526;
+    color: #ccc;
+    padding: 15px;
+    width: 45%;
+}
+
+.status-div{
+    background-color: #242526;
+    color: #ccc;
+    padding: 25px;
+    width:15%;
+}
+
+.status-div h4{
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+
+.btn-div{
+    background-color: #242526;
+    color: #ccc;
+    padding: 60px;
+    justify-content: center;
+    align-items: center;
     
 }
+
+.view-details-button{
+    justify-content: center;
+    align-items: center;
+    background-color: #3b3d3e;
+    color: #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 6px 15px;
+    font-size: 12px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.view-details-button:hover{
+    color:#242526;
+    background-color: #f9b234;
+}
+
+
+
+

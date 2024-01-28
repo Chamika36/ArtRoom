@@ -22,28 +22,31 @@
     </div>
     
         
-        <div>
-            <?php //include(APPROOT . '/views/pages/customer/sidebar/sidebar.php'); ?>
-            <P>sidebar</P>
+        
+        <div class="topic">
+            <h1 class="requestQuote">All Events</h1>
         </div>
-
             <div class="container">
-                <h2 class="requestQuote">All Events</h2>
+                
                 <?php foreach($data['events'] as $event) : ?>
                     <div class="event-container">
-                        <div>
-                            <p>Event ID: <?php echo $event->EventID; ?></p>
-                            <p>Date: <?php echo $event->EventDate; ?></p>
+                        <div class="date-div">
+                            <h6>Event ID: <?php echo $event->EventID; ?></h6>
+                            <h2>Date:</h2>
+                            <h2><?php echo $event->EventDate; ?></h2>
                         </div>
-                        <div>
-                            <p>Location:</p>
+                        <div class="location-div">
+                            <h2>Colombo,Sri lanka</h3>
+                            <h4>BRC Ground, Sri Sambuddhathva Jayanthi Mawatha, Havelock Town, Colombo, Colombo District, Western Province, 00006, Sri Lanka</h4>
                         </div>
-                        <div>
-                            <p>Status: <?php echo $event->Status; ?></p>
+                        <div class="status-div">
+                            <h4>Request Status:</h4>
+                            <h3><?php echo $event->Status; ?></h3>
                         </div>
-                        <div>
-                            <a href="<?php echo URLROOT ?>/events/viewEvent/<?php echo $event->EventID; ?>" class="view-details-button">View Details</a>
+                        <div class="btn-div">
+                            <button onclick="window.location.href='<?php echo URLROOT ?>/events/viewEvent/<?php echo $event->EventID; ?>'" class="view-details-button">View Details</button>
                         </div>
+
                     </div>
             
                 <?php endforeach; ?>
