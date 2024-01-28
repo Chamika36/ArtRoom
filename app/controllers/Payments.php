@@ -4,6 +4,8 @@
             // echo "Payments controller loaded";
             $this->paymentModel = $this->model('Payment');
             $this->eventModel = $this->model('Event');
+            $this->userModel = $this->model('User');
+            $this->packageModel = $this->model('Package');
         }
 
         public function index(){
@@ -19,6 +21,14 @@
 
         public function pay($id){
             $event = $this->eventModel->getEventById($id);
+            $customer = $this->userModel->getUserById($event->CustomerID);
+            $package = $this->packageModel->getPackageById($event->PackageID);
+            $items = $package->Name;
+            $firstName = $customer->FirstName;
+            $lastName = $customer->LastName;
+            $email = $customer->Email;
+            $phone = $customer->ContactNumber;
+
             if($event->Status == 'Accepted'){
                 $amount = $event->TotalBudget / 10;
             } else if($event->Status == 'Advanced'){
@@ -48,6 +58,11 @@
             $array['order_id'] = $order_id;
             $array['currency'] = $currency;
             $array['hash'] = $hash;
+            $array['items'] = $items;
+            $array['first_name'] = $firstName;
+            $array['last_name'] = $lastName;
+            $array['email'] = $email;
+            $array['phone'] = $phone;
         
             $json = json_encode($array);
         

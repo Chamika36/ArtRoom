@@ -37,7 +37,7 @@
                         </div>
                         <div class="location-div">
                             <h2>Colombo,Sri lanka</h3>
-                            <h4>BRC Ground, Sri Sambuddhathva Jayanthi Mawatha, Havelock Town, Colombo, Colombo District, Western Province, 00006, Sri Lanka</h4>
+                            <h4><?php echo $event->Location; ?></h4>
                         </div>
                         <div class="status-div">
                             <h4>Request Status:</h4>
