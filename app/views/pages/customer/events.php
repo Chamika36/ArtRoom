@@ -36,7 +36,7 @@
                             <h2><?php echo $event->EventDate; ?></h2>
                         </div>
                         <div class="location-div">
-                            <h2>Colombo,Sri lanka</h3>
+                            <h2><?php echo $event->PackageName;?></h3>
                             <h4><?php echo $event->Location; ?></h4>
                         </div>
                         <div class="status-div">
