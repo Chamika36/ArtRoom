@@ -200,7 +200,7 @@
                     </div>
                     <div class="input-box">
                         <label for="location">Location</label>
-                        <input type="text" id="location" name="location" value="Choose location" required>
+                        <input type="text" id="location" name="location" placeholder="Choose location" required>
                         <input type="hidden" id="latitude" name="latitude" value="" required>
                         <input type="hidden" id="longitude" name="longitude" value="" required>
                         <span class="invalid-feedback"><?php echo $data['location_err']; ?></span>
@@ -262,8 +262,6 @@
                     <div class="input-box">
                         <label for="totalBudget">Total Budget:</label>
                         <input type="text" id="totalBudget" name="totalBudget" readonly>
-
-                        <input type="" id="selectedExtras" name="selectedExtras" value="" readonly>
 
                         <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
                     </div>
@@ -386,12 +384,12 @@
 
         // Add a marker when user types in a location
         var locationInput = document.getElementById('location');
-        locationInput.addEventListener('change', function() {
+        locationInput.addEventListener('input', function() {
             var latitudeInput = document.getElementById('latitude');
             var longitudeInput = document.getElementById('longitude');
 
             // Use Nominatim for geocoding
-            fetch(`https://nominatim.openstreetmap.org/search?q=${locationInput.value}&format=jsonv2`)
+           fetch(`https://nominatim.openstreetmap.org/search?q=${locationInput.value}&format=jsonv2&countrycodes=lk`)
             .then(response => response.json())
             .then(data => {
                 if (data[0]) {

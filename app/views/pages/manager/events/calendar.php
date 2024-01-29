@@ -105,18 +105,20 @@
             }
             
             function updateCalendar() {
-                var active_date = $('#calendar').evoCalendar('getActiveDate');
-                var selectedMonth = active_date.split('-')[1];
+                // var active_date = $('#calendar').evoCalendar('getActiveDate');
+                // var selectedMonth = active_date.split('-')[1];
                 var showEvents = $('#showEvents').prop('checked');
                 var showRequests = $('#showRequests').prop('checked');
-                console.log(selectedMonth)
+                console.log('break 1');
 
 
                 $('#calendar').evoCalendar('destroy'); // Destroy the existing calendar
+                console.log('break 2');
                 $('#calendar').evoCalendar({ // Re-initialize the calendar with updated data
                     theme: 'Midnight Blue',
                     format: 'yyyy-mm-dd'
                 });
+                console.log('break 3');
 
                 $('#calendar').evoCalendar('selectMonth', 1); 
 
@@ -174,30 +176,34 @@
 
             }
 
-        // Event listeners for the checkboxes
-        $('#showEvents, #showRequests').change(function () {
-            updateCalendar();
-        });
+            // Event listeners for the checkboxes
+            // $('#showEvents, #showRequests').change(function () {
+            //     updateCalendar();
+            // });
+
+            $(document.body).on('change', '#showEvents, #showRequests', function () {
+                console.log('Checkbox changed');
+                updateCalendar();
+            });
 
             // Add a click event handler for calendar events
             $('#calendar').on('selectEvent', function (event, eventData) {
                 if (eventData.id) {
                     // Open a new window or modal and load the external PHP file
                     var popupUrl = manageUrl + eventData.id;
-                    // newWindow = window.open(popupUrl, '_blank', 'width=400,height=400');
-                    $('#eventDetails').load(popupUrl, function() {
+                    $('#eventDetails').load(popupUrl, function () {
                         $('#eventModal').css('display', 'block');
                     });
                 }
             });
 
             // Close the modal when clicking outside of it
-            $('#eventModal').on('click', function (e) {
+            $(document.body).on('click', '#eventModal', function (e) {
                 if (e.target === this) {
                     $(this).css('display', 'none');
+                    location.reload();
                 }
             });
-
 
         });
     </script>

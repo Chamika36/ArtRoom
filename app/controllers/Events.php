@@ -316,6 +316,9 @@
         // View events by each customer
         public function viewCustomerEvents($id) {
             $events = $this->eventModel->getEventsByCustomer($id);
+            foreach ($events as $event) {
+                $event->PackageName = $this->packageModel->getPackageById($event->PackageID)->Name;
+            }
             $data = [
                 'events' => $events
             ];
