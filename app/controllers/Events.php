@@ -340,7 +340,7 @@
         public function updateEventStatus($id, $status) {
             if($this->eventModel->updateEventStatus($id, $status)) {
                 flash('event_message', 'Event status updated');
-                redirect('events/viewEvent/' . $id . '');
+                redirect('events')
             } else {
                 die('Something went wrong');
             }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Event</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manageevent.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manager/manageevent.css">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- Leaflet JavaScript -->
@@ -12,8 +12,8 @@
 
 </head>
 <body>
+    <!-- <h2>Manage Event</h2> -->
     <div class="container2">
-        <h2>Manage Event</h2>
         <div class="event-details">
             <h3>Event Details</h3>
             <ul>
@@ -22,14 +22,13 @@
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
                 <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
                 <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
-                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
-                <button id="viewLocationButton">View Location on Map</button>
+                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?><button id="viewLocationButton">View Location on Map</button></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
                 <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
             </ul>
         </div>
-        <div class="partners">
+        <div class="event-details">
             <h3>Allocate Partners</h3>
             <form action="<?php echo URLROOT; ?>/events/allocate/<?php echo $data['event']->EventID; ?>" method="POST">
                 <div class="form-group">
@@ -60,7 +59,14 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Allocate">
+                    <input class="button" type="submit" value="Allocate">
+                </div>
+            </form>
+
+            <!-- cancel event -->
+            <form action="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled" method="POST">
+                <div class="form-group">
+                    <input class="button" type="submit" value="Cancel Event">
                 </div>
             </form>
         </div>

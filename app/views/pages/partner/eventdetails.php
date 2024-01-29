@@ -11,31 +11,24 @@
     <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
     
     <div class="home">
-        <div class="bottom-container">
-            <div class="row" style="flex: 1; align-items: flex-start;">
-                <div class="column">
-                    <div>View Requests</div>
-                    <div class="event-square">Event ID: <?php echo $data['event']->EventID; ?></div>
-                </div>
-                <div class="column">
-                    <div class="details">
-                    <ul>
-                        <li><strong>Event Name:</strong> <?php echo $data['package']->Name; ?></li>
-                        <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
-                        <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
-                        <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
-                        <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
-                    </ul>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="buttons">
-                        <button class="button">Accept</button>
-                        <button class="button decline">Decline</button>
-                    </div>
-                </div>
+        <div class="blur"></div>
+
+        <div class="transparent-box">
+            <h2>Event Details</h2>
+            <ul>
+                <li><strong>Event Name:</strong> <?php echo $data['package']->Name; ?></li>
+                <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
+                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
+                <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
+                <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
+            </ul>
+            
+            <div class="button-container">
+                <button class="button">Accept</button>
+                <button class="button">Decline</button>
             </div>
         </div>
     </div>
 </body>
 </html>
+

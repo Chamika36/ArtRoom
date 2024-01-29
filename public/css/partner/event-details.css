@@ -1,61 +1,90 @@
-.bottom-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensure the container takes up the full height of the viewport */
-}
 
-.row {
-    display: flex;
-    margin: 10px 0;
-}
 
-.column {
-    flex: 1;
-    margin: 0 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --poppins: 'Poppins', sans-serif;
+    --lato: 'Lato', sans-serif;
+    --light: #F9F9F9;
+        }
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://img.freepik.com/free-photo/gray-painted-background_53876-94041.jpg);
+    background-size: cover;
+    background-position: center;
     position: relative;
 }
 
-.event-square {
-    width: 100px;
-    height: 100px;
-    background-color: #3498db;
-    color: #fff;
-    text-align: center;
-    line-height: 100px;
-    font-weight: bold;
+.blur {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(10px); 
+    z-index: -1;
 }
 
-.details {
+.transparent-box {
+    position: relative;
+    left: 100px;
+    top: 90px; /* Adjust top position to create space for the header */
+    height: 80%;
+    width: 80%; /* Adjust the width of the transparent box */
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust the transparency (last parameter) and color */
+    z-index: 1; 
+    border-radius: 8px; /* Make sure the transparent box is above the blurred background */
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: column; /* Stack children vertically */
+    padding: 20px; /* Add padding for content inside the transparent box */
 }
 
-.detail-item {
-    margin: 5px 0;
+h2 {
+    color: #000000;
 }
 
-.buttons {
+ul {
+    list-style: none;
+    padding: 10px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+p {
+    color: #000000;
+}
+
+.button-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .button {
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #4CAF50; /* Green color for "Accept" */
-    color: #fff;
-    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    font-size: 14px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: #423636;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
 }
 
-.button.decline {
-    background-color: #FF5733; /* Red color for "Decline" */
+.button:hover {
+    background-color: #c5a992; /* Darker color on hover */
 }
