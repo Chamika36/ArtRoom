@@ -81,6 +81,8 @@
             var mapUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=13/${latitude}/${longitude}`;
             window.open(mapUrl, '_blank');
         });
+
+        
     </script>
 </body>
 </html>

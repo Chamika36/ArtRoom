@@ -51,6 +51,8 @@
                 format: 'yyyy-mm-dd'
             });
 
+            $('#calendar').evoCalendar('selectMonth', 1); 
+
             // Add events to the calendar
             if (showEvents) {
                 ongoingData.forEach(function(event) {

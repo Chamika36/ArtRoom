@@ -210,13 +210,44 @@
                     // Update the view based on the response
                     // You can display a success message or handle the view update as needed
                     console.log(data);
-                    location.reload();
+                    //location.reload();
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
             });
+
+            $('#additionalChargesForm').on('submit', function (e) {
+            e.preventDefault();
+
+            // Extract additional charges data
+            var additionalCharges = JSON.stringify(additionalCharges);
+
+            // Append additional charges data to form data
+            var formData = new FormData(this);
+            formData.append('additionalCharges', additionalCharges);
+
+            // Send AJAX request using Fetch API
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    // Update the view based on the response
+                    // You can display a success message or handle the view update as needed
+                    console.log(data);
+                    //location.reload();
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
         });
+    });
+
+        
 
         // Add additional charge
         let additionalCharges = [];
