@@ -255,6 +255,8 @@
                         <!-- Display selected extras with quantities -->
                     </div>
 
+                    <input type="hidden" id="selectedExtras" name="selectedExtras" value="[]">
+
                     <div class="input-box">
                         <label for="additionalRequest">Additional Request</label>
                         <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
