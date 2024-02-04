@@ -9,10 +9,10 @@
 </head>
 <body>
 
-    <!--sidebar
-    <!-- <div id="menu"> -->
+    <!--sidebar-->
+    
             <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-    <!-- </div>--> -->
+     
     <div class="home">
         <div class="container">
         <?php foreach ($data['packages'] as $package) : ?>
@@ -25,7 +25,7 @@
                     <div class="overlay"></div>
 
                     <div class="event-info">
-                        <p class="title"><?php echo $package->Name ?></p>
+                        <p class="title"><centre><?php echo $package->Name ?></centre></p>
                         <div class="separator"></div>
                             <!--<p class="info">Bellmore, NY</p>-->
                             <p class="price">Rs. <?php echo $package->Price; ?></p>
@@ -56,7 +56,7 @@
                 <div class="body-container">
                     <div class="overlay"></div>
                     <button class="action"><a href="<?php echo URLROOT ?>/packages/add ?>">Add New Package</a></button>
-                    </form>
+                    
                 </div>
             </div>
 
