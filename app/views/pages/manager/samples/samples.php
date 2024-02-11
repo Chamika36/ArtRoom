@@ -1,38 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/packages.css">
     <title>Samples</title>
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/samples.css">
 </head>
-
 <body>
-    <!-- <div class="container"> -->
-        <!-- <div id="menu"> -->
-            <!-- Sidebar -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        <!-- </div> -->
 
-        <div class="home">
-            <?php $sampleCount = count($data['samples']); ?>
-            <?php for ($i = 0; $i < $sampleCount; $i += 2) : ?>
-                <div class="row">
-                    <?php for ($j = $i; $j < $i + 2 && $j < $sampleCount; $j++) : ?>
-                        <div class="column">
-                            <div class="card">
-                                <h2><?php echo $data['samples'][$j]->SampleName ?></h2>
-                                <div style="text-align:center;"><img src="<?php echo URLROOT ?>/images/samples/<?php echo $data['samples'][$j]->ImagePath; ?>" alt="sample image"></div>
-                                <p><?php echo $data['samples'][$j]->Description; ?></p>
-                                <p><?php echo $data['samples'][$j]->Date; ?></p>
-                                <div>
-                                    <button class="button"><a href="<?php echo URLROOT ?>/samples/edit/<?php echo $data['samples'][$j]->SampleID; ?>">Edit Sample</a></button>
-                                    <form style="display: inline;" action="<?php echo URLROOT ?>/samples/delete/<?php echo $data['samples'][$j]->SampleID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $data['samples'][$j]->SampleName ?> sample?');">
-                                        <input type="hidden" name="sample_id" value="<?php echo $data['samples'][$j]->SampleID; ?>">
-                                        <input class="button" type="submit" value="Delete Sample">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endfor; ?>
+    <!--sidebar-->
+    
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
+     
+
+    <div class="home">
+        <div class="container">
+        <?php foreach ($data['samples'] as $sample) : ?>
+            <div class="item-container">
+                <!-- <div class="img-container">
+                    <img src="<?php //echo URLROOT ?>/images/samples/<?php echo $sample->ImagePath; ?>" alt="sample image">
+                </div> -->
+
+                <div class="img-container">
+                <img src="<?php echo URLROOT ?>/images/samples/<?php echo $sample->ImagePath; ?>" alt="sample image">
                 </div>
-            <?php endfor; ?>
+
+                <div class="body-container">
+                <div class="overlay"></div>
+
+
+                    <div class="event-info">
+                        <p class="title"><?php echo $sample->SampleName ?></p>
+                        <div class="separator"></div>
+                            <!--<p class="info">Bellmore, NY</p>-->
+                            <p class="price"><?php echo $sample->Description; ?></p>
+
+                            <div class="additional-info">
+                                <p class="info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <?php echo $sample->Date; ?>
+                                </p>
+                
+                            </div>
+                    </div>
+                    <button class="action"><a href="<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>">Edit</a></button>
+                    <form style="display: inline;" action="<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $sample->Name ?> sample?');">
+                        <input type="hidden" name="package_id" value="<?php echo $sample->SampleID; ?>">
+                        <input class="button" type="submit" value="Delete Sample">
+                    </form>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <div class="item-container">
+                <div class="img-container">
+                    <img src="https://static.vecteezy.com/system/resources/previews/000/554/223/original/plus-sign-vector-icon.jpg" alt="Event image">
+                </div>
+
+                <!-- <div class="body-container">
+                    <div class="overlay"></div>
+                    <button class="action"><a href="<!?php echo URLROOT ?>/samples/add ?>">Add New Sample</a></button>
+                    
+                </div> -->
+            </div>
+
         </div>
     </div>
 </body>
+</html>
+
+
+
+
+
+
+
