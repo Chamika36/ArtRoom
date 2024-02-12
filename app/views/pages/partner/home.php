@@ -88,7 +88,7 @@
 									<tr>
 										<td>
 											<i class='bx bxs-user-circle'></i>
-											<p><?php echo $event->Package; ?></p>
+											<p><?php echo $event->StartTime; ?></p>
 										</td>
 										<td><?php echo $event->EventDate; ?></td>
 										<td><span class="status <?php echo $event->Status; ?>"><?php echo $event->Status; ?></span></td>

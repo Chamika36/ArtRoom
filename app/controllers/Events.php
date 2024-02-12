@@ -5,6 +5,7 @@
             $this->userModel = $this->model('User');
             $this->packageModel = $this->model('Package');
             $this->partnerModel = $this->model('Partner');
+            $this->notificationModel = $this->model('Notification');
         }
                 
         public function index() {
@@ -139,11 +140,18 @@
                     $data['additionalRequest_err'] = 'Please enter additional request';
                 }
 
-                // Validate budget
+                // Notification data
+                $notification_data = [
+                    'user_id' => $_SESSION['user_id'],
+                    'type' => 'request',
+                    'content' => 'You have a new event request',
+                    'link' => 'events/viewCustomerEvents/' . $_SESSION['user_id'] . ''
+                ];
 
                 // Make sure errors are empty
                 if(empty($data['eventDate_err']) && empty($data['location_err'])) {
-                    if($this->eventModel->requestEvent($data)) {
+                    if($this->eventModel->requestEvent($data)
+                        && $this->notificationModel->createNotification($notification_data)) {
                         $data['location_err'] = 'Not executed';
                         flash('event_message', 'Event requested');
                         redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');

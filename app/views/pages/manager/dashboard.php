@@ -25,11 +25,21 @@
 
 		<!-- Notification Icon -->
 		<div class="notification-wrapper">
-        <div class="notification-icon">
-            <i class='bx bxs-bell'></i>
-            <span class="num"><b>8</b></span>
-        </div>
-    </div>
+			<div class="notification-icon">
+				<i class='bx bxs-bell'></i>
+				<span class="num"><b><?php echo $data['unreadNotificationCount']; ?></b></span>
+			</div>
+			<!-- Dropdown for notifications -->
+			<ul class="dropdown-menu">
+				<?php foreach($data['notifications'] as $notification) : ?>
+					<li>
+						<?php if($notification->Type === 'request') : ?>
+							<a href="<?php echo URLROOT ?>/events/view/<?php echo $notification->event_id; ?>"><?php echo $notification->Content?></a>
+						<?php endif; ?>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>

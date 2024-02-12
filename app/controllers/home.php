@@ -6,6 +6,7 @@ class Home extends Controller {
         $this->userModel = $this->model('User');
         $this->eventModel = $this->model('Event');
         $this->packageModel = $this->model('Package');
+        $this->notificationModel = $this->model('Notification');
     }
 
    public function index() {
@@ -73,6 +74,8 @@ class Home extends Controller {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
         $events = $this->eventModel->getLastFiveEvents();
+        $notifications = $this->notificationModel->getNotifications();
+        $unreadNotificationCount = $this->notificationModel->getNotificationCount();
 
         foreach ($events as $request) {
             $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
@@ -83,7 +86,9 @@ class Home extends Controller {
             'title' => 'Home',
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
-            'events' => $events
+            'events' => $events,
+            'notifications' => $notifications,
+            'unreadNotificationCount' => $unreadNotificationCount
         ];
         $this->view('pages/manager/dashboard', $data);
     }
