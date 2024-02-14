@@ -486,7 +486,10 @@
                         $this->eventModel->allocatePartners($data) &&
                         $this->eventModel->photographerAction($data) &&
                         $this->eventModel->editorAction($data) &&
-                        $this->eventModel->printingFirmAction($data)
+                        $this->eventModel->printingFirmAction($data) &&
+                        $this->sendAllocateNotification($data['photographer']) &&
+                        $this->sendAllocateNotification($data['editor']) &&
+                        $this->sendAllocateNotification($data['printingFirm'])
                         ) {
                             flash('event_message', 'Event allocated');
                             redirect('events');
@@ -549,6 +552,7 @@
                 }
 
                 if ($success) {
+                    $this->sendAllocateNotification($selectedPartner);
                     $response = ['success' => true, 'message' => 'Reallocated successfully'];
                 } else {
                     $response = ['success' => false, 'message' => 'Failed to reallocate'];
@@ -562,12 +566,30 @@
             }
         }
 
+        // Send notification on allocation to partner
+        public function sendAllocateNotification($partnerId) {
+            $notification_data = [
+                'user_id' => $partnerId,
+                'type' => 'request',
+                'content' => 'You have been allocated to an event',
+                'link' => 'events/viewPartnerEvents/' . $partnerId .''
+            ];
+
+            if($this->notificationModel->createNotification($notification_data)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         // Send quota and accept event
         public function sendQuota($id) {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Process form
                 // Sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $event = $this->eventModel->getEventById($id);
 
                 // Init data
                 $data = [
@@ -576,10 +598,18 @@
                     'revisedBudget' => $_POST['revisedBudget'],
                 ];
 
+                $notification_data = [
+                    'user_id' => $event->CustomerID,
+                    'type' => 'request',
+                    'content' => 'Your request has been confirmed.',
+                    'link' => 'events/viewCustomerEvents/' . $event->CustomerID . ''
+                ];
+
                 error_log(print_r($data, true));
 
                 // Make sure errors are empty
                 if($this->eventModel->sendQuota($data)) {
+                    $this->notificationModel->createNotification($notification_data);
                     flash('event_message', 'Quota sent');
                     redirect('events/viewEventbyManager/' . $id . '');
                 } else {

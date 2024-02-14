@@ -311,3 +311,40 @@ body {    margin: 0;
         font-size: 11px;
     }
     
+    .dropdown-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px 0;
+        width: 200px;
+        display: none;
+        z-index: 1000;
+    }
+    
+    .dropdown-menu.show {
+        display: block;
+    }
+    
+    
+    .dropdown-menu li {
+        list-style: none;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .dropdown-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-menu li a {
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .dropdown-menu li a:hover {
+        background-color: #f0f0f0;
+    }
+    

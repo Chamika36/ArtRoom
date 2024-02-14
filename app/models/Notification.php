@@ -34,6 +34,29 @@ class Notification {
         $result = $this->db->single();
         return $result->count;
     }
-}
 
-?>
+    public function markNotificationAsRead($notification_id){
+        $this->db->query('UPDATE notification SET Status = "read" WHERE NotificationID = :notification_id');
+        $this->db->bind(':notification_id', $notification_id);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getNotificationsByUserId($user_id){
+        $this->db->query('SELECT * from notification where UserID = :user_id');
+        $this->db->bind(':user_id', $user_id);
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
+    public function getUnreadNotificationCountByUserId($user_id){
+        $this->db->query('SELECT COUNT(*) AS count from notification where Status = "unread" AND UserID = :user_id');
+        $this->db->bind(':user_id', $user_id);
+        $result = $this->db->single();
+        return $result->count;
+    }
+
+}
