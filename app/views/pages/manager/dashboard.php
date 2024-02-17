@@ -34,7 +34,7 @@
 				<?php foreach($data['notifications'] as $notification) : ?>
 					<li>
 						<?php if($notification->Type === 'request') : ?>
-							<a href="<?php echo URLROOT ?>/events/view/<?php echo $notification->event_id; ?>"><?php echo $notification->Content?></a>
+							<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>"><?php echo $notification->Content?></a>
 						<?php endif; ?>
 					</li>
 				<?php endforeach; ?>

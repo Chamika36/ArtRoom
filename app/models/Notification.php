@@ -9,11 +9,12 @@ class Notification {
 
     // Method to create a new notification
     public function createNotification($notification) {
-        $this->db->query('INSERT INTO notification (UserID , Type, Content, Link) VALUES (:user_id, :type, :content, :link)');
+        $this->db->query('INSERT INTO notification (UserID , Type, Content, Link , EventID) VALUES (:user_id, :type, :content, :link, :event_id)');
         $this->db->bind(':user_id', $notification['user_id']);
         $this->db->bind(':type', $notification['type']);
         $this->db->bind(':content', $notification['content']);
         $this->db->bind(':link', $notification['link']);
+        $this->db->bind(':event_id', $notification['event_id']);
 
         if ($this->db->execute()) {
             return true;

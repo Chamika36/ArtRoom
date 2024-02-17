@@ -35,6 +35,35 @@
             $this->view('pages/manager/events/events', $data);
         }
 
+        public function loadEvent($id) {
+            $events = $this->eventModel->getAllEvents();
+            $ongoing = $this->eventModel->getOngoingEvents();
+            $requests = $this->eventModel->getOnlyRequests();
+            // Loop through the requests and format the date
+            foreach ($requests as $request) {
+                $request->EventDate = date('F j, Y', strtotime($request->EventDate));
+                // $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+            }
+
+            // Loop through the events and format the date
+            foreach ($events as $event) {
+                $event->EventDate = date('F j, Y', strtotime($event->EventDate));
+                // $event->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
+            }
+
+            $data = [
+                'title' => 'Home',
+                'eventID' => $id,
+                'ongoing' => $ongoing,
+                'requests' => $requests,
+                'events' => $events,
+                'type' => 'all'
+            ];
+
+            $this->view('pages/manager/events/events', $data);
+        }
+
+
         public function calendar($type) {
             $events = $this->eventModel->getAllEvents();
             $ongoing = $this->eventModel->getOngoingEvents();
@@ -140,21 +169,28 @@
                     $data['additionalRequest_err'] = 'Please enter additional request';
                 }
 
-                // Notification data
-                $notification_data = [
-                    'user_id' => $_SESSION['user_id'],
-                    'type' => 'request',
-                    'content' => 'You have a new event request',
-                    'link' => 'events/viewCustomerEvents/' . $_SESSION['user_id'] . ''
-                ];
-
+                // Make sure errors are empty
                 // Make sure errors are empty
                 if(empty($data['eventDate_err']) && empty($data['location_err'])) {
-                    if($this->eventModel->requestEvent($data)
-                        && $this->notificationModel->createNotification($notification_data)) {
-                        $data['location_err'] = 'Not executed';
-                        flash('event_message', 'Event requested');
-                        redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
+                    if($this->eventModel->requestEvent($data)) {
+                        // Get the last inserted ID
+                        $eventID = $this->eventModel->getLastInsertedId();
+                        
+                        // Notification data
+                        $notification_data = [
+                            'user_id' => $_SESSION['user_id'],
+                            'type' => 'request',
+                            'content' => 'You have a new event request',
+                            'link' => 'events/loadEvent/' . $eventID . '',
+                            'event_id' => $eventID
+                        ];
+
+                        if($this->notificationModel->createNotification($notification_data)) {
+                            flash('event_message', 'Event requested');
+                            redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
+                        } else {
+                            die('Something went wrong');
+                        }
                     } else {
                         die('Something went wrong');
                     }
@@ -162,6 +198,7 @@
                     // Load view with errors
                     $this->view('pages/customer/requestPage', $data);
                 }
+
             }
             else {
                 // Init data
@@ -487,9 +524,9 @@
                         $this->eventModel->photographerAction($data) &&
                         $this->eventModel->editorAction($data) &&
                         $this->eventModel->printingFirmAction($data) &&
-                        $this->sendAllocateNotification($data['photographer']) &&
-                        $this->sendAllocateNotification($data['editor']) &&
-                        $this->sendAllocateNotification($data['printingFirm'])
+                        $this->sendAllocateNotification($data['photographer'] , $id) &&
+                        $this->sendAllocateNotification($data['editor'] , $id) &&
+                        $this->sendAllocateNotification($data['printingFirm'] , $id)
                         ) {
                             flash('event_message', 'Event allocated');
                             redirect('events');
@@ -552,7 +589,7 @@
                 }
 
                 if ($success) {
-                    $this->sendAllocateNotification($selectedPartner);
+                    $this->sendAllocateNotification($selectedPartner, $eventId);
                     $response = ['success' => true, 'message' => 'Reallocated successfully'];
                 } else {
                     $response = ['success' => false, 'message' => 'Failed to reallocate'];
@@ -567,12 +604,13 @@
         }
 
         // Send notification on allocation to partner
-        public function sendAllocateNotification($partnerId) {
+        public function sendAllocateNotification($partnerId, $eventID) {
             $notification_data = [
                 'user_id' => $partnerId,
                 'type' => 'request',
                 'content' => 'You have been allocated to an event',
-                'link' => 'events/viewPartnerEvents/' . $partnerId .''
+                'link' => 'events/viewPartnerEvents/' . $partnerId .'',
+                'event_id' => $eventID
             ];
 
             if($this->notificationModel->createNotification($notification_data)) {
@@ -602,7 +640,8 @@
                     'user_id' => $event->CustomerID,
                     'type' => 'request',
                     'content' => 'Your request has been confirmed.',
-                    'link' => 'events/viewCustomerEvents/' . $event->CustomerID . ''
+                    'link' => 'events/viewEvent/' . $id . '',
+                    'event_id' => $id
                 ];
 
                 error_log(print_r($data, true));
@@ -611,7 +650,7 @@
                 if($this->eventModel->sendQuota($data)) {
                     $this->notificationModel->createNotification($notification_data);
                     flash('event_message', 'Quota sent');
-                    redirect('events/viewEventbyManager/' . $id . '');
+                    redirect('events/loadEvent/' . $id . '');
                 } else {
                     die('Something went wrong');
                 }
