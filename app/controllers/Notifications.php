@@ -22,10 +22,12 @@
 
         public function markAsRead($notification_id) {
             // Mark the notification as read
-            $this->notificationModel->markNotificationAsRead($notification_id);
-    
-            // Redirect back to the notifications page or to the relevant page
-            redirect('notifications/index');
+            if($this->notificationModel->markNotificationAsRead($notification_id)){
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
         public function markAllAsRead() {

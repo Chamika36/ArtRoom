@@ -23,22 +23,22 @@
 
 
 		<!-- Notification Icon -->
-			<div class="notification-wrapper">
-				<div class="notification-icon">
-					<i class='bx bxs-bell'></i>
-					<span class="num"><b><?php echo $data['unreadNotificationCount']; ?></b></span>
-				</div>
-				<!-- Dropdown for notifications -->
-				<ul class="dropdown-menu">
-					<?php foreach($data['notifications'] as $notification) : ?>
-						<?php if($notification->Type === 'allocate') : ?>
-							<li>
-								<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>"><?php echo $notification->Content?></a>
-							</li>
-						<?php endif; ?>
-					<?php endforeach; ?>
-				</ul>
+		<div class="notification-wrapper">
+			<div class="notification-icon">
+				<i class='bx bxs-bell'></i>
+				<span class="num"><b><?php echo $data['unreadNotificationCount']; ?></b></span>
 			</div>
+			<!-- Dropdown for notifications -->
+			<ul class="dropdown-menu">
+				<?php foreach($data['notifications'] as $notification) : ?>
+					<?php if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment') : ?>
+					<li>
+						<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+					</li>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 
 			<div class="head-title">
 				<div class="left">
@@ -142,6 +142,9 @@
 
 	</section>
 </div>
+	<script>
+		var URLRoot=<?php echo json_encode(URLROOT);?>;
+	</script>
 	<script src="<?php echo URLROOT ?>/js/notifications.js"></script>
 </body>
 </html>
