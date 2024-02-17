@@ -31,11 +31,11 @@
 				<!-- Dropdown for notifications -->
 				<ul class="dropdown-menu">
 					<?php foreach($data['notifications'] as $notification) : ?>
-						<li>
-							<?php if($notification->Type === 'request') : ?>
-								<a href="<?php echo URLROOT ?>/events/view/<?php echo $notification->link; ?>"><?php echo $notification->Content?></a>
-							<?php endif; ?>
-						</li>
+						<?php if($notification->Type === 'allocate') : ?>
+							<li>
+								<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>"><?php echo $notification->Content?></a>
+							</li>
+						<?php endif; ?>
 					<?php endforeach; ?>
 				</ul>
 			</div>

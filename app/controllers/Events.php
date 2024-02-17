@@ -178,7 +178,7 @@
                         
                         // Notification data
                         $notification_data = [
-                            'user_id' => $_SESSION['user_id'],
+                            'user_id' => '16',
                             'type' => 'request',
                             'content' => 'You have a new event request',
                             'link' => 'events/loadEvent/' . $eventID . '',
@@ -580,6 +580,16 @@
                 if($partnerType == 3) {
                     $data['photographer'] = $selectedPartner;
                     $this->eventModel->photographerAction($data);
+
+                    $notification_data_customer = [
+                        'user_id' => $this->eventModel->getEventById($eventID)->CustomerID,
+                        'type' => 'allocate',
+                        'content' => 'A new photographer has been allocated.',
+                        'link' => 'events/viewEvent/' . $eventID . '',
+                        'event_id' => $eventID
+                    ];
+                    $this->notificationModel->createNotification($notification_data_customer);
+
                 } else if($partnerType == 4) {
                     $data['editor'] = $selectedPartner;
                     $this->eventModel->editorAction($data);
@@ -607,7 +617,7 @@
         public function sendAllocateNotification($partnerId, $eventID) {
             $notification_data = [
                 'user_id' => $partnerId,
-                'type' => 'request',
+                'type' => 'allocate',
                 'content' => 'You have been allocated to an event',
                 'link' => 'events/viewPartnerEvents/' . $partnerId .'',
                 'event_id' => $eventID
@@ -638,7 +648,7 @@
 
                 $notification_data = [
                     'user_id' => $event->CustomerID,
-                    'type' => 'request',
+                    'type' => 'quota',
                     'content' => 'Your request has been confirmed.',
                     'link' => 'events/viewEvent/' . $id . '',
                     'event_id' => $id

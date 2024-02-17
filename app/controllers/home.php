@@ -88,8 +88,8 @@ class Home extends Controller {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
         $events = $this->eventModel->getLastFiveEvents();
-        $notifications = $this->notificationModel->getNotifications();
-        $unreadNotificationCount = $this->notificationModel->getNotificationCount();
+        $notifications = $this->notificationModel->getNotificationByManager();
+        $unreadNotificationCount = $this->notificationModel->getNotificationCountByManager();
 
         foreach ($events as $request) {
             $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;

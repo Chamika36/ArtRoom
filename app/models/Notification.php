@@ -46,6 +46,19 @@ class Notification {
         }
     }
 
+    public function getNotificationByManager(){
+        $this->db->query('SELECT * from notification where Type = "action" OR Type = "request" OR Type = "payment"');
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
+    //get notification count ny manager
+    public function getNotificationCountByManager(){
+        $this->db->query('SELECT COUNT(*) AS count from notification where Type = "action" OR Type = "request" OR Type = "payment"');
+        $result = $this->db->single();
+        return $result->count;
+    }
+
     public function getNotificationsByUserId($user_id){
         $this->db->query('SELECT * from notification where UserID = :user_id');
         $this->db->bind(':user_id', $user_id);

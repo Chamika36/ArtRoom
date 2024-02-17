@@ -178,6 +178,7 @@
             $this->db->bind(':eventID', $data['eventID']);
         
             if ($this->db->execute()) {
+                redirect('events/loadEvent/'.$data['eventID']);
                 return true;
             } else {
                 return false;
