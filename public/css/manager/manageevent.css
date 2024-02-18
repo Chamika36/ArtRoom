@@ -1,0 +1,133 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container2 {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container2 > div {
+  width: calc(50% - 15px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.event-details,
+.budget {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.event-details h3,
+.partners h3,
+.form-group label,
+.budget h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.event-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-details ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Additional Charges Form Styles */
+.additional-charges {
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start; /* Align items to the start of the flex container */
+}
+
+.additional-charges label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.additional-charges input {
+  width: calc(33% - 10px); /* Adjust the width as needed */
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+
+.additional-charges button {
+  margin-top: 10px;
+}
+
+
+#additionalChargesDisplay p {
+  margin: 5px 0;
+}
+
+select{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.button,
+.reallocate-button {
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+}
+
+input[type="submit"]:hover,
+.button:hover,
+.reallocate-button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}

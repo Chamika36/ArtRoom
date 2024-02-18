@@ -29,6 +29,11 @@
             }
         }
 
+        // get last inserted event id
+        public function getLastInsertedId() {
+            return $this->db->lastInsertId();
+        }
+
         // send qouta
         public function sendQuota($data) {
             $this->db->query('UPDATE Event SET AdditionalCharges = :additionalCharges, Status = "Accepted", TotalBudget = :revisedBudget WHERE EventID = :eventID');
@@ -173,6 +178,7 @@
             $this->db->bind(':eventID', $data['eventID']);
         
             if ($this->db->execute()) {
+                redirect('events/loadEvent/'.$data['eventID']);
                 return true;
             } else {
                 return false;

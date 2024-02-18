@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Event</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manageevent.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manager/manageevent.css">
     <style>
         
     </style>
 </head>
 <body>
     <div class="container2">
-        <h2>Manage Event</h2>
+        <!-- <h2>Manage Event</h2> -->
         <div class="event-details">
             <h3>Event Details</h3>
             <ul>
@@ -104,7 +104,37 @@
                         ?>
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
+                    <th>Additional Charges</th>
+                    <td> -->
+                        <?php 
+                        $json = $data['event']->AdditionalCharges;
+                        $json = html_entity_decode($json);
+                        $additionalCharges = json_decode($json, true);
+                        
+                        if (!empty($additionalCharges)) {
+                            echo '<tr>';
+                            echo '<th>Additional Charges</th>';
+                            echo '<td>';
+                            echo '<table>';
+                            echo '<tr><th>Reason</th><th>Price</th><th>Quantity</th><th>Total</th></tr>';
+                            
+                            foreach ($additionalCharges as $charge) {
+                                echo '<tr>';
+                                echo '<td>' . $charge['reason'] . '</td>';
+                                echo '<td>' . $charge['price'] . '</td>';
+                                echo '<td>' . $charge['quantity'] . '</td>';
+                                echo '<td>' . $charge['total'] . '</td>';
+                                echo '</tr>';
+                            }
+                            
+                            echo '</table>';
+                            echo '</td>';
+                            echo '</tr>';
+                        } 
+                        ?>
+                    <!-- </td>
+                <tr> -->
                     <th>Total Budget</th>
                     <td><?php echo $data['event']->TotalBudget; ?></td>
                 </tr>
@@ -112,8 +142,8 @@
 
             <?php if ($data['event']->Status === 'Pencil') : ?>
                 <form id="additionalChargesForm" action="<?php echo URLROOT; ?>/events/sendQuota/<?php echo $data['event']->EventID; ?>" method="post">
+                <h3>Additional Charges</h3>
                     <div class="additional-charges">
-                        <h3>Additional Charges</h3>
                         <label for="charge-name">Reason:</label>
                         <input type="text" id="reason">
 
@@ -123,22 +153,28 @@
                         <label for="charge-quantity">Quantity:</label>
                         <input type="number" id="quantity" min="0" value="1">
 
-                        <button type="button" class="button" onclick="addAdditionalCharge()">Add Charge</button>
+                        <button type="button" class="button" onclick="addAdditionalCharge()">+</button>
                     </div>
 
                     <div id="additionalChargesDisplay">
                         <!-- Display selected extras with quantities -->
                     </div>
 
+                    <input type="hidden" id="additionalCharges" name="additionalCharges" value="[]">
+
                     <label for="revisedBudget">Revised Budget:</label>
                     <input type="number" id="revisedBudget" name="revisedBudget" value="<?php echo $data['event']->TotalBudget; ?>" readonly>
-
-                    <input id="additionalCharges" name="additionalCharges" value="" readonly>
 
                     <button type="submit" class="button">Send Quota to Customer</button>
                 </form>
             <?php endif; ?>
-
+            
+            <!-- cancel event -->
+            <form action="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled" method="POST">
+                <div class="form-group">
+                    <input class="button" type="submit" value="Cancel Event">
+                </div>
+            </form>
 
         </div>
 
@@ -149,7 +185,7 @@
         $(document).ready(function () {
             // Reallocate partners
             $('.reallocate-button').on('click', function (e) {
-                // e.preventDefault();
+                e.preventDefault();
 
                 var partnerType = $(this).data('partner-type');
                 var partnerTypeName = $(this).data('partner-type-name');
@@ -176,13 +212,15 @@
                     // Update the view based on the response
                     // You can display a success message or handle the view update as needed
                     console.log(data);
-                    location.reload();
+                    //location.reload();
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
             });
         });
+
+        
 
         // Add additional charge
         let additionalCharges = [];

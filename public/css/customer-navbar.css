@@ -45,14 +45,19 @@ header * {
   display: inline;
 }
 
+header li .left{
+  float: left;
+}
+
 header li {
   margin: 5px;
   font-size: 17px;
   font-weight: 500;
   white-space: nowrap;
   opacity: 1;
-  
 }
+
+
 
 header li a {
   color: #ccc;
