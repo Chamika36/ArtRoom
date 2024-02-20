@@ -31,7 +31,7 @@
 			<!-- Dropdown for notifications -->
 			<ul class="dropdown-menu">
 				<?php foreach($data['notifications'] as $notification) : ?>
-					<?php if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment') : ?>
+					<?php if($notification->Type ===  'allocate' ):?>
 					<li>
 						<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
 					</li>
