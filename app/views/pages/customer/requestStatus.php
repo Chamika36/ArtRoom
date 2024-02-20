@@ -16,6 +16,13 @@
 
 
 </head>
+
+<style>
+.details{
+    color: rgb(105, 105, 105);
+    
+}
+</style>
     <body>
             <div>
                 <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
@@ -25,9 +32,7 @@
                 <h2 class="rescheduleRequest">Status of the Request</h2>
 
                 <div class="container">
-
-                            <div class="status-container">
-                                
+                    <div class="status-container">
                                     <div class="status-item request-sent">
                                         <i class="fas fa-check-circle"></i> Request sent
                                     </div>
@@ -49,45 +54,58 @@
                                     <div class="status-item order-completed">
                                         <i class="fas fa-check-circle"></i> Order Completed
                                     </div>
-                            </div>
+                    </div>
 
-                            <div class="payment-container">
-                                <?php
-                                if ($data['event']->Status == 'Accepted') { 
-                                    echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
-                                    $advancedPayment = $data['event']->TotalBudget*0.1;
-                                    echo '<p> Advanced Payment : ' . $advancedPayment . '</p>';
-                                    echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '"><button><b>Make Payment</b></button></a>';
-                                } else if($data['event']->Status == 'Advanced'){
-                                    echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
-                                    $advancedPayment = $data['event']->TotalBudget*0.1;
-                                    $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
-                                    echo '<p> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
-                                    echo '<P> Remaining Payment : ' . $remainingPayment . '</p>';
-                                    echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '"><button><b>Make Payment</b></button></a>';
-                                } else if($data['event']->Status == 'FullPaid'){
-                                    echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
-                                    $advancedPayment = $data['event']->TotalBudget*0.1;
-                                    $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
-                                    echo '<p> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
-                                    echo '<P> Remaining Payment : ' . $remainingPayment . ' *paid </p>';
-                                    echo '<p> Fully Paid </p>';
-                                } else if($data['event']->Status == 'Canceled'){
-                                    echo '<p> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
-                                    echo '<p> Canceled </p>';
-                                } else if($data['event']->Status == 'Pencil'){
-                                    echo '<p> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
-                                    echo '<p> Yet to confirm the event </p>';
-                                }
+                    <div class="payment-container">
 
-                                ?>
-                                <a href="<?php echo URLROOT ?>/events/updateEventStatus/<?php echo $data['event']->EventID ?>/Canceled"><button><b>Cancel Request</b></button></a>
-                                <a href="<?php echo URLROOT ?>/events/rescheduleRequest/<?php echo $data['event']->EventID ?>"><button><b>Reschedule Request</b></button></a>
+                            <div class="payment-header">
+                                <div class="payment-header-icon">
+                                <img class="logo" src="<?php echo URLROOT ?>/images/logo.png"></div>
+                                <div class="payment-header-title">Payment Summary</div>
                             </div>
+                                    
+                            <div class="payment-content">
+                                        <?php
+                                        if ($data['event']->Status == 'Accepted') { 
+                                            echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                            $advancedPayment = $data['event']->TotalBudget*0.1;
+                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . '</p>';
+                                            echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '" ><button class="make-payment-btn"><b>Make Payment</b></button></a>';
+
+                                        } else if($data['event']->Status == 'Advanced'){
+                                            echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                            $advancedPayment = $data['event']->TotalBudget*0.1;
+                                            $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
+                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
+                                            echo '<P class="details"> Remaining Payment : ' . $remainingPayment . '</p>';
+                                            echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '" ><button class="make-payment-btn"><b>Make Payment</b></button></a>';
+
+                                        } else if($data['event']->Status == 'FullPaid'){
+                                            echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                            $advancedPayment = $data['event']->TotalBudget*0.1;
+                                            $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
+                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
+                                            echo '<P class="details"> Remaining Payment : ' . $remainingPayment . ' *paid </p>';
+                                            echo '<p class="details"> Fully Paid </p>';
+                                        } else if($data['event']->Status == 'Canceled'){
+                                            echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                            echo '<p class="details"> Canceled </p>';
+                                        } else if($data['event']->Status == 'Pencil'){
+                                            echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
+                                            echo '<p class="details"> Yet to confirm the event </p>';
+                                        }
+
+                                        ?>
+                                        <div class="can-res-buttons">
+                                        <div><a href="<?php echo URLROOT ?>/events/updateEventStatus/<?php echo $data['event']->EventID ?>/Canceled"><button class="make-payment-btn"><b>Cancel Request</b></button></a></div>
+                                        
+                                        <div><a href="<?php echo URLROOT ?>/events/rescheduleRequest/<?php echo $data['event']->EventID ?>"><button class="make-payment-btn"><b>Reschedule Request</b></button></a></div>
+                                            
+                                        </div>
+                            </div>
+                    </div>        
                 </div>
                     
-                
-            
     </body>
 
 </html>
