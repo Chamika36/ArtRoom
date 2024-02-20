@@ -9,20 +9,14 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dashboard.css">
 </head>
 <body>
-        
-		<!--sidebar-->
-        <!-- <div id="menu"> -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        <!-- </div> -->
 
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
 	<div class="home">
     <section id="content">
 		
 	<!--MAIN -->
 		<main>
-
-
 		<!-- Notification Icon -->
 		<div class="notification-wrapper">
 			<div class="notification-icon">
