@@ -7,24 +7,14 @@
 </head>
 
 <body>
-    <!-- <div class="container"> -->
-        <!-- Header -->
-        <!-- <div id="header">
-            <//?php include(APPROOT . '/views/include/sidebar/manager-navbar.php'); ?>
-        </div> -->
-        
-        <!-- <div id="menu"> -->
-            <!-- Sidebar -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        <!-- </div> -->
 
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
-        <div class="home">
-            <!-- Calendar -->
-            <?php include('calendar.php'); ?>
-        </div>
-<!-- 
-    </div> -->
+    <div class="home">
+        <!-- Calendar -->
+        <?php include('calendar.php'); ?>
+    </div>
+
 
 
 </body>

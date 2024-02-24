@@ -6,6 +6,7 @@
             $this->eventModel = $this->model('Event');
             $this->userModel = $this->model('User');
             $this->packageModel = $this->model('Package');
+            $this->notificationModel = $this->model('Notification');
         }
 
         public function index(){
@@ -93,8 +94,19 @@
                     'CustomerID' => $this->eventModel->getEventById($EventID)->CustomerID,
                     'Status' =>  $Status
                 ];
+
+                // notify manager
+                $notification_data =[
+                    'user_id' => '16',
+                    'type' => 'payment',
+                    'content' => 'Customer has made a payment for the event',
+                    'link' => 'events/loadEvent/'.$EventID,
+                    'event_id' => $EventID
+                ];
         
-                if($this->paymentModel->paymentSuccess($data)){
+                if($this->paymentModel->paymentSuccess($data)
+                    && $this->notificationModel->createNotification($notification_data))
+                {
                     // Send a success response back to the client
                     echo json_encode(['status' => 'success']);
                 } else {
