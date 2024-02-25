@@ -68,28 +68,45 @@ body{
     padding: 0 10px;
 }
 
-
-.form-submit-btn input{
-    cursor: pointer;
-}
-
-.form-submit-btn{
-    margin-top: 40px;
-}
-
-.form-submit-btn input{
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    font-size: 20px;
-    padding: 10px;
-    border:none;
-    border-radius: 10px;
-    color:  #242526;
+.cancel-btn {
+    margin-right: 50px; /* Adjust the margin as needed to move the button more to the left */
     background: #a87723;
 }
 
-.form-submit-btn input:hover{
+.update-btn {
+    width: calc(100% - 50px); 
+    background: #a87723;
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.save-btn {
+    width: 150px; /* Increase width as needed */
+    background: #a87723;
+    padding: 10px; /* Adjust padding as needed */
+
+}.save-btn {
+    width: 200px; /* Increase width as needed */
+    background: #a87723;
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.form-submit-btn {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-submit-btn input {
+    width: 48%;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: #242526;
+    cursor: pointer;
+}
+
+.form-submit-btn input:hover {
     background: #f9b234;
     color: rgb(255, 255, 255);
 }

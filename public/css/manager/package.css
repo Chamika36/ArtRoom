@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-size: 16px;
+    background: #eee;
+    color: #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.packages-container {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.package {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 100%;
+    margin: 20px;
+    overflow: hidden;
+    width: 70%;
+    
+    
+}
+
+.package h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.package h2 {
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+.package-preview {
+    background-color: #f9b234;
+    color: #242526;
+    padding: 30px;
+    max-width: 300px;
+    width: 30%;
+}
+
+.package-info {
+    background-color: #242526;
+    color: #ccc;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+
+.btn1 {
+    background-color: #3b3d3e;
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 25px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn {
+    background-color: #3b3d3e;
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 25px;
+    position: absolute;
+    bottom: 30px;
+    right: 150px;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #f9b234;
+    color: #242526;
+}
+
+.btn1:hover {
+    background-color: #f9b234;
+    color: #242526;
+}
+
+.add-package-btn {
+    background-color: #3b3d3e;
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 18px; /* Increased font size */
+    padding: 15px 30px; /* Increased padding */
+    margin-top: 40px; /* Increased margin-top to add more space */
+    margin-right: 20px;
+    float: right;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+.add-package-btn:hover {
+    background-color: #987230;
+    color: #ffffff;
+}
