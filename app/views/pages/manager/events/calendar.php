@@ -38,6 +38,10 @@
         var ongoingData = <?php echo json_encode($data['ongoing']); ?>;
         var requestData = <?php echo json_encode($data['requests']); ?>;
         var manageUrl = <?php echo json_encode(URLROOT . '/events/manageevent/'); ?>;
+        <?php if (isset($data['eventID'])) : ?>
+            var eventId = <?php echo json_encode($data['eventID']); ?>;
+        <?php endif; ?>
+
         console.log("Event Data:", eventData);
         var showEvents = $('#showEvents').prop('checked');
         var showRequests = $('#showRequests').prop('checked');
@@ -50,6 +54,8 @@
                 theme: 'Midnight Blue',
                 format: 'yyyy-mm-dd'
             });
+
+            $('#calendar').evoCalendar('selectMonth', 1); 
 
             // Add events to the calendar
             if (showEvents) {
@@ -181,6 +187,7 @@
             //     updateCalendar();
             // });
 
+
             $(document.body).on('change', '#showEvents, #showRequests', function () {
                 console.log('Checkbox changed');
                 updateCalendar();
@@ -204,6 +211,20 @@
                     location.reload();
                 }
             });
+
+            function openModal(eventId) {
+                if (eventId) {
+                    // Open a new window or modal and load the external PHP file
+                    var popupUrl = manageUrl + eventId;
+                    $('#eventDetails').load(popupUrl, function () {
+                        $('#eventModal').css('display', 'block');
+                    });
+                }
+            }
+
+            if(eventId){
+                openModal(eventId);
+            }
 
         });
     </script>

@@ -1,0 +1,133 @@
+.rescheduleRequest {
+    width: 500px;
+    height: 48px;
+    flex-shrink: 0;
+    color: #000;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.6px;
+    mix-blend-mode: darken;
+    margin-left: 10%;
+    margin-top: 90px;
+}
+
+.container {
+display: flex;
+justify-content: space-evenly;
+}
+
+
+.status-container {
+background-color: #ffffff;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+padding: 20px;
+border-radius: 10px;
+width: 35%;
+}
+
+
+.status-item {
+    display: flex;
+    align-items: center;
+    margin: 40px;
+    margin-left: 5%;
+    
+}
+
+.status-item i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.payment-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: #9fdfeb; */
+}
+
+.payment-header {
+    padding: 30px;
+    background-color: #f9b234;
+    border-radius: 12px;
+    padding-bottom: 30px;
+    width: 100%;
+    z-index: -1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust the values as needed */
+}
+
+
+.payment-header-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgb(181, 109, 36);
+    color: rgb(76, 74, 74);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.payment-header-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.payment-content {
+    font-family: "Poppins", sans-serif;
+    padding: 24px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+    border-radius: 5px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: #faf9f9;
+}
+
+.can-res-buttons{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.make-payment-btn{
+    background-color: #242526;
+    border-radius: 8px;
+    outline: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+    font-weight: 600;
+    padding: 16px;
+    transition: all .15s ease-in-out;
+    margin: 4px;
+}
+
+.make-payment-btn:hover{
+    background-color: #f9b234;
+    color:#000;
+}
+
+.details{
+    color: rgb(105, 105, 105);
+    margin-right: 20px;
+}
+
+.logo{
+    width: 55px;
+    height: 55px;
+}

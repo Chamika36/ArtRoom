@@ -31,7 +31,7 @@
         }   
 
         .container {
-            position: relative;
+            
             max-width: 700px;
             width: 100%;
             background: #fff;
@@ -41,7 +41,7 @@
             margin-top: 80px;
         }
 
-        .container h2{
+        .container h1{
             font-size: 1.5rem;
             color: #333;
             font-weight: 500;
@@ -66,7 +66,7 @@
         }
 
         .form .input-box input{
-            position: relative;
+            
             height: 50px;
             width:100%;
             outline: none;
@@ -173,7 +173,7 @@
             
         <div class="container">   
                     <div>
-                        <h2>Request for a Booking</h2>
+                        <h1>Request for a Booking</h1>
                     </div>    
         
                 <form class="form" action="<?php echo URLROOT; ?>/events/request" method="POST">
@@ -254,6 +254,8 @@
                     <div id="selectedExtrasDisplay">
                         <!-- Display selected extras with quantities -->
                     </div>
+
+                    <input type="hidden" id="selectedExtras" name="selectedExtras" value="[]">
 
                     <div class="input-box">
                         <label for="additionalRequest">Additional Request</label>

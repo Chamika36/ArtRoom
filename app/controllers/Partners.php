@@ -8,6 +8,7 @@ class Partners extends Controller {
         $this->packageModel = $this->model('Package');
         $this->sampleModel = $this->model('Sample');
         $this->partnerModel = $this->model('Partner');
+        $this->notificationModel = $this->model('Notification');
     }
 
     // view index
@@ -37,6 +38,14 @@ class Partners extends Controller {
 
     // photographer action handler
     public function updatePartnerAction($user_type_id, $event_id, $action , $comment) {
+        $notification_data = [
+            'user_id' => '16',
+            'type' => 'action',
+            'content' => 'Your event has been updated',
+            'link' => 'events/loadEvent/'.$event_id,
+            'event_id' => $event_id
+        ];
+        
         switch ($user_type_id) {
             case 3:
                 $this->partnerModel->updatePhotographerAction($event_id, $action , $comment);
@@ -48,7 +57,9 @@ class Partners extends Controller {
                 $this->partnerModel->updatePrintingFirmAction($event_id, $action, $comment);
                 break;
         }
-        $this->viewPartnerEvents($_SESSION['user_id']);
+        
+        $this->notificationModel->createNotification($notification_data);
+        redirect('partners/viewEvent/'.$event_id);
     }
 
     public function samples(){

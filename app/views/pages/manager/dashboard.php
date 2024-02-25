@@ -9,27 +9,32 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/dashboard.css">
 </head>
 <body>
-        
-		<!--sidebar-->
-        <!-- <div id="menu"> -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        <!-- </div> -->
 
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
 	<div class="home">
     <section id="content">
 		
 	<!--MAIN -->
 		<main>
-
-
 		<!-- Notification Icon -->
 		<div class="notification-wrapper">
-        <div class="notification-icon">
-            <i class='bx bxs-bell'></i>
-            <span class="num"><b>8</b></span>
-        </div>
-    </div>
+			<div class="notification-icon">
+				<i class='bx bxs-bell'></i>
+				<span class="num"><b><?php echo $data['unreadNotificationCount']; ?></b></span>
+			</div>
+			<!-- Dropdown for notifications -->
+			<ul class="dropdown-menu">
+				<?php foreach($data['notifications'] as $notification) : ?>
+					<?php if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment') : ?>
+					<li>
+						<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+					</li>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
@@ -127,6 +132,9 @@
 
 	</section>
 </div>
-	<script src="/js/manager/script.js"></script>
+	<script>
+		var URLRoot=<?php echo json_encode(URLROOT);?>;
+	</script>
+	<script src="<?php echo URLROOT ?>/js/notifications.js"></script>
 </body>
 </html>

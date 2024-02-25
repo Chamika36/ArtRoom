@@ -6,6 +6,7 @@ class Home extends Controller {
         $this->userModel = $this->model('User');
         $this->eventModel = $this->model('Event');
         $this->packageModel = $this->model('Package');
+        $this->notificationModel = $this->model('Notification');
     }
 
    public function index() {
@@ -17,7 +18,7 @@ class Home extends Controller {
         if(isset($_SESSION['user_type_id'])) {
             switch($_SESSION['user_type_id']) {
                 case 1:
-                    $this->view('pages/customer/home', $data);
+                    redirect('home/customer');
                     break;
                 case 2:
                     redirect('home/manager');
@@ -69,10 +70,26 @@ class Home extends Controller {
         $this->view('pages/customer/home3', $data);
     }
 
+    public function customer() {
+        $packages = $this->packageModel->getPackages();
+        $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
+        $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
+
+        $data = [
+            'title' => 'Home',
+            'packages' => $packages,
+            'notifications' => $notifications,
+            'unreadNotificationCount' => $unreadNotificationCount
+        ];
+        $this->view('pages/customer/home', $data);
+    }
+
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
         $events = $this->eventModel->getLastFiveEvents();
+        $notifications = $this->notificationModel->getNotificationByManager();
+        $unreadNotificationCount = $this->notificationModel->getNotificationCountByManager();
 
         foreach ($events as $request) {
             $request->Package = $this->packageModel->getPackageById($request->PackageID)->Name;
@@ -83,7 +100,9 @@ class Home extends Controller {
             'title' => 'Home',
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
-            'events' => $events
+            'events' => $events,
+            'notifications' => $notifications,
+            'unreadNotificationCount' => $unreadNotificationCount
         ];
         $this->view('pages/manager/dashboard', $data);
     }
@@ -93,13 +112,17 @@ class Home extends Controller {
         $requestCount = $this->eventModel->getRequestCountByPartner($_SESSION['user_id']);
         $events = $this->eventModel->getLastFiveEventsByPartner($_SESSION['user_id']);
         $packages = $this->packageModel->getPackages();
+        $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
+        $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
 
         $data = [
             'title' => 'Home',
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
             'events' => $events,
-            'packages' => $packages
+            'packages' => $packages,
+            'notifications' => $notifications,
+            'unreadNotificationCount' => $unreadNotificationCount
         ];
         $this->view('pages/partner/home', $data);
     }
