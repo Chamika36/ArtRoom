@@ -33,12 +33,14 @@
                     <div class="event-info">
                         <p class="title"><?php echo $sample->SampleName ?></p>
                         <div class="separator"></div>
-                            <!--<p class="info">Bellmore, NY</p>-->
-                            <p class="price"><?php echo $sample->Description; ?></p>
+                            <p class="info">ArtRoom Photography</p>
+                            
 
                             <div class="additional-info">
                                 <p class="info">
                                     <i class="fas fa-map-marker-alt"></i>
+                                    <?php echo $sample->Description; ?></p>
+                                <p class="info description">    
                                     <?php echo $sample->Date; ?>
                                 </p>
                 
@@ -68,10 +70,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
