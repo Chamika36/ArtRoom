@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/samples.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Samples</title>
 </head>
 <body>
@@ -15,6 +16,11 @@
      
 
     <div class="home">
+        
+
+        <button class="add-package-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/add'">
+            <i class="fas fa-plus"></i><b>  Add New Sample</b></button>
+
         <div class="container">
         <?php foreach ($data['samples'] as $sample) : ?>
             <div class="item-container">
@@ -46,24 +52,22 @@
                 
                             </div>
                     </div>
-                    <button class="action"><a href="<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>">Edit</a></button>
-                    <form style="display: inline;" action="<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $sample->Name ?> sample?');">
-                        <input type="hidden" name="package_id" value="<?php echo $sample->SampleID; ?>">
-                        <input class="button" type="submit" value="Delete Sample">
-                    </form>
+                    <div class="button-container">
+    <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
+</div>
+<div class="button-container">
+    <form style="display: inline;" action="<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $sample->Name ?> sample?');">
+        <input type="hidden" name="sample_id" value="<?php echo $sample->SampleID; ?>">
+        <button class="action delete-button" type="submit">Delete</button>
+    </form>
+</div>
+
+
+
                 </div>
             </div>
         <?php endforeach; ?>
-        <div class="item-container">
-                <div class="img-container">
-                    <img src="https://static.vecteezy.com/system/resources/previews/000/554/223/original/plus-sign-vector-icon.jpg" alt="Event image">
-                </div>
-
-                <!-- <div class="body-container">
-                    <div class="overlay"></div>
-                    <button class="action"><a href="<!?php echo URLROOT ?>/samples/add ?>">Add New Sample</a></button>
-                    
-                </div> -->
+        
             </div>
 
         </div>
