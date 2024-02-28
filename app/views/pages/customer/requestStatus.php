@@ -99,7 +99,7 @@
                                         <div class="can-res-buttons">
                                         <div><a href="<?php echo URLROOT ?>/events/updateEventStatus/<?php echo $data['event']->EventID ?>/Canceled"><button class="make-payment-btn"><b>Cancel Request</b></button></a></div>
                                         
-                                        <div><a href="<?php echo URLROOT ?>/events/rescheduleRequest/<?php echo $data['event']->EventID ?>"><button class="make-payment-btn"><b>Reschedule Request</b></button></a></div>
+                                        <div><a href="<?php echo URLROOT ?>/reschedules/reschedule/<?php echo $data['event']->EventID ?>"><button class="make-payment-btn"><b>Reschedule Request</b></button></a></div>
                                             
                                         </div>
                             </div>

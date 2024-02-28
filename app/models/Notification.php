@@ -47,7 +47,7 @@ class Notification {
     }
 
     public function getNotificationByManager(){
-        $this->db->query('SELECT * from notification where Status = "unread" AND (Type = "action" OR Type = "request" OR Type = "payment")');
+        $this->db->query('SELECT * from notification where Status = "unread" AND (Type = "action" OR Type = "request" OR Type = "payment" OR Type = "reschedule")');
         $result = $this->db->resultSet();
         return $result;
     }
