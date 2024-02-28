@@ -27,9 +27,9 @@
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
                 <li><strong>Reschedule Request Status: </strong>  <?php echo $reschedule->ApprovalStatus; ?></li>
                 <li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?></li>
-                <?php //if($reschedule->ApprovalStatus == 'PhotographerDeclined') :?>
-                <div class="form-group">
-                    <label for="photographer">Reallocate Photographer:</label>
+                <?php if($reschedule->ApprovalStatus == 'PhotographerDeclined') :?>
+                <div class="">
+                    <label for="photographer"><li><strong>Reallocate Photographer:</strong></li></label>
                     <select name="photographer" id="photographer" required>
                         <option value="">Select a photographer</option>
                         <?php foreach ($data['photographers'] as $photographer) : ?>
@@ -38,7 +38,7 @@
                     </select>
                     <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reallocate</button>
                 </div>
-                <?php// endif ?>
+                <?php endif ?>
             </ul>
         </div>
 

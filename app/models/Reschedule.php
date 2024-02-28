@@ -49,4 +49,19 @@
                 return false;
             }
         }
+
+        public function confirmReschedule($eventID, $reschedule){
+            $this->db->query('UPDATE event SET EventDate = :date, StartTime = :startTime, EndTime = :endTime, Location = :location WHERE EventID = :id');
+            $this->db->bind(':id' , $eventID);
+            $this->db->bind(':date' , $reschedule->NewEventDate);
+            $this->db->bind(':startTime' , $reschedule->NewStartTime);
+            $this->db->bind(':endTime' , $reschedule->NewEndTime);
+            $this->db->bind(':location' , $reschedule->NewLocation);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

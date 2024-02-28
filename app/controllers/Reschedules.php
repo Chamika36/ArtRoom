@@ -89,6 +89,7 @@ class Reschedules extends Controller{
         $photographer = $this->userModel->getUserById($event->PhotographerID);
         $editor = $this->userModel->getUserById($event->EditorID);
         $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
+        $photographers = $this->partnerModel->getAvailablePartners(3, $reschedule->NewEventDate);
 
         $data = [
             'reschedule' => $reschedule,
@@ -98,14 +99,27 @@ class Reschedules extends Controller{
             'photographer' => $photographer,
             'editor' => $editor,
             'printingFirm' => $printingFirm,
+            'photographers' => $photographers
         ];
 
         $this->view('pages/manager/reschedules/manage', $data);
     }
 
     public function confirm($id){
-        
+        $reschedule = $this->rescheduleModel->getRescheduleById($id);
+        $eventID = $reschedule->EventID;
+        $event = $this->eventModel->getEventById($eventID);
+        $notificaton = [
+            'user_id' => $event->CustomerID,
+            'type' => 'reschedule',
+            'content' => 'Your reschdule request has been approved',
+            'link' => 'events/viewCustomerEvents/' . $event->CustomerID,
+            'event_id' => $eventID
+        ];
+
         $this->rescheduleModel->updateStatus($id, 'Approved');
+        $this->rescheduleModel->confirmReschedule($eventID , $reschedule);
+        $this->notificationModel->createNotification($notificaton);
     }
 
     public function cancel($id){

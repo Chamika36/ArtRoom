@@ -63,13 +63,15 @@
 					</li>
 				</a>
 
-				<li>
-					<i class='bx bx-message-rounded-error'></i>
-					<span class="text">
-						<h3>2</h3>
-						<p>Reschedule Requests</p>
-					</span>
-				</li>
+				<a href="<?php echo URLROOT ?>/reschedules">
+					<li>
+						<i class='bx bx-message-rounded-error'></i>
+						<span class="text">
+							<h3>2</h3>
+							<p>Reschedule Requests</p>
+						</span>
+					</li>
+				</a>
 			</ul>
 
 
