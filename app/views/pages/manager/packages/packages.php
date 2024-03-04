@@ -103,8 +103,8 @@
                     
                     <button class="btn" onclick="window.location.href='<?php echo URLROOT ?>/packages/edit/<?php echo $package->PackageID; ?>'">Edit</button>
 
-                    <form style="display: inline;" action="<!?php echo URLROOT ?>/packages/delete/<!?php echo $package->PackageID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $package->Name ?> package?');">
-                                <input type="hidden" name="package_id" value="<!?php echo $package->PackageID; ?>">
+                    <form style="display: inline;" action="<?php echo URLROOT ?>/packages/delete/<?php echo $package->PackageID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $package->Name ?> package?');">
+                                <input type="hidden" name="package_id" value="<?php echo $package->PackageID; ?>">
                                 <input class="btn1" type="submit" value="Delete">
                     </form>
 

@@ -122,17 +122,15 @@ body {
 
 .button-container {
     position: relative;
-    display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    align-items: center; /* Center buttons horizontally */
-    margin-top: 10px; /* Add some margin between button containers */
 }
 
-.edit-button,
-.delete-button {
+.action {
     color: #fff;
     border: 3px solid #fff;
     background-color: transparent;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     width: 60%;
     outline: none;
     cursor: pointer;
@@ -141,14 +139,21 @@ body {
     font-size: 1.3em;
     font-weight: bold;
     letter-spacing: 2px;
-    transition: background-color 0.4s;
-    margin-bottom: 10px; /* Add margin between edit and delete buttons */
+    transition: background-color 0.4s, top 0.4s;
 }
 
-.edit-button:hover,
-.delete-button:hover {
+.edit-button {
+    top: 0;
+}
+
+.delete-button {
+    top: 50px;
+}
+
+.action:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+
 
 .add-package-btn {
     background-color: #3b3d3e;
@@ -166,6 +171,5 @@ body {
 }
 
 .add-package-btn:hover {
-    background-color: #8b8882;
-    color: #000000;
+    background-color: #2e2a25;
 }

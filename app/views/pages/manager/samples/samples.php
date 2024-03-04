@@ -22,12 +22,9 @@
             <i class="fas fa-plus"></i><b>  Add New Sample</b></button>
 
         <div class="container">
-        <?php foreach ($data['samples'] as $sample) : ?>
+            <?php foreach ($data['samples'] as $sample) : ?>
             <div class="item-container">
-                <!-- <div class="img-container">
-                    <img src="<?php //echo URLROOT ?>/images/samples/<?php echo $sample->ImagePath; ?>" alt="sample image">
-                </div> -->
-
+                
                 <div class="img-container">
                 <img src="<?php echo URLROOT ?>/images/samples/<?php echo $sample->ImagePath; ?>" alt="sample image">
                 </div>
@@ -49,28 +46,36 @@
                                 <p class="info description">    
                                     <?php echo $sample->Date; ?>
                                 </p>
-                
                             </div>
                     </div>
+                    
                     <div class="button-container">
-    <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
-</div>
-<div class="button-container">
-    <form style="display: inline;" action="<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete <?php echo $sample->Name ?> sample?');">
-        <input type="hidden" name="sample_id" value="<?php echo $sample->SampleID; ?>">
-        <button class="action delete-button" type="submit">Delete</button>
-    </form>
-</div>
+                        <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
+                    </div>
 
-
+                    <div class="button-container">
+                        <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
+                    </div>
+                    <div class="button-container">
+                    <form style="display: inline;" action="<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="sample_id" value="<?php echo $sample->SampleID; ?>">
+                        <button class="action delete-button" type="submit">Delete</button>
+                    </form>
+                    </div>
 
                 </div>
             </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         
-            </div>
-
         </div>
+        
     </div>
 </body>
 </html>
+
+<script>
+    function confirmDelete() {
+        var sampleName = '<?php echo addslashes($sample->Name); ?>';
+        return confirm('Are you sure you want to delete ' + sampleName + ' sample?');
+    }
+</script>
