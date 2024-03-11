@@ -23,11 +23,32 @@
                 <span class="invalid-feedback"><?php echo $data['name_err']?></span>
             </div>
 
-            <div class="user-input-box">
+            <!-- <div class="user-input-box">
                 <label for="imagePath">Image: </label>
-                <input type="text" name="imagePath" value="<?php echo $data['imagePath']; ?>" required> 
+                <input type="text" name="imagePath" value="<!?php echo $data['imagePath']; ?>" required> 
+                <span class="invalid-feedback"><!?php echo $data['imagePath_err']?></span>
+            </div>   -->
+            
+            <!-- <div class="container">
+                
+                <label for="imagePath">Image: </label>
+                    <input type="file" name="imagePath" class="form-control" value="<!?php echo $data['imagePath']; ?>" multiple required>
+                    <span class="invalid-feedback"><!?php echo $data['imagePath_err']?></span>
+                    <br><br>
+                    
+
+            </div> -->
+
+
+            <div class="user-input-box">
+                <label for="imagePath">Images: </label>
+                <input type="file" name="imagePath[]" multiple required>
                 <span class="invalid-feedback"><?php echo $data['imagePath_err']?></span>
-            </div>    
+            </div>
+
+
+
+<!-- <button name="form_submit" class="btn-primary">Upload</button> -->
             
             <div class="user-input-box">
                 <label for="description"> Description: </label>
