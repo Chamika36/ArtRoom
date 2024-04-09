@@ -86,6 +86,71 @@ class Partners extends Controller {
             'partner' => $partner
         ];
         $this->view('pages/partner/profile', $data);
+        
+    }
+    public function editPartner($id) {
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+            // Init data
+            $data = [
+                'id' => $id,
+                'FirstName' => trim($_POST['FirstName']), 
+                'LastName' => trim($_POST['LastName']),
+                'ContactNumber' => trim($_POST['ContactNumber']),
+                'Address' => $_POST['Address'],
+                'Email' => trim($_POST['Email']),
+                'Bio' => $_POST['Bio'],
+
+                
+            ];
+
+            // Validate Name
+        //     if(empty($data['name'])) {
+        //         $data['name_err'] = 'Please enter name';
+        //     }
+
+        //     // Validate Price
+        //     if(empty($data['price'])) {
+        //         $data['price_err'] = 'Please enter price';
+        //     }
+
+        //     // Validate Description
+        //     if(empty($data['description'])) {
+        //         $data['description_err'] = 'Please enter description';
+        //     }
+
+        //     // Make sure no errors
+        //     if(empty($data['name_err']) && empty($data['price_err']) && empty($data['description_err'])) {
+        //         // Validated
+        //         if($this->packageModel->editPackage($data)) {
+        //             flash('package_edited', 'Package Edited');
+        //             redirect('packages');
+        //         } else {
+        //             die('Something went wrong');
+        //         }
+        //     } else {
+        //         // Load view with errors
+        //         $this->view('pages/manager/packages/editpackage', $data);
+        //     }
+
+        } else {
+            $package = $this->userModel->getUserById($id);
+
+            $data = [
+                'id' => $id,
+                'name' => $package->Name,
+                'price' => $package->Price,
+                'description' => $package->Description,
+                'servicesIncluded' => $package->ServicesIncluded,
+                'name_err' => '',
+                'price_err' => '',
+                'description_err' => ''
+            ];
+        $this->view('pages/partner/editprofile', $data);
+        }
     }
 
 }
