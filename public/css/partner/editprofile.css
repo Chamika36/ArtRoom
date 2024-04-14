@@ -1,0 +1,21 @@
+.main{
+    margin-left:20% ;
+}
+
+.main form{
+    width: 60%;
+    margin: auto;
+    background-color: aliceblue;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main form div{
+    display: flex;
+    justify-content: center;
+}
+
+.main input{
+    height: 35px;
+}

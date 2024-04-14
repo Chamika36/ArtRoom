@@ -1,309 +1,396 @@
 :root{
-    --transition: all 300ms ease-in-out;
-    --dark-color: #332e29;
-    --light-color: #fff;
+  --transition: all 300ms ease-in-out;
+  --dark-color: #332e29;
+  --light-color: #fff;
 }
 
 *{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    outline: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: 0;
 }
 html{
-    font-size: 10px;
-    scroll-behavior: smooth;
+  font-size: 10px;
+  scroll-behavior: smooth;
 }
 body{
-    font-size: 1.6rem;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
+  font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
 }
 
 button, .btn{
-    cursor: pointer;
-    border: none;
-    background: transparent;
+  cursor: pointer;
+  border: none;
+  background: transparent;
 }
 ul{
-    list-style-type: none;
+  list-style-type: none;
 }
 a{
-    text-decoration: none;
-    color: var(--dark-color);
+  text-decoration: none;
+  color: var(--dark-color);
 }
 img{
-    width: 100%;
-    display: block;
+  width: 100%;
+  display: block;
 }
 .container{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 .vh-100{
-    min-height: 100vh;
+  min-height: 100vh;
 }
 h1, h2, h3{
-    margin-top: 0;
-    line-height: 1.3;
-    margin-bottom: 2rem;
-    color: var(--dark-color);
+  margin-top: 0;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  color: var(--dark-color);
 }
 .flex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .py-7{
-    padding: 7rem 0;
+  padding: 7rem 0;
 }
 .grid{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
 }
 .lead{
-    opacity: 0.8;
-    padding: 1rem 0;
-    font-size: 1.7rem;
-    font-weight: 300;
-    line-height: 1.8;
+  opacity: 0.8;
+  padding: 1rem 0;
+  font-size: 1.7rem;
+  font-weight: 300;
+  line-height: 1.8;
 }
 
 /* about */
 .about-left{
-    margin-bottom: 4rem;
-    height: 480px;
-    overflow: hidden;
+  margin-bottom: 4rem;
+  height: 480px;
+  overflow: hidden;
 }
 /* button down and title -reusable */
 .btn-down{
-    font-size: 3rem;
-    display: inline-block;
-    margin-top: 1rem;
-    transition: var(--transition);
+  font-size: 3rem;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: var(--transition);
 }
 .btn-down:hover{
-    opacity: 0.8;
-    transform: translateY(5px);
+  opacity: 0.8;
+  transform: translateY(5px);
 }
 .btn-down-white{
-    color: var(--light-color);
+  color: var(--light-color);
 }
 .title{
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: space-between;
 }
 .title h2{
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 600;
-    position: relative;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  position: relative;
 }
 .title h2::after{
-    position: absolute;
-    content: "";
-    top: 120%;
-    left: 0;
-    width: 70px;
-    height: 4px;
-    background-color: var(--dark-color);
+  position: absolute;
+  content: "";
+  top: 120%;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  background-color: var(--dark-color);
+}
+.title span{
+color: #92887d;
+cursor: pointer;
+
+}
+.title span:hover{
+color: #332e29;
+}
+@keyframes beat {
+0% { transform: scale(1); }
+50% { transform: scale(1.1); }
+100% { transform: scale(1); }
+}
+
+.beat-icon {
+animation: beat 1s infinite;
 }
 
 /* work */
 /* work */
 #work {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('http://localhost/ArtRoom/images/partners/images/work-pic.jpg') center/cover no-repeat fixed;
-  color: var(--light-color);
-  
+background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('http://localhost/ArtRoom/images/partners/images/work-pic.jpg') center/cover no-repeat fixed;
+color: var(--light-color);
+
 }
 
 #work .title h2,
 #work h3 {
-  color: var(--light-color);
+color: var(--light-color);
 }
 
 #work .title h2::after {
-  background: var(--light-color);
+background: var(--light-color);
 }
 
 .work-bottom {
-  margin-top: 4rem;
-  text-align: center;
+margin-top: 4rem;
+text-align: center;
 }
 
 .work-bottom.grid {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+display: flex;
+justify-content: space-around;
+align-items: center;
 }
 
 .work-bottom > div {
-  text-align: center;
-  padding: 0 15px; /* Adjust the padding as needed */
+text-align: center;
+padding: 0 15px; /* Adjust the padding as needed */
 }
 
 .work-bottom > div .icon img {
-  width: 50px;
-  margin: 0 auto 1.7rem auto;
+width: 50px;
+margin: 0 auto 1.7rem auto;
 }
 
 .work-bottom > div .icon img{
-    width: 50px;
-    margin: 0 auto 1.7rem auto;
+  width: 50px;
+  margin: 0 auto 1.7rem auto;
 }
 /* portfolio */
 .portfolio-grid > div{
-    transition: var(--transition);
+  transition: var(--transition);
 }
 .portfolio-grid > div:hover{
-    transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 
 /* Container for the portfolio grid */
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  /* Style for each image card */
-  .portfolio-grid div {
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    height: 300px; /* Set a fixed height for uniform appearance */
-  }
-  
-  /* Hover effect */
-  .portfolio-grid div:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Apply grayscale effect on hover */
-  .portfolio-grid div:hover img {
-    filter: grayscale(100%);
-  }
-  
-  /* Caption style */
-  .portfolio-caption {
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-  
-  /* Center images within each card */
-  .portfolio-grid img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
 
-  .review-container {
-    display: flex;
-    gap: 20px;
-  }
+/* Style for each image card */
+.portfolio-grid div {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  height: 300px; /* Set a fixed height for uniform appearance */
+}
 
-  .review {
-    flex: 1;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(90, 53, 53, 0.1);
-  }
+/* Hover effect */
+.portfolio-grid div:hover {
+  transform: scale(1.05);
+}
 
-  .review:hover {
-    background-color: #92887d; /* Change the background color on hover */
-  }
-  
-  .rating {
-    color: #ffee00;
-  }
+/* Apply grayscale effect on hover */
+.portfolio-grid div:hover img {
+  filter: grayscale(100%);
+}
 
-  .about-right {
-    position: relative;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
-  }
+/* Caption style */
+.portfolio-caption {
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Center images within each card */
+.portfolio-grid img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.review-container {
+  display: flex;
+  gap: 20px;
+}
+
+.review {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(90, 53, 53, 0.1);
+}
+
+.review:hover {
+  background-color: #92887d; /* Change the background color on hover */
+}
+
+.rating {
+  color: #ffee00;
+}
+
+.about-right {
+  display: block;
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.about-right:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Change the shadow on hover */
+}
+.about-right-form {
+  display: none;
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  width: 55%;
+}
+
+.about-right-form:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Change the shadow on hover */
+}
+.about-right-form form{
+  display: flex;
+  flex-direction: column;
   
-  .about-right:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Change the shadow on hover */
-  }
+}
+.about-right-form form input{
+  padding: 5px;
   
-  .title h2 {
-    color: #333; 
-  }
+}
+.about-right-form form .partner-name{
+  height: 35px;
+  margin: 10px;
+}
+.about-right-form form .partner-contant{
+  height: 350px;
+  margin: 10px;
+  padding: 5px;
+}
+ .submit{
+  padding: 8px 16px;
+  margin: 0 10px;
+ }
+ .cancel{
+  padding: 8px 16px;
+  margin:5px;
+  border: #555;
+ }
+
+.title h2 {
+  color: #333; 
+}
+
+.lead {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.btn-down {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #f6cb9b; 
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+}
+
+.about-left {
+  flex: 0 0 auto; /* Do not grow, do not shrink, initial size */
+  margin-right: 100px; /* Adjust the spacing between image and text */
+  position: relative;
+}
+
+.image-container {
+  overflow: hidden;
+  border-radius: 50%; /* Create a rounded shape for the image container */
+  width: 450px; /* Adjust the width of the rounded image container */
+  height:450px; /* Adjust the height of the rounded image container */
+  position: relative;
+  /* z-index: 1; */
+}
+
+.about-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+  transition: transform 0.3s ease-in-out;
   
-  .lead {
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  .btn-down {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-    text-decoration: none;
-    color: #f6cb9b; 
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .about-content {
-    display: flex;
-    align-items: center;
-  }
-  
-  .about-left {
-    flex: 0 0 auto; /* Do not grow, do not shrink, initial size */
-    margin-right: 100px; /* Adjust the spacing between image and text */
-    
-  }
-  
-  .image-container {
-    overflow: hidden;
-    border-radius: 50%; /* Create a rounded shape for the image container */
-    width: 450px; /* Adjust the width of the rounded image container */
-    height:450px; /* Adjust the height of the rounded image container */
-  }
-  
-  .about-left img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .about-content:hover .about-left img {
-    transform: scale(1.1);
-  }
-  
-  .about-right {
-    flex: 1; /* Grow to fill the available space */
-  }
-  
-  /* Add any additional styling as needed */
-  .about-container {
-    display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: space-between; /* Put elements at each end */
-  }
-  
+}
+.about-left span{
+  position: absolute;
+  right: 18%;
+  bottom: 18%;
+  color: #332e29;
+  cursor: pointer;
+  background-color:white;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 20px;
+}
+.about-left span:hover{
+  background-color: #332e29;
+  color: white;
+}
+
+.about-content:hover .about-left img {
+  transform: scale(1.1);
+}
+
+.about-right {
+  flex: 1; /* Grow to fill the available space */
+}
+
+/* Add any additional styling as needed */
+.about-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: space-between; /* Put elements at each end */
+}
+
+
+.pop-up{
+  display: none;
+  margin: auto;
+  background-color: black;
+  height: 200px;
+  width: 200px;
+}

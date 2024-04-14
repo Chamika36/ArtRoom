@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I'm a Photographer</title>
     
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>\css\partner\profile.css">
 </head>
 <body>
@@ -20,22 +20,35 @@
         
         <section id="about" class="about py-7">
             <div class="container">
+                <div class="pop-up"></div>
                 <div class="about-container">
+                    
                     <div class="about-left">
-                        
                         <div class="image-container">
-                            <img src="<?php echo URLROOT ?>/images/partners/images/about-pic.jpg" alt="" class="im">
+                            <img src="<?php echo URLROOT ?>/images/partners/images/about-pic.jpg" alt="" class="im" >
                         </div>
+                        <span class="material-symbols-outlined beat-icon" onclick="openpopup()">edit</span>
                     </div>
         
                     <!-- 2nd -->
-                    <div class="about-right">
+                    <div class="about-right" id="view">
                         <div class="title">
-                            <h2><?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?></h2>
+                            <h2><?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?></h2><span class="material-symbols-outlined beat-icon" onclick="handleClick()">edit</span>
                         </div>
-                        <p class="lead">Welcome to the world through my lens! I'm Jason, a seasoned professional photographer with a passion for capturing life's beautiful moments. Armed with a degree in photography and a keen eye for aesthetics, I bring a unique blend of creativity and commercial sense to every project.</p>
-                        <p class="lead">Whether it's the romantic allure of weddings, the joyous celebration of birthdays, or the warmth of family events, I'm dedicated to creating images that tell stories, evoke emotions, and leave a lasting impression. Join me on this visual journey where creativity meets commercial sense, and let's capture the essence of your special moments together.</p>
+                        <p class="lead"><?php echo $data['partner']->Bio ?></p>
+                        
                         <a href="#work" class="btn-down"></a>
+                    </div>
+                    <div class="about-right-form" id="edit">
+                        <form action="" method="POST">
+                            <input class="partner-name" placeholder="Type Name" type="text" value= "<?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?>">
+                            <textarea class="partner-contant" placeholder="Type Contant" type="text" ></textarea>
+                            
+                                <input class="submit" type="submit" value="edit_profile">
+                            
+                            <button class="cancel">cancel</button>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -159,3 +172,24 @@
 
 </body>
 </html>
+<script>
+   function handleClick(){
+        var view = document.getElementById("view"); 
+        var edit = document.getElementById("edit");
+        view.style.display = "none";
+        edit.style.display = "block";
+        
+    }
+    function openpopup() {
+        var popup = document.getElementsByClassName("pop-up");
+        var container = document.getElementsByClassName("about-container");
+        popup.style.display = "block";
+        container.style.display = "none";
+        console.log("hello")
+}
+
+   
+</script>
+
+
+     
