@@ -18,6 +18,14 @@ class Reschedules extends Controller{
         $this->view('pages/manager/reschedules/reschedules', $data);
     }
 
+    public function reschedulesForPartner($id){
+        $reschedules = $this->rescheduleModel->getReschedulesForPartner($id);
+        $data = [
+            'reschedules' => $reschedules
+        ];
+        $this->view('pages/partner/reschedules', $data);
+    }
+
 
     public function reschedule($id) {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -103,6 +111,39 @@ class Reschedules extends Controller{
         ];
 
         $this->view('pages/manager/reschedules/manage', $data);
+    }
+
+    public function photographerconfirm($id){
+        $reschedule = $this->rescheduleModel->getRescheduleById($id);
+        $eventID = $reschedule->EventID;
+        $event = $this->eventModel->getEventById($eventID);
+        $notificaton = [
+            'user_id' => 16,
+            'type' => 'reschedule',
+            'content' => 'Photographer accepted reschdule request',
+            'link' => 'events/viewEvent/' . $event->EventID,
+            'event_id' => $eventID
+        ];
+
+        $this->rescheduleModel->updateStatus($id, 'PhotographerApproved');
+        $this->rescheduleModel->confirmReschedule($eventID , $reschedule);
+        $this->notificationModel->createNotification($notificaton);
+    }
+
+    public function photographerdecline($id){
+        $reschedule = $this->rescheduleModel->getRescheduleById($id);
+        $eventID = $reschedule->EventID;
+        $event = $this->eventModel->getEventById($eventID);
+        $notificaton = [
+            'user_id' => 16,
+            'type' => 'reschedule',
+            'content' => 'Photographer declined reschdule request',
+            'link' => 'events/viewEvent/' . $event->EventID,
+            'event_id' => $eventID
+        ];
+
+        $this->rescheduleModel->updateStatus($id, 'PhotographerDeclined');
+        $this->notificationModel->createNotification($notificaton);
     }
 
     public function confirm($id){

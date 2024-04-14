@@ -38,6 +38,16 @@
             return $result;
         }
 
+        public function getReschedulesForPartner($id){
+            $this->db->query('SELECT * FROM reschedule R, event E WHERE R.EventID = E.EventID AND E.PhotographerID=:id');
+            $this->db->bind(':id', $id);
+
+            $result = $this->db->single();
+
+            return $result;
+        }
+
+
         public function updateStatus($id, $status){
             $this->db->query('UPDATE reschedule SET ApprovalStatus = :status WHERE ID = :id');
             $this->db->bind(':id' , $id);
