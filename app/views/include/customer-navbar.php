@@ -23,7 +23,7 @@
                 <?php
                     if (isset($_SESSION['user_id'])) {
                         // User is logged in
-                        
+                        echo '<li class="notification-icon">&#128276;</li>';
                         echo '<li class="profile-dropdown">';
                         echo '<div class="profile-info" id="profileTrigger">';
                         echo '<div class="user-greeting">Hello ' . $_SESSION['user_name'] .'</div>'; // Move greeting here

@@ -149,7 +149,10 @@ header .dropdown-content.show {
   display: block;
 }
 
-
+.notification-icon{
+  margin-right: 100px;
+  
+}
 
 
 
