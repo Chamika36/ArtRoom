@@ -95,7 +95,7 @@
         </div>
             <div class="bottom-column">
             <h2 class="rescheduleRequest">Reschedule Request</h2>
-                <form action="<?php echo URLROOT ;?>/events/rescheduleRequest/<?php echo $data['id'];?>" method="POST">
+                <form action="<?php echo URLROOT ;?>/reschedules/reschedule/<?php echo $data['id'];?>" method="POST">
 
                     <label for="event-date">Event Date</label>
                     <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
@@ -108,6 +108,9 @@
 
                     <label for="location">Location</label>
                     <input type="text" id="location" name="location" value="<?php echo $data['location'];?>">
+
+                    <label for="reason">Reason</label>
+                    <textarea id="reason" name="reason" rows="4" cols="50" placeholder="Enter a reason" required></textarea>
 
                     <input type="submit" value="Send Request">
                 </form>
