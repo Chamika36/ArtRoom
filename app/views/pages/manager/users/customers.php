@@ -10,13 +10,9 @@
      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/photographertable.css">
  </head>
 <body>
-    <!-- <div class="container"> -->
-        <!-- <div id="menu"> -->
-            <!-- Sidebar -->
-            <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
-        <!-- </div> -->
+    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
-        <div class="home">
+    <div class="home">
         <main class="table" id="customers_table">
             <section class="table__header">
                 <h1>Customer Details</h1>
@@ -50,6 +46,5 @@
             </table>
             </section>
         </main>
-        </div>
     </div>
 </body>

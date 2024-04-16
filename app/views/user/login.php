@@ -167,7 +167,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>art roomLogin</title>
-    <link rel="icon" type="image/x-icon" href="<?php echo URLROOT?>/images/TravelEase_logo.png">
+    
     <link rel="stylesheet" href="<?php echo URLROOT?>/css/login/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
@@ -180,8 +180,10 @@
 .main1 .registerForm{
     background-color: #FEFEFE;
     display: grid;
-    grid-template-columns: 60% 40%;
-    margin: 20px 100px 20px 100px;
+    grid-template-columns: 55% 45%;
+    margin: 20px 150px 20px 150px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
     
 }
 .image{
@@ -307,8 +309,9 @@ line-height: normal;
                         <div class="c1_1_1">
                             <div style="text-align: center;color: red;"><?//php echo flash('register_success')?></div>
                         
-                            <img src="<?php echo URLROOT?>/images/logo.png" alt="logo"></div>
-                       <div class="c1_1_2">Art Room</div>
+                            <img src="<?php echo URLROOT?>/images/logo.png" alt="logo">
+                        </div>
+                        <div class="c1_1_2">Art Room</div>
                     </div>
                     <div class="c1_2">Login to book your moments.</br> Your personalized studio experience is just a click away.</div>
                 </div>

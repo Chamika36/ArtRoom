@@ -67,14 +67,18 @@
 						</span>
 					</li>
 				</a>
+				
+				<a href="<?php echo URLROOT ?>/reschedules/reschedulesForPartner/<?php echo $_SESSION['user_id'] ?>">
+					<li>
+						<i class='bx bx-message-rounded-error' ></i>
+						<span class="text">
+							<h3><?php// echo is_array($data['rescheduleCount']) ? count($data['rescheduleCount']) : $data['rescheduleCount']; ?></h3>
+							<p>Reschedule Requests</p>
+						</span>
+					</li>
+				</a>
 
-				<li>
-					<i class='bx bx-message-rounded-error'></i>
-					<span class="text">
-						<h3>2</h3>
-						<p>Reschedule Requests</p>
-					</span>
-				</li>
+			
 			</ul>
 
 
