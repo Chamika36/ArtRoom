@@ -8,165 +8,145 @@ class Samples extends Controller{
     public function index() {
         $samples = $this->sampleModel->getSamples();
         $customers = $this->userModel->getCustomers();
-
+    
         $data = array(
             'samples' => $samples,
             'customers' => $customers
         );
-        
+    
         if($_SESSION['user_type_id'] == 2) {
             $this->view('pages/manager/samples/samples', $data);
         } else {
             $this->view('pages/customer/samples/samples', $data);
         }
     }
-
-
-    // public function add(){
-    //     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         // Sanitize POST data
-    //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            
-    //         // Init data
-    //         $data = [
-    //             'name' => trim($_POST['name']), 
-    //             'imagePath' => trim($_POST['imagePath']),
-    //             'description' => trim($_POST['description']),
-    //             'customer' => trim($_POST['customer']),
-    //             'date' => trim($_POST['date']),
-    //             'name_err' => '',
-    //             'imagePath_err' => '',
-    //             'description_err' => '',
-    //             'customer_err' => '',
-    //             'date_err' => ''
-    //         ];
-
-    //         // Validate Name
-    //         if(empty($data['name'])) {
-    //             $data['name_err'] = 'Please enter name';
-    //         }
-
-    //         // Validate Image Path
-    //         if(empty($data['imagePath'])) {
-    //             $data['imagePath_err'] = 'Please enter image path';
-    //         }
-
-    //         // Validate Description
-    //         if(empty($data['description'])) {
-    //             $data['description_err'] = 'Please enter description';
-    //         }
-
-    //         // Validate Date
-    //         if(empty($data['date'])) {
-    //             $data['date_err'] = 'Please enter date';
-    //         }
-
-    //         // Make sure no errors
-    //         if(empty($data['name_err']) && empty($data['imagePath_err']) && empty($data['description_err']) && empty($data['customer_err']) && empty($data['date_err'])) {
-    //             // Validated
-    //             if($this->sampleModel->addSample($data)) {
-    //                 flash('sample_message', 'Sample Added');
-    //                 redirect('samples');
-    //             } else {
-    //                 die('Something went wrong');
-    //             }
-    //         } else {
-    //             // Load view with errors
-    //             $this->view('pages/manager/samples/addsample', $data);
-    //         }
-
-    //     } else {
-
-    //         $customers = $this->userModel->getCustomers();
-
-    //         $data = [
-    //             'name' => '',
-    //             'imagePath' => '',
-    //             'description' => '',
-    //             'customers' => $customers,
-    //             'customer' => '',
-    //             'date' => '',
-    //             'name_err' => '',
-    //             'imagePath_err' => '',
-    //             'description_err' => '',
-    //             'customer_err' => '',
-    //             'date_err' => ''
-    //         ];
     
-    //         $this->view('pages/manager/samples/addsample', $data);
-    //     }
-    // }
 
-    public function add(){
+
+    public function add() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             
-            // File upload
-            $image_name = $_FILES['image']['name'];
-            $image_tmp_name = $_FILES['image']['tmp_name'];
-            $image_err = $_FILES['image']['error'];
+            // File upload for cover image
+            $cover_image = $_FILES['image'];
+            $cover_image_arr = array();
+            $upload_err_cover = false;
     
-            // Check for file upload error
-            if($image_err === 0){
-                // Generate a unique name for the image
-                $image_new_name = uniqid('', true) . '_' . $image_name;
-                // Set the path where the image will be stored
-                $image_destination = 'images/samples/' . $image_new_name;
+            // Check for cover image upload error
+            if($cover_image['error'] === 0){
+                // Generate a unique name for the cover image
+                $cover_image_new_name = uniqid('', true) . '_' . $cover_image['name'];
+                // Set the path where the cover image will be stored
+                $cover_image_destination = 'images/samples/' . $_POST['name'] . '/' . $cover_image_new_name;
     
-                // Move the uploaded file to the destination folder
-                if(move_uploaded_file($image_tmp_name, $image_destination)){
-                    // Init data
-                    $data = array(
-                        'name' => trim($_POST['name']), 
-                        'imagePath' => $image_new_name,
-                        'description' => trim($_POST['description']),
-                        'customer' => trim($_POST['customer']),
-                        'date' => trim($_POST['date']),
-                        'name_err' => '',
-                        'imagePath_err' => '',
-                        'description_err' => '',
-                        'customer_err' => '',
-                        'date_err' => ''
-                    );
+                // Create the folder if it doesn't exist
+                if (!is_dir('images/samples/' . $_POST['name'])) {
+                    mkdir('images/samples/' . $_POST['name'], 0777, true);
+                }
     
-                    // Validate Name, Description, Date, and Customer here...
-    
-                    // Make sure no errors
-                    if(empty($data['name_err']) && empty($data['description_err']) && empty($data['customer_err']) && empty($data['date_err'])) {
-                        // Validated
-                        if($this->sampleModel->addSample($data)) {
-                            flash('sample_message', 'Sample Added');
-                            redirect('samples');
-                        } else {
-                            die('Something went wrong');
-                        }
-                    } else {
-                        // Load view with errors
-                        $this->view('pages/manager/samples/addsample', $data);
-                    }
-                } else {
-                    // Error uploading file
-                    $data['image_err'] = 'Error uploading file';
-                    $this->view('pages/manager/samples/addsample', $data);
+                // Move the uploaded cover image to the destination folder
+                if(!move_uploaded_file($cover_image['tmp_name'], $cover_image_destination)){
+                    // Error uploading cover image
+                    $upload_err_cover = true;
                 }
             } else {
-                // No file uploaded
-                $data['image_err'] = 'Please upload an image';
+                // Error uploading cover image
+                $upload_err_cover = true;
+            }
+    
+            // File upload for sample images
+            $images = $_FILES['images'];
+            $images_arr = array();
+            $upload_err = false;
+    
+            // Loop through each image file
+            foreach ($images['tmp_name'] as $key => $image_tmp_name) {
+                $image_name = $images['name'][$key];
+                $image_err = $images['error'][$key];
+    
+                // Check for file upload error
+                if($image_err === 0){
+                    // Generate a unique name for the image
+                    $image_new_name = uniqid('', true) . '_' . $image_name;
+                    // Set the path where the image will be stored
+                    $image_destination = 'images/samples/' . $_POST['name'] . '/' . $image_new_name;
+    
+                    // Move the uploaded file to the destination folder
+                    if(!move_uploaded_file($image_tmp_name, $image_destination)){
+                        // Error uploading file
+                        $upload_err = true;
+                        break;
+                    }
+                    $images_arr[] = $image_new_name;
+                } else {
+                    // Error uploading file
+                    $upload_err = true;
+                    break;
+                }
+            }
+    
+            if($upload_err || $upload_err_cover) {
+                $data['images_err'] = 'Error uploading files';
                 $this->view('pages/manager/samples/addsample', $data);
+            } else {
+                // Init data
+                $data = array(
+                    'name' => trim($_POST['name']), 
+                    'images' => $images_arr,
+                    'imagePath' => $cover_image_destination, // Add the cover image path
+                    'cover_image' => $cover_image_new_name,
+                    'description' => trim($_POST['description']),
+                    'customer' => trim($_POST['customer']),
+                    'date' => trim($_POST['date']),
+                    'name_err' => '',
+                    'images_err' => '',
+                    'description_err' => '',
+                    'customer_err' => '',
+                    'date_err' => ''
+                );
+    
+                // Validate Name
+                if(empty($data['name'])) {
+                    $data['name_err'] = 'Please enter name';
+                }
+    
+                // Validate Description
+                if(empty($data['description'])) {
+                    $data['description_err'] = 'Please enter description';
+                }
+    
+                // Validate Date
+                if(empty($data['date'])) {
+                    $data['date_err'] = 'Please enter date';
+                }
+    
+                // Make sure no errors
+                if(empty($data['name_err']) && empty($data['description_err']) && empty($data['customer_err']) && empty($data['date_err'])) {
+                    // Validated
+                    if($this->sampleModel->addSample($data)) {
+                        flash('sample_message', 'Sample Added');
+                        redirect('samples');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('pages/manager/samples/addsample', $data);
+                }
             }
         } else {
             $customers = $this->userModel->getCustomers();
     
             $data = array(
                 'name' => '',
-                'imagePath' => '',
+                'images' => '',
                 'description' => '',
                 'customers' => $customers,
                 'customer' => '',
                 'date' => '',
                 'name_err' => '',
-                'imagePath_err' => '',
+                'images_err' => '',
                 'description_err' => '',
                 'customer_err' => '',
                 'date_err' => ''
@@ -175,6 +155,8 @@ class Samples extends Controller{
             $this->view('pages/manager/samples/addsample', $data);
         }
     }
+    
+    
     
     
 

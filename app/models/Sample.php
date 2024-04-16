@@ -20,14 +20,15 @@
         }
 
         public function addSample($data) {
-            $this->db->query('INSERT INTO Sample (SampleName, ImagePath, Description, CustomerID, Date) VALUES (:name, :imagePath, :description, :customer, :date)');
+            $this->db->query('INSERT INTO Sample (SampleName, ImagePath, Description, CustomerID, Date, CoverImagePath) VALUES (:name, :imagePath, :description, :customer, :date, :coverImagePath)');
             // Bind values
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':imagePath', $data['imagePath']);
             $this->db->bind(':description', $data['description']);
             $this->db->bind(':customer', $data['customer']);
             $this->db->bind(':date', $data['date']);
-
+            $this->db->bind(':coverImagePath', $data['coverImagePath']);
+        
             if($this->db->execute()) {
                 return true;
             } else {

@@ -22,9 +22,9 @@
             </div>
 
             <div class="user-input-box">
-                <label for="image">Image: </label>
+                <label for="image">Cover Image: </label>
                 <input type="file" name="image" required> 
-                <span class="invalid-feedback"><?php echo $data['imagePath_err']?></span>
+                <span class="invalid-feedback"><?php echo $data['images_err']?></span>
             </div> 
 
             <div class="user-input-box">
@@ -32,6 +32,12 @@
                 <textarea name="description" rows="4" required><?php echo $data['description']; ?></textarea>
                 <span class="invalid-feedback"><?php echo $data['description_err']?></span>
             </div>
+            
+            <div class="user-input-box">
+                <label for="images">Sample Images: </label>
+                <input type="file" name="images[]" multiple required> 
+                <span class="invalid-feedback"><?php echo $data['images_err']?></span>
+            </div> 
 
             <div class="user-input-box">
                 <label for="date">Date: </label>
