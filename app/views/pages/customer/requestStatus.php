@@ -86,7 +86,7 @@
                                             $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
                                             echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
                                             echo '<P class="details"> Remaining Payment : ' . $remainingPayment . ' *paid </p>';
-                                            echo '<p class="details"> Fully Paid </p>';
+                                            echo '<p class="details"><b> Fully Paid </b></p>';
                                         } else if($data['event']->Status == 'Canceled'){
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             echo '<p class="details"> Canceled </p>';
