@@ -391,56 +391,56 @@
             }
         }
 
-        // Reschedule requests
-        public function rescheduleRequest($id) {
-            // Check for POST
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Process form
-                // Sanitize POST data
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // // Reschedule requests
+        // public function rescheduleRequest($id) {
+        //     // Check for POST
+        //     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //         // Process form
+        //         // Sanitize POST data
+        //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
-                // Init data
-                $data = [
-                    'id' => $id,
-                    'date' => trim($_POST['date']),
-                    'startTime' => trim($_POST['startTime']),
-                    'endTime' => trim($_POST['endTime']),
-                    'location' => trim($_POST['location']),
-                ];
+        //         // Init data
+        //         $data = [
+        //             'id' => $id,
+        //             'date' => trim($_POST['date']),
+        //             'startTime' => trim($_POST['startTime']),
+        //             'endTime' => trim($_POST['endTime']),
+        //             'location' => trim($_POST['location']),
+        //         ];
 
-                // Validate event date
-                if(empty($data['date'])) {
-                    $data['eventDate_err'] = 'Please enter event date';
-                }
+        //         // Validate event date
+        //         if(empty($data['date'])) {
+        //             $data['eventDate_err'] = 'Please enter event date';
+        //         }
 
-                //  Make sure errors are empty
-                if(empty($data['eventDate_err'])) {
-                    if($this->eventModel->rescheduleEvent($data)) {
-                        flash('event_message', 'Request rescheduled');
-                        redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
-                    } else {
-                        die('Something went wrong');
-                    }
-                } else {
-                    // Load view with errors
-                    $this->view('pages/customer/rescheduleRequest', $data);
-                }
-            } else {
-                // Init data
-                $event = $this->eventModel->getEventById($id);
-                $data = [
-                    'id' => $id,
-                    'date' => $event->EventDate,
-                    'startTime' => $event->StartTime,
-                    'endTime' => $event->EndTime,
-                    'location' => $event->Location,
-                    'eventDate_err' => ''
-                ];
+        //         //  Make sure errors are empty
+        //         if(empty($data['eventDate_err'])) {
+        //             if($this->eventModel->rescheduleEvent($data)) {
+        //                 flash('event_message', 'Request rescheduled');
+        //                 redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
+        //             } else {
+        //                 die('Something went wrong');
+        //             }
+        //         } else {
+        //             // Load view with errors
+        //             $this->view('pages/customer/rescheduleRequest', $data);
+        //         }
+        //     } else {
+        //         // Init data
+        //         $event = $this->eventModel->getEventById($id);
+        //         $data = [
+        //             'id' => $id,
+        //             'date' => $event->EventDate,
+        //             'startTime' => $event->StartTime,
+        //             'endTime' => $event->EndTime,
+        //             'location' => $event->Location,
+        //             'eventDate_err' => ''
+        //         ];
 
-                // Load view
-                $this->view('pages/customer/rescheduleRequest', $data);
-            }
-        }
+        //         // Load view
+        //         $this->view('pages/customer/rescheduleRequest', $data);
+        //     }
+        // }
 
         // Event count
         public function eventCount() {

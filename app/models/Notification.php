@@ -5,10 +5,25 @@ class Notification {
 
     public function __construct() {
         $this->db = new Database;
+        $this->userModel = new User;
     }
 
     // Method to create a new notification
     public function createNotification($notification) {
+        $user = $this->userModel->getUserById($notification['user_id']);
+        $to = $user->Email;
+        $subject = "New Notification from ArtRoom";
+        $message = $notification['content'] . " " . URLROOT ."/". $notification['link'];
+        $headers = "From: ArtRoom <noreply@yourdomain.com>\r\n";
+        $headers .= "Reply-To: noreply@yourdomain.com\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion();
+    
+        if (mail($to, $subject, $message)) {
+            echo "Email sent successfully";
+        } else {
+            echo "Email sending failed";
+        }
+
         $this->db->query('INSERT INTO notification (UserID , Type, Content, Link , EventID) VALUES (:user_id, :type, :content, :link, :event_id)');
         $this->db->bind(':user_id', $notification['user_id']);
         $this->db->bind(':type', $notification['type']);
@@ -47,7 +62,7 @@ class Notification {
     }
 
     public function getNotificationByManager(){
-        $this->db->query('SELECT * from notification where Status = "unread" AND (Type = "action" OR Type = "request" OR Type = "payment")');
+        $this->db->query('SELECT * from notification where Status = "unread" AND (Type = "action" OR Type = "request" OR Type = "payment" OR Type = "reschedule")');
         $result = $this->db->resultSet();
         return $result;
     }
