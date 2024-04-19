@@ -26,7 +26,8 @@
             <div class="item-container">
                 
                 <div class="img-container">
-                <img src="<?php echo URLROOT ?>/images/samples/<?php echo $sample->ImagePath; ?>" alt="sample image">
+                    <!-- Displaying the cover image of the sample -->
+                    <img src="<?php echo URLROOT ?>/images/samples/<?php echo $sample->name ?>/<?php echo $sample->CoverImagePath; ?>" alt="Cover Image">
                 </div>
 
                 <div class="body-container">
@@ -53,15 +54,12 @@
                         <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
                     </div>
 
-                    <div class="button-container">
-                        <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
-                    </div>
-                    <div class="button-container">
-                    <form style="display: inline;" action="<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirmDelete();">
-                        <input type="hidden" name="sample_id" value="<?php echo $sample->SampleID; ?>">
-                        <button class="action delete-button" type="submit">Delete</button>
-                    </form>
-                    </div>
+                    <!-- <div class="button-container">
+                        <form style="display: inline;" action="<!?php echo URLROOT ?>/samples/delete/<!?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirmDelete();">
+                            <input type="hidden" name="sample_id" value="<!?php echo $sample->SampleID; ?>">
+                            <button class="action delete-button" type="submit">Delete</button>
+                        </form>
+                    </div> -->
 
                 </div>
             </div>

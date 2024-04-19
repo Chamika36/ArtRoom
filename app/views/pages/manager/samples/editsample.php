@@ -21,9 +21,15 @@
                         <span class="invalid-feedback"><?php echo $data['name_err']?></span>
                     </div>
 
+                    <!-- <div class="user-input-box">
+                        <label for="images">Cover Image: </label>
+                        <input type="file" name="images[]" value="<!?php echo $data['coverImagePath']?>" required> 
+                        <span class="invalid-feedback"><!?php echo $data['imagePath_err']?></span>
+                    </div> -->
+
                     <div class="user-input-box">
-                        <label for="imagePath">Image: </label>
-                        <input type="text" name="imagePath" value="<?php echo $data['imagePath']?>" required> 
+                        <label for="images">Sample Image: </label>
+                        <input type="file" name="images[]" value="<?php echo $data['imagePath']?>" required> 
                         <span class="invalid-feedback"><?php echo $data['imagePath_err']?></span>
                     </div>
 

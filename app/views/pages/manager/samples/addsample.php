@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/edituser.css">
-    
 </head>
 
 <body>
@@ -14,47 +13,31 @@
   
     <div class="container">
     <h1 class="form-title">Add Sample</h1>
-        <form name="registrationForm" action="<?php echo URLROOT; ?>/samples/add" method="POST">
+        <form name="registrationForm" action="<?php echo URLROOT; ?>/samples/add" method="POST" enctype="multipart/form-data">
         <div class="main-user-info">
-
             <div class="user-input-box">
                 <label for="name">Sample Name: </label>
                 <input type="text" name="name" value="<?php echo $data['name']; ?>" required> 
                 <span class="invalid-feedback"><?php echo $data['name_err']?></span>
             </div>
 
-            <!-- <div class="user-input-box">
-                <label for="imagePath">Image: </label>
-                <input type="text" name="imagePath" value="<!?php echo $data['imagePath']; ?>" required> 
-                <span class="invalid-feedback"><!?php echo $data['imagePath_err']?></span>
-            </div>   -->
-            
-            <!-- <div class="container">
-                
-                <label for="imagePath">Image: </label>
-                    <input type="file" name="imagePath" class="form-control" value="<!?php echo $data['imagePath']; ?>" multiple required>
-                    <span class="invalid-feedback"><!?php echo $data['imagePath_err']?></span>
-                    <br><br>
-                    
-
-            </div> -->
-
-
             <div class="user-input-box">
-                <label for="imagePath">Images: </label>
-                <input type="file" name="imagePath[]" multiple required>
-                <span class="invalid-feedback"><?php echo $data['imagePath_err']?></span>
-            </div>
+                <label for="image">Cover Image: </label>
+                <input type="file" name="image" required> 
+                <span class="invalid-feedback"><?php echo $data['images_err']?></span>
+            </div> 
 
-
-
-<!-- <button name="form_submit" class="btn-primary">Upload</button> -->
-            
             <div class="user-input-box">
                 <label for="description"> Description: </label>
                 <textarea name="description" rows="4" required><?php echo $data['description']; ?></textarea>
                 <span class="invalid-feedback"><?php echo $data['description_err']?></span>
             </div>
+            
+            <div class="user-input-box">
+                <label for="images">Sample Images: </label>
+                <input type="file" name="images[]" multiple required> 
+                <span class="invalid-feedback"><?php echo $data['images_err']?></span>
+            </div> 
 
             <div class="user-input-box">
                 <label for="date">Date: </label>
@@ -71,21 +54,12 @@
                 </select>
             </div>            
                         
-            <!-- <div class="user-input-box">
-                <button class="button"><a href="<!?php echo URLROOT ?>/samples/samples">Cancel</a></button>
-                <input class="button" type="submit" value="Add Sample">
-            </div> -->
-            
             <div class="form-submit-btn">
                 <input type="submit" value="Cancel" onclick="window.history.back();" class="cancel-btn">
                 <input type="submit" value="Add Sample" class="update-btn">
             </div>
-            
-        
-    
+        </div>
     </form>
-    </div>
-    </div>
     </div>
 </body>
 </html>
