@@ -26,6 +26,21 @@
             }
         }
 
+        // reset password
+        public function resetPassword($data) {
+            $this->db->query('UPDATE user SET Password = :password WHERE Email = :email');
+            // Bind values
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+
+            // Execute
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         // Find user by email
         public function findUserByEmail($email) {
             $this->db->query('SELECT * FROM user WHERE email = :email');
