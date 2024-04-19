@@ -241,9 +241,10 @@
         .container-01{
             display: flex;
             flex-direction: column;
-            height: 80vh;
-            justify-content: center;
-            align-items: center;
+            height: 100%;
+            width: 80%;
+            margin-left: 10%;
+            /* border: 1px solid black; */
 
         }
 
@@ -253,14 +254,9 @@
             gap:12px;
             align-items: center;
             justify-content: center;
-        }
-
-        .container-02{
-            display: flex;
-            flex-direction: row;
-            gap:12px;
-            
-            justify-content: start;
+            /* border: 1px solid black; */
+            margin-top: 25%;
+            height: 30%;
         }
 
         .container-03 {
@@ -272,13 +268,23 @@
             color: #333; /* Text color */
             line-height: 1.2; /* Adjust line height for better readability */
             margin-left: 20px;
-            margin-top: 10px;
+            /* margin-top: 10px; */
             font-weight: bold; /* Make the font bold */
+            /* border: 1px solid black; */
         }
 
 
         .container-03 div {
             margin-bottom: 5px; /* Space between lines */
+        }
+
+        .reqButton{
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-top: 20px;
+            margin-left: 20px;
+
         }
 
         .cursor {
@@ -354,6 +360,10 @@
             font-weight: bold;
         }
 
+        section{
+            border: 1px solid black;
+            background: #242526;
+        }
         .container-02-left{
             align-items: start;
             font-size: 45px;
@@ -377,14 +387,14 @@
             
         }
 
-        .buttons-container {
+        /* .buttons-container {
         width: 100%;
         height: 20vh;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 5px;
-        }
+        } */
 
         button {
         background: white;
@@ -397,7 +407,7 @@
         .button-arounder {
         font-size: 2rem;
         background: #f9b234;
-        color: hsl(190deg, 10%, 95%);
+        color: #242526;
         border-radius: 5px;
         font-weight: bold;
         
@@ -426,8 +436,8 @@
         .button-arounder:focus {
         box-shadow: 0 4px 8px hsla(190deg, 15%, 5%, .2);
         transform: translateY(-4px);
-        background: #f9b234;
-        color: #242526;
+        background: #242526;
+        color: white;
         border-top-left-radius: var(--radius);
         border-top-right-radius: var(--radius);
         border-bottom-left-radius: var(--radius);
@@ -465,6 +475,9 @@
         z-index: -1;
         padding: 50px 0;
         
+        
+        justify-content: center;
+        
         }
 
         .ag-courses_item {
@@ -473,6 +486,8 @@
         margin: 0 15px 32px;
         overflow: hidden;
         border-radius: 28px;
+        box-shadow: 5px 5px 5px rgba(255, 255, 255, 1.0);
+
         
         }
 
@@ -534,13 +549,13 @@
         overflow: hidden;
 
         font-weight: bold;
-        font-size: 32px;
-        color: #242526;
+        font-size: 34px;
+        color: white;
         text-decoration: none;
 
         z-index: 2;
         position: relative;
-        -webkit-text-stroke: 0.5px white; /* Width and color of the border */
+        -webkit-text-stroke: 1.5px black; /* Width and color of the border */
   
         }
 
@@ -734,7 +749,7 @@
             text-decoration: underline;
         }
 
-
+        
         </style>
 
     </head>
@@ -762,12 +777,17 @@
                     </div>
                     
                     <div class=container-03>
-                        <div>Welcome to Art Room!</div>
-                        <div>We are committed in providing you an</div>
-                        <div>exceptional service that exceeds expectations. </div>
+                        <p>Welcome to Art Room!</br>We are committed in providing you an</br>exceptional service that exceeds expectations.</p>
+                           
                         
-                        <div class="cursor"></div> <!-- Cursor element -->
+                        
+                         <!-- Cursor element -->
                     </div>
+                    <a href="<?php echo URLROOT ?>/events/request">
+                <div class="reqButton">
+                    <button class="button-arounder">Make a Request</button>
+                </div>
+                </a>
                 </div>
 
                 
@@ -779,7 +799,7 @@
                 
             </div>
         </div>
-        <div id="container-main-01">
+        <!-- <div id="container-main-01">
             <div id="left-side-02">
                 <div class=container-02-left >
                 Your Special Moments</br> Deserve to be</br> Celebrated in Style...
@@ -797,75 +817,76 @@
                 </div>
                 </div>
             </div>
-        </div>
-
-        <div class=gallery-topic id="Gallery">
-            Gallery
-        </div>
-
-        <div class="ag-format-container">
-        <div class="ag-courses_box">
-
-        <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link ag-courses-item_link-01">
-                <div class="ag-courses-item_bg"></div>
-
-                <div class="ag-courses-item_title">
-                Wedding Shoots
-                </div>
-            </a>
+        </div> -->
+        <section>
+            <div class=gallery-topic id="Gallery">
+                <p style="color: white">Our Gallery</p>
             </div>
 
-            <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link ag-courses-item_link-02">
-                <div class="ag-courses-item_bg">
+            <div class="ag-format-container">
+                <div class="ag-courses_box">
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link ag-courses-item_link-01">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                        Wedding Shoots
+                        </div>
+                    </a>
+                    </div>
+
+                    <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link ag-courses-item_link-02">
+                        <div class="ag-courses-item_bg">
+                        </div>
+                        <div class="ag-courses-item_title">
+                        Pre Shoots
+                        </div>
+                    </a>
+                    </div>
+
+                    <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link ag-courses-item_link-03">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                        Birthday Shoots
+                        </div>
+
+                        
+                    </a>
+                    </div>
+                    <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link ag-courses-item_link-04">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                        Graduation Shoots
+                        </div>
+
+                        
+                    </a>
+                    </div>
+
+                    <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link ag-courses-item_link-05">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                        Other Events
+                        </div>
+
+                        
+                    </a>
+                    </div>
+
                 </div>
-                <div class="ag-courses-item_title">
-                Pre Shoots
-                </div>
-            </a>
             </div>
-
-            <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link ag-courses-item_link-03">
-                <div class="ag-courses-item_bg"></div>
-
-                <div class="ag-courses-item_title">
-                Birthday Shoots
-                </div>
-
-                
-            </a>
-            </div>
-            <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link ag-courses-item_link-04">
-                <div class="ag-courses-item_bg"></div>
-
-                <div class="ag-courses-item_title">
-                Graduation Shoots
-                </div>
-
-                
-            </a>
-            </div>
-
-            <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link ag-courses-item_link-05">
-                <div class="ag-courses-item_bg"></div>
-
-                <div class="ag-courses-item_title">
-                Other Events
-                </div>
-
-                
-            </a>
-            </div>
-
-        </div>
-        </div>
+            </section>
 
         <div class=gallery-topic id="Packages">
-            Packages
+            Our Packages
         </div>
         <div class="packages-container">
             <?php foreach ($data['packages'] as $package) : ?>
@@ -942,7 +963,7 @@
         </div>
         </footer>
 
-    <script>
+    <!-- <script>
         // JavaScript code for the typing effect
         document.addEventListener('DOMContentLoaded', function () {
             const textContainer = document.querySelector('.container-03');
@@ -974,7 +995,7 @@
 
             typeWriter();
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
