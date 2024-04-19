@@ -15,6 +15,7 @@
         public function register() {
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                session_start();
                 // Process form
 
                 // Sanitize POST data
@@ -95,11 +96,23 @@
                     // Hash Password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
+                     // verify email otp
+                     $otp = rand(100000, 999999);
+                     $to = $data['email'];
+                     $subject = "Email Verification";
+                     $message = "Your OTP is: ".$otp;
+                     $headers = "From:ArtRoom@gmail.com";
+                     $_SESSION['otp'] = $otp;
+                     $_SESSION['email'] = $data['email'];
+
+                     // Store entered user data in session
+                    $_SESSION['user_data'] = $data;
+
                     // Register User
-                    if($this->userModel->register($data)) {
-                        echo 'Success';
-                        flash('register_success', 'You are registered and can log in');
-                        redirect('users/login');
+                    if(mail($to, $subject, $message, $headers)) {
+                         // Redirect to verify page
+                        redirect('users/verify');
+                        
                     } else {
                         die('Something went wrong');
                     }
@@ -129,6 +142,58 @@
                 ];
 
                 $this->view('user/register', $data);
+            }
+        }
+
+        public function verify() {
+            // Check for POST
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Init data
+                $data = [
+                    'otp' => trim($_POST['otp']),
+                    'otp_err' => '',
+                ];
+
+                // Validate OTP
+                if(empty($data['otp'])) {
+                    $data['otp_err'] = 'Please enter OTP';
+                } elseif($data['otp'] != $_SESSION['otp']) {
+                    $data['otp_err'] = 'Invalid OTP';
+                }
+
+                // Make sure errors are empty
+                if(empty($data['otp_err'])) {
+                    // Validated
+                    // Register User
+                    if($this->userModel->register($_SESSION['user_data'])) {
+                        // Unset session variables
+                        unset($_SESSION['otp']);
+                        unset($_SESSION['email']);
+                        unset($_SESSION['user_data']);
+                        session_destroy();
+                        flash('register_success', 'You are registered and can log in');
+                        redirect('users/login');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('user/verify', $data);
+                }
+            }
+            else {
+                // Init data
+                $data = [
+                    'otp' => '',
+                    'otp_err' => '',
+                ];
+
+                $this->view('user/verify', $data);
             }
         }
 
