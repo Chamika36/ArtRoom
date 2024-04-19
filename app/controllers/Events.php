@@ -107,8 +107,7 @@
         }
 
         // event request
-        public function request() {
-
+        public function request($packageID) {
             if (!$this->isLoggedIn()) {
                 // If not logged in, display a message and redirect to the login page
                 flash('event_message', 'Please log in to place a request');
@@ -223,6 +222,10 @@
                     'package_err' => '',
                     'additionalRequest_err' => ''
                 ];
+
+                if($packageID != 0) {
+                    $data['package'] = $this->packageModel->getPackageById($packageID);
+                }
 
                 // Load view
                 $this->view('pages/customer/requestPage', $data);

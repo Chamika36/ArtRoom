@@ -222,7 +222,13 @@
                     <div class="input-box">
                         <label for="package"><b>Selected Package</b></label>
                         <select id="package" name="package" required>
-                            <option value=""><b>Select a package</b></option>
+                            <?php if (($data['package']) != '') {
+                                echo '<option value="' . $data['package']->PackageID . '" data-price="' . $data['package']->Price . '">' . $data['package']->Name . ' - Rs. ' . $data['package']->Price . '</option>';
+                            } else { 
+                                echo '<option value=""><b>Select a package</b></option>';
+                            }
+                            ?>
+
                             <?php foreach ($data['packages'] as $package) : ?>
                                 <option value="<?php echo $package->PackageID; ?>" data-price="<?php echo $package->Price; ?>"><?php echo $package->Name . " - Rs. " . $package->Price ; ?></option>
                             <?php endforeach; ?>

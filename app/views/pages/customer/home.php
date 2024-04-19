@@ -877,7 +877,7 @@
                 <div class="package-info">
                     <h3><?php echo $package->ServicesIncluded; ?></h3>
                     <h3>Rs. <?php echo $package->Price; ?></h3>
-                    <button class="btn">Select Package</button>
+                    <a href="<?php echo URLROOT ?>/events/request/<?php echo $package->PackageID ?>"><button class="btn">Select Package</button></a>
                 </div>
             </div>
             <?php endforeach; ?>
