@@ -23,6 +23,7 @@
 
         <div class="container">
             <?php foreach ($data['samples'] as $sample) : ?>
+            <a href="<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>">  
             <div class="item-container">
                 
                 <div class="img-container">
@@ -65,6 +66,7 @@
 
                 </div>
             </div>
+            </a>
             <?php endforeach; ?>
         
         </div>

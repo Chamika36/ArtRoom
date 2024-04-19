@@ -262,9 +262,18 @@ class Samples extends Controller{
             $this->view('pages/manager/samples/editsample', $data);
         }
     }
+
+    public function viewSample($id) {
+        $sample = $this->sampleModel->getSampleById($id);
     
-            
-            
+        $data = array(
+            'sample' => $sample 
+        );
     
-    
+        if($sample) {
+            $this->view('pages/manager/samples/viewsample', $data);
+        } else {
+            $this->view('pages/manager/samples/viewsample', $data);
+        }
+    }
 }
