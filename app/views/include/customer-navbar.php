@@ -51,7 +51,7 @@
 
         
         <div class="topnav">
-            <a class="Make a req" href="#home">Make a Request</a>
+            <a class="Make a req" href="#makeReq">Make a Request</a>
             
             <a href="#Gallery">Gallery</a>
             
