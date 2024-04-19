@@ -44,6 +44,7 @@ class Samples extends Controller{
                 // Create the folder if it doesn't exist
                 if (!is_dir('images/samples/' . $_POST['name'])) {
                     mkdir('images/samples/' . $_POST['name'], 0777, true);
+                    $image_folder = 'images/samples/' . $_POST['name'];
                 }
 
                 // Move the uploaded cover image to the destination folder
@@ -96,8 +97,8 @@ class Samples extends Controller{
                     // Init data
                     $data = array(
                         'name' => trim($_POST['name']), 
-                        'imagePath' => $cover_image_destination, // Pass the path of the uploaded cover image
-                        'coverImagePath' => $cover_image_new_name, // Pass the name of the cover image file
+                        'imagePath' => $image_folder, // Pass the path of the uploaded cover image
+                        'coverImagePath' => $cover_image_destination, // Pass the name of the cover image file
                         'images' => $images_arr,
                         'description' => trim($_POST['description']),
                         'customer' => trim($_POST['customer']),
