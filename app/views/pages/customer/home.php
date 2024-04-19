@@ -737,7 +737,6 @@
 
         </style>
 
-
     </head>
 
 <body>
@@ -782,7 +781,7 @@
         </div>
         <div id="container-main-01">
             <div id="left-side-02">
-                <div class=container-02-left>
+                <div class=container-02-left >
                 Your Special Moments</br> Deserve to be</br> Celebrated in Style...
                 </div>
                 <a href="<?php echo URLROOT ?>/events/request">
@@ -800,7 +799,7 @@
             </div>
         </div>
 
-        <div class=gallery-topic>
+        <div class=gallery-topic id="Gallery">
             Gallery
         </div>
 
@@ -865,7 +864,7 @@
         </div>
         </div>
 
-        <div class=gallery-topic>
+        <div class=gallery-topic id="Packages">
             Packages
         </div>
         <div class="packages-container">
