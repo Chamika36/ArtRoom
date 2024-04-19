@@ -8,6 +8,15 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>\css\partner\profile.css">
+
+    <style>
+        button[type="button"] {
+        box-shadow: 0px 0px 5px white;
+}
+
+
+    </style>
+
 </head>
 <body>
     <!-- sidebar -->
@@ -16,7 +25,7 @@
     
     <div class="home">
     <main>
-        <!--header-->
+        <!--header-->  
         
         <section id="about" class="about py-7">
             <div class="container">
@@ -27,26 +36,47 @@
                         <div class="image-container">
                             <img src="<?php echo URLROOT ?>/images/partners/images/about-pic.jpg" alt="" class="im" >
                         </div>
+
                         <span class="material-symbols-outlined beat-icon" onclick="openpopup()">edit</span>
                     </div>
         
                     <!-- 2nd -->
-                    <div class="about-right" id="view">
-                        <div class="title">
-                            <h2><?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?></h2><span class="material-symbols-outlined beat-icon" onclick="handleClick()">edit</span>
+                    <div class="about-right" id="view" >
+                        <div class="" style="padding-bottom: 16px;">
+                            <h2><?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?><br></h2>
+                            
+                            <p style="margin-bottom: 16px;">Welcome to the world through my lens! I'm <?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?> , a seasoned professional photographer with a passion for capturing life's beautiful moments. 
+                            Armed with a degree in photography and a keen eye for aesthetics, I bring a unique blend of creativity and commercial sense to every project. <br> <br>I'm dedicated to creating images that tell stories, evoke emotions, and leave a lasting impression. Join me on this visual journey where creativity meets commercial sense, and let's capture the essence of your special moments together.</p>
+                            
+                            
+                            <span class="material-symbols-outlined beat-icon" onclick="handleClick()">edit</span>
                         </div>
                         <p class="lead"><?php echo $data['partner']->Bio ?></p>
-                        
+
+                        <!--
+                            </div>
+                        <p class="lead">Welcome to the world through my lens! I'm Jason, a seasoned professional photographer with a passion for capturing life's beautiful moments. Armed with a degree in photography and a keen eye for aesthetics, I bring a unique blend of creativity and commercial sense to every project.</p>
+                        <p class="lead">Whether it's the romantic allure of weddings, the joyous celebration of birthdays, or the warmth of family events, I'm dedicated to creating images that tell stories, evoke emotions, and leave a lasting impression. Join me on this visual journey where creativity meets commercial sense, and let's capture the essence of your special moments together.</p>
                         <a href="#work" class="btn-down"></a>
+                           </div>
+                        -->
+                        
+                        <!--<a href="#work" class="btn-down"></a>-->
                     </div>
+
+
                     <div class="about-right-form" id="edit">
-                        <form action="" method="POST">
-                            <input class="partner-name" placeholder="Type Name" type="text" value= "<?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?>">
-                            <textarea class="partner-contant" placeholder="Type Contant" type="text" ></textarea>
+                        
+                        <form action="" method="POST" style="border-radius:40px;">
+                            <input class="partner-name" style="font-weight: bold;" placeholder="Type Name" type="text" value= "<?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?>">
+                            <textarea class="partner-contant" style="box-sizing: border-box;" placeholder="Edit Bio" type="text" ></textarea>
                             
-                                <input class="submit" type="submit" value="edit_profile">
+                                 <input class="submit" type="submit" value="Edit profile" 
+                                 style="background-color:#306E3B; border-radius: 5px; cursor: pointer;  color:white; border: none;" />
                             
-                            <button class="cancel">cancel</button>
+                                <button class="cancel" 
+                                style="background-color:#8B0000; border-radius: 5px; cursor: pointer; color:white; border: none;" >
+                                Cancel</button>
                         </form>
 
                     </div>
@@ -56,8 +86,9 @@
         
 
         <!-- work section -->
-        <div class = "title" style="left:30px">
-            <h2>Specialiation</h2>
+        <br/><br/>
+        <div class = "title" >
+            <h2 style="padding:10px;">Specialization</h2>
         </div>
         <section id = "work" class = "vh-100 flex py-7">
             <div class = "container">
@@ -136,8 +167,7 @@
         <section id = "portfolio" class = "vh-100 py-7">
             <div class = "container">
                 <div class = "portfolio-content">
-                    <div class = "title">
-                        <h2>Customer Reviews</h2>
+                    <div class = "title">                
 
         <div class="review-container">
             
@@ -172,6 +202,7 @@
 
 </body>
 </html>
+
 <script>
    function handleClick(){
         var view = document.getElementById("view"); 
