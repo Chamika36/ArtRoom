@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Verification Page</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
     <div class="container">
