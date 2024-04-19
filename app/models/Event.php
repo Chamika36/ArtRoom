@@ -92,7 +92,7 @@
 
         // Get all events of a customer
         public function getEventsByCustomer($id) {
-            $this->db->query('SELECT * FROM Event WHERE CustomerID = :id');
+            $this->db->query('SELECT * FROM Event WHERE CustomerID = :id ORDER BY EventID DESC');
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
@@ -108,7 +108,7 @@
 
         //Get events by partner
         public function getEventsByPartner($id) {
-            $this->db->query('SELECT * FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id');
+            $this->db->query('SELECT * FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id ORDER BY EventID DESC');
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
