@@ -265,9 +265,14 @@ class Samples extends Controller{
 
     public function viewSample($id) {
         $sample = $this->sampleModel->getSampleById($id);
+        $folder = $sample->ImagePath . '/';
+        $images = glob($folder . "*.jpg");
+
     
         $data = array(
-            'sample' => $sample 
+            'sample' => $sample,
+            'folder' => $folder,
+            'images' => $images
         );
     
         if($sample) {
