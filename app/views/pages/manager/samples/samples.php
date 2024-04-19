@@ -27,7 +27,7 @@
                 
                 <div class="img-container">
                     <!-- Displaying the cover image of the sample -->
-                    <img src="<?php echo URLROOT ?>/images/samples/<?php echo $sample->name ?>/<?php echo $sample->CoverImagePath; ?>" alt="Cover Image">
+                    <img src="<?php echo URLROOT ?>/<?php echo $sample->CoverImagePath; ?>" alt="Cover Image">
                 </div>
 
                 <div class="body-container">
