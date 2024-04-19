@@ -51,7 +51,7 @@
 
         
         <div class="topnav">
-            <a class="Make a req" href="#home">Make a Request</a>
+            <a class="Make a req" href="#makeReq">Make a Request</a>
             
             <a href="#Gallery">Gallery</a>
             
@@ -72,7 +72,7 @@
                         <a class="arrow-icon">&#9660;</a>
                         <div class="dropdown-content" id="dropdownMenu">
                             <a href="'. URLROOT .'/users/logout">Log Out</a>
-                            <a href="'. URLROOT .'/events/request">Make a Request</a>
+                            <a href="'. URLROOT .'/events/request/0">Make a Request</a>
                             <a href="'. URLROOT .'/events/viewCustomerEvents/' . $_SESSION['user_id'] . '">My Requests</a>
                         </div>
                     </li>';

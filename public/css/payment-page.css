@@ -92,12 +92,13 @@ width: 35%;
     border-radius: 5px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     background: #faf9f9;
+    
 }
 
 .can-res-buttons{
     display: flex;
     flex-direction: row;
-    
+    padding-right: 5px;
 }
 
 .make-payment-btn{

@@ -16,6 +16,10 @@ body {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     width: 100%;
     display: flex;
@@ -126,27 +130,24 @@ body {
     font-weight: bolder;
 }
 
-.action {
-    color: #fff;
-    border: 3px solid #fff;
-    background-color: transparent;
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    outline: none;
-    cursor: pointer;
-    padding: 12px;
-    text-transform: uppercase;
-    font-size: 1.3em;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: background-color 0.4s, top 0.4s;
+.button-container {
+    display: flex;
+    justify-content: space-around;
 }
 
-.item-container:hover .action {
-    top: 50px;
+.action {
+    color: #000;
+    border: 3px solid #000;
+    background-color: transparent;
+    width: calc(50% - 16px); /* Adjust button width */
+    outline: none;
+    cursor: pointer;
+    padding: 8px; /* Reduced padding */
+    text-transform: uppercase;
+    font-size: 1em; /* Reduced font size */
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.4s;
 }
 
 .action:hover {
@@ -168,8 +169,22 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-
 .add-package-btn:hover {
     background-color: #8b8882;
     color: #ffffff;
+}
+
+.delete-button {
+    color: #000;
+    border: 3px solid #000;
+    background-color: transparent;
+    width: calc(50% - 16px); /* Adjust button width */
+    outline: none;
+    cursor: pointer;
+    padding: 8px; /* Reduced padding */
+    text-transform: uppercase;
+    font-size: 1em; /* Reduced font size */
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.4s;
 }

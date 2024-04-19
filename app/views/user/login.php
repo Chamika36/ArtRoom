@@ -331,7 +331,7 @@ line-height: normal;
                         </div>
                         <div class="login-button">
                             <br>
-                            <input type="checkbox" ><span>Remember me</span><span id="forgot"> <a href="" style="font-weight:normal">Forgot Password</a></span><br><br>
+                            <input type="checkbox" ><span>Remember me</span><span id="forgot"> <a href="<?php echo URLROOT?>/users/forgotpassword" style="font-weight:normal">Forgot Password</a></span><br><br>
                             <div class="buttonCA"><button type="submit">Log In</button></div><br>
                             <span class="buttonCA">Don't have an Account? <a href="<?php echo URLROOT?>/users/register"> Create Account</a></span>
                         </div>

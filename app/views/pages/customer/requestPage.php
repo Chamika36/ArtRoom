@@ -173,7 +173,7 @@
             
         <div class="container">   
                     <div>
-                        <h1>Request for a Booking</h1>
+                        <h1><b>Request for a Booking</b></h1>
                     </div>    
         
                 <form class="form" action="<?php echo URLROOT; ?>/events/request" method="POST">
@@ -184,22 +184,22 @@
                     </select> -->
                     
                     <div class="input-box">
-                        <label for="date">Event Date</label>
+                        <label for="date"><b>Event Date,</b></label>
                         <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
                         <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
                     </div>
                     <div class="time-box">
                         <div class="input-box">
-                            <label for="startTime">Start Time</label>
+                            <label for="startTime"><b>Start Time</b></label>
                             <input type="time" id="startTime" name="startTime" required>
                         </div>
                         <div class="input-box">
-                            <label for="endTime">End Time</label>
+                            <label for="endTime"><b>End Time</b></label>
                             <input type="time" id="endTime" name="endTime" min="" required>
                         </div>
                     </div>
                     <div class="input-box">
-                        <label for="location">Location</label>
+                        <label for="location"><b>Location</b></label>
                         <input type="text" id="location" name="location" placeholder="Choose location" required>
                         <input type="hidden" id="latitude" name="latitude" value="" required>
                         <input type="hidden" id="longitude" name="longitude" value="" required>
@@ -210,9 +210,9 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="requestedPhotographer">Request Photographer</label>
+                        <label for="requestedPhotographer"><b>Request Photographer</b></label>
                         <select id="requestedPhotographer" name="requestedPhotographer">
-                        <option value="">Select a photographer</option>
+                        <option value=""><b>Select a photographer</b></option>
                             <?php foreach ($data['photographers'] as $photographer) : ?>
                                 <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
                             <?php endforeach; ?>
@@ -220,9 +220,15 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="package">Selected Package</label>
+                        <label for="package"><b>Selected Package</b></label>
                         <select id="package" name="package" required>
-                            <option value="">Select a package</option>
+                            <?php if (($data['package']) != '') {
+                                echo '<option value="' . $data['package']->PackageID . '" data-price="' . $data['package']->Price . '">' . $data['package']->Name . ' - Rs. ' . $data['package']->Price . '</option>';
+                            } else { 
+                                echo '<option value=""><b>Select a package</b></option>';
+                            }
+                            ?>
+
                             <?php foreach ($data['packages'] as $package) : ?>
                                 <option value="<?php echo $package->PackageID; ?>" data-price="<?php echo $package->Price; ?>"><?php echo $package->Name . " - Rs. " . $package->Price ; ?></option>
                             <?php endforeach; ?>
@@ -231,7 +237,7 @@
                     <!-- Additional Items -->
                     <div class="extras-section">
                         <div class="input-box">
-                            <label for="extras">Select Extras:</label>
+                            <label for="extras"><b>Select Extras:</b></label>
                             <select id="extras" name="extras">
                                 <option value="1500.00">Additional Album Page - Rs. 1,500.00</option>
                                 <option value="70.00">Thanking Card - Rs. 70.00</option>
@@ -243,7 +249,7 @@
                             </select>
                         </div>
                         <div class="input-box">
-                            <label for="quantity">Quantity:</label>
+                            <label for="quantity"><b>Quantity:</b></label>
                             <input type="number" id="quantity" name="quantity" min="1" step="1">
                         </div>  
                         <div class="input-box"> 
@@ -258,17 +264,17 @@
                     <input type="hidden" id="selectedExtras" name="selectedExtras" value="[]">
 
                     <div class="input-box">
-                        <label for="additionalRequest">Additional Request</label>
+                        <label for="additionalRequest"><b>Additional Request</b></label>
                         <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
                     </div>
                     <div class="input-box">
-                        <label for="totalBudget">Total Budget:</label>
+                        <label for="totalBudget"><b>Total Budget:</b></label>
                         <input type="text" id="totalBudget" name="totalBudget" readonly>
 
                         <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
                     </div>
                     <div >
-                        <button class="submit-button" type="submit" value="Send Request">Send Request</button>
+                        <button class="submit-button" type="submit" value="Send Request"><b>Send Request</b></button>
                     </div>
                 </form>
             

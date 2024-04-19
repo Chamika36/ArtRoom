@@ -36,6 +36,15 @@
                 return false;
             }
         }
+
+        // view Sample
+        public function viewSample($id) {
+            $this->db->query('SELECT * FROM Sample WHERE SampleID = :id');
+            // Bind values
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            return $row;
+        }
         
 
         // Delete Sample

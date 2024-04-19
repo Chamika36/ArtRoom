@@ -20,11 +20,12 @@
 
          </section>
          <section class="table__body">
-             <table>
+            
+             <table class="responsive-table">
                  <thead>
                      <tr>
-                        <th class="eve">Event ID</th>
-                        <th>Date</th>
+                        <th>Event ID</th>
+                        <th style="width: 15%;">Date</th>
                         <th>Time</th>
                         <th>Location</th>
                         <th>Details</th>
@@ -35,12 +36,12 @@
                     <tbody>
                     <?php foreach ($data['events'] as $event) : ?>
                      <tr>
-                     <td class="box"><?php echo $event->EventID; ?></td>
-                        <td><?php echo $event->EventDate; ?></td>
+                     <td style="text-align: center;" class="box"><?php echo $event->EventID; ?></td>
+                        <td style="text-align: center;"><?php echo $event->EventDate; ?></td>
                         <td><?php echo $event->StartTime; ?></td>
                         <td><?php echo $event->Location; ?></td>
                         <td>
-                        <a href="<?php echo URLROOT ?>/partners/viewEvent/<?php echo $event->EventID?>"><p class="status shipped">View Details</p></a>
+                        <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/viewEvent/<?php echo $event->EventID?>"><p class="status shipped">View Details</p></a>
                         </td>
                         <td>
                         <?php //if ($event->Status == 'Accepted') : ?>
@@ -48,8 +49,8 @@
                         <?php //elseif ($event->Status == 'Canceled') : ?>
                             <!-- <p class="status cancelled">Cancelled</p> -->
                         <?php //else : ?>
-                            <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Accepted/Ok/"><p class="status do">Accept</p></a>
-                            <a href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Declined/Busy/"><p class="status dont">Decline</p></a>
+                            <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Accepted/Ok/"><p class="status do">Accept</p></a>
+                            <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Declined/Busy/"><p class="status dont">Decline</p></a>
                         <?php //endif; ?>
                         </td> 
                      </tr>

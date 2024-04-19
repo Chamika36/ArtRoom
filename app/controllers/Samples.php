@@ -262,9 +262,23 @@ class Samples extends Controller{
             $this->view('pages/manager/samples/editsample', $data);
         }
     }
+
+    public function viewSample($id) {
+        $sample = $this->sampleModel->getSampleById($id);
+        $folder = $sample->ImagePath . '/';
+        $images = glob($folder . "*.jpg");
+
     
-            
-            
+        $data = array(
+            'sample' => $sample,
+            'folder' => $folder,
+            'images' => $images
+        );
     
-    
+        if($sample) {
+            $this->view('pages/manager/samples/viewsample', $data);
+        } else {
+            $this->view('pages/manager/samples/viewsample', $data);
+        }
+    }
 }
