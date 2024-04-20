@@ -8,248 +8,219 @@
 
     
 <style>
+      body{
+            background-color:#FBF9F3;
+            font-family: "Poppins", sans-serif;
+        
+    }
 
-body{
-    background-color:#FBF9F3;
-    font-family: "Poppins", sans-serif;
-}
-    .main1 .registerForm{
-    background-color: #FEFEFE;
-    display: grid;
-    grid-template-columns: 55% 45%;
-    margin: 30px 160px 30px 160px;
-    border-radius: 20px;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
-}
-.image{
-   height: 93vh;
-}
-.registerForm .image img{
-    width: 100%;
-    height: 100%;
-    margin-bottom: 0px;
-    border-radius: 20px;
-}
+    section{
+        background-color:#fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        align-items: center;
+        width: 35%;
+        
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 2px 6px 10px 0 rgba(0, 0, 0, 0.2);
+       
+    }
 
-.formLeft{
-    display: grid;
-    grid-template-rows: 37% 62%;
-    padding: 30px;
-}
-.formLeft .c1{
-    display: grid;
-    grid-template-rows: 60% 40%;
-}
-.c1 .c1_1{
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-.c1_1_1{
-    max-width: 70%; /* Ensure the div does not exceed its parent's width */
-    max-height: 70%; /* Ensure the div does not exceed its parent's height */
-    overflow: hidden; /* Hide any overflow if the image is larger than the div */
-    text-align: center; /* Center the image horizontally (optional) */
-    margin-left: 90px;
-}
-.c1_1 .c1_1_1 img{
-    max-width: 50%; /* Keep the image width within the div */
-    max-height: 100%;
-    float: right;
+
+
+    .branding{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        
+
+    }
+    .artroom-logo{
+      width: 75px;
+      height: 75px;
+      
+    }
+    .brand-name{
+        color: #2E2626;
+        font-family: Otomanopee One;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 118.9%; /* 76.096px */
+        
+        mix-blend-mode: darken;
+        font-weight: bold;
+        
+    }
+
+    h4{
+        margin-bottom: 20px;
+    }
+
+    form{
+        text-align: left;
+    }
+
     
-}
-.c1_1_2{
-    color: #2E2626;
-    font-family: Otomanopee One;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 118.9%; /* 76.096px */
-    
-    mix-blend-mode: darken;
-    font-weight: bold;
-    margin-top: 25px;
-    
-}
-.c1_2{
-    color: #2E2626;
-text-align: center;
-font-size: 26px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
 
-.c2{
-    
-    /* Center the child horizontally */
-   padding-left: 10%;
-   padding-right: 10%;
-   
-}
+    label{
+        font-size: 16px;
+        align-items: left;
+        color: #2E2626;
+        
+        
+    }
 
-.formcontainer{
-   margin-top: -150px;
-   width: 100%;
-}
+    input{
+        width: 100%;
+        height: 28px;
+        border-radius: 6px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 0.5px solid rgba(0, 0, 0, 0.2);
+        background-color: #F2F2F2;
+        color: #2E2626;
+        padding-left: 10px;
+    }
 
-.formcontainer input{
-    width: 100%;
-    height: 30px;
-    border-radius: 10px;
-    margin-bottom: -10px;
-    margin-top: -10px;
-}
+    input::placeholder {
+        
+        opacity: 0.8;
+    }
 
+    input:focus {
+        background-color: rgba(30, 144, 255, 0.1);
+        outline-color: rgba(30, 144, 255, 0.5);
+    }
 
-.login-button button{
-    border-radius: 15px;
-    background: #706F6C;
-    color: #FFF;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    padding: 10px 30px 10px 30px;
-    transition: background 0.3s ease;
-}
+    .name{
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
 
-.login-button button:hover {
-    background: #242526; /* Change the background color on hover */
-}
+    button{
+        background-color: #3b3d3e;
+        color: white;
+        width: 100%;
+        height: 38px;
+        border-radius: 6px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+        border: 0.5px solid rgba(0, 0, 0, 0.5);
+        font-size: 18px;
+        margin-top: 20px;
+    }
 
-.login-button #forgot{
-    float: right;
-    
-}
-.login-button a{
-    text-decoration: none; /* Remove underline */
-    color: inherit;
-    font-weight: bold;
-}
-.login-button button{
-    cursor: pointer;
-}
-.login-button .buttonCA{
-  margin-top: 20px;
-   display: flex;
-   justify-content: center;
-} 
+    button:hover{
+        background-color: #f9b234;
+        color: black
+    }
 
-.formcontainer .invalid-feedback{
-    color:red;
-    
-}
+    h4{
+        opacity: 0.6;
+    }
 
-.select-box{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    margin-top: 10px;
-    margin-right: 50px;
-    
-}
+    .invalid-feedback{
+        color: red;
+        font-size: 12px;
+    }
 
-.select-box select{
-    width: 100%;
-    height: 30px;
-    border-radius: 8px;
-    
-}
-.special-box{
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    margin-top: 10px;
-    margin-right: 50px;
-    display: none
-}
+    select{
+        width: 100%;
+        height: 30px;
+        border-radius: 6px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 0.5px solid rgba(0, 0, 0, 0.2);
+        background-color: #F2F2F2;
+        color: #2E2626;
+        padding-left: 10px;
+    }
 
-.special-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-right: 50px;
-     
-    width: 100%;
-}
-    </style>
+    select:focus{
+        background-color: rgba(30, 144, 255, 0.1);
+        outline-color: rgba(30, 144, 255, 0.5);
+
+    }
+
+ </style>
 
 </head>
 <body>
-    <section class="main1">
-        <div class="registerForm">
-            <div class="formLeft">
-            <h2 class="c1_2"><b>Create Your Account</b></h2>
-
-                <div class="c2">
-                
-                    <form action="<?php echo URLROOT; ?>/users/register" method="POST">
-                        <div class="formcontainer">
-                                
-                                    <p>First Name</p>
-                                    <input type="text" name="firstName" value="<?php echo $data['firstName']?>" required><br>
-                                    <span class="invalid-feedback"><?php echo $data['first_name_err']?></span>
-                                
-                                    <p>Last Name</p>
-                                    <input type="text" name="lastName" value="<?php echo $data['lastName']?>" required><br />
-                                    <span class="invalid-feedback"><?php echo $data['last_name_err']?></span>
-                                
-                                    <p>Email</p>
-                                    <input type="email" name="email" value="<?php echo $data['email']?>" required><br />
-                                    <span class="invalid-feedback"><?php echo $data['email_err']?></span>
-                                
-                                    <p>Contact Number</p>
-                                    <input type="tel" name="contactNumber" pattern="([0-9]{10})" value="<?php echo $data['contactNumber']?>" required><br />
-                                    <span class="invalid-feedback"><?php echo $data['contact_err']?></span>
-                            
-                                    <p>Password</p>
-                                    <input type="password" name="password" value="<?php echo $data['password']?>" required><br />
-                                    <span class="invalid-feedback"><?php echo $data['password_err']?></span>
-                                
-                                    <p>Confirm Password</p>
-                                    <input type="password" name="confirmPassword" value="<?php echo $data['confirmPassword']?>" required><br />
-                                    <span class="invalid-feedback"><?php echo $data['confirm_password_err']?></span>
-                                    <div class="special-container">
-                                        <div class="select-box">
-                                            <div>
-                                                <p>User Type : </p>
-                                            </div>
-                                            <div>
-                                                <select id="userType" name="userType" required>
-                                                    <option value="" disabled selected>Select a type</option>
-                                                    <option value="1">Customer</option>
-                                                    <option value="2">Manager</option>
-                                                    <option value="3">Photographer</option>
-                                                    <option value="4">Editor</option>
-                                                    <option value="5">Printing Firm</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="special-box" id="specialization-group">
-                                            <div>
-                                                <p for="specialization">Specialization</p>
-                                            </div>
-                                            <div>
-                                                <select name="specialization" id="specialization">
-                                                    <option value="">Select Specialization</option>
-                                                    <option value="Indoor">Indoor</option>
-                                                    <option value="Outdoor">Outdoor</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="login-button">
-                                        <div class="buttonCA"><button type="submit" value="Register">Register</button></div>
-                                        <!-- <input class="buttonCA" type="submit" value="Register"> -->
-                                    </div>
-                        </div>        
-                    </form>
+    <section>
+        <div class="branding">
+            <div class="artroom-logo">
+                <img class="artroom-logo" src="<?php echo URLROOT?>/images/logo.png" alt="logo">
+            </div>
+            <div class="brand-name">Art Room</div>
+        </div>
+        <h1>Create Your Account</h1>
+        <!-- <div class="test"> -->
+            <form action="<?php echo URLROOT; ?>/users/register" method="POST">
+               <div class="name">       
+                <div>  
+                <label for="First-name">First Name</label>
+                <input type="text" name="firstName" placeholder="First Name" value="<?php echo $data['firstName']?>" required></br>
+                <span class="invalid-feedback"><?php echo $data['first_name_err']?></span>
                 </div>
-            </div>
-            <div class="image">
-                <img src="<?php echo URLROOT?>/images/register.jpg" alt="image">
-            </div>
-        </div>    
+                <div>                
+                <label for="Last-name">Last Name</label>
+                <input type="text" name="lastName" placeholder="Last Name" value="<?php echo $data['lastName']?>" required></br>
+                <span class="invalid-feedback"><?php echo $data['last_name_err']?></span>
+                </div>
+               </div>                 
+                <label for="email">Email</label></br>
+                <input type="email" name="email" placeholder="Email" value="<?php echo $data['email']?>" required></br>
+                <span class="invalid-feedback"><?php echo $data['email_err']?></span>
+                                
+                <label for="contact-num">Contact Number</label>
+                <input type="tel" name="contactNumber" pattern="([0-9]{10})" placeholder="Contact Number" value="<?php echo $data['contactNumber']?>" required></br>
+                <span class="invalid-feedback"><?php echo $data['contact_err']?></span>
+                            
+                <label for="password">Password</label></br>
+                <input type="password" name="password" placeholder="Password" value="<?php echo $data['password']?>" required></br>
+                <span class="invalid-feedback"><?php echo $data['password_err']?></span>
+                                
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" value="<?php echo $data['confirmPassword']?>" required></br>
+                <span class="invalid-feedback"><?php echo $data['confirm_password_err']?></span>
+                
+                    <label for="user-type">User Type</label></br>                        
+                        <select id="userType" name="userType" required>
+                            <option value="" disabled selected>Select a type</option>
+                            <option value="1">Customer</option>
+                            <option value="2">Manager</option>
+                            <option value="3">Photographer</option>
+                            <option value="4">Editor</option>
+                            <option value="5">Printing Firm</option>
+                        </select>
+                            
+                    <div id="specialization-group" style="display: none">
+                        
+                        <label for="specialization">Specialization</label></br>
+                            <select name="specialization" id="specialization">
+                                <option value="">Select Specialization</option>
+                                <option value="Indoor">Indoor</option>
+                                <option value="Outdoor">Outdoor</option>
+                            </select>
+                            
+                    </div>
+                                    
+                <button type="submit" value="Register">Register</button>
+                                        
+                                    
+                               
+            </form>
+        <!-- </div> -->
     </section>
 </body>
 </html>
