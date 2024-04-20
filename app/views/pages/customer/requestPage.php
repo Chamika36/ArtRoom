@@ -176,7 +176,7 @@
                         <h1><b>Request for a Booking</b></h1>
                     </div>    
         
-                <form class="form" action="<?php echo URLROOT; ?>/events/request" method="POST">
+                <form class="form" action="<?php echo URLROOT; ?>/events/request/0" method="POST">
                     <!-- <label for="event-type">Event Type</label>
                     <select id="event-type" name="event-type">
                         <option value="option1">Option 1</option>
