@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Event</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manager/manageevent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         
     </style>
@@ -25,7 +26,27 @@
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
                 <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
-                <li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?> <Strong>Status : </Strong><?php echo $data['photographerAction']->Action; ?></li>
+                
+                
+                <li><strong>Assigned Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?> <Strong>Status : </Strong>
+                    <?php
+                    $photographerAction = $data['photographerAction']->Action;
+                    switch ($photographerAction) {
+                        case 'Pending':
+                            echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                            break;
+                        case 'Accepted':
+                            echo '<i class="fas fa-check-circle" style="color: orange;"></i> Accepted';
+                            break;
+                        case 'Declined':
+                            echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
+                            break;
+                        default:
+                            echo 'Unknown Status';
+                            break;
+                    }
+                    ?>
+                </li>
                 <?php if ($data['photographerAction']->Action == 'Declined') : ?>
                     <div class="form-group">
                         <label for="photographer">Reallocate Photographer:</label>
@@ -39,7 +60,25 @@
                     </div>
                 <?php endif; ?>
 
-                <li><strong>Assigned Editor:</strong> <?php echo $data['editor']->FirstName . ' ' . $data['editor']->LastName; ?> <Strong>Status : </Strong><?php echo $data['editorAction']->Action; ?></li>
+                <li><strong>Assigned Editor:</strong> <?php echo $data['editor']->FirstName . ' ' . $data['editor']->LastName; ?> <Strong>Status : </Strong>
+                    <?php
+                    $editorAction = $data['editorAction']->Action;
+                    switch ($editorAction) {
+                        case 'Pending':
+                            echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                            break;
+                        case 'Accepted':
+                            echo '<i class="fas fa-check-circle" style="color: orange;"></i> Accepted';
+                            break;
+                        case 'Declined':
+                            echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
+                            break;
+                        default:
+                            echo 'Unknown Status';
+                            break;
+                    }
+                    ?>
+                </li>
                 <?php if ($data['editorAction']->Action == 'Declined') : ?>
                     <div class="form-group">
                         <label for="editor">Reallocate Editor:</label>
@@ -53,7 +92,25 @@
                     </div>
                 <?php endif; ?>
 
-                <li><strong>Assigned Printing Firm:</strong> <?php echo $data['printingFirm']->FirstName . ' ' . $data['printingFirm']->LastName; ?> <Strong>Status : </Strong><?php echo $data['printingFirmAction']->Action; ?></li>
+                <li><strong>Assigned Printing Firm:</strong> <?php echo $data['printingFirm']->FirstName . ' ' . $data['printingFirm']->LastName; ?> <Strong>Status : </Strong>
+                    <?php
+                    $printingFirmAction = $data['printingFirmAction']->Action;
+                    switch ($printingFirmAction) {
+                        case 'Pending':
+                            echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                            break;
+                        case 'Accepted':
+                            echo '<i class="fas fa-check-circle" style="color: orange;"></i> Accepted';
+                            break;
+                        case 'Declined':
+                            echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
+                            break;
+                        default:
+                            echo 'Unknown Status';
+                            break;
+                    }
+                    ?>
+                </li>
                 <?php if ($data['printingFirmAction']->Action == 'Declined') : ?>
                     <div class="form-group">
                         <label for="printingFirm">Reallocate Printing Firm:</label>
@@ -135,8 +192,28 @@
                         ?>
                     <!-- </td>
                 <tr> -->
-                    <th>Total Budget</th>
-                    <td><?php echo $data['event']->TotalBudget; ?></td>
+                <th>Total Budget</th>
+                    <td>
+                        <?php echo $data['event']->TotalBudget; ?> :
+                        <?php
+                        $status = $data['event']->Status;
+                        switch ($status) {
+                            case 'Pencil':
+                            case 'Accepted':
+                                echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                                break;
+                            case 'Advanced':
+                                echo '<i class="fas fa-check-circle" style="color: orange;"></i> Advanced';
+                                break;
+                            case 'FullPaid':
+                                echo '<i class="fas fa-check-circle" style="color: green;"></i> Fully Paid';
+                                break;
+                            default:
+                                echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> N/A';
+                                break;
+                        }
+                        ?>
+                    </td>
                 </tr>
             </table>
 
