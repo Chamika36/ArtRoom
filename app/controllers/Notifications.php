@@ -8,7 +8,7 @@
 
         public function index() {
             $user_id = $_SESSION['user_id']; 
-            $notifications = $this->notificationModel->getNotificationsByUser($user_id);
+            $notifications = $this->notificationModel->getNotificationsByUserId($user_id);
     
             $data = [
                 'notifications' => $notifications

@@ -387,6 +387,27 @@
         // update event status
         public function updateEventStatus($id, $status) {
             if($this->eventModel->updateEventStatus($id, $status)) {
+                // Notification data
+                $notification_data = [
+                    'user_id' => $this->eventModel->getEventById($id)->CustomerID,
+                    'type' => 'status',
+                    'content' => 'Your event status has been updated to ' . $status,
+                    'link' => 'events/viewEvent/' . $id . '',
+                    'event_id' => $id
+                ];
+
+                $this->notificationModel->createNotification($notification_data);
+
+                // Notification data to partners
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PhotographerID;
+                $this->notificationModel->createNotification($notification_data);
+
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->EditorID;
+                $this->notificationModel->createNotification($notification_data);
+
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PrintingFirmID;
+                $this->notificationModel->createNotification($notification_data);
+
                 flash('event_message', 'Event status updated');
                 redirect('events');
             } else {
