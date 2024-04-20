@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Fallback font */
+    background-color: #f0f0f0;
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.sample-info {
+    margin-bottom: 20px;
+    margin-top: 40px; 
+}
+
+.sample-info h2 {
+    font-family: 'Sacramento', cursive;
+    font-size: 40px; /* Adjust the font size as needed */
+    margin-bottom: 20px;
+}
+
+.sample-info p {
+    font-size: 17px;
+    color: #373232;
+    margin-bottom: 12px; /* Adjust the margin-bottom as needed */
+}
+
+.sample-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    background-color: #433f3f; /* Ash color */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Add border radius for rounded corners */
+}
+
+.sample-images img {
+    width: calc(25% - 10px); /* Adjust image width as needed */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .sample-images img {
+        width: calc(50% - 10px); /* Adjust image width for smaller screens */
+    }
+}

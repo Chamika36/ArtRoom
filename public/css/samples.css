@@ -78,10 +78,12 @@ body {
 .title,
 .price {
     color: #18537a;
+    text-align: center;
     font-size: 1.5em;
     font-weight: bold;
     letter-spacing: 1px;
     margin: 12px;
+    font-style: center;
 }
 
 .info {
@@ -101,12 +103,16 @@ body {
     margin-top: 12px;
     padding: 28px;
     padding-bottom: 0;
+    font-weight: bold;
+    
 }
 
 .additional-info .info {
-    font-size: 0.9em;
+    font-size: 1.1em;
     margin-bottom: 20px;
     text-align: center;
+    font-weight: bold;
+    /*color: #000;*/
 }
 
 .info i {
@@ -120,15 +126,12 @@ body {
     font-weight: bolder;
 }
 
-.button-container {
-    position: relative;
-}
-
 .action {
     color: #fff;
     border: 3px solid #fff;
     background-color: transparent;
     position: absolute;
+    top: -100px;
     left: 50%;
     transform: translateX(-50%);
     width: 60%;
@@ -142,11 +145,7 @@ body {
     transition: background-color 0.4s, top 0.4s;
 }
 
-.edit-button {
-    top: 0;
-}
-
-.delete-button {
+.item-container:hover .action {
     top: 50px;
 }
 
@@ -154,22 +153,23 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-
 .add-package-btn {
     background-color: #3b3d3e;
     border: 0;
     border-radius: 50px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     color: #fff;
-    font-size: 18px; 
-    padding: 15px 30px; 
-    margin-top: 40px;
+    font-size: 18px; /* Increased font size */
+    padding: 15px 30px; /* Increased padding */
+    margin-top: 40px; /* Increased margin-top to add more space */
     margin-right: 20px;
     float: right;
     letter-spacing: 1px;
     transition: background-color 0.3s, color 0.3s;
 }
 
+
 .add-package-btn:hover {
-    background-color: #2e2a25;
+    background-color: #8b8882;
+    color: #ffffff;
 }
