@@ -256,22 +256,25 @@ line-height: normal;
     width: 100%;
     height: 40px;
     border-radius: 10px;
+    padding-left: 10px;
     
 }
 
 .login-button button{
     border-radius: 20px;
-    background: #706F6C;
+    background: #3b3d3e;
     color: #FFF;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     padding: 10px 30px 10px 30px;
     transition: background 0.3s ease;
+    border: none;
 }
 
 .login-button button:hover {
-    background: #242526; /* Change the background color on hover */
+    background: #f9b234;
+    color: black; /* Change the background color on hover */
 }
 
 .login-button #forgot{
