@@ -35,7 +35,7 @@
                         die('Something went wrong');
                     }
                 }else{
-                    $this->view('pages/customer/feedback', $data);
+                    $this->view('pages/customer/feedbacks/feedback', $data);
                 }
             }else{
                 $data = [
@@ -45,7 +45,7 @@
                     'feedback_err' => '',
                     'rating_err' => ''
                 ];
-                $this->view('pages/customer/feedback' , $data);
+                $this->view('pages/customer/feedbacks/feedback' , $data);
             }
         }
 
@@ -54,6 +54,6 @@
             $data = [
                 'feedbacks' => $feedbacks
             ];
-            $this->view('pages/customer/viewFeedbacks', $data);
+            $this->view('pages/customer/viewFeedbacks/feedback', $data);
         }
     }
