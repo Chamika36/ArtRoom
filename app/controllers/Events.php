@@ -694,8 +694,32 @@
         // View event by ech Partner
         public function viewPartnerEvents($id) {
             $events = $this->eventModel->getEventsByPartner($id);
+
+            foreach ($events as $event) {
+                $user_type_id = $_SESSION['user_type_id'];
+                $action = '';
+
+                switch($user_type_id) {
+                    case 3:
+                        $action = $this->partnerModel->getPhotographerAction($event->EventID); 
+                        break;
+                    case 4:
+                        $action = $this->partnerModel->getEditorAction($event->EventID);
+                        break;
+                    case 5:
+                        $action = $this->partnerModel->getPrintingFirmAction($event->EventID);
+                        break;
+                    default:
+                        $action = "Error";
+                        break;
+                }
+
+                $event->UserTYpe = $user_type_id;
+                $event->Action = $action;
+            }
+
             $data = [
-                'events' => $events
+                'events' => $events,
             ];
         
             $this->view('pages/partner/events', $data);
