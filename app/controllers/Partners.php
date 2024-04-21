@@ -196,4 +196,43 @@ class Partners extends Controller {
         }
     }
 
+    // file upload to google drive
+    public function uploadImagesbyPhotographer($eventID) {
+        $event = $this->eventModel->getEventById($eventID);
+        $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
+
+        $notification_data_customer = [
+            'user_id' => $event->CustomerID,
+            'type' => 'action',
+            'content' => 'Photographer has uploaded your images. Select the photos wanted to print and Move to edit folder',
+            'link' => $link,
+            'event_id' => $event_id
+        ];
+
+        $this->notificationModel->createNotification($notification_data_customer);
+        redirect('$link');
+    }
+
+    public function viewImagesbyEditor($eventID){
+        $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
+        redirect($link);
+    }
+
+    // file upload to google drive
+    public function uploadImagesbyEditor($eventID) {
+        $event = $this->eventModel->getEventById($eventID);
+        $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
+
+        $notification_data_printing = [
+            'user_id' => $event->ProntingFirmID,
+            'type' => 'action',
+            'content' => 'Editor has uploaded images. Click to print',
+            'link' => $link,
+            'event_id' => $event_id
+        ];
+
+        $this->notificationModel->createNotification($notification_data_customer);
+        redirect($link);
+    }
+
 }

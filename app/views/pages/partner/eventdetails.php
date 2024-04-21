@@ -27,7 +27,19 @@
 
             <?php if ($data['action'] == 'Accepted') : ?>
                 Accepted</li>
-                <a href="https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing" target="_blank" class="button">Upload Completed Work</a>
+                
+                <?php if ($_SESSION['user_type_id'] == 3) :?>
+                    <a href="<?php echo URLROOT; ?>/partners/uploadImagesbyPhotographer/<?php echo $data['event']->EventID?>" target="_blank" class="button">Upload Completed Work</a>
+
+                <?php elseif ($_SESSION['user_type_id'] == 4) :?>
+                    <a href="<?php echo URLROOT; ?>/partners/viewImagesbyEditor/<?php echo $data['event']->EventID?>" target="_blank" class="button">View Uploaded Images</a>
+                    <a href="<?php echo URLROOT; ?>/partners/uploadImagesbyEditor/<?php echo $data['event']->EventID?>" target="_blank" class="button">Upload Completed Work</a>
+
+                <?php elseif ($_SESSION['user_type_id'] == 5) :?>
+                    <a href="<?php echo URLROOT; ?>/partners/viewImagesbyPrinting/<?php echo $data['event']->EventID?>" target="_blank" class="button">View Uploaded Images</a>
+                
+                <?php endif;?>
+
                 <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Completed/OK" class="button">Mark As Complete</a>
             <?php elseif ($data['action'] == 'Declined') : ?>
                 Declined</li>
