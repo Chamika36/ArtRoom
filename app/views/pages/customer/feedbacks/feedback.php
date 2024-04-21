@@ -8,9 +8,6 @@
 <body>
     <h1>Feedback Submission</h1>
     <form method="POST" action="">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required><br>
-
         <label for="rating"> Rating:</label>
         <input type="number" name="rating" id="rating" required><br>
 
