@@ -218,6 +218,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Home</title>
 
         <style>
@@ -718,8 +719,8 @@
         }
 
         footer {
-            background-color: #242526;
-            color: #fff;
+            background-color: #f9b234;
+            color: #242526;
             text-align: center;
             padding: 20px;
             position: relative;
@@ -740,7 +741,7 @@
         }
 
         .footer-link {
-            color: #fff;
+            color: black;
             margin: 0 10px;
             text-decoration: none;
         }
@@ -748,6 +749,120 @@
         .footer-link:hover {
             text-decoration: underline;
         }
+
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+        @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+        .snip1533 {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            color: #9e9e9e;
+            display: inline-block;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 18px;
+            margin: 35px 10px 10px;
+            max-width: 310px;
+            min-width: 280px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border-top: 5px solid #f9b234;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        
+        }
+
+        
+
+        .test{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px auto;
+            /* border: 1px solid white; */
+            width: 80%;
+            height: 100%;
+            margin-top: 70px;
+            margin-bottom: 80px;
+
+        }
+
+        .snip1533 *,
+        .snip1533 *:before {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.1s ease-out;
+        transition: all 0.1s ease-out;
+        }
+
+        .snip1533 figcaption {
+        padding: 13% 10% 12%;
+        }
+
+        .snip1533 figcaption:before {
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            color: #d2652d;
+            font-family: 'FontAwesome';
+            content: "\f10e";
+            
+            font-size: 32px;
+            font-style: normal;
+            left: 50%;
+            line-height: 60px;
+            position: absolute;
+            top: -30px;
+            width: 60px;
+        }
+
+        .snip1533 h3 {
+            color: #3c3c3c;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 24px;
+            margin: 10px 0 5px;
+        }
+
+        .snip1533 h4 {
+            font-weight: 400;
+            margin: 0;
+            opacity: 0.5;
+        }
+
+        .snip1533 blockquote {
+            font-style: italic;
+            font-weight: 300;
+            margin: 0 0 20px;
+        }
+
+
+        /* Demo purposes only */
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #3b3d3e;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            height: 40px;
+            width: 40px;
+            }
+
+        #myBtn:hover {
+            background-color: #f9b234;
+            color: black;
+        }
+        
 
         
         </style>
@@ -799,25 +914,7 @@
                 
             </div>
         </div>
-        <!-- <div id="container-main-01">
-            <div id="left-side-02">
-                <div class=container-02-left >
-                Your Special Moments</br> Deserve to be</br> Celebrated in Style...
-                </div>
-                <a href="<?php echo URLROOT ?>/events/request">
-                <div class="buttons-container">
-                    <button class="button-arounder">Make a Request</button>
-                </div>
-                </a>
-            </div>
-            <div id="right-side-02">
-                <div class=container-02-right>
-                <div class="buttons-container">
-                    
-                </div>
-                </div>
-            </div>
-        </div> -->
+
         <section>
             <div class=gallery-topic id="Gallery">
                 <p style="color: white">Our Gallery</p>
@@ -903,99 +1000,84 @@
             </div>
             <?php endforeach; ?>
 
-            <!-- <div class="package">
-                <div class="package-preview">
-                    <h6>Package</h6>
-                    <h2>Wedding</h2>
-                </div>
-                <div class="package-info">
-                    <h3>Full-day wedding photography package ceremony coverage, Reception coverage, 300 edited photos, Online gallery</h3>
-                    <h3>Rs.199,990.00</h3>
-                    <button class="btn">Select Package</button>
-                </div>
-            </div>
-            <div class="package">
-                <div class="package-preview">
-                    <h6>Package</h6>
-                    <h2>Portrait</h2>
-                </div>
-                <div class="package-info">
-                    <h3>Portrait photography session 1-hour session, 10 edited photos, Studio or outdoor location</h3>
-                    <h3>Rs.9,990.00</h3>
-                    <button class="btn">Select Package</button>
-                </div>
-            </div>
-            <div class="package">
-                <div class="package-preview">
-                    <h6>Package</h6>
-                    <h2>Event</h2>
-                </div>
-                <div class="package-info">
-                    <h3>Event photography coverage 4-hour coverage, Unlimited photos, Candid shots</h3>
-                    <h3>Rs.99,990.00</h3>
-                    <button class="btn">Select Package</button>
-                </div>
-            </div>
-            <div class="package">
-                <div class="package-preview">
-                    <h6>Package</h6>
-                    <h2>Travel</h2>
-                    
-                </div>
-                <div class="package-info">
-                    <h3>Travel photography adventure 3-day adventure, 100 edited photos, Customized itinerary</h3>
-                    <h3>Rs.399,990.00</h3>
-                    <button class="btn">Select Package</button>
-                </div>
-            </div> -->
+ 
 
         </div>
+
+        <section>
+            <div class=gallery-topic id="Gallery">
+                <p style="color: white">Our Happy Customers</p>
+            </div>
+            <div class="test">
+            <figure class="snip1533">
+                <figcaption>
+                    <blockquote>
+                    <p>"You captured our wedding so beautifully.. Thank You Art Room and the team."</p>
+                    </blockquote>
+                    <h3>Chamika karunarathne</h3>
+                    <h4>Sports person</h4>
+                </figcaption>
+            </figure>
+            <figure class="snip1533">
+                <figcaption>
+                    <blockquote>
+                    <p>"We had some family photos taken at Art Room and was simply thrilled with the result. Thank you soo much"
+                    </p>
+                    </blockquote>
+                    <h3>Probodini Senevirathne</h3>
+                    <h4>Happy Customer</h4>
+                </figcaption>
+            </figure>
+            <figure class="snip1533">
+                <figcaption>
+                    <blockquote>
+                    <p>"Any occation. Any location. best ever photography service. Highly recommended"</p>
+                    </blockquote>
+                    <h3>Amal Perera</h3>
+                    <h4>Singer</h4>
+                </figcaption>
+            </figure>
+        </div>
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><b>&#8593;</b></button>
+
+        </section>
 
         <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <!-- Additional links can be added here if needed -->
+                <a href="#" class="footer-link"><b>@2024 Art Room | All Rights Reserved</b></a>
             </div>
             <div class="footer-info">
-                <a href="#" class="footer-link">About</a>
-                <a href="#" class="footer-link">Contact Us</a>
+                <a href="#" class="footer-link"><b>About</b></a>
+                <a href="#" class="footer-link"><b>Contact Us</b></a>
             </div>
         </div>
         </footer>
 
-    <!-- <script>
-        // JavaScript code for the typing effect
-        document.addEventListener('DOMContentLoaded', function () {
-            const textContainer = document.querySelector('.container-03');
-            const textLines = textContainer.querySelectorAll('div');
-            const cursor = document.querySelector('.cursor');
-            textContainer.innerHTML = ''; // Clear the original text
+  
+    <script>
+        
 
-            let lineIndex = 0;
-            let charIndex = 0;
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
 
-            function typeWriter() {
-                if (lineIndex < textLines.length) {
-                    const currentLine = textLines[lineIndex].textContent;
-                    if (charIndex < currentLine.length) {
-                        textContainer.innerHTML += currentLine.charAt(charIndex);
-                        charIndex++;
-                        setTimeout(typeWriter, 50); // Adjust the typing speed (milliseconds)
-                    } else {
-                        charIndex = 0;
-                        lineIndex++;
-                        textContainer.innerHTML += '<br>';
-                        setTimeout(typeWriter, 300); // Adjust the delay between lines (milliseconds)
-                    }
-                } else {
-                    // Typing animation is complete, hide the cursor
-                    cursor.style.width = '0';
-                }
-            }
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
 
-            typeWriter();
-        });
-    </script> -->
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+        </script>
 </body>
 
 </html>
