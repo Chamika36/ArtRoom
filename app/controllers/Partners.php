@@ -210,12 +210,12 @@ class Partners extends Controller {
         ];
 
         $this->notificationModel->createNotification($notification_data_customer);
-        redirect('$link');
+        header('Location: ' . $link);
     }
 
     public function viewImagesbyEditor($eventID){
         $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
-        redirect($link);
+        header('Location: ' . $link);
     }
 
     // file upload to google drive
@@ -224,15 +224,15 @@ class Partners extends Controller {
         $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
 
         $notification_data_printing = [
-            'user_id' => $event->ProntingFirmID,
+            'user_id' => $event->PrintingFirmID,
             'type' => 'action',
             'content' => 'Editor has uploaded images. Click to print',
             'link' => $link,
-            'event_id' => $event_id
+            'event_id' => $eventID
         ];
 
-        $this->notificationModel->createNotification($notification_data_customer);
-        redirect($link);
+        $this->notificationModel->createNotification($notification_data_printing);
+        header('Location: ' . $link);
     }
 
 }
