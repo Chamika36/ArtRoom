@@ -1,7 +1,7 @@
 <?php 
     class Feedbacks extends Controller{
         public function __construct() {
-            $this->feedbackModel = $this->model('Feedback');
+            $this->feedbackModel = $this->model('feedback');
         }
 
         public function index() {
@@ -14,21 +14,21 @@
 
                 $data = [
                     'feedback' => trim($_POST['feedback']),
-                    'rating' => trim($_POST['rating']),
+                    // 'rating' => trim($_POST['rating']),
                     'user_id' => $_SESSION['user_id'],
                     'feedback_err' => '',
-                    'rating_err' => ''
+                    // 'rating_err' => ''
                 ];
 
                 if(empty($data['feedback'])) {
                     $data['feedback_err'] = 'Please enter your feedback';
                 }
 
-                if(empty($data['rating'])) {
-                    $data['rating_err'] = 'Please rate us';
-                }
+                // if(empty($data['rating'])) {
+                //     $data['rating_err'] = 'Please rate us';
+                // }
 
-                if(empty($data['feedback_err']) && empty($data['rating_err'])) {
+                if(empty($data['feedback_err'])) {
                     if($this->feedbackModel->submitFeedback($data)) {
                         redirect('home/index');
                     }else{
@@ -40,10 +40,10 @@
             }else{
                 $data = [
                     'feedback' => '',
-                    'rating' => '',
+                    // 'rating' => '',
                     'user_id' => $_SESSION['user_id'],
                     'feedback_err' => '',
-                    'rating_err' => ''
+                    // 'rating_err' => ''
                 ];
                 $this->view('pages/customer/feedbacks/feedback' , $data);
             }

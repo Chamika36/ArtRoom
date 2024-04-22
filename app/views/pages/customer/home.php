@@ -88,7 +88,7 @@
                             <div class="event-info">
                                 <p class="title"><?php echo $sample->SampleName; ?></p>
                                 <div class="separator"></div>
-                                <p class="info">ArtRoom Photography</p>
+                                <p class="info"><b>ArtRoom Photography</b></p>
 
                                 <div class="additional-info">
                                     <p class="info">
@@ -97,7 +97,7 @@
                                     <p class="info description">
                                         <?php echo $sample->Date; ?>
                                     </p>
-                                    <button class="view-sample-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View Sample</button>
+                                    <button class="view-sample-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View Album</button>
                                 </div>
                             </div>
                         </div>

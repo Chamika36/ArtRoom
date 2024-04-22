@@ -97,7 +97,7 @@
                                             echo '<p class="details"><b> Canceled </b></p>';
                                         } else if($data['event']->Status == 'Pencil'){
                                             echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
-                                            echo '<p class="details"> Yet to confirm the event </p>';
+                                            echo '<p class="details"><b> Yet to confirm the event </b></p>';
                                         }
 
                                         ?>
