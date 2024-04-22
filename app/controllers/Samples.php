@@ -313,7 +313,8 @@ class Samples extends Controller{
         $data = array(
             'sample' => $sample,
             'folder' => $folder,
-            'images' => $images
+            'images' => $images,
+            'samples' => $sample
         );
 
 
@@ -325,6 +326,7 @@ class Samples extends Controller{
             }
         } else {
             $this->view('pages/customer/samples/viewsample', $data);
+
         }
     }
 

@@ -23,7 +23,7 @@
     <style>
 
         body {
-            background:#FBF9F3;
+            background:#fffacd;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -56,7 +56,7 @@
         .form .input-box{
             width: 100%;
             margin-top: 20px;
-        
+            
             
         }
 
@@ -184,7 +184,7 @@
                     </select> -->
                     
                     <div class="input-box">
-                        <label for="date"><b>Event Date,</b></label>
+                        <label for="date"><b>Event Date</b></label>
                         <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
                         <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
                     </div>
