@@ -48,9 +48,11 @@
                             <p class="status delivered">Accepted</p>
                         <?php elseif ($event->Action == 'Declined') : ?>
                             <p class="status cancelled">Declined</p>
-                        <?php else : ?>
+                        <?php elseif ($event->Action == 'Pending') : ?>
                             <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Accepted/Ok/"><p class="status do">Accept</p></a>
                             <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Declined/Busy/"><p class="status dont">Decline</p></a>
+                        <?php elseif ($event->Action == 'Completed') :?>
+                            <p class="status delivered">Completed</p>
                         <?php endif; ?>
                         </td> 
                      </tr>

@@ -203,8 +203,8 @@ class Partners extends Controller {
 
         $notification_data_customer = [
             'user_id' => $event->CustomerID,
-            'type' => 'action',
-            'content' => 'Photographer has uploaded your images. Select the photos wanted to print and Move to edit folder',
+            'type' => 'file',
+            'content' => 'Photographer has uploaded your images. Select the photos wanted to print and Move to "Customer Selected" folder',
             'link' => $link,
             'event_id' => $event_id
         ];
@@ -225,7 +225,7 @@ class Partners extends Controller {
 
         $notification_data_printing = [
             'user_id' => $event->PrintingFirmID,
-            'type' => 'action',
+            'type' => 'file',
             'content' => 'Editor has uploaded images. Click to print',
             'link' => $link,
             'event_id' => $eventID
