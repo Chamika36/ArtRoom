@@ -6,7 +6,11 @@ class Samples extends Controller{
     }
 
     public function index() {
-        $samples = $this->sampleModel->getSamples();
+        if($_SESSION['user_type_id'] == 3) {
+            $samples = $this->sampleModel->getSamplesByPhotographer($_SESSION['user_id']);  
+        }else{
+            $samples = $this->sampleModel->getSamples();
+        }
         $customers = $this->userModel->getCustomers();
     
         $data = array(
