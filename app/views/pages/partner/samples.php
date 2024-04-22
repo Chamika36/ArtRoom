@@ -48,6 +48,9 @@
                             </div>
                     </div>
                     
+                    <div class="button-container">
+                    <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/partner/view/<?php echo $sample->SampleID; ?>'">View</button>
+                    </div>
 
                 </div>
             </div>
