@@ -9,11 +9,11 @@
 
 <body>
     <!-- Sidebar -->
-    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
+    <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
   
     <div class="container">
     <h1 class="form-title">Add Sample</h1>
-        <form name="registrationForm" action="<?php echo URLROOT; ?>/samples/add/0" method="POST" enctype="multipart/form-data">
+        <form name="registrationForm" action="<?php echo URLROOT; ?>/samples/add/1" method="POST" enctype="multipart/form-data">
         <div class="main-user-info">
             <div class="user-input-box">
                 <label for="name">Sample Name: </label>
