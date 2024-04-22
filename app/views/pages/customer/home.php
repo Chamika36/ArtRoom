@@ -164,16 +164,16 @@
             
             <div class="test">
                 <?php foreach ($data['feedbacks'] as $feedback) : ?>
-            <figure class="snip1533">
-                <figcaption>
-                    <blockquote>
-                    <p>"<?php echo $feedback->Comment ?>"</p>
-                    </blockquote>
-                    <h3>Full Name</h3>
-                    <h4>Date</h4>
-                </figcaption>
-            </figure>
-            <?php endforeach; ?>
+                    <figure class="snip1533">
+                        <figcaption>
+                            <blockquote>
+                            <p>"<?php echo $feedback->Comment ?>"</p>
+                            </blockquote>
+                            <h3><?php echo $feedback->Name?></h3>
+                            <h4>Date</h4>
+                        </figcaption>
+                    </figure>
+                <?php endforeach; ?>
        
         </div>
             <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>

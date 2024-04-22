@@ -2,6 +2,7 @@
     class Feedbacks extends Controller{
         public function __construct() {
             $this->feedbackModel = $this->model('feedback');
+            $this->userModel = $this->model('user');
         }
 
         public function index() {
@@ -51,6 +52,10 @@
 
         public function viewFeedbacks() {
             $feedbacks = $this->feedbackModel->getFeedbacks();
+            foreach($feedbacks as $feedback) {
+                $user = $this->userModel->getUserById($feedback->CustomerID);
+                $feedback->Name = $user->FirstName . ' ' . $user->LastName;
+            }
             $data = [
                 'feedbacks' => $feedbacks
             ];

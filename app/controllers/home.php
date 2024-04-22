@@ -14,10 +14,16 @@ class Home extends Controller {
    public function index() {
         $packages = $this->packageModel->getPackages();
         $sample = $this->sampleModel->getSamples();
+        $feedbacks = $this->feedbackModel->getFeedbacks();
+        foreach($feedbacks as $feedback) {
+            $user = $this->userModel->getUserById($feedback->CustomerID);
+            $feedback->Name = $user->FirstName . ' ' . $user->LastName;
+        }
         $data = [
             'title' => 'Home',
             'packages' => $packages,
-            'samples' => $sample
+            'samples' => $sample,
+            'feedbacks' => $feedbacks
         ];
         if(isset($_SESSION['user_type_id'])) {
             switch($_SESSION['user_type_id']) {
@@ -79,6 +85,10 @@ class Home extends Controller {
         $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
         $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
         $feedbacks = $this->feedbackModel->getFeedbacks();
+        foreach($feedbacks as $feedback) {
+            $user = $this->userModel->getUserById($feedback->CustomerID);
+            $feedback->Name = $user->FirstName . ' ' . $user->LastName;
+        }
         $sample = $this->sampleModel->getSamples();
 
         $data = [
