@@ -1,3 +1,7 @@
+body{
+    background-color:#FBF9F3;
+}
+
 .rescheduleRequest {
     width: 500px;
     height: 48px;
@@ -27,6 +31,7 @@ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 padding: 20px;
 border-radius: 10px;
 width: 35%;
+border: 2px solid #f9b234;
 }
 
 
@@ -99,6 +104,7 @@ width: 35%;
     display: flex;
     flex-direction: row;
     padding-right: 5px;
+    gap: 10px;
 }
 
 .make-payment-btn{
@@ -131,4 +137,27 @@ width: 35%;
 .logo{
     width: 55px;
     height: 55px;
+}
+
+button{
+    background-color: #f8f8fb;
+    color: #000000;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 3px solid #000000;
+    margin-top: 20px;
+    
+}
+
+.feedback-btn-container{
+   
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }

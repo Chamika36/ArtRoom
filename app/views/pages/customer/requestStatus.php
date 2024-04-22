@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css"> -->
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/payment-page.css">
     <link
       rel="stylesheet"
@@ -33,6 +33,7 @@
 
                 <div class="container">
                     <div class="status-container">
+                        <div>
                                     <div class="status-item request-sent">
                                         <i class="fas fa-check-circle"></i> Request sent
                                     </div>
@@ -54,6 +55,10 @@
                                     <div class="status-item order-completed">
                                         <i class="fas fa-check-circle"></i> Order Completed
                                     </div>
+                        </div>
+                        <div class="feedback-btn-container">
+                            <button class="feedback-btn"><a href="<?php echo URLROOT ?>/feedbacks/submitFeedback" style="font-weight:normal">Share your thoughts</a></button>     
+                        </div>   
                     </div>
 
                     <div class="payment-container">
@@ -89,7 +94,7 @@
                                             echo '<p class="details"><b> Fully Paid </b></p>';
                                         } else if($data['event']->Status == 'Canceled'){
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
-                                            echo '<p class="details"> Canceled </p>';
+                                            echo '<p class="details"><b> Canceled </b></p>';
                                         } else if($data['event']->Status == 'Pencil'){
                                             echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
                                             echo '<p class="details"> Yet to confirm the event </p>';
@@ -107,5 +112,15 @@
                 </div>
                     
     </body>
+
+    <script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 
 </html>

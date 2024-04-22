@@ -68,6 +68,7 @@
         border: 0.5px solid rgba(0, 0, 0, 0.2);
         background-color: #F2F2F2;
         color: #2E2626;
+        text-align: center;
     }
 
     input::placeholder {

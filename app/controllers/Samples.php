@@ -14,11 +14,16 @@ class Samples extends Controller{
             'customers' => $customers
         );
     
-        if($_SESSION['user_type_id'] == 2) {
+        if($_SESSION['user_type_id'] == 2) { 
+            // If user is a manager (user_type_id 2)
             $this->view('pages/manager/samples/samples', $data);
-        } else {
+        } 
+        else {
+            // Default case for other user types
             $this->view('pages/customer/samples/samples', $data);
         }
+        
+        
     }
     
 
@@ -284,6 +289,7 @@ class Samples extends Controller{
     
         if($sample) {
             $this->view('pages/manager/samples/viewsample', $data);
+            
         } else {
             $this->view('pages/manager/samples/viewsample', $data);
         }

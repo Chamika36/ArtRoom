@@ -7,6 +7,7 @@ class Home extends Controller {
         $this->eventModel = $this->model('Event');
         $this->packageModel = $this->model('Package');
         $this->notificationModel = $this->model('Notification');
+        $this->feedbackModel = $this->model('Feedback');
     }
 
    public function index() {
@@ -74,6 +75,7 @@ class Home extends Controller {
         $packages = $this->packageModel->getPackages();
         $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
         $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
+        $feedbacks = $this->feedbackModel->getFeedbacks();
 
         $data = [
             'title' => 'Home',
