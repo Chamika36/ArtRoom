@@ -284,13 +284,23 @@ class Samples extends Controller{
         $data = array(
             'sample' => $sample,
             'folder' => $folder,
-            'images' => $images
+            'images' => $images,
+            'samples' => $sample
         );
     
-        if($sample) {
-            $this->view('pages/manager/samples/viewsample', $data);
-            
+        if ($sample) {
+            if ($_SESSION['user_type_id'] == 2) {
+                // When user type is 2
+                $this->view('pages/manager/samples/viewsample', $data);
+            } elseif ($_SESSION['user_type_id'] == 1) {
+                // When user type is 1
+                $this->view('pages/customer/samples/samples', $data);
+            } else {
+                // If sample is found, but user type doesn't match the above
+                $this->view('pages/manager/samples/viewsample', $data);
+            }
         } else {
+            // If sample is not found
             $this->view('pages/manager/samples/viewsample', $data);
         }
     }

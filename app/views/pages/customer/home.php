@@ -7,15 +7,12 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Home</title>
 
         <style>
         
-        
-
-        
-        </style>
+       </style>
 
     </head>
 
@@ -67,7 +64,7 @@
 
         <section>
             <div class=gallery-topic id="Gallery">
-                <p style="color: white">Our Gallery</p>
+                <p style="color: white"><i class="fa-regular fa-images"></i> Our Gallery</p>
             </div>
 
 
@@ -112,7 +109,7 @@
             </section>
 
         <div class=gallery-topic id="Packages">
-            Our Packages
+            <p><i class="fa-solid fa-rectangle-list"></i> Our Packages</p>
         </div>
         <div class="packages-container">
             <?php foreach ($data['packages'] as $package) : ?>
@@ -135,40 +132,24 @@
 
         <section>
             <div class=gallery-topic id="Gallery">
-                <p style="color: white">Our Happy Customers</p>
+                <p style="color: white"><i class="fa-regular fa-handshake"></i> Our Happy Customers</p>
             </div>
             
             <div class="test">
+                <?php foreach ($data['feedbacks'] as $feedback) : ?>
             <figure class="snip1533">
                 <figcaption>
                     <blockquote>
-                    <p>"You captured our wedding so beautifully.. Thank You Art Room and the team."</p>
+                    <p>"<?php echo $feedback->Comment ?>"</p>
                     </blockquote>
-                    <h3>Chamika karunarathne</h3>
-                    <h4>Sports person</h4>
+                    <h3>Full Name</h3>
+                    <h4>Date</h4>
                 </figcaption>
             </figure>
-            <!-- <figure class="snip1533">
-                <figcaption>
-                    <blockquote>
-                    <p>"We had some family photos taken at Art Room and was simply thrilled with the result. Thank you soo much"
-                    </p>
-                    </blockquote>
-                    <h3>Probodini Senevirathne</h3>
-                    <h4>Happy Customer</h4>
-                </figcaption>
-            </figure>
-            <figure class="snip1533">
-                <figcaption>
-                    <blockquote>
-                    <p>"Any occation. Any location. best ever photography service. Highly recommended"</p>
-                    </blockquote>
-                    <h3>Amal Perera</h3>
-                    <h4>Singer</h4>
-                </figcaption>
-            </figure> -->
+            <?php endforeach; ?>
+       
         </div>
-            <button onclick="topFunction()" id="myBtn" title="Go to top"><b>&#8593;</b></button>
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>
 
         </section>
 
