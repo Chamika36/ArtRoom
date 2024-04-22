@@ -1,0 +1,72 @@
+.notification-wrapper {
+    position: fixed;
+    top:100px;
+    right: 40px; /* Adjusted to move 5px to the left */
+    cursor: pointer;
+    z-index: 999; /* Adjust the z-index to make sure it's on top of other elements */
+}
+
+.notification-icon {
+    position: relative;
+    width: 40px; /* Set the width and height of the yellow circle */
+    height: 40px;
+    background-color: #242526;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-icon i {
+    font-size: 20px;
+    color: rgb(253, 249, 249); /* Set the color of the bell icon to white */
+    z-index: 100;
+}
+
+.notification-icon .num {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f9b234;
+    color: #242526;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 0;
+    width: 200px;
+    display: none;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+
+.dropdown-menu li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0f0f0;
+}
