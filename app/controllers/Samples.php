@@ -18,8 +18,11 @@ class Samples extends Controller{
             // If user is a manager (user_type_id 2)
             $this->view('pages/manager/samples/samples', $data);
         } 
-        else {
-            // Default case for other user types
+        else if($_SESSION['user_type_id'] == 3) {
+            // If user is a partner (user_type_id 3)
+            $this->view('pages/partner/samples', $data);
+        
+        } else {
             $this->view('pages/customer/samples/samples', $data);
         }
         
@@ -29,7 +32,7 @@ class Samples extends Controller{
 
 
   
-    public function add() {
+    public function add($isPartner) {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -114,6 +117,12 @@ class Samples extends Controller{
                         'customer_err' => '',
                         'date_err' => ''
                     );
+
+                    if($isPartner == 1) {
+                        $data['photographer'] = $_SESSION['user_id'];
+                    } else {
+                        $data['photographer'] = 0;
+                    }
         
                     // Validate Name
                     if(empty($data['name'])) {
@@ -135,19 +144,31 @@ class Samples extends Controller{
                         // Validated
                         if ($this->sampleModel->addSample($data)) {
                             flash('sample_message', 'Sample Added');
-                            redirect('samples');
+                            if($isPartner == 1) {
+                                redirect('samples/getSamplesByPhotographer');
+                            } else {
+                                redirect('samples');
+                            }
                         } else {
                             die('Something went wrong');
                         }
                     } else {
                         // Load view with errors
-                        $this->view('pages/manager/samples/addsample', $data);
+                        if($isPartner == 1) {
+                            $this->view('pages/partner/addsample', $data);
+                        } else {
+                            $this->view('pages/manager/samples/addsample', $data);
+                        }
                     }
                 }
             } else {
                 // Error uploading cover image
                 $data['images_err'] = 'Error uploading cover image';
-                $this->view('pages/manager/samples/addsample', $data);
+                if($isPartner == 1) {
+                    $this->view('pages/partner/addsample', $data);
+                } else {
+                    $this->view('pages/manager/samples/addsample', $data);
+                }
             }
         } else {
             $customers = $this->userModel->getCustomers();
@@ -165,7 +186,11 @@ class Samples extends Controller{
                 'date_err' => ''
             );
 
-            $this->view('pages/manager/samples/addsample', $data);
+            if($isPartner == 1) {
+                $this->view('pages/partner/addsample', $data);
+            } else {
+                $this->view('pages/manager/samples/addsample', $data);
+            }
         }
     }
 
@@ -287,11 +312,20 @@ class Samples extends Controller{
             'images' => $images
         );
     
-        if($sample) {
+        if($_SESSION['user_type_id'] == 2) {
             $this->view('pages/manager/samples/viewsample', $data);
-            
+        } else if ($_SESSION['user_type_id'] == 3) {
+            $this->view('pages/partner/viewsample', $data);
         } else {
-            $this->view('pages/manager/samples/viewsample', $data);
+            $this->view('pages/customer/samples/viewsample', $data);
         }
+    }
+
+    public function getSamplesByPhotographer(){
+        $samples = $this->sampleModel->getSamplesByPhotographer($_SESSION['user_id']);
+        $data = array(
+            'samples' => $samples
+        );
+        $this->view('pages/partner/samples', $data);
     }
 }

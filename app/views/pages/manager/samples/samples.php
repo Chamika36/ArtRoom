@@ -18,7 +18,7 @@
     <div class="home">
         
 
-        <button class="add-package-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/add'">
+        <button class="add-package-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/add/1'">
             <i class="fas fa-plus"></i><b>  Add New Sample</b></button>
 
         <div class="container">
