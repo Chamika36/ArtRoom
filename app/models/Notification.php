@@ -87,7 +87,7 @@ class Notification {
     }
 
     public function getNotificationsByUserId($user_id){
-        $this->db->query('SELECT * from notification where UserID = :user_id ORDER BY NotificationID DESC');
+        $this->db->query('SELECT * from notification where Status = "unread" AND UserID = :user_id ORDER BY NotificationID DESC');
         $this->db->bind(':user_id', $user_id);
         $result = $this->db->resultSet();
         return $result;
