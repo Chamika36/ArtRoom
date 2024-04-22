@@ -65,7 +65,7 @@
                         </div>
                     </div>
                         <div class="feedback-btn-container">
-                            <button class="feedback-btn"><a href="Feedback.php" style="font-weight:normal">Share your thoughts</a></button>     
+                            <button class="feedback-btn"><a href="<?php echo URLROOT ?>/feedbacks/submitFeedback" style="font-weight:normal">Share your thoughts</a></button>     
                         </div>   
                     </div>
 
@@ -104,7 +104,7 @@
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             echo '<p class="details"><b> Canceled </b></p>';
                                         } else if($data['event']->Status == 'Pencil'){
-                                            echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
+                                            echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>'
                                             echo '<p class="details"> Yet to confirm the event </p>';
                                         } else if($data['event']->Status == 'Completed'){
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
