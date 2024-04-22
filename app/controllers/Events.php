@@ -387,6 +387,31 @@
         // update event status
         public function updateEventStatus($id, $status) {
             if($this->eventModel->updateEventStatus($id, $status)) {
+                // Notification data
+                $notification_data = [
+                    'user_id' => $this->eventModel->getEventById($id)->CustomerID,
+                    'type' => 'status',
+                    'content' => 'Your event status has been updated to ' . $status,
+                    'link' => 'events/viewEvent/' . $id . '',
+                    'event_id' => $id
+                ];
+
+                if($status == 'Completed'){
+                    $notification_data['content'] = 'Your event has been completed. Collect your photos from the printing firm.';
+                }
+
+                $this->notificationModel->createNotification($notification_data);
+
+                // Notification data to partners
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PhotographerID;
+                $this->notificationModel->createNotification($notification_data);
+
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->EditorID;
+                $this->notificationModel->createNotification($notification_data);
+
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PrintingFirmID;
+                $this->notificationModel->createNotification($notification_data);
+
                 flash('event_message', 'Event status updated');
                 redirect('events');
             } else {
@@ -673,8 +698,32 @@
         // View event by ech Partner
         public function viewPartnerEvents($id) {
             $events = $this->eventModel->getEventsByPartner($id);
+
+            foreach ($events as $event) {
+                $user_type_id = $_SESSION['user_type_id'];
+                $action = '';
+
+                switch($user_type_id) {
+                    case 3:
+                        $action = $this->partnerModel->getPhotographerAction($event->EventID); 
+                        break;
+                    case 4:
+                        $action = $this->partnerModel->getEditorAction($event->EventID);
+                        break;
+                    case 5:
+                        $action = $this->partnerModel->getPrintingFirmAction($event->EventID);
+                        break;
+                    default:
+                        $action = "Error";
+                        break;
+                }
+
+                $event->UserTYpe = $user_type_id;
+                $event->Action = $action;
+            }
+
             $data = [
-                'events' => $events
+                'events' => $events,
             ];
         
             $this->view('pages/partner/events', $data);

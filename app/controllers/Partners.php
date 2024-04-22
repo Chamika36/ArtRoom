@@ -29,12 +29,36 @@ class Partners extends Controller {
     public function viewPartnerEvents($id) {
         $events = $this->eventModel->getEventsByPartner($id);
 
+        foreach ($events as $event) {
+            $user_type_id = $_SESSION['user_type_id'];
+            $action = '';
+
+            switch($user_type_id) {
+                case 3:
+                    $action = $this->partnerModel->getPhotographerAction($event->EventID); 
+                    break;
+                case 4:
+                    $action = $this->partnerModel->getEditorAction($event->EventID);
+                    break;
+                case 5:
+                    $action = $this->partnerModel->getPrintingFirmAction($event->EventID);
+                    break;
+                default:
+                    $action = '';
+                    break;
+            }
+
+            $event->UserTYpe = $user_type_id;
+            $event->Action = $action->Action;
+        }
+
         $data = [
-            'events' => $events
+            'events' => $events,
         ];
     
         $this->view('pages/partner/events', $data);
     }
+
 
     // photographer action handler
     public function updatePartnerAction($user_type_id, $event_id, $action , $comment) {
@@ -45,6 +69,8 @@ class Partners extends Controller {
             'link' => 'events/loadEvent/'.$event_id,
             'event_id' => $event_id
         ];
+
+        $event = $this->eventModel->getEventById($event_id);
         
         switch ($user_type_id) {
             case 3:
@@ -73,10 +99,27 @@ class Partners extends Controller {
     public function viewEvent($id){
         $event = $this->eventModel->getEventById($id);
         $package = $this->packageModel->getPackageById($event->PackageID);
+        switch($_SESSION['user_type_id']) {
+            case 3:
+                $action = $this->partnerModel->getPhotographerAction($event->EventID); 
+                break;
+            case 4:
+                $action = $this->partnerModel->getEditorAction($event->EventID);
+                break;
+            case 5:
+                $action = $this->partnerModel->getPrintingFirmAction($event->EventID);
+                break;
+            default:
+                $action = '';
+                break;
+        }
+
         $data = [
             'event' => $event,
-            'package' => $package
+            'package' => $package,
+            'action' => $action->Action
         ];
+
         $this->view('pages/partner/eventdetails', $data);
     }
 
@@ -151,6 +194,45 @@ class Partners extends Controller {
             ];
         $this->view('pages/partner/editprofile', $data);
         }
+    }
+
+    // file upload to google drive
+    public function uploadImagesbyPhotographer($eventID) {
+        $event = $this->eventModel->getEventById($eventID);
+        $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
+
+        $notification_data_customer = [
+            'user_id' => $event->CustomerID,
+            'type' => 'file',
+            'content' => 'Photographer has uploaded your images. Select the photos wanted to print and Move to "Customer Selected" folder',
+            'link' => $link,
+            'event_id' => $event_id
+        ];
+
+        $this->notificationModel->createNotification($notification_data_customer);
+        header('Location: ' . $link);
+    }
+
+    public function viewImagesbyEditor($eventID){
+        $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
+        header('Location: ' . $link);
+    }
+
+    // file upload to google drive
+    public function uploadImagesbyEditor($eventID) {
+        $event = $this->eventModel->getEventById($eventID);
+        $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
+
+        $notification_data_printing = [
+            'user_id' => $event->PrintingFirmID,
+            'type' => 'file',
+            'content' => 'Editor has uploaded images. Click to print',
+            'link' => $link,
+            'event_id' => $eventID
+        ];
+
+        $this->notificationModel->createNotification($notification_data_printing);
+        header('Location: ' . $link);
     }
 
 }

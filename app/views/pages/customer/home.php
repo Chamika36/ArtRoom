@@ -48,7 +48,7 @@
                         
                          <!-- Cursor element -->
                     </div>
-                    <a href="<?php echo URLROOT ?>/events/request">
+                    <a href="<?php echo URLROOT ?>/events/request/0">
                 <div class="reqButton">
                     <button class="button-arounder">Make a Request</button>
                 </div>

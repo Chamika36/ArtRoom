@@ -26,10 +26,15 @@
 			<!-- Dropdown for notifications -->
 			<ul class="dropdown-menu">
 				<?php foreach($data['notifications'] as $notification) : ?>
-					<?php if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment' || $notification->Type === 'reschedule') : ?>
-					<li>
-						<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
-					</li>
+					<?php //if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment' || $notification->Type === 'reschedule') : ?>
+					<?php if($notification->Type === 'link') : ?>
+						<li>
+							<a href="<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+						</li>
+					<?php else : ?>
+						<li>
+							<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+						</li>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>

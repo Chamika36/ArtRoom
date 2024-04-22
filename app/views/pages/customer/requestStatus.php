@@ -32,30 +32,38 @@
                 <h2 class="rescheduleRequest">Status of the Request</h2>
 
                 <div class="container">
-                    <div class="status-container">
-                        <div>
-                                    <div class="status-item request-sent">
-                                        <i class="fas fa-check-circle"></i> Request sent
-                                    </div>
-                                    
-                                    <div class="status-item manager-accepted">
-                                        <i class="fas fa-check-circle"></i> Manager accepted the Request
-                                    </div>
-                                    
-                                    <div class="status-item advanced-payment">
-                                        <i class="fas fa-check-circle"></i> Advance Payment completed
-                                    </div>
-                                    <div class="status-item event-confirmed">
-                                        <i class="fas fa-check-circle"></i> Event Confirmed
-                                    </div>
-                                    <div class="status-item payment-confirmed">
-                                        <i class="fas fa-check-circle"></i> Full Payment completed
-                                    </div>
-                                    
-                                    <div class="status-item order-completed">
-                                        <i class="fas fa-check-circle"></i> Order Completed
-                                    </div>
+                <div class="status-container">
+                    <div>
+                        <!-- Request Sent -->
+                        <div class="status-item <?php echo ($data['event']->Status != 'Requested' ? 'completed' : ''); ?>">
+                            <i class="fas <?php echo ($data['event']->Status != 'Pencil' ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Request sent
                         </div>
+
+                        <!-- Manager Accepted -->
+                        <div class="status-item <?php echo (in_array($data['event']->Status, ['Accepted', 'Advanced', 'Confirmed', 'FullPaid', 'Completed']) ? 'completed' : ''); ?>">
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['Accepted', 'Advanced', 'Confirmed', 'FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Manager accepted the Request
+                        </div>
+
+                        <!-- Advance Payment Completed -->
+                        <div class="status-item <?php echo (in_array($data['event']->Status, ['Advanced', 'Confirmed', 'FullPaid', 'Completed']) ? 'completed' : ''); ?>">
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['Advanced', 'Confirmed', 'FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Advance Payment completed
+                        </div>
+
+                        <!-- Event Confirmed -->
+                        <div class="status-item <?php echo (in_array($data['event']->Status, ['Confirmed', 'FullPaid', 'Completed']) ? 'completed' : ''); ?>">
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['Confirmed', 'FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Event Confirmed
+                        </div>
+
+                        <!-- Full Payment Completed -->
+                        <div class="status-item <?php echo (in_array($data['event']->Status, ['FullPaid', 'Completed']) ? 'completed' : ''); ?>">
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Full Payment completed
+                        </div>
+
+                        <!-- Order Completed -->
+                        <div class="status-item <?php echo ($data['event']->Status == 'Completed' ? 'completed' : ''); ?>">
+                            <i class="fas <?php echo ($data['event']->Status == 'Completed' ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Order Completed
+                        </div>
+                    </div>
                         <div class="feedback-btn-container">
                             <button class="feedback-btn"><a href="<?php echo URLROOT ?>/feedbacks/submitFeedback" style="font-weight:normal">Share your thoughts</a></button>     
                         </div>   
@@ -96,8 +104,15 @@
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             echo '<p class="details"><b> Canceled </b></p>';
                                         } else if($data['event']->Status == 'Pencil'){
-                                            echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
-                                            echo '<p class="details"><b> Yet to confirm the event </b></p>';
+                                            echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>'
+                                            echo '<p class="details"> Yet to confirm the event </p>';
+                                        } else if($data['event']->Status == 'Completed'){
+                                            echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                            $advancedPayment = $data['event']->TotalBudget*0.1;
+                                            $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
+                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
+                                            echo '<P class="details"> Remaining Payment : ' . $remainingPayment . ' *paid </p>';
+                                            echo '<p class="details"><b> Fully Paid </b></p>';
                                         }
 
                                         ?>
