@@ -15,7 +15,7 @@
                     <div class="card">
                         <h2><?php echo $sample->SampleName ?></h2>
                         <div style="align:center;"><img src="<?php echo URLROOT ?>/images/samples/<?php echo $sample->ImagePath; ?>" alt="sample image"></div>
-                        <p><?php echo $sample->Description; ?></p>
+                        <p><?php// echo $sample->Description; ?></p>
                         <p><?php echo $sample->Date; ?></p>
                         <!-- <div>
                             <button class="button"><a href="<?php echo URLROOT ?>/packages/edit/<?php echo $sample->SampleID; ?>">Edit Sample</a></button>

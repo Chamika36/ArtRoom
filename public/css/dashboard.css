@@ -36,7 +36,8 @@ body {    margin: 0;
         --light-yellow: #FFF2C6;
         --orange: #f9b234;
         --dark-grey: #3a3b3c;
-        --green: #0eed42;
+        --light-green: #0eed42;
+        --green: #23ca4a;
         --right-blue: #0d0dd6;
         --light-blue: #4a8cef;
         --dark-red: #b93b3b;
@@ -205,7 +206,7 @@ body {    margin: 0;
         text-align: center; 
     }
     #content main .table-data .order table tr td .status.Accepted {
-        background: var(--green);
+        background: var(--light-green);
     }
     #content main .table-data .order table tr td .status.Pencil {
         background: var(--dark-yellow);
@@ -218,6 +219,9 @@ body {    margin: 0;
     }
     #content main .table-data .order table tr td .status.FullPaid {
         background: var(--right-blue);
+    }
+    #content main .table-data .order table tr td .status.Completed {
+        background: var(--green);
     }
     
     

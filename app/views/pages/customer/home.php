@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <title>Home</title>
 
         <style>
@@ -56,6 +59,30 @@
             </div>
 
             <div id="right-side-01">
+                <!-- Notification Icon -->
+                <?php if(isset($_SESSION['user_id'])) : ?>
+                <div class="notification-wrapper">
+                    <div class="notification-icon">
+                        <i class='bx bxs-bell'></i>
+                        <span class="num"><b><?php echo $data['unreadNotificationCount']; ?></b></span>
+                    </div>
+                    <!-- Dropdown for notifications -->
+                    <ul class="dropdown-menu">
+                        <?php foreach($data['notifications'] as $notification) : ?>
+                            <?php //if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment' || $notification->Type === 'reschedule') : ?>
+                            <?php if($notification->Type === 'link') : ?>
+                                <li>
+                                    <a href="<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+                                </li>
+                            <?php else : ?>
+                                <li>
+                                    <a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <?php endif; ?>
                 <!-- Content for the right side goes here -->
                 <img src="<?php echo URLROOT ?>/images/home-container-01.jpg" alt="Your Image Alt Text">
                 
@@ -189,6 +216,12 @@
         document.documentElement.scrollTop = 0;
         }
         </script>
+
+        <script>
+            var URLRoot=<?php echo json_encode(URLROOT);?>;
+        </script>
+        <script src="<?php echo URLROOT ?>/js/notifications.js"></script>
 </body>
 
 </html>
+

@@ -60,7 +60,7 @@
 
 
         <li class="nav-link">
-          <a href="<?php echo URLROOT ?>/partners/samples">
+          <a href="<?php echo URLROOT ?>/samples/getSamplesByPhotographer">
             <i class='bx bx-photo-album icon'></i>
             <span class="text nav-text">Gallery</span>
           </a>

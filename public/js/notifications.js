@@ -5,12 +5,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // Toggle dropdown menu when clicking on notification icon
     notificationIcon.addEventListener('click', function(event) {
         event.stopPropagation(); // Prevent the click event from bubbling up to the document
+        console.log("clicked!");
         dropdownMenu.classList.toggle('show');
     });
 
     // Close dropdown menu when clicking outside of it
     document.addEventListener('click', function(event) {
         if (!dropdownMenu.contains(event.target) && !notificationIcon.contains(event.target)) {
+            console.log("clicked!");
             dropdownMenu.classList.remove('show');
         }
     });

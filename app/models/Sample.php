@@ -20,13 +20,14 @@
         }
 
         public function addSample($data) {
-            $this->db->query('INSERT INTO Sample (SampleName, ImagePath, CoverImagePath, Description, CustomerID, Date) VALUES (:name, :imagePath, :coverImagePath, :description, :customer, :date)');
+            $this->db->query('INSERT INTO Sample (SampleName, ImagePath, CoverImagePath, Description, CustomerID, PhotographerID, Date) VALUES (:name, :imagePath, :coverImagePath, :description, :customer, :photographer, :date)');
             // Bind values
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':imagePath', $data['imagePath']); // Assuming this is the path of the uploaded image file
             $this->db->bind(':coverImagePath', $data['coverImagePath']); // Assuming this is the path of the cover image file
             $this->db->bind(':description', $data['description']);
             $this->db->bind(':customer', $data['customer']);
+            $this->db->bind(':photographer', $data['photographer']);
             $this->db->bind(':date', $data['date']);
             
             // Execute the query
@@ -79,6 +80,11 @@
             }
         }
         
-        
+        public function getSamplesByPhotographer($id) {
+            $this->db->query('SELECT * FROM Sample WHERE PhotographerID = :id');
+            $this->db->bind(':id', $id);
+            $results = $this->db->resultSet();
+            return $results;
+        }
 
     }

@@ -18,7 +18,7 @@
     <div class="home">
         
 
-        <button class="add-package-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/add'">
+        <button class="add-package-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/add/1'">
             <i class="fas fa-plus"></i><b>  Add New Sample</b></button>
 
         <div class="container">
@@ -46,21 +46,26 @@
                                     <?php echo $sample->Date; ?>
                                 </p>
                             </div>
+                    
+                    
+
+                    <div class="button-container">
+                        <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View</button>
                     </div>
+                    
+                    <br>
                     
                     <div class="button-container">
                         <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
                     </div>
 
-                    <div>
-                        <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View</button>
-                    </div>
-
                     <br>
-                    
-                    <div>
+
+                    <div class="button-container">
                         <button class="action delete-button" onclick="confirmDelete('<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>')">Delete</button>
                     </div>
+                    
+                    </div> 
 
                 </div>
             </div>
