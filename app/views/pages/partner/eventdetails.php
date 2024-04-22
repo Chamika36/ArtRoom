@@ -21,12 +21,35 @@
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
-            </ul>
             
-            <div class="button-container">
-                <button class="button">Accept</button>
-                <button class="button">Decline</button>
-            </div>
+
+            <li><strong>Your Current Status: </strong>
+
+            <?php if ($data['action'] == 'Accepted') : ?>
+                Accepted</li>
+                
+                <?php if ($_SESSION['user_type_id'] == 3) :?>
+                    <a href="<?php echo URLROOT; ?>/partners/uploadImagesbyPhotographer/<?php echo $data['event']->EventID?>" target="_blank" class="button">Upload Completed Work</a>
+
+                <?php elseif ($_SESSION['user_type_id'] == 4) :?>
+                    <a href="<?php echo URLROOT; ?>/partners/viewImagesbyEditor/<?php echo $data['event']->EventID?>" target="_blank" class="button">View Uploaded Images</a>
+                    <a href="<?php echo URLROOT; ?>/partners/uploadImagesbyEditor/<?php echo $data['event']->EventID?>" target="_blank" class="button">Upload Completed Work</a>
+
+                <?php elseif ($_SESSION['user_type_id'] == 5) :?>
+                    <a href="<?php echo URLROOT; ?>/partners/viewImagesbyPrinting/<?php echo $data['event']->EventID?>" target="_blank" class="button">View Uploaded Images</a>
+                
+                <?php endif;?>
+
+                <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Completed/OK" class="button">Mark As Complete</a>
+            <?php elseif ($data['action'] == 'Declined') : ?>
+                Declined</li>
+            <?php else : ?>
+                Pending</li>
+                <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Accepted/Ok/" class="button">Accept</a>
+                <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Declined/Busy/" class="button">Decline</a>
+            <?php endif; ?>
+            </ul>
+        
         </div>
     </div>
 </body>
