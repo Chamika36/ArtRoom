@@ -315,11 +315,14 @@ class Samples extends Controller{
             'folder' => $folder,
             'images' => $images
         );
-    
-        if($_SESSION['user_type_id'] == 2) {
-            $this->view('pages/manager/samples/viewsample', $data);
-        } else if ($_SESSION['user_type_id'] == 3) {
-            $this->view('pages/partner/viewsample', $data);
+
+
+        if(isset($_SESSION['user_id'])) {
+            if($_SESSION['user_type_id'] == 2) {
+                $this->view('pages/manager/samples/viewsample', $data);
+            } else if ($_SESSION['user_type_id'] == 3) {
+                $this->view('pages/partner/viewsample', $data);
+            }
         } else {
             $this->view('pages/customer/samples/viewsample', $data);
         }
