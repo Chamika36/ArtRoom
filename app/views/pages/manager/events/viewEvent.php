@@ -41,6 +41,9 @@
                         case 'Declined':
                             echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
                             break;
+                        case 'Completed':
+                            echo '<i class="fas fa-check-circle" style="color: green;"></i> Completed';
+                            break;
                         default:
                             echo 'Unknown Status';
                             break;
@@ -73,6 +76,9 @@
                         case 'Declined':
                             echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
                             break;
+                        case 'Completed':
+                            echo '<i class="fas fa-check-circle" style="color: green;"></i> Completed';
+                            break;
                         default:
                             echo 'Unknown Status';
                             break;
@@ -104,6 +110,9 @@
                             break;
                         case 'Declined':
                             echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
+                            break;
+                        case 'Completed':
+                            echo '<i class="fas fa-check-circle" style="color: green;"></i> Completed';
                             break;
                         default:
                             echo 'Unknown Status';
