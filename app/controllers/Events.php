@@ -396,6 +396,10 @@
                     'event_id' => $id
                 ];
 
+                if($status == 'Completed'){
+                    $notification_data['content'] = 'Your event has been completed. Collect your photos from the printing firm.';
+                }
+
                 $this->notificationModel->createNotification($notification_data);
 
                 // Notification data to partners
