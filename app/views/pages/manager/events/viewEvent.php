@@ -28,7 +28,7 @@
                 <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
                 
                 
-                <li><strong>Assigned Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?> <Strong>Status : </Strong>
+                <li><strong>Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?> <Strong>Status : </Strong>
                     <?php
                     $photographerAction = $data['photographerAction']->Action;
                     switch ($photographerAction) {
@@ -60,7 +60,7 @@
                     </div>
                 <?php endif; ?>
 
-                <li><strong>Assigned Editor:</strong> <?php echo $data['editor']->FirstName . ' ' . $data['editor']->LastName; ?> <Strong>Status : </Strong>
+                <li><strong>Editor:</strong> <?php echo $data['editor']->FirstName . ' ' . $data['editor']->LastName; ?> <Strong>Status : </Strong>
                     <?php
                     $editorAction = $data['editorAction']->Action;
                     switch ($editorAction) {
@@ -92,7 +92,7 @@
                     </div>
                 <?php endif; ?>
 
-                <li><strong>Assigned Printing Firm:</strong> <?php echo $data['printingFirm']->FirstName . ' ' . $data['printingFirm']->LastName; ?> <Strong>Status : </Strong>
+                <li><strong>Printing:</strong> <?php echo $data['printingFirm']->FirstName . ' ' . $data['printingFirm']->LastName; ?> <Strong>Status : </Strong>
                     <?php
                     $printingFirmAction = $data['printingFirmAction']->Action;
                     switch ($printingFirmAction) {
@@ -247,11 +247,11 @@
             <?php endif; ?>
             
             <!-- cancel event -->
-            <form action="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled" method="POST">
-                <div class="form-group">
-                    <input class="button" type="submit" value="Cancel Event">
-                </div>
-            </form>
+            <div class="form-group">
+                <a href="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled" class="button" style="background-color: #dc3545; color: white; ">Cancel Event</a>
+                <a href="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed" class="button">Complete Event</a>
+            </div>
+
 
         </div>
 

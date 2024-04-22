@@ -43,10 +43,12 @@
                 <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Completed/OK" class="button">Mark As Complete</a>
             <?php elseif ($data['action'] == 'Declined') : ?>
                 Declined</li>
-            <?php else : ?>
+            <?php elseif ($data['action']== 'Pending') : ?>
                 Pending</li>
                 <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Accepted/Ok/" class="button">Accept</a>
                 <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Declined/Busy/" class="button">Decline</a>
+            <?php elseif ($data['action'] == 'Completed') :?>
+                <p class="status delivered">Completed</p>
             <?php endif; ?>
             </ul>
         
