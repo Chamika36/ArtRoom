@@ -14,11 +14,16 @@ class Samples extends Controller{
             'customers' => $customers
         );
     
-        if($_SESSION['user_type_id'] == 2) {
+        if($_SESSION['user_type_id'] == 2) { 
+            // If user is a manager (user_type_id 2)
             $this->view('pages/manager/samples/samples', $data);
-        } else {
+        } 
+        else {
+            // Default case for other user types
             $this->view('pages/customer/samples/samples', $data);
         }
+        
+        
     }
     
 
@@ -164,31 +169,38 @@ class Samples extends Controller{
         }
     }
 
-        
-        
-        
-
-        // Delete Sample
-        public function delete($id){
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Get existing sample from model
-                $sample = $this->sampleModel->getSampleById($id);
-
-                // Check for owner
-                if($sample->CustomerID != $_SESSION['user_id']) {
-                    redirect('samples');
-                }
-
-                if($this->sampleModel->deleteSample($id)) {
-                    flash('sample_message', 'Sample Removed');
-                    redirect('samples');
-                } else {
-                    die('Something went wrong');
-                }
-            } else {
-                redirect('samples');
+    public function delete($id){
+        $folderPath = $this->sampleModel->getSampleById($id)->ImagePath; 
+        if($this->sampleModel->deleteSample($id)) {
+            // Delete the folder
+            if (is_dir($folderPath)) {
+                $this->deleteFolder($folderPath);
             }
+    
+            flash('sample_message', 'Sample Removed');
+            redirect('samples');
+        } else {
+            die('Something went wrong');
         }
+    }
+    
+    private function deleteFolder($folderPath) {
+        if (is_dir($folderPath)) {
+            $files = scandir($folderPath);
+            foreach ($files as $file) {
+                if ($file != '.' && $file != '..') {
+                    $filePath = $folderPath . '/' . $file;
+                    if (is_dir($filePath)) {
+                        $this->deleteFolder($filePath);
+                    } else {
+                        unlink($filePath);
+                    }
+                }
+            }
+            rmdir($folderPath);
+        }
+    }
+    
 
     // edit sample
     public function edit($id) {
@@ -277,6 +289,7 @@ class Samples extends Controller{
     
         if($sample) {
             $this->view('pages/manager/samples/viewsample', $data);
+            
         } else {
             $this->view('pages/manager/samples/viewsample', $data);
         }

@@ -23,7 +23,7 @@
 
         <div class="container">
             <?php foreach ($data['samples'] as $sample) : ?>
-            <a href="<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>">  
+             
             <div class="item-container">
                 
                 <div class="img-container">
@@ -42,9 +42,6 @@
                             
 
                             <div class="additional-info">
-                                <p class="info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <?php echo $sample->Description; ?></p>
                                 <p class="info description">    
                                     <?php echo $sample->Date; ?>
                                 </p>
@@ -55,13 +52,14 @@
                         <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
                     </div>
 
+                    <div>
+                        <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View</button>
+                    </div>
+
                     <br>
                     
-                    <div class="button-container">
-                        <form style="display: inline;" action="<!?php echo URLROOT ?>/samples/delete/<!?php echo $sample->SampleID; ?>" method="POST" onsubmit="return confirmDelete();">
-                            <input type="hidden" name="sample_id" value="<!?php echo $sample->SampleID; ?>">
-                            <button class="action delete-button" type="submit">Delete</button>
-                        </form>
+                    <div>
+                        <button class="action delete-button" onclick="confirmDelete('<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>')">Delete</button>
                     </div>
 
                 </div>
@@ -76,8 +74,11 @@
 </html>
 
 <script>
-    function confirmDelete() {
-        var sampleName = '<?php echo addslashes($sample->Name); ?>';
-        return confirm('Are you sure you want to delete ' + sampleName + ' sample?');
+function confirmDelete(deleteUrl) {
+    // Ask user to confirm deletion
+    var confirmation = confirm("Are you sure you want to delete this sample? This action cannot be undone.");
+    if (confirmation) {
+        window.location.href = deleteUrl;
     }
+}
 </script>

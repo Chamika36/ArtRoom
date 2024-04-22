@@ -44,14 +44,14 @@
                         <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/viewEvent/<?php echo $event->EventID?>"><p class="status shipped">View Details</p></a>
                         </td>
                         <td>
-                        <?php //if ($event->Status == 'Accepted') : ?>
-                            <!-- <p class="status delivered">Accepted</p> -->
-                        <?php //elseif ($event->Status == 'Canceled') : ?>
-                            <!-- <p class="status cancelled">Cancelled</p> -->
-                        <?php //else : ?>
+                        <?php if ($event->Action == 'Accepted') : ?>
+                            <p class="status delivered">Accepted</p>
+                        <?php elseif ($event->Action == 'Declined') : ?>
+                            <p class="status cancelled">Declined</p>
+                        <?php else : ?>
                             <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Accepted/Ok/"><p class="status do">Accept</p></a>
                             <a style="text-decoration: none;" href="<?php echo URLROOT ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']?>/<?php echo $event->EventID?>/Declined/Busy/"><p class="status dont">Decline</p></a>
-                        <?php //endif; ?>
+                        <?php endif; ?>
                         </td> 
                      </tr>
                      <?php endforeach; ?>

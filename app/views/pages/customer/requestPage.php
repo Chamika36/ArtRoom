@@ -23,7 +23,7 @@
     <style>
 
         body {
-            background:#F9F9F9;
+            background:#FBF9F3;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -37,7 +37,7 @@
             background: #fff;
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
             margin-top: 80px;
         }
 
@@ -67,7 +67,7 @@
 
         .form .input-box input{
             
-            height: 50px;
+            height: 40px;
             width:100%;
             outline: none;
             border: 1px solid #ddd;
@@ -176,7 +176,7 @@
                         <h1><b>Request for a Booking</b></h1>
                     </div>    
         
-                <form class="form" action="<?php echo URLROOT; ?>/events/request" method="POST">
+                <form class="form" action="<?php echo URLROOT; ?>/events/request/0" method="POST">
                     <!-- <label for="event-type">Event Type</label>
                     <select id="event-type" name="event-type">
                         <option value="option1">Option 1</option>
