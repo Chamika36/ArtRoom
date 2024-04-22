@@ -109,6 +109,7 @@
                 {
                     // Send a success response back to the client
                     echo json_encode(['status' => 'success']);
+                    redirect('events/viewEvent/'.$EventID);
                 } else {
                     // Send an error response back to the client
                     echo json_encode(['status' => 'error', 'message' => 'Something went wrong']);
