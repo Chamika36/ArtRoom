@@ -59,9 +59,11 @@
                             <i class="fas <?php echo ($data['event']->Status == 'Completed' ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Order Completed
                         </div>
                     </div>
+                    <?php if($data['event']->Status == 'Completed'){ ?>
                         <div class="feedback-btn-container">
                             <button class="feedback-btn"><a href="<?php echo URLROOT ?>/feedbacks/submitFeedback" style="font-weight:normal">Share your thoughts</a></button>     
                         </div>   
+                    <?php } ?>
                     </div>
 
                     <div class="payment-container">
