@@ -12,7 +12,11 @@ class Notification {
         $user = $this->getUserById($notification['user_id']);
         $to = $user->Email;
         $subject = "New Notification from ArtRoom";
-        $message = $notification['content'] . " " . URLROOT ."/". $notification['link'];
+        if($notification['type'] == 'file'){
+            $message = $notification['content'] . " " . $notification['link'];
+        }else{
+            $message = $notification['content'] . " " . URLROOT ."/". $notification['link'];
+        }
         $headers = "From: ArtRoom <noreply@yourdomain.com>\r\n";
         $headers .= "Reply-To: noreply@yourdomain.com\r\n";
         $headers .= "X-Mailer: PHP/" . phpversion();
@@ -69,20 +73,21 @@ class Notification {
     }
 
     public function getNotificationByManager(){
-        $this->db->query('SELECT * from notification where Status = "unread" AND (Type = "action" OR Type = "request" OR Type = "payment" OR Type = "reschedule") ORDER BY NotificationID DESC');
+        // $this->db->query('SELECT * from notification where Status = "unread" AND (Type = "action" OR Type = "request" OR Type = "payment" OR Type = "reschedule") ORDER BY NotificationID DESC');
+        $this->db->query('SELECT * from notification where Status = "unread" AND UserID = 16 ORDER BY NotificationID DESC');
         $result = $this->db->resultSet();
         return $result;
     }
 
     //get notification count ny manager
     public function getNotificationCountByManager(){
-        $this->db->query('SELECT COUNT(*) AS count from notification where Status = "unread" AND (Type = "action" OR Type = "request" OR Type = "payment")');
+        $this->db->query('SELECT COUNT(*) AS count from notification where Status = "unread" AND UserID = 16 ORDER BY NotificationID DESC');
         $result = $this->db->single();
         return $result->count;
     }
 
     public function getNotificationsByUserId($user_id){
-        $this->db->query('SELECT * from notification where UserID = :user_id ORDER BY NotificationID DESC');
+        $this->db->query('SELECT * from notification where Status = "unread" AND UserID = :user_id ORDER BY NotificationID DESC');
         $this->db->bind(':user_id', $user_id);
         $result = $this->db->resultSet();
         return $result;

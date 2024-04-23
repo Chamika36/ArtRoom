@@ -18,9 +18,12 @@
     <div class="home">
         
 
+        <button class="add-package-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/add/1'">
+            <i class="fas fa-plus"></i><b>  Add New Sample</b></button>
+
         <div class="container">
             <?php foreach ($data['samples'] as $sample) : ?>
-            <a href="<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>">  
+             
             <div class="item-container">
                 
                 <div class="img-container">
@@ -39,9 +42,6 @@
                             
 
                             <div class="additional-info">
-                                <p class="info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <?php echo $sample->Description; ?></p>
                                 <p class="info description">    
                                     <?php echo $sample->Date; ?>
                                 </p>
@@ -49,7 +49,21 @@
                     </div>
                     
                     <div class="button-container">
+<<<<<<< HEAD
                     <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/partner/view/<?php echo $sample->SampleID; ?>'">View</button>
+=======
+                        <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
+                    </div>
+
+                    <div>
+                        <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View</button>
+                    </div>
+
+                    <br>
+                    
+                    <div>
+                        <button class="action delete-button" onclick="confirmDelete('<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>')">Delete</button>
+>>>>>>> ac5560f4d0a472007bc24a6cc891c34bd4f839b6
                     </div>
 
                 </div>
@@ -63,3 +77,12 @@
 </body>
 </html>
 
+<script>
+function confirmDelete(deleteUrl) {
+    // Ask user to confirm deletion
+    var confirmation = confirm("Are you sure you want to delete this sample? This action cannot be undone.");
+    if (confirmation) {
+        window.location.href = deleteUrl;
+    }
+}
+</script>

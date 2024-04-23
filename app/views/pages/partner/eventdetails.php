@@ -19,6 +19,8 @@
                 <li><strong>Event Name:</strong> <?php echo $data['package']->Name; ?></li>
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
+                <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
+                <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
             
@@ -43,10 +45,12 @@
                 <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Completed/OK" class="button">Mark As Complete</a>
             <?php elseif ($data['action'] == 'Declined') : ?>
                 Declined</li>
-            <?php else : ?>
+            <?php elseif ($data['action']== 'Pending') : ?>
                 Pending</li>
                 <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Accepted/Ok/" class="button">Accept</a>
                 <a href="<?php echo URLROOT; ?>/partners/updatePartnerAction/<?php echo $_SESSION['user_type_id']; ?>/<?php echo $data['event']->EventID; ?>/Declined/Busy/" class="button">Decline</a>
+            <?php elseif ($data['action'] == 'Completed') :?>
+                <p class="status delivered">Completed</p>
             <?php endif; ?>
             </ul>
         

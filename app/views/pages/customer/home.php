@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <title>Home</title>
 
         <style>
         
-        
-
-        
-        </style>
+       </style>
 
     </head>
 
@@ -59,6 +59,30 @@
             </div>
 
             <div id="right-side-01">
+                <!-- Notification Icon -->
+                <?php if(isset($_SESSION['user_id'])) : ?>
+                <div class="notification-wrapper">
+                    <div class="notification-icon">
+                        <i class='bx bxs-bell'></i>
+                        <span class="num"><b><?php echo $data['unreadNotificationCount']; ?></b></span>
+                    </div>
+                    <!-- Dropdown for notifications -->
+                    <ul class="dropdown-menu">
+                        <?php foreach($data['notifications'] as $notification) : ?>
+                            <?php //if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment' || $notification->Type === 'reschedule') : ?>
+                            <?php if($notification->Type === 'file') : ?>
+                                <li>
+                                    <a href="<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+                                </li>
+                            <?php else : ?>
+                                <li>
+                                    <a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <?php endif; ?>
                 <!-- Content for the right side goes here -->
                 <img src="<?php echo URLROOT ?>/images/home-container-01.jpg" alt="Your Image Alt Text">
                 
@@ -67,7 +91,7 @@
 
         <section>
             <div class=gallery-topic id="Gallery">
-                <p style="color: white">Our Gallery</p>
+                <p style="color: white"><i class="fa-regular fa-images"></i> Our Gallery</p>
             </div>
 
 
@@ -88,7 +112,7 @@
                             <div class="event-info">
                                 <p class="title"><?php echo $sample->SampleName; ?></p>
                                 <div class="separator"></div>
-                                <p class="info">ArtRoom Photography</p>
+                                <p class="info"><b>ArtRoom Photography</b></p>
 
                                 <div class="additional-info">
                                     <p class="info">
@@ -97,7 +121,7 @@
                                     <p class="info description">
                                         <?php echo $sample->Date; ?>
                                     </p>
-                                    <button class="view-sample-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View Sample</button>
+                                    <button class="view-sample-btn" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View Album</button>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +136,7 @@
             </section>
 
         <div class=gallery-topic id="Packages">
-            Our Packages
+            <p><i class="fa-solid fa-rectangle-list"></i> Our Packages</p>
         </div>
         <div class="packages-container">
             <?php foreach ($data['packages'] as $package) : ?>
@@ -135,40 +159,24 @@
 
         <section>
             <div class=gallery-topic id="Gallery">
-                <p style="color: white">Our Happy Customers</p>
+                <p style="color: white"><i class="fa-regular fa-handshake"></i> Our Happy Customers</p>
             </div>
             
             <div class="test">
-            <figure class="snip1533">
-                <figcaption>
-                    <blockquote>
-                    <p>"You captured our wedding so beautifully.. Thank You Art Room and the team."</p>
-                    </blockquote>
-                    <h3>Chamika karunarathne</h3>
-                    <h4>Sports person</h4>
-                </figcaption>
-            </figure>
-            <!-- <figure class="snip1533">
-                <figcaption>
-                    <blockquote>
-                    <p>"We had some family photos taken at Art Room and was simply thrilled with the result. Thank you soo much"
-                    </p>
-                    </blockquote>
-                    <h3>Probodini Senevirathne</h3>
-                    <h4>Happy Customer</h4>
-                </figcaption>
-            </figure>
-            <figure class="snip1533">
-                <figcaption>
-                    <blockquote>
-                    <p>"Any occation. Any location. best ever photography service. Highly recommended"</p>
-                    </blockquote>
-                    <h3>Amal Perera</h3>
-                    <h4>Singer</h4>
-                </figcaption>
-            </figure> -->
+                <?php foreach ($data['feedbacks'] as $feedback) : ?>
+                    <figure class="snip1533">
+                        <figcaption>
+                            <blockquote>
+                            <p>"<?php echo $feedback->Comment ?>"</p>
+                            </blockquote>
+                            <h3><?php echo $feedback->Name?></h3>
+                            <h4>Date</h4>
+                        </figcaption>
+                    </figure>
+                <?php endforeach; ?>
+       
         </div>
-            <button onclick="topFunction()" id="myBtn" title="Go to top"><b>&#8593;</b></button>
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>
 
         </section>
 
@@ -208,6 +216,12 @@
         document.documentElement.scrollTop = 0;
         }
         </script>
+
+        <script>
+            var URLRoot=<?php echo json_encode(URLROOT);?>;
+        </script>
+        <script src="<?php echo URLROOT ?>/js/notifications.js"></script>
 </body>
 
 </html>
+

@@ -8,13 +8,22 @@ class Home extends Controller {
         $this->packageModel = $this->model('Package');
         $this->notificationModel = $this->model('Notification');
         $this->feedbackModel = $this->model('Feedback');
+        $this->sampleModel = $this->model('Sample');
     }
 
    public function index() {
         $packages = $this->packageModel->getPackages();
+        $sample = $this->sampleModel->getSamples();
+        $feedbacks = $this->feedbackModel->getFeedbacks();
+        foreach($feedbacks as $feedback) {
+            $user = $this->userModel->getUserById($feedback->CustomerID);
+            $feedback->Name = $user->FirstName . ' ' . $user->LastName;
+        }
         $data = [
             'title' => 'Home',
-            'packages' => $packages
+            'packages' => $packages,
+            'samples' => $sample,
+            'feedbacks' => $feedbacks
         ];
         if(isset($_SESSION['user_type_id'])) {
             switch($_SESSION['user_type_id']) {
@@ -76,12 +85,19 @@ class Home extends Controller {
         $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
         $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
         $feedbacks = $this->feedbackModel->getFeedbacks();
+        foreach($feedbacks as $feedback) {
+            $user = $this->userModel->getUserById($feedback->CustomerID);
+            $feedback->Name = $user->FirstName . ' ' . $user->LastName;
+        }
+        $sample = $this->sampleModel->getSamples();
 
         $data = [
             'title' => 'Home',
             'packages' => $packages,
             'notifications' => $notifications,
-            'unreadNotificationCount' => $unreadNotificationCount
+            'unreadNotificationCount' => $unreadNotificationCount,
+            'feedbacks' => $feedbacks,
+            'samples' => $sample
         ];
         $this->view('pages/customer/home', $data);
     }

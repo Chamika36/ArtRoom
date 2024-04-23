@@ -203,10 +203,10 @@ class Partners extends Controller {
 
         $notification_data_customer = [
             'user_id' => $event->CustomerID,
-            'type' => 'action',
-            'content' => 'Photographer has uploaded your images. Select the photos wanted to print and Move to edit folder',
+            'type' => 'file',
+            'content' => 'Photographer has uploaded your images. Select the photos wanted to print and Move to "Customer Selected" folder',
             'link' => $link,
-            'event_id' => $event_id
+            'event_id' => $eventID
         ];
 
         $this->notificationModel->createNotification($notification_data_customer);
@@ -225,13 +225,18 @@ class Partners extends Controller {
 
         $notification_data_printing = [
             'user_id' => $event->PrintingFirmID,
-            'type' => 'action',
+            'type' => 'file',
             'content' => 'Editor has uploaded images. Click to print',
             'link' => $link,
             'event_id' => $eventID
         ];
 
         $this->notificationModel->createNotification($notification_data_printing);
+        header('Location: ' . $link);
+    }
+
+    public function viewImagesbyPrinting($eventID){
+        $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
         header('Location: ' . $link);
     }
 
