@@ -397,12 +397,17 @@
                 ];
 
                 if($status == 'Completed'){
-                    $notification_data['content'] = 'Your event has been completed. Collect your photos from the printing firm.';
+                    $notification_data['content'] = 'Your event has been completed. Collect your photos.';
                 }
 
                 $this->notificationModel->createNotification($notification_data);
 
                 // Notification data to partners
+                if($status == 'Completed'){
+                    $notification_data['content'] = 'Your event has been completed.';
+                }
+                $notification_data['link'] = 'partners/viewEvent/' . $id . '';
+
                 $notification_data['user_id'] = $this->eventModel->getEventById($id)->PhotographerID;
                 $this->notificationModel->createNotification($notification_data);
 
@@ -695,6 +700,40 @@
             }
         }
 
+        // View requests by each partner
+        public function viewPartnerRequests($id) {
+            $requests = $this->eventModel->getRequestsByPartner($id);
+
+            foreach ($requests as $request) {
+                $user_type_id = $_SESSION['user_type_id'];
+                $action = '';
+
+                switch($user_type_id) {
+                    case 3:
+                        $action = $this->partnerModel->getPhotographerAction($request->EventID); 
+                        break;
+                    case 4:
+                        $action = $this->partnerModel->getEditorAction($request->EventID);
+                        break;
+                    case 5:
+                        $action = $this->partnerModel->getPrintingFirmAction($request->EventID);
+                        break;
+                    default:
+                        $action = "Error";
+                        break;
+                }
+
+                $request->UserTYpe = $user_type_id;
+                $request->Action = $action->Action;
+            }
+
+            $data = [
+                'events' => $requests,
+            ];
+        
+            $this->view('pages/partner/events', $data);
+        }
+
         // View event by ech Partner
         public function viewPartnerEvents($id) {
             $events = $this->eventModel->getEventsByPartner($id);
@@ -719,7 +758,7 @@
                 }
 
                 $event->UserTYpe = $user_type_id;
-                $event->Action = $action;
+                $event->Action = $action->Action;
             }
 
             $data = [

@@ -31,11 +31,11 @@
 			<!-- Dropdown for notifications -->
 			<ul class="dropdown-menu">
 				<?php foreach($data['notifications'] as $notification) : ?>
-					<?php if($notification->Type ===  'allocate' ):?>
+					<?php //if($notification->Type ===  'allocate' ):?>
 					<li>
 						<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
 					</li>
-					<?php endif; ?>
+					<?php //endif; ?>
 				<?php endforeach; ?>
 			</ul>
 		</div>
@@ -48,22 +48,22 @@
 			</div>
 
             <ul class="box-info">
-				<a href="<?php echo URLROOT ?>/partners/viewPartnerEvents/<?php echo $_SESSION['user_id']?>">
+				<!-- <a href="<?php// echo URLROOT ?>/events/viewPartnerRequests/<?php //echo $_SESSION['user_id']?>">
 					<li>
 						<i class='bx bxs-calendar-plus' ></i>
 						<span class="text">
-							<h3><?php echo is_array($data['eventCount']) ? count($data['eventCount']) : $data['eventCount']; ?></h3>
+							<h3><?php// echo is_array($data['requestCount']) ? count($data['requestCount']) : $data['requestCount']; ?></h3>
 							<p>Event Requests</p>
 						</span>
 					</li>
-				</a>
+				</a> -->
 
-				<a href="<?php echo URLROOT ?>/events">
+				<a href="<?php echo URLROOT ?>/events/viewPartnerEvents/<?php echo $_SESSION['user_id']?>">
 					<li>
 						<i class='bx bxs-calendar-check' ></i>
 						<span class="text">
-							<h3><?php echo is_array($data['requestCount']) ? count($data['requestCount']) : $data['requestCount']; ?></h3>
-							<p>Ongoing Events</p>
+							<h3><?php echo is_array($data['eventCount']) ? count($data['eventCount']) : $data['eventCount']; ?></h3>
+							<p>Allocated Events</p>
 						</span>
 					</li>
 				</a>

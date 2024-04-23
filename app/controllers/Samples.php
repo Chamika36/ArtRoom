@@ -313,7 +313,8 @@ class Samples extends Controller{
         $data = array(
             'sample' => $sample,
             'folder' => $folder,
-            'images' => $images
+            'images' => $images,
+            'samples' => $sample
         );
 
 
@@ -322,9 +323,12 @@ class Samples extends Controller{
                 $this->view('pages/manager/samples/viewsample', $data);
             } else if ($_SESSION['user_type_id'] == 3) {
                 $this->view('pages/partner/viewsample', $data);
+            } else {
+                $this->view('pages/customer/samples/viewsample', $data);
             }
         } else {
             $this->view('pages/customer/samples/viewsample', $data);
+
         }
     }
 

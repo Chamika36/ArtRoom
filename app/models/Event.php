@@ -108,7 +108,7 @@
 
         //Get events by partner
         public function getEventsByPartner($id) {
-            $this->db->query('SELECT * FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id ORDER BY EventID DESC');
+            $this->db->query('SELECT * FROM Event WHERE (PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id) AND Status <> "Pencil" ORDER BY EventID DESC');
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
@@ -116,12 +116,20 @@
 
         // Get event count by partner
         public function getEventCountByPartner($id) {
-            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id');
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE (PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id) AND Status <> "Pencil"');
             $this->db->bind(':id', $id);
             $result = $this->db->single();
             
             // Access the count value using the alias "count"
             return $result->count;
+        }
+
+        // Get requests by partner
+        public function getRequestsByPartner($id) {
+            $this->db->query('SELECT * FROM Event WHERE (PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id) AND Status = "Pencil" ORDER BY EventID DESC');
+            $this->db->bind(':id', $id);
+            $results = $this->db->resultSet();
+            return $results;
         }
 
         // Get request count by partner
@@ -144,7 +152,7 @@
 
         // Get event count
         public function getEventCount() {
-            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE Status <> "Pencil"');
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE Status NOT IN ("Pencil", "Canceled", "Completed")');
             $result = $this->db->single();
             
             // Access the count value using the alias "count"
