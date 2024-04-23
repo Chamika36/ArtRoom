@@ -48,22 +48,26 @@
                             </div>
                     </div>
                     
-                    <div class="button-container">
-<<<<<<< HEAD
-                    <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/partner/view/<?php echo $sample->SampleID; ?>'">View</button>
-=======
-                        <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
-                    </div>
+                    
+                
 
-                    <div>
+                    <div class="button-container">
                         <button class="action view-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/viewSample/<?php echo $sample->SampleID; ?>'">View</button>
                     </div>
 
                     <br>
                     
-                    <div>
+
+                    <div class="button-container">
+                        <button class="action edit-button" onclick="window.location.href='<?php echo URLROOT ?>/samples/edit/<?php echo $sample->SampleID; ?>'">Edit</button>
+                    </div>
+
+                    <br>
+
+                    
+                    <div class="button-container">
                         <button class="action delete-button" onclick="confirmDelete('<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>')">Delete</button>
->>>>>>> ac5560f4d0a472007bc24a6cc891c34bd4f839b6
+
                     </div>
 
                 </div>
