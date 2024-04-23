@@ -42,9 +42,18 @@
             $this->db->query('SELECT * FROM reschedule R, event E WHERE R.EventID = E.EventID AND E.PhotographerID=:id');
             $this->db->bind(':id', $id);
 
-            $result = $this->db->single();
+            $result = $this->db->resultSet();
 
             return $result;
+        }
+
+        public function getRescheduleCountByPartner($id){
+            $this->db->query('SELECT COUNT(*) AS Count FROM reschedule R, event E WHERE R.EventID = E.EventID AND E.PhotographerID=:id AND R.ApprovalStatus = "Pending"');
+            $this->db->bind(':id', $id);
+
+            $result = $this->db->single();
+
+            return $result->Count;
         }
 
 
