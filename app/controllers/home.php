@@ -9,6 +9,7 @@ class Home extends Controller {
         $this->notificationModel = $this->model('Notification');
         $this->feedbackModel = $this->model('Feedback');
         $this->sampleModel = $this->model('Sample');
+        $this->rescheduleModel = $this->model('Reschedule');
     }
 
    public function index() {
@@ -128,6 +129,7 @@ class Home extends Controller {
     public function partner(){
         $eventCount = $this->eventModel->getEventCountByPartner($_SESSION['user_id']);
         $requestCount = $this->eventModel->getRequestCountByPartner($_SESSION['user_id']);
+        $rescheduleCount = $this->rescheduleModel->getRescheduleCountByPartner($_SESSION['user_id']);
         $events = $this->eventModel->getLastFiveEventsByPartner($_SESSION['user_id']);
         $packages = $this->packageModel->getPackages();
         $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
@@ -137,6 +139,7 @@ class Home extends Controller {
             'title' => 'Home',
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
+            'rescheduleCount' => $rescheduleCount,
             'events' => $events,
             'packages' => $packages,
             'notifications' => $notifications,
