@@ -44,6 +44,16 @@
                 <input type="date" name="date" value="<?php echo $data['date']; ?>" required> 
                 <span class="invalid-feedback"><?php echo $data['date_err']?></span>
             </div>
+
+            <div class="user-input-box">
+                <label for="photographer"> Photographer : </label>
+                <select name="photographer" id="photographer">
+                    <?php foreach ($data['photographers'] as $photographer) : ?>
+                        <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . " " . $photographer->LastName; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+                 
                         
             <div class="user-input-box">
                 <label for="customer"> Customer: </label>
