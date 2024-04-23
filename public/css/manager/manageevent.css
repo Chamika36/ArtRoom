@@ -140,3 +140,8 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
+
+#additionalChargesDisplay{
+  font-size: 2px;
+  margin: 5px 0;
+}

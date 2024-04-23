@@ -19,6 +19,8 @@
                 <li><strong>Event Name:</strong> <?php echo $data['package']->Name; ?></li>
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
+                <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
+                <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
             

@@ -70,7 +70,7 @@
                     <ul class="dropdown-menu">
                         <?php foreach($data['notifications'] as $notification) : ?>
                             <?php //if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment' || $notification->Type === 'reschedule') : ?>
-                            <?php if($notification->Type === 'link') : ?>
+                            <?php if($notification->Type === 'file') : ?>
                                 <li>
                                     <a href="<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
                                 </li>
