@@ -7,9 +7,9 @@
         }
 
         public function submitFeedback($data) {
-            $this->db->query('INSERT INTO feedback (CustomerID , Comment) VALUES (:user_id, :feedback)');
+            $this->db->query('INSERT INTO feedback (CustomerID , Comment , Rating) VALUES (:user_id, :feedback, :rating)');
             $this->db->bind(':feedback', $data['feedback']);
-            // $this->db->bind(':rating', $data['rating']);
+            $this->db->bind(':rating', $data['rating']);
             $this->db->bind(':user_id', $data['user_id']);
 
             if($this->db->execute()) {

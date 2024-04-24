@@ -4,6 +4,7 @@
     right: 40px; /* Adjusted to move 5px to the left */
     cursor: pointer;
     z-index: 999; /* Adjust the z-index to make sure it's on top of other elements */
+    
 }
 
 .notification-icon {
@@ -36,13 +37,16 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 60px;
+    top: 30px;
     right: 0;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px 0;
-    width: 200px;
+    border: 0.1px solid #a19e9e;
+    border-left: 10px solid #f9b234;
+    border-top: 0.2px solid #f9b234;
+    border-radius: 15px;
+    border-top-right-radius: 0px;
+    padding: 5px 5px;
+    width: 250px;
     display: none;
     z-index: 1000;
 }

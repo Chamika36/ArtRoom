@@ -68,6 +68,7 @@
                     </div>
                     <!-- Dropdown for notifications -->
                     <ul class="dropdown-menu">
+                        <li><b>Notifications</b></li>
                         <?php foreach($data['notifications'] as $notification) : ?>
                             <?php //if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment' || $notification->Type === 'reschedule') : ?>
                             <?php if($notification->Type === 'file') : ?>
@@ -170,12 +171,11 @@
                             <p>"<?php echo $feedback->Comment ?>"</p>
                             </blockquote>
                             <h3><?php echo $feedback->Name?></h3>
-                            <h4>Date</h4>
+                            <h4><i class="fa-solid fa-star" style="color: #f9b234;"></i> <?php echo $feedback->Rating?></h4>
                         </figcaption>
                     </figure>
                 <?php endforeach; ?>
-       
-        </div>
+            </div>
             <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>
 
         </section>
