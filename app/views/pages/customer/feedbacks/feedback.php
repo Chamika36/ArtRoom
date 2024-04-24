@@ -87,6 +87,27 @@
         outline: none;  /* Remove default outline */
         /* background-color: #fff;   */
     }
+
+    .number-input {
+        margin: 20px 0;  /* Add some spacing */
+        }
+
+    label {
+        font-size: 1em;  /* Adjust the label font size */
+        }
+
+    input[type="number"] {
+        padding: 5px;  /* Add padding to the input box */
+        font-size: 1em;  /* Adjust font size for readability */
+        width: 100px;  /* Set the width of the input box */
+        text-align: center;  /* Center-align the text in the box */
+        border: 1px solid #ccc;  /* Basic border styling */
+        border-radius: 5px;  /* Rounded corners */
+        text-align: center;
+        margin-top: 5px;
+        }
+
+
     input::placeholder {
         text-align: center;
         opacity: 0.8;
@@ -141,8 +162,10 @@
         <label for="message"></label>
         <textarea name="feedback" id="feedback" placeholder="Tell Us About Your Experience" value="<?php echo $data['feedback']; ?>" required></textarea><br>
 
-        <!-- <label for="rating"> Rating:</label>
-        <input type="number" name="rating" id="rating" required><br> -->
+        <div class="number-input">
+        <label for="rating">Rate your experience out of 10: </label></br>
+        <input id="rating" name="rating" type="number" min="1" max="10" step="1" value="<?php echo $data['feedback']; ?>" required>  <!-- Set default value -->
+        </div>
 
         <button type="submit" value="Submit">Submit</button>
     </form>

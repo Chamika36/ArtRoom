@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
     <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
-    <!-- <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css"> -->
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/payment-page.css">
     <link
       rel="stylesheet"
@@ -36,27 +36,27 @@
                     <div>
                         <!-- Request Sent -->
                         <div class="status-item <?php echo ($data['event']->Status != 'Pencil' ? 'Completed' : ''); ?>">
-                            <i class="fas <?php echo (in_array($data['event']->Status, ['Pencil','Accepted', 'Advanced', 'FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Request sent
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['Pencil','Accepted', 'Advanced', 'FullPaid', 'Completed']) ? 'fa-regular fa-circle-check' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Request sent
                         </div>
 
                         <!-- Manager Accepted -->
                         <div class="status-item <?php echo (in_array($data['event']->Status, ['Accepted', 'Advanced', 'Confirmed', 'FullPaid', 'Completed']) ? 'completed' : ''); ?>">
-                            <i class="fas <?php echo (in_array($data['event']->Status, ['Accepted', 'Advanced', 'FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Event Confirmed
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['Accepted', 'Advanced', 'FullPaid', 'Completed']) ? 'fa-regular fa-circle-check' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Event Confirmed
                         </div>
 
                         <!-- Advance Payment Completed -->
                         <div class="status-item <?php echo (in_array($data['event']->Status, ['Advanced', 'Confirmed', 'FullPaid', 'Completed']) ? 'completed' : ''); ?>">
-                            <i class="fas <?php echo (in_array($data['event']->Status, ['Advanced', 'FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Advance Payment completed
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['Advanced', 'FullPaid', 'Completed']) ? '<i class="fa-regular fa-circle-check"></i>' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Advance Payment completed
                         </div>
 
                         <!-- Full Payment Completed -->
                         <div class="status-item <?php echo (in_array($data['event']->Status, ['FullPaid', 'Completed']) ? 'completed' : ''); ?>">
-                            <i class="fas <?php echo (in_array($data['event']->Status, ['FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Full Payment completed
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['FullPaid', 'Completed']) ? 'fa-check-circle' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Full Payment completed
                         </div>
 
                         <!-- Order Completed -->
                         <div class="status-item <?php echo ($data['event']->Status == 'Completed' ? 'completed' : ''); ?>">
-                            <i class="fas <?php echo ($data['event']->Status == 'Completed' ? 'fa-check-circle' : 'fa-clock'); ?>"></i> Order Completed
+                            <i class="fas <?php echo ($data['event']->Status == 'Completed' ? 'fa-check-circle' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Order Completed
                         </div>
                     </div>
                     <?php if($data['event']->Status == 'Completed'){ ?>

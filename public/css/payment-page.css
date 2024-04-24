@@ -30,7 +30,7 @@ background-color: #ffffff;
 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 padding: 20px;
 border-radius: 10px;
-width: 35%;
+width: 28%;
 border: 2px solid #f9b234;
 }
 
@@ -130,7 +130,7 @@ border: 2px solid #f9b234;
 }
 
 .details{
-    color: rgb(105, 105, 105);
+    color: rgb(58, 57, 57);
     margin-right: 20px;
 }
 
@@ -140,8 +140,8 @@ border: 2px solid #f9b234;
 }
 
 button{
-    background-color: #f8f8fb;
-    color: #000000;
+    background-color: #000000;
+    color: #690808;
     border: none;
     padding: 10px 40px;
     border-radius: 10px;
@@ -159,5 +159,19 @@ button{
     padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: center;
 }
+
+/* .feedback-btn{
+    background-color: #f8f8fb;
+    color: #000000;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 3px solid #000000;
+    margin-top: 20px;
+} */
