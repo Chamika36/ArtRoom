@@ -72,7 +72,7 @@
 					<li>
 						<i class='bx bx-message-rounded-error' ></i>
 						<span class="text">
-							<h3><?php// echo is_array($data['rescheduleCount']) ? count($data['rescheduleCount']) : $data['rescheduleCount']; ?></h3>
+							<h3><?php echo is_array($data['rescheduleCount']) ? count($data['rescheduleCount']) : $data['rescheduleCount']; ?></h3>
 							<p>Reschedule Requests</p>
 						</span>
 					</li>

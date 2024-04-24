@@ -121,7 +121,7 @@ class Reschedules extends Controller{
             'user_id' => 16,
             'type' => 'reschedule',
             'content' => 'Photographer accepted reschdule request',
-            'link' => 'events/viewEvent/' . $event->EventID,
+            'link' => 'events/loadEvent/' . $event->EventID,
             'event_id' => $eventID
         ];
 
@@ -138,7 +138,7 @@ class Reschedules extends Controller{
             'user_id' => 16,
             'type' => 'reschedule',
             'content' => 'Photographer declined reschdule request',
-            'link' => 'events/viewEvent/' . $event->EventID,
+            'link' => 'events/loadEvent/' . $event->EventID,
             'event_id' => $eventID
         ];
 

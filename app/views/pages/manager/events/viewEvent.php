@@ -203,7 +203,7 @@
                 <tr> -->
                 <th>Total Budget</th>
                     <td>
-                        <?php echo $data['event']->TotalBudget; ?> :
+                        <?php echo $data['event']->TotalBudget; ?> 
                         <?php
                         $status = $data['event']->Status;
                         switch ($status) {
@@ -218,7 +218,6 @@
                                 echo '<i class="fas fa-check-circle" style="color: green;"></i> Fully Paid';
                                 break;
                             default:
-                                echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> N/A';
                                 break;
                         }
                         ?>

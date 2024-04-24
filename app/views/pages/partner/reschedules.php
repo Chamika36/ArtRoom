@@ -71,19 +71,25 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        <?php echo var_dump($data['reschedules']); ?>
-                        <?php //foreach ($data['reschedules'] as $reschedule) : ?>
+                        <?php// echo var_dump($reschedule); ?>
+                        <?php foreach ($data['reschedules'] as $reschedule) : ?>
                             <tr>
-                                <td><?php echo $data['reschedules']->ID; ?></td>
-                                <td><?php echo $data['reschedules']->EventID; ?></td>
-                                <td><?php echo $data['reschedules']->NewEventDate; ?></td>
-                                <td><?php echo $data['reschedules']->NewStartTime; ?></td>
-                                <td><?php echo $data['reschedules']->NewEndTime; ?></td>
-                                <td><?php echo $data['reschedules']->NewLocation; ?></td>
-                                <td><a href="#" class="manage-schedule" data-url="<?php echo URLROOT; ?>/reschedules/photographerconfirm/<?php echo $data['reschedules']->ID; ?>"><p class="status shipped"><b>Confirm</b></p></a></td> 
-                                <td><a href="<?php echo URLROOT; ?>/reschedules/photographerdecline/<?php echo $data['reschedules']->ID; ?>"><p class="status cancelled"><b>Decline</b></p></a></td>
+                                <td><?php echo $reschedule->ID; ?></td>
+                                <td><?php echo $reschedule->EventID; ?></td>
+                                <td><?php echo $reschedule->NewEventDate; ?></td>
+                                <td><?php echo $reschedule->NewStartTime; ?></td>
+                                <td><?php echo $reschedule->NewEndTime; ?></td>
+                                <td><?php echo $reschedule->NewLocation; ?></td>
+
+                                <?php if($reschedule->ApprovalStatus == 'Pending') : ?>
+                                    <td><a href="<?php echo URLROOT; ?>/reschedules/photographerconfirm/<?php echo $reschedule->ID; ?>" class="manage-schedule"><p class="status shipped"><b>Confirm</b></p></a></td> 
+                                    <td><a href="<?php echo URLROOT; ?>/reschedules/photographerdecline/<?php echo $reschedule->ID; ?>"><p class="status cancelled"><b>Decline</b></p></a></td>
+                                <?php else : ?>
+                                    <td><?php echo $reschedule->ApprovalStatus;?></td>
+                                    <td></td>
+                                <?php endif; ?>
                             </tr>
-                        <?php //endforeach; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </section>
