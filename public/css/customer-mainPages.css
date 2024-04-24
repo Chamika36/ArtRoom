@@ -417,13 +417,13 @@ padding: 13% 10% 12%;
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
-    margin: 10px 0 5px;
+    margin: 10px 0 10px;
 }
 
 .snip1533 h4 {
     font-weight: 400;
     margin: 0;
-    opacity: 0.5;
+   
 }
 
 .snip1533 blockquote {
@@ -616,4 +616,6 @@ padding: 13% 10% 12%;
     border: 3px solid #000000;
     margin-top: 20px;
     
+    
 }
+
