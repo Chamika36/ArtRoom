@@ -29,7 +29,7 @@
             return $results;
         }
 
-        public function getReschedulesCount(){
+        public function getRescheduleCount(){
             $this->db->query('SELECT COUNT(*) AS Count FROM reschedule WHERE ApprovalStatus <> "Approved" AND ApprovalStatus <> "Rejected"');
             $result = $this->db->single();
             return $result->Count;
