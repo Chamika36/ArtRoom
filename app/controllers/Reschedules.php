@@ -33,6 +33,8 @@ class Reschedules extends Controller{
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+            $event = $this->eventModel->getEventById($id);
+            $photographer = $this->userModel->getUserById($event->PhotographerID);
             // Init data
             $data = [
                 'id' => $id,
@@ -51,6 +53,14 @@ class Reschedules extends Controller{
                 'event_id' => $id
             ];
 
+            $notificaton_photographer = [
+                'user_id' => $photographer->UserID,
+                'type' => 'reschedule',
+                'content' => 'You have a reschdule request',
+                'link' => 'reschedules/reschedulesForPartner/' . $photographer->UserID,
+                'event_id' => $id
+            ];
+
             // Validate event date
             if(empty($data['date'])) {
                 $data['eventDate_err'] = 'Please enter event date';
@@ -59,7 +69,8 @@ class Reschedules extends Controller{
             //  Make sure errors are empty
             if(empty($data['eventDate_err'])) {
                 if($this->rescheduleModel->reschedule($data)
-                    && $this->notificationModel->createNotification($notificaton)) {
+                    && $this->notificationModel->createNotification($notificaton)
+                    && $this->notificationModel->createNotification($notificaton_photographer) ){
                     flash('event_message', 'Request reschedule');
                     redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
                 } else {
@@ -121,13 +132,14 @@ class Reschedules extends Controller{
             'user_id' => 16,
             'type' => 'reschedule',
             'content' => 'Photographer accepted reschdule request',
-            'link' => 'events/viewEvent/' . $event->EventID,
+            'link' => 'reschedules/',
             'event_id' => $eventID
         ];
 
         $this->rescheduleModel->updateStatus($id, 'PhotographerApproved');
         $this->rescheduleModel->confirmReschedule($eventID , $reschedule);
         $this->notificationModel->createNotification($notificaton);
+        redirect('reschedules/reschedulesForPartner/' . $_SESSION['user_id'] . '');
     }
 
     public function photographerdecline($id){
@@ -138,12 +150,13 @@ class Reschedules extends Controller{
             'user_id' => 16,
             'type' => 'reschedule',
             'content' => 'Photographer declined reschdule request',
-            'link' => 'events/viewEvent/' . $event->EventID,
+            'link' => 'reschedules/',
             'event_id' => $eventID
         ];
 
         $this->rescheduleModel->updateStatus($id, 'PhotographerDeclined');
         $this->notificationModel->createNotification($notificaton);
+        redirect('reschedules/reschedulesForPartner/' . $_SESSION['user_id'] . '');
     }
 
     public function confirm($id){
@@ -161,10 +174,23 @@ class Reschedules extends Controller{
         $this->rescheduleModel->updateStatus($id, 'Approved');
         $this->rescheduleModel->confirmReschedule($eventID , $reschedule);
         $this->notificationModel->createNotification($notificaton);
+        redirect('reschedules/');
+        
     }
 
     public function cancel($id){
+        $eventID = $reschedule->EventID;
+        $event = $this->eventModel->getEventById($eventID);
+        $notificaton = [
+            'user_id' => $event->CustomerID,
+            'type' => 'reschedule',
+            'content' => 'Your reschdule request has been declined',
+            'link' => 'events/viewCustomerEvents/' . $event->CustomerID,
+            'event_id' => $eventID
+        ];
         $this->rescheduleModel->updateStatus($id, 'Rejected');
+        $this->notificationModel->createNotification($notificaton);
+        redirect('reschedules/');
     }
 
 }

@@ -32,6 +32,7 @@ header {
   color: #e4e3e3;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+  z-index: 1000;
 }
 
 header .branding {

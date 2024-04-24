@@ -62,7 +62,7 @@
         <?php
             if (isset($_SESSION['user_id'])) {
                 // User is logged in
-                echo '<li class="notification-icon1"><a>&#128276;</a></li>';
+                //echo '<li class="notification-icon1"><a>&#128276;</a></li>';
             
                 echo '<li>
                             <a>Hello ' . $_SESSION['user_name'] .'</a>

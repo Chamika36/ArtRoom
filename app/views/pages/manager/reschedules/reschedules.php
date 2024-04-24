@@ -67,6 +67,7 @@
                         <th>New Start Time</th>
                         <th>New End Time</th>
                         <th>New Location</th>
+                        <th>Approval Status</th>
                         <th></th>
                         <th></th>
                     </thead>
@@ -79,8 +80,9 @@
                                 <td><?php echo $reschedule->NewStartTime; ?></td>
                                 <td><?php echo $reschedule->NewEndTime; ?></td>
                                 <td><?php echo $reschedule->NewLocation; ?></td>
-                                <td><a href="#" class="manage-schedule" data-url="<?php echo URLROOT; ?>/reschedules/manage/<?php echo $reschedule->ID; ?>"><p class="status shipped"><b>Reschedule</b></p></a></td> 
-                                <td><a href="<?php echo URLROOT; ?>/reschedules/delete/<?php echo $reschedule->ID; ?>"><p class="status cancelled"><b>Delete</b></p></a></td>
+                                <td><?php echo $reschedule->ApprovalStatus; ?></td>
+                                    <td><a href="#" class="manage-schedule" data-url="<?php echo URLROOT; ?>/reschedules/manage/<?php echo $reschedule->ID; ?>"><p class="status shipped"><b>View</b></p></a></td> 
+                                    <td><a href="<?php echo URLROOT; ?>/reschedules/delete/<?php echo $reschedule->ID; ?>"><p class="status cancelled"><b>Delete</b></p></a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

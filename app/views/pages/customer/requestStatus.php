@@ -59,9 +59,11 @@
                             <i class="fas <?php echo ($data['event']->Status == 'Completed' ? 'fa-check-circle' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Order Completed
                         </div>
                     </div>
+                    <?php if($data['event']->Status == 'Completed'){ ?>
                         <div class="feedback-btn-container">
                             <button class="feedback-btn"><a href="<?php echo URLROOT ?>/feedbacks/submitFeedback" style="font-weight:normal">Share your thoughts</a></button>     
                         </div>   
+                    <?php } ?>
                     </div>
 
                     <div class="payment-container">
@@ -84,7 +86,7 @@
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             $advancedPayment = $data['event']->TotalBudget*0.1;
                                             $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
-                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
+                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
                                             echo '<P class="details"> Remaining Payment : ' . $remainingPayment . '</p>';
                                             echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '" ><button class="make-payment-btn"><b>Make Payment</b></button></a>';
 
@@ -92,8 +94,8 @@
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             $advancedPayment = $data['event']->TotalBudget*0.1;
                                             $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
-                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
-                                            echo '<P class="details"> Remaining Payment : ' . $remainingPayment . ' *paid </p>';
+                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
+                                            echo '<P class="details"> Remaining Payment : ' . $remainingPayment . '<i class="fas fa-check-circle" style="color: green;"></i> </p>';
                                             echo '<p class="details"><b> Fully Paid </b></p>';
                                         } else if($data['event']->Status == 'Canceled'){
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
@@ -105,8 +107,8 @@
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             $advancedPayment = $data['event']->TotalBudget*0.1;
                                             $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
-                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' *paid </p>';
-                                            echo '<P class="details"> Remaining Payment : ' . $remainingPayment . ' *paid </p>';
+                                            echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
+                                            echo '<P class="details"> Remaining Payment : ' . $remainingPayment . ' <i class="fas fa-check-circle" style="color: green;"></i>  </p>';
                                             echo '<p class="details"><b> Fully Paid </b></p>';
                                         }
 

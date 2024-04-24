@@ -125,7 +125,7 @@ class Samples extends Controller{
                     if($isPartner == 1) {
                         $data['photographer'] = $_SESSION['user_id'];
                     } else {
-                        $data['photographer'] = 0;
+                        $data['photographer'] = trim($_POST['photographer']);
                     }
         
                     // Validate Name
@@ -176,11 +176,14 @@ class Samples extends Controller{
             }
         } else {
             $customers = $this->userModel->getCustomers();
+            $photographers = $this->userModel->getPhotographers();
 
             $data = array(
                 'name' => '',
                 'description' => '',
+                'photographers' => $photographers,
                 'customers' => $customers,
+                'photographer' => '',
                 'customer' => '',
                 'date' => '',
                 'name_err' => '',

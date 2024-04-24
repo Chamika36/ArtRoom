@@ -757,7 +757,7 @@
                         break;
                 }
 
-                $event->UserTYpe = $user_type_id;
+                $event->UserType = $user_type_id;
                 $event->Action = $action->Action;
             }
 

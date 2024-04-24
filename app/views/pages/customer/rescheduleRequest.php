@@ -30,7 +30,7 @@
             <h1><b>Reschedule Request</b></h1>
         </div>
             
-                <form class="form" action="<?php echo URLROOT ;?>/events/rescheduleRequest/<?php echo $data['id'];?>" method="POST">
+                <form class="form" action="<?php echo URLROOT ;?>/reschedules/reschedule/<?php echo $data['id'];?>" method="POST">
                     <div class="input-box">
                         <label for="event-date"><b>Event Date</b></label>
                         <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>

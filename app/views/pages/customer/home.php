@@ -172,6 +172,7 @@
                             </blockquote>
                             <h3><?php echo $feedback->Name?></h3>
                             <h4><i class="fa-solid fa-star" style="color: #f9b234;"></i> <?php echo $feedback->Rating?></h4>
+
                         </figcaption>
                     </figure>
                 <?php endforeach; ?>
