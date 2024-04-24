@@ -47,6 +47,10 @@
                         <label for="location"><b>Location</b></label>
                         <input type="text" id="location" name="location" value="<?php echo $data['location'];?>">
                     </div>
+                    <div class="input-box">
+                        <label for="reason"><b>Reason</b></label>
+                        <input type="text" id="reason" name="reason" rows="4" cols="50" required></input>
+                    </div>
                     <div>
                         <input class="submit-button" type="submit" value="Send Request">
                     </div>

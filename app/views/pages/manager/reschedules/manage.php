@@ -50,6 +50,7 @@
                 <li><strong>New Start Time:</strong> <?php echo $reschedule->NewStartTime; ?></li>
                 <li><strong>New End Time:</strong> <?php echo $reschedule->NewEndTime; ?></li>
                 <li><strong>New Location:</strong> <?php echo $reschedule->NewLocation; ?></li>
+                <li><strong>Reason:</strong> <?php echo $reschedule->Reason; ?></li>
                 <li><strong>Reschedule Request Status: </strong>  <?php echo $reschedule->ApprovalStatus; ?></li>
             </ul>
 
