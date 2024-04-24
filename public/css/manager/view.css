@@ -7,14 +7,11 @@
 }
 
 body {
-    font-family: Arial, sans-serif; /* Fallback font */
+    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    
 }
 
 .container {
-    /* display: flex;
-    flex-direction: column; */
     align-items: center;
     text-align: center;
     padding: 0 20px;
@@ -27,87 +24,99 @@ body {
 
 .sample-info h2 {
     font-family: 'Sacramento', cursive;
-    font-size: 40px; /* Adjust the font size as needed */
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
 .sample-info p {
     font-size: 17px;
     color: #373232;
-    margin-bottom: 12px; /* Adjust the margin-bottom as needed */
-}
-
-.sample-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    background-color: #433f3f; /* Ash color */
-    padding: 20px; /* Add padding for better spacing */
-    border-radius: 10px; /* Add border radius for rounded corners */
-}
-
-.sample-images img {
-    width: calc(25% - 10px); /* Adjust image width as needed */
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-@media screen and (max-width: 600px) {
-    .sample-images img {
-        width: calc(50% - 10px); /* Adjust image width for smaller screens */
-    }
+    margin-bottom: 12px;
 }
 
 /* portfolio */
-.portfolio-grid > div{
+.portfolio-grid > div {
     transition: var(--transition);
-  }
-  .portfolio-grid > div:hover{
+}
+
+.portfolio-grid > div:hover {
     transform: scale(0.9);
-  }
-  
-  
-  /* Container for the portfolio grid */
-  .portfolio-grid {
+}
+
+.portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-  }
-  
-  /* Style for each image card */
-  .portfolio-grid div {
+}
+
+.portfolio-grid div {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
-    height: 300px; /* Set a fixed height for uniform appearance */
-  }
-  
-  /* Hover effect */
-  .portfolio-grid div:hover {
+    height: 300px;
+}
+
+.portfolio-grid div:hover {
     transform: scale(1.05);
-  }
-  
-  /* Apply grayscale effect on hover */
-  .portfolio-grid div:hover img {
+}
+
+.portfolio-grid div:hover img {
     filter: grayscale(100%);
-  }
-  
-  /* Caption style */
-  .portfolio-caption {
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-  
-  /* Center images within each card */
-  .portfolio-grid img {
+}
+
+.portfolio-grid img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-  }
+    object-fit: cover;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  padding-top: 50px; /* Adjust the padding as needed */
+}
+
+/* Caption of Modal Image */
+.modal-caption {
+  display: block;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
