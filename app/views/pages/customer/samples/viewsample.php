@@ -25,13 +25,13 @@
 
     
         
-        <div class="portfolio-grid">
-            <?php foreach ($data['images'] as $image) : ?>
-                <div>
-                    <img src="<?php echo URLROOT ?>/<?php echo $image ?>" alt="Sample Image">
-                </div>
-            <?php endforeach; ?>
-        </div>
+            <div class="portfolio-grid">
+                <?php foreach ($data['images'] as $image) : ?>
+                    <div>
+                        <img src="<?php echo URLROOT ?>/<?php echo $image ?>" alt="Sample Image">
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 

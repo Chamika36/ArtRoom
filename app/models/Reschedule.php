@@ -24,9 +24,15 @@
         }
 
         public function getReschedules(){
-            $this->db->query('SELECT * FROM reschedule');
+            $this->db->query('SELECT * FROM reschedule ORDER BY ID DESC');
             $results = $this->db->resultSet();
             return $results;
+        }
+
+        public function getReschedulesCount(){
+            $this->db->query('SELECT COUNT(*) AS Count FROM reschedule WHERE ApprovalStatus <> "Approved" AND ApprovalStatus <> "Rejected"');
+            $result = $this->db->single();
+            return $result->Count;
         }
 
         public function getRescheduleByID($id){

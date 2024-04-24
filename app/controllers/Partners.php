@@ -209,7 +209,16 @@ class Partners extends Controller {
             'event_id' => $eventID
         ];
 
+        $notification_data_editor = [
+            'user_id' => $event->EditorID,
+            'type' => 'file',
+            'content' => 'Photographer has uploaded images. Click to edit',
+            'link' => $link,
+            'event_id' => $eventID
+        ];
+
         $this->notificationModel->createNotification($notification_data_customer);
+        $this->notificationModel->createNotification($notification_data_editor);
         header('Location: ' . $link);
     }
 

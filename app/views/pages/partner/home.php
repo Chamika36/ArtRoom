@@ -31,11 +31,15 @@
 			<!-- Dropdown for notifications -->
 			<ul class="dropdown-menu">
 				<?php foreach($data['notifications'] as $notification) : ?>
-					<?php //if($notification->Type ===  'allocate' ):?>
-					<li>
-						<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
-					</li>
-					<?php //endif; ?>
+					<?php if($notification->Type ===  'file' ):?>
+						<li>
+							<a href="<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+						</li>
+					<?php else : ?>
+						<li>
+							<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+						</li>
+					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
 		</div>

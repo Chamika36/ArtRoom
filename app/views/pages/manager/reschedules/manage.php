@@ -25,7 +25,6 @@
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
-                <li><strong>Reschedule Request Status: </strong>  <?php echo $reschedule->ApprovalStatus; ?></li>
                 <li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?></li>
                 <?php if($reschedule->ApprovalStatus == 'PhotographerDeclined') :?>
                 <div class="">
@@ -51,10 +50,13 @@
                 <li><strong>New Start Time:</strong> <?php echo $reschedule->NewStartTime; ?></li>
                 <li><strong>New End Time:</strong> <?php echo $reschedule->NewEndTime; ?></li>
                 <li><strong>New Location:</strong> <?php echo $reschedule->NewLocation; ?></li>
+                <li><strong>Reschedule Request Status: </strong>  <?php echo $reschedule->ApprovalStatus; ?></li>
             </ul>
 
-            <a href="<?php echo URLROOT; ?>/reschedules/confirm/<?php echo $reschedule->ID; ?>"><button class="button danger">Confirm Reschedule</button></a>
-            <a href="<?php echo URLROOT; ?>/reschedules/cancel/<?php echo $reschedule->ID; ?>"><button class="button">Cancel Reschedule</button></a>
+            
+                <a href="<?php echo URLROOT; ?>/reschedules/confirm/<?php echo $reschedule->ID; ?>"><button class="button danger">Confirm Reschedule</button></a>
+                <a href="<?php echo URLROOT; ?>/reschedules/cancel/<?php echo $reschedule->ID; ?>"><button class="button">Cancel Reschedule</button></a>
+
 
             <!-- cancel event -->
             <!-- <form action="<?php// echo URLROOT; ?>/events/updateEventStatus/<?php// echo $data['event']->EventID; ?>/Canceled" method="POST">
