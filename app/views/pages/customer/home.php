@@ -170,7 +170,7 @@
                             <p>"<?php echo $feedback->Comment ?>"</p>
                             </blockquote>
                             <h3><?php echo $feedback->Name?></h3>
-                            <h4>Date</h4>
+                            <h4><?php echo $feedback->Date?></h4>
                         </figcaption>
                     </figure>
                 <?php endforeach; ?>

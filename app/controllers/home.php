@@ -106,6 +106,7 @@ class Home extends Controller {
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
+        $rescheduleCount = $this->rescheduleModel->getRescheduleCount();
         $events = $this->eventModel->getLastFiveEvents();
         $notifications = $this->notificationModel->getNotificationByManager();
         $unreadNotificationCount = $this->notificationModel->getNotificationCountByManager();
@@ -119,6 +120,7 @@ class Home extends Controller {
             'title' => 'Home',
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
+            'rescheduleCount' => $rescheduleCount,
             'events' => $events,
             'notifications' => $notifications,
             'unreadNotificationCount' => $unreadNotificationCount
