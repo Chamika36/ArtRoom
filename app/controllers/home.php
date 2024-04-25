@@ -14,7 +14,8 @@ class Home extends Controller {
 
    public function index() {
         $packages = $this->packageModel->getPackages();
-        $sample = $this->sampleModel->getSamples();
+        // $sample = $this->sampleModel->getSamples();
+        $sample = $this->sampleModel->getTopSamples();
         $feedbacks = $this->feedbackModel->getTopFeedbacks();
         foreach($feedbacks as $feedback) {
             $user = $this->userModel->getUserById($feedback->CustomerID);
@@ -90,7 +91,8 @@ class Home extends Controller {
             $user = $this->userModel->getUserById($feedback->CustomerID);
             $feedback->Name = $user->FirstName . ' ' . $user->LastName;
         }
-        $sample = $this->sampleModel->getSamples();
+        // $sample = $this->sampleModel->getSamples();
+         $sample = $this->sampleModel->getTopSamples();
 
         $data = [
             'title' => 'Home',
