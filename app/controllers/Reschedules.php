@@ -174,11 +174,12 @@ class Reschedules extends Controller{
         $this->rescheduleModel->updateStatus($id, 'Approved');
         $this->rescheduleModel->confirmReschedule($eventID , $reschedule);
         $this->notificationModel->createNotification($notificaton);
-        redirect('reschedules/');
+        //redirect('reschedules/');
         
     }
 
     public function cancel($id){
+        $reschedule = $this->rescheduleModel->getRescheduleById($id);
         $eventID = $reschedule->EventID;
         $event = $this->eventModel->getEventById($eventID);
         $notificaton = [
@@ -190,7 +191,7 @@ class Reschedules extends Controller{
         ];
         $this->rescheduleModel->updateStatus($id, 'Rejected');
         $this->notificationModel->createNotification($notificaton);
-        redirect('reschedules/');
+        //redirect('reschedules/');
     }
 
 }

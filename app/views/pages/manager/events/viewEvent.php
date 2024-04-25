@@ -6,6 +6,7 @@
     <title>Manage Event</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manager/manageevent.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         
     </style>
@@ -254,11 +255,12 @@
                 </form>
             <?php endif; ?>
             
-            <!-- cancel event -->
-            <div class="form-group">
-                <a href="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled" class="button" style="background-color: #dc3545; color: white; ">Cancel Event</a>
-                <a href="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed" class="button">Complete Event</a>
-            </div>
+            <?php if($data['event']->Status != 'Canceled' && $data['event']->Status != 'Completed') : ?>
+                <div class="form-group">
+                    <a href="#" class="button" style="background-color: #dc3545; color: white; " onclick="confirmCancelEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled')">Cancel Event</a>
+                    <a href="#" class="button" onclick="confirmCompleteEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed')">Complete Event</a>
+                </div>
+            <?php endif; ?>
 
 
         </div>
@@ -351,6 +353,38 @@
             let totalBudget = <?php echo $data['event']->TotalBudget; ?>;
             let additionalChargesTotal = additionalCharges.reduce((total, charge) => total + charge.total, 0);
             revisedBudget.value = totalBudget + additionalChargesTotal;
+        }
+
+        function confirmCancelEvent(cancelUrl) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This event will be canceled!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = cancelUrl;
+                }
+            });
+        }
+
+        function confirmCompleteEvent(completeUrl) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This event will be marked as completed!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, complete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = completeUrl;
+                }
+            });
         }
     </script>
 </body>

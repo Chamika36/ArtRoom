@@ -148,17 +148,31 @@ class Packages extends Controller {
     }
 
     public function delete($id){
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        try {
             if($this->packageModel->deletePackage($id)) {
                 flash('package_deleted', 'Package Removed');
                 redirect('packages');
             } else {
                 die('Something went wrong');
+                return false;
             }
-        } else {
-            redirect('packages');
+        } catch (PDOException $e) {
+            // Handle the database error
+            $errorMessage = "Error: " . $e->getMessage();
+            echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: '{$errorMessage}'
+                    }).then(() => {
+                        window.location.href = '" . URLROOT . "/packages';
+                    });
+                  </script>";
+            exit;
         }
     }
+    
+    
 
     // get package by id
     public function getPackageById($id) {

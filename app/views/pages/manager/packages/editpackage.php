@@ -25,7 +25,7 @@
 
         <div class="user-input-box">
             <label for="price">Price: </label>
-            <input type="number" name="price" value="<?php echo $data['price']?>" step="any" required> 
+            <input type="number" name="price" min="0" value="<?php echo $data['price']?>" step="any" required> 
             <span class="invalid-feedback"><?php echo $data['price_err'];?></span>
         </div>
 

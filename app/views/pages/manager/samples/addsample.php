@@ -39,9 +39,10 @@
                 <span class="invalid-feedback"><?php echo $data['images_err']?></span>
             </div> 
 
+            <?php $today = date("Y-m-d");?>
             <div class="user-input-box">
                 <label for="date">Date: </label>
-                <input type="date" name="date" value="<?php echo $data['date']; ?>" required> 
+                <input type="date" name="date" max="<?php echo $today; ?>" value="<?php echo $data['date']; ?>" required> 
                 <span class="invalid-feedback"><?php echo $data['date_err']?></span>
             </div>
 
@@ -54,7 +55,6 @@
                 </select>
             </div>
                  
-                        
             <div class="user-input-box">
                 <label for="customer"> Customer: </label>
                 <select name="customer" id="customer">

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Event</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manager/manageevent.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         
     </style>
@@ -54,10 +55,10 @@
                 <li><strong>Reschedule Request Status: </strong>  <?php echo $reschedule->ApprovalStatus; ?></li>
             </ul>
 
-            
-                <a href="<?php echo URLROOT; ?>/reschedules/confirm/<?php echo $reschedule->ID; ?>"><button class="button danger">Confirm Reschedule</button></a>
-                <a href="<?php echo URLROOT; ?>/reschedules/cancel/<?php echo $reschedule->ID; ?>"><button class="button">Cancel Reschedule</button></a>
-
+            <?php if($reschedule->ApprovalStatus != 'Approved' && $reschedule->ApprovalStatus != 'Rejected') :?>
+                <a href="#" onclick="confirmReschedule(<?php echo $reschedule->ID; ?>)" class="button danger">Confirm Reschedule</a>
+                <a href="#" onclick="confirmDecline(<?php echo $reschedule->ID; ?>)" class="button">Cancel Reschedule</a>
+            <?php endif ?>
 
             <!-- cancel event -->
             <!-- <form action="<?php// echo URLROOT; ?>/events/updateEventStatus/<?php// echo $data['event']->EventID; ?>/Canceled" method="POST">
@@ -109,5 +110,40 @@
                 });
             });
         });
+
+
+        function confirmReschedule(rescheduleId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You are about to confirm the reschedule request.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, confirm it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '<?php echo URLROOT; ?>/reschedules/confirm/' + rescheduleId;
+                    //window.location.reload();
+                }
+            });
+        }
+
+        function confirmDecline(rescheduleId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You are about to decline the reschedule request.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, decline it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '<?php echo URLROOT; ?>/reschedules/cancel/' + rescheduleId;
+                    //window.location.reload();
+                }
+            });
+        }
     </script>
 </body>

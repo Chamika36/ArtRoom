@@ -60,25 +60,27 @@
                 return false;
             }
         }
-
         // Update Sample
         public function updateSample($data) {
-            $this->db->query('UPDATE Sample SET SampleName = :name, ImagePath = :imagePath, CoverImagePath = :coverImagePath, Description = :description, Date = :date WHERE SampleID = :id');
+            $this->db->query('UPDATE Sample SET SampleName = :name, ImagePath = :imagePath, CoverImagePath = :coverImagePath, Description = :description, CustomerID = :customer, PhotographerID = :photographer, Date = :date WHERE SampleID = :id');
             // Bind values
             $this->db->bind(':id', $data['id']);
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':imagePath', $data['imagePath']);
             $this->db->bind(':coverImagePath', $data['coverImagePath']);
             $this->db->bind(':description', $data['description']);
+            $this->db->bind(':customer', $data['customer']);
+            $this->db->bind(':photographer', $data['photographer']);
             $this->db->bind(':date', $data['date']);
-        
+
             // Execute the query
-            if($this->db->execute()) {
+            if ($this->db->execute()) {
                 return true;
             } else {
                 return false;
             }
         }
+
         
         public function getSamplesByPhotographer($id) {
             $this->db->query('SELECT * FROM Sample WHERE PhotographerID = :id');

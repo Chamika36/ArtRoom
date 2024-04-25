@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/samples.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Samples</title>
 </head>
 <body>
@@ -62,7 +63,7 @@
                     <br>
 
                     <div class="button-container">
-                        <button class="action delete-button" onclick="confirmDelete('<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>')">Delete</button>
+                        <button class="action delete-button" onclick="confirmDelete('<?php echo URLROOT ?>/samples/delete/<?php echo $sample->SampleID; ?>','<?php echo $sample->SampleName?>')">Delete</button>
                     </div>
                     
                     </div> 
@@ -79,11 +80,26 @@
 </html>
 
 <script>
-function confirmDelete(deleteUrl) {
-    // Ask user to confirm deletion
-    var confirmation = confirm("Are you sure you want to delete this sample? This action cannot be undone.");
-    if (confirmation) {
-        window.location.href = deleteUrl;
+    function confirmDelete(deleteUrl,sampleName) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You are about to delete the ${sampleName} sample !`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Your sample has been deleted.',
+                    icon: 'success',
+                    timer: 1500
+                });
+                window.location.href = deleteUrl;
+            }
+        });
     }
-}
+
 </script>

@@ -418,7 +418,11 @@
                 $this->notificationModel->createNotification($notification_data);
 
                 flash('event_message', 'Event status updated');
-                redirect('events');
+                if($_SESSION['user_type_id'] == 1) {
+                    redirect('events/viewEvent/' . $id . '');
+                } else {
+                    redirect('events/loadEvent/' . $id . '');
+                }
             } else {
                 die('Something went wrong');
             }

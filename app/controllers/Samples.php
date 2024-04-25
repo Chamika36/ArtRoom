@@ -234,19 +234,18 @@ class Samples extends Controller{
     }
     
 
-    // edit sample
     public function edit($id) {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
     
             // Handle file uploads for cover image
-            $cover_image = $_FILES['image'];
+            $cover_image = $_FILES['images'];
             $cover_image_new_name = ''; // Initialize cover image name
-            $cover_image_destination = ''; // Initialize cover image destination
             $upload_err_cover = false;
     
-            if($cover_image['error'] === 0){
+            // Check for cover image upload error
+            if ($cover_image['error'] === 0) {
                 // Generate a unique name for the cover image
                 $cover_image_new_name = uniqid('', true) . '_' . $cover_image['name'];
                 // Set the path where the cover image will be stored
@@ -258,7 +257,7 @@ class Samples extends Controller{
                 }
     
                 // Move the uploaded cover image to the destination folder
-                if(!move_uploaded_file($cover_image['tmp_name'], $cover_image_destination)){
+                if (!move_uploaded_file($cover_image['tmp_name'], $cover_image_destination)) {
                     // Error uploading cover image
                     $upload_err_cover = true;
                 }
@@ -267,45 +266,82 @@ class Samples extends Controller{
                 $upload_err_cover = true;
             }
     
-            // Proceed with updating the sample data
-            $data = array(
-                'id' => $id,
-                'name' => trim($_POST['name']), 
-                'imagePath' => $cover_image_destination, // Update with the new cover image path
-                'coverImagePath' => $cover_image_new_name, // Update with the new cover image name
-                'description' => trim($_POST['description']),
-                'date' => trim($_POST['date'])
-                // Add other fields if necessary
-            );
+            // Proceed if no cover image upload error
+            if (!$upload_err_cover) {
+                // Proceed with updating the sample data
+                $data = array(
+                    'id' => $id,
+                    'name' => trim($_POST['name']),
+                    'coverImagePath' => $cover_image_destination, // Update with the new cover image path
+                    'description' => trim($_POST['description']),
+                    'date' => trim($_POST['date']),
+                    'photographer' => trim($_POST['photographer']),
+                    'customer' => trim($_POST['customer'])
+                    // Add other fields if necessary
+                );
     
-            // Validate data if needed
-    
-            // Update the sample
-            if($this->sampleModel->updateSample($data)) {
-                flash('sample_message', 'Sample Updated');
-                redirect('samples');
+                // Validate data if needed
+                // Validate Name
+                if(empty($data['name'])) {
+                    $data['name_err'] = 'Please enter name';
+                }
+
+                // Validate Description
+                if(empty($data['description'])) {
+                    $data['description_err'] = 'Please enter description';
+                }
+
+                // Validate Date
+                if(empty($data['date'])) {
+                    $data['date_err'] = 'Please enter date';
+                }
+
+                if(empty($data['images'])) {
+                    $data['imagePath_err'] = 'Please upload images';
+                }
+
+                // Make sure no errors
+                if (empty($data['name_err']) && empty($data['description_err']) && empty($data['customer_err']) && empty($data['date_err'])) {
+                    // Update the sample
+                    if ($this->sampleModel->updateSample($data)) {
+                        flash('sample_message', 'Sample Updated');
+                        redirect('samples');
+                    } else {
+                        die('Something went wrong');
+                    }
+                }
             } else {
-                die('Something went wrong');
+                // Error uploading cover image
+                $data['images_err'] = 'Error uploading cover image';
+                $this->view('pages/manager/samples/editsample', $data);
             }
         } else {
             // Get existing sample from model
             $sample = $this->sampleModel->getSampleById($id);
     
+            $customers = $this->userModel->getCustomers();
+            $photographers = $this->userModel->getPhotographers();
+    
             $data = array(
                 'id' => $id,
                 'name' => $sample->SampleName,
-                'imagePath' => $sample->ImagePath,
                 'description' => $sample->Description,
                 'date' => $sample->Date,
+                'photographer' => $sample->PhotographerID,
+                'customer' => $sample->CustomerID,
+                'photographers' => $photographers,
+                'customers' => $customers,
                 'name_err' => '',
                 'imagePath_err' => '',
                 'description_err' => '',
                 'customer_err' => '',
                 'date_err' => ''
             );
+    
             $this->view('pages/manager/samples/editsample', $data);
         }
     }
+    
 
     public function viewSample($id) {
         $sample = $this->sampleModel->getSampleById($id);

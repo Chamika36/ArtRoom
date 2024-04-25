@@ -21,15 +21,15 @@
                         <span class="invalid-feedback"><?php echo $data['name_err']?></span>
                     </div>
 
-                    <!-- <div class="user-input-box">
+                    <div class="user-input-box">
                         <label for="images">Cover Image: </label>
-                        <input type="file" name="images[]" value="<!?php echo $data['coverImagePath']?>" required> 
-                        <span class="invalid-feedback"><!?php echo $data['imagePath_err']?></span>
-                    </div> -->
+                        <input type="file" name="images" value="<!?php echo $data['coverImagePath']?>" required> 
+                        <span class="invalid-feedback"><?php echo $data['imagePath_err']?></span>
+                    </div>
 
                     <div class="user-input-box">
                         <label for="images">Sample Image: </label>
-                        <input type="file" name="images[]" value="<?php echo $data['imagePath']?>" required> 
+                        <input type="file" name="images[]" value="" multiple> 
                         <span class="invalid-feedback"><?php echo $data['imagePath_err']?></span>
                     </div>
 
@@ -44,6 +44,24 @@
                         <input type="date" name="date" value="<?php echo $data['date']?>" required> 
                         <span class="invalid-feedback"><?php echo $data['date_err']?></span>
                     </div>
+
+                    <div class="user-input-box">
+                        <label for="photographer"> Photographer : </label>
+                        <select name="photographer" id="photographer">
+                            <?php foreach ($data['photographers'] as $photographer) : ?>
+                                <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . " " . $photographer->LastName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                        
+                    <div class="user-input-box">
+                        <label for="customer"> Customer: </label>
+                        <select name="customer" id="customer">
+                            <?php foreach ($data['customers'] as $customer) : ?>
+                                <option value="<?php echo $customer->UserID; ?>"><?php echo $customer->FirstName . " " . $customer->LastName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div> 
                     
                     <div class="form-submit-btn">
                         <input type="submit" value="Cancel" onclick="window.history.back();" class="cancel-btn">

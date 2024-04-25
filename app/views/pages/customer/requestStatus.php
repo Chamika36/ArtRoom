@@ -13,7 +13,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -150,19 +151,28 @@
         }
 
         function confirmCancel(cancelUrl) {
-                if ('<?php echo $data['event']->Status ?>' === 'Advanced') {
-                    if (confirm("Your advanced payment won't be refunded. Are you sure you want to cancel?")) {
-                        window.location.href = cancelUrl;
-                    }
-                } else if ('<?php echo $data['event']->Status ?>' === 'FullPaid') {
-                    if (confirm("You will receive only 50% refund of the full payment. Are you sure you want to cancel?")) {
-                        window.location.href = cancelUrl;
-                    }
-                } else {
-                    if(confirm("Are you sure you want to cancel this event?")){
-                        window.location.href = cancelUrl;
-                    }
+            let message = '';
+            if ('<?php echo $data['event']->Status ?>' === 'Advanced') {
+                message = "Your advanced payment won't be refunded. Are you sure you want to cancel?";
+            } else if ('<?php echo $data['event']->Status ?>' === 'FullPaid') {
+                message = "You will receive only 50% refund of the full payment. Are you sure you want to cancel?";
+            } else {
+                message = "Are you sure you want to cancel this event?";
+            }
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: message,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = cancelUrl;
                 }
+            });
         }
 
     </script>
