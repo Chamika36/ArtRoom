@@ -120,3 +120,34 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Left and right arrow buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px; /* Adjust the position as needed */
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color */
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
