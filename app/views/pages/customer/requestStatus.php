@@ -46,7 +46,7 @@
 
                         <!-- Advance Payment Completed -->
                         <div class="status-item <?php echo (in_array($data['event']->Status, ['Advanced', 'Confirmed', 'FullPaid', 'Completed']) ? 'completed' : ''); ?>">
-                            <i class="fas <?php echo (in_array($data['event']->Status, ['Advanced', 'FullPaid', 'Completed']) ? '<i class="fa-regular fa-circle-check"></i>' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Advance Payment completed
+                            <i class="fas <?php echo (in_array($data['event']->Status, ['Advanced', 'FullPaid', 'Completed']) ? 'fa-regular fa-circle-check' : 'fa-solid fa-spinner fa-pulse'); ?>"></i> Advance Payment completed
                         </div>
 
                         <!-- Full Payment Completed -->
@@ -80,14 +80,17 @@
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             $advancedPayment = $data['event']->TotalBudget*0.1;
                                             echo '<p class="details"> Advanced Payment : ' . $advancedPayment . '</p>';
+                                            echo '<p class="details"><i class="fas fa-exclamation-circle" style="color: red;"></i><strong> Please pay the advanced payment.</strong> </p>';
                                             echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '" ><button class="make-payment-btn"><b>Make Payment</b></button></a>';
 
                                         } else if($data['event']->Status == 'Advanced'){
                                             echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                             $advancedPayment = $data['event']->TotalBudget*0.1;
                                             $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
+                                            $date = date('Y-m-d', strtotime($data['event']->EventDate . ' - 7 days'));
                                             echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
                                             echo '<P class="details"> Remaining Payment : ' . $remainingPayment . '</p>';
+                                            echo '<p class="details"><i class="fas fa-exclamation-circle" style="color: red;"></i><strong> Please pay the full payment before ' . $date  . '</strong> </p>';
                                             echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '" ><button class="make-payment-btn"><b>Make Payment</b></button></a>';
 
                                         } else if($data['event']->Status == 'FullPaid'){
@@ -114,11 +117,23 @@
 
                                         ?>
                                         <div class="can-res-buttons">
-                                        <div><a href="<?php echo URLROOT ?>/events/updateEventStatus/<?php echo $data['event']->EventID ?>/Canceled"><button class="make-payment-btn"><b>Cancel Request</b></button></a></div>
+                                        <?php if($data['event']->Status != 'Completed' && $data['event']->Status != 'Canceled'){ ?>
+                                            <div><a href="#" onclick="confirmCancel('<?php echo URLROOT ?>/events/updateEventStatus/<?php echo $data['event']->EventID ?>/Canceled')"><button class="make-payment-btn"><b>Cancel Request</b></button></a></div>
+                                            <?php
+                                                $eventDate = new DateTime($data['event']->EventDate);
+                                                $today = new DateTime();
+                                                $daysDifference = $today->diff($eventDate)->days;
+
+                                                if ($daysDifference > 3) {
+                                                    // Display the reschedule button
+                                                    echo '<div><a href="' . URLROOT . '/reschedules/reschedule/' . $data['event']->EventID . '"><button class="make-payment-btn"><b>Reschedule Request</b></button></a></div>';
+                                                } else {
+                                                    // Display a message or hide the button
+                                                    echo '<p class="details">Rescheduling is unavailable <br>(within 3 days of the event)</p>';
+                                                }
+                                            ?>
+                                        <?php } ?>
                                         
-                                        <div><a href="<?php echo URLROOT ?>/reschedules/reschedule/<?php echo $data['event']->EventID ?>"><button class="make-payment-btn"><b>Reschedule Request</b></button></a></div>
-                                            
-                                        </div>
                             </div>
                     </div>        
                 </div>
@@ -126,13 +141,30 @@
     </body>
 
     <script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
+        function openForm() {
+        document.getElementById("myForm").style.display = "block";
+        }
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-</script>
+        function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+        }
+
+        function confirmCancel(cancelUrl) {
+                if ('<?php echo $data['event']->Status ?>' === 'Advanced') {
+                    if (confirm("Your advanced payment won't be refunded. Are you sure you want to cancel?")) {
+                        window.location.href = cancelUrl;
+                    }
+                } else if ('<?php echo $data['event']->Status ?>' === 'FullPaid') {
+                    if (confirm("You will receive only 50% refund of the full payment. Are you sure you want to cancel?")) {
+                        window.location.href = cancelUrl;
+                    }
+                } else {
+                    if(confirm("Are you sure you want to cancel this event?")){
+                        window.location.href = cancelUrl;
+                    }
+                }
+        }
+
+    </script>
 
 </html>

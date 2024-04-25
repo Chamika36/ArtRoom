@@ -26,7 +26,7 @@
                     <th>Last Name</th>
                     <th>Contact Number</th>
                     <th>Email</th>
-                    <th>Orders</th>
+                    <!-- <th>Orders</th> -->
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
@@ -38,7 +38,7 @@
                         <td><?php echo $customer->LastName; ?></td>
                         <td><?php echo $customer->ContactNumber; ?></td>
                         <td><?php echo $customer->Email; ?></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $customer->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a></td>
+                        <!-- <td><a href="<?php// echo URLROOT; ?>/users/getorders/<?php// echo $customer->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a></td> -->
                         <td><a href="<?php echo URLROOT; ?>/users/edit/<?php echo $customer->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a></td>
                         <td><a href="<?php echo URLROOT; ?>/users/delete/<?php echo $customer->UserID; ?>"><p class="status cancelled"><b>Delete</b></p></a></td>
                     </tbody>
