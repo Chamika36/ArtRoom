@@ -51,11 +51,11 @@
 
         
         <div class="topnav">
-            <a class="Make a req" href="#makeReq">Make a Request</a>
+            <a class="Make a req" href="<?php echo URLROOT ?>/events/request/0">Make a Request</a>
             
-            <a href="#Gallery">Gallery</a>
+            <a href="<?php echo URLROOT ?>/home/customer#Gallery">Gallery</a>
             
-            <a href="#Packages">Packages</a>
+            <a href="<?php echo URLROOT ?>/home/customer#Packages">Packages</a>
         </div>
 
         <ul>

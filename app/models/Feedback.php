@@ -24,4 +24,10 @@
             $results = $this->db->resultSet();
             return $results;
         }
+
+        public function getTopFeedbacks() {
+            $this->db->query('SELECT * FROM feedback ORDER BY Rating DESC LIMIT 3');
+            $results = $this->db->resultSet();
+            return $results;
+        }
     }

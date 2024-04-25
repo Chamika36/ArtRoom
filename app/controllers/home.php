@@ -15,7 +15,7 @@ class Home extends Controller {
    public function index() {
         $packages = $this->packageModel->getPackages();
         $sample = $this->sampleModel->getSamples();
-        $feedbacks = $this->feedbackModel->getFeedbacks();
+        $feedbacks = $this->feedbackModel->getTopFeedbacks();
         foreach($feedbacks as $feedback) {
             $user = $this->userModel->getUserById($feedback->CustomerID);
             $feedback->Name = $user->FirstName . ' ' . $user->LastName;
@@ -85,7 +85,7 @@ class Home extends Controller {
         $packages = $this->packageModel->getPackages();
         $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
         $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
-        $feedbacks = $this->feedbackModel->getFeedbacks();
+        $feedbacks = $this->feedbackModel->getTopFeedbacks();
         foreach($feedbacks as $feedback) {
             $user = $this->userModel->getUserById($feedback->CustomerID);
             $feedback->Name = $user->FirstName . ' ' . $user->LastName;
