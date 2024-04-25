@@ -5,28 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Charts</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 80vw;
+      max-height: 800px ;
+      margin: 0 auto;
+      gap : 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .chart-container {
+      width: 400px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-    <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
+  <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
+  <div class="home">
+    <h1>Event Statistics</h1>
+      <div class="container">
+        <div class="chart-container">
+          <canvas id="monthChart" width="400" height="200"></canvas>
+          <p>Events in each month</p>
+        </div>
+        <div class="chart-container">
+          <canvas id="eventChart" width="400" height="200"></canvas>
+          <p>Budget for each event</p>
+        </div>
+        <div class="chart-container">
+          <canvas id="typePieChart" width="300" height="100"></canvas>
+          <p>Event Types</p>
+        </div>
+        <div class="chart-container">
+          <canvas id="ratingBarChart" width="400" height="200"></canvas>
+          <p>Event Ratings</p>
+        </div>
+      </div>
+  </div>
 
-    <div class="home" style="display:flex; flex-wrap: wrap;">
-        <div style="width: 500px; margin: 50px;">
-            <canvas id="monthChart" width="800" height="400"></canvas>
-            <p>Events in each month</p>
-        </div>
-        <div style="width: 500px; margin: 50px">
-            <canvas id="eventChart" width="800" height="400"></canvas>
-            <p>Budget for each event</p>
-        </div>
-        <div style="width: 400px; margin: 50px; margin-top: 20px">
-            <canvas id="typePieChart" width="800" height="400"></canvas>
-            <p>Event Types</p>
-        </div>
-        <div style="width: 400px; margin: 50px; margin-top: 20px">
-            <canvas id="ratingRadarChart" width="800" height="400"></canvas>
-            <p>Event Ratings</p>
-        </div>
-    </div>
 
   <script>
     // Extracting data from the PHP array
@@ -78,7 +114,7 @@
 
     // Example data for the Pie Chart
     const eventTypeCounts = events.reduce((acc, event) => {
-      acc[event.PackageID] = (acc[event.PackageID] || 0) + 1;
+      acc[event.PackageName] = (acc[event.PackageName] || 0) + 1;
       return acc;
     }, {});
 
@@ -95,38 +131,30 @@
     });
 
     // Example data for the Radar Chart
-    const eventRatings = {
-      "Quality": [3, 4, 5, 3, 4],
-      "Value": [4, 4, 4, 5, 3],
-      "Timeliness": [3, 5, 4, 3, 4],
-      "Experience": [5, 4, 3, 3, 5]
-    };
+    const feedbacks = <?php echo json_encode($data['feedbacks']); ?>;
 
-    const ctxRadar = document.getElementById('ratingRadarChart').getContext('2d');
-    const ratingRadarChart = new Chart(ctxRadar, {
-      type: 'radar',
+    const ratings = {};
+    feedbacks.forEach(feedback => {
+      ratings[feedback.Rating] = (ratings[feedback.Rating] || 0) + 1;
+    });
+
+    const ctxBar = document.getElementById('ratingBarChart').getContext('2d');
+
+    const ratingBarChart = new Chart(ctxBar, {
+      type: 'bar',
       data: {
-        labels: Object.keys(eventRatings),
+        labels: Object.keys(ratings),
         datasets: [{
           label: 'Event Ratings',
-          data: Object.values(eventRatings).map(rating => rating.reduce((a, b) => a + b, 0) / rating.length),
-          fill: true,
+          data: Object.values(ratings),
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderColor: 'rgb(54, 162, 235)',
-          pointBackgroundColor: 'rgb(54, 162, 235)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgb(54, 162, 235)'
+          borderWidth: 1
         }]
       },
-      options: {
-        elements: {
-          line: {
-            tension: 0, // disables bezier curves
-          }
-        }
-      }
+      options: { scales: { yAxes: [{ ticks: { beginAtZero: true } }] } }
     });
+
   </script>
 </body>
 </html>
