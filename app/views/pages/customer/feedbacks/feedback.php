@@ -163,8 +163,8 @@
         <textarea name="feedback" id="feedback" placeholder="Tell Us About Your Experience" value="<?php echo $data['feedback']; ?>" required></textarea><br>
 
         <div class="number-input">
-        <label for="rating">Rate your experience out of 10: </label></br>
-        <input id="rating" name="rating" type="number" min="1" max="10" step="1" value="<?php echo $data['feedback']; ?>" required>  <!-- Set default value -->
+        <label for="rating">Rate your experience out of 5: </label></br>
+        <input id="rating" name="rating" type="number" min="1" max="5" step="1" value="<?php echo $data['feedback']; ?>" required>  <!-- Set default value -->
         </div>
 
         <button type="submit" value="Submit">Submit</button>

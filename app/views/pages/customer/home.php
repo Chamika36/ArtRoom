@@ -116,9 +116,9 @@
                                 <p class="info"><b>ArtRoom Photography</b></p>
 
                                 <div class="additional-info">
-                                    <p class="info">
+                                    <!-- <p class="info">
                                         <i class="fas fa-map-marker-alt"></i><?php echo $sample->Description; ?>
-                                    </p>
+                                    </p> -->
                                     <p class="info description">
                                         <?php echo $sample->Date; ?>
                                     </p>
@@ -171,7 +171,27 @@
                             <p>"<?php echo $feedback->Comment ?>"</p>
                             </blockquote>
                             <h3><?php echo $feedback->Name?></h3>
-                            <h4><i class="fa-solid fa-star" style="color: #f9b234;"></i> <?php echo $feedback->Rating?></h4>
+
+                            <?php
+                                // Assuming $feedback is your object with a Rating property
+                                $rating = $feedback->Rating;
+
+                                // Define the star HTML to display a full star
+                                $fullStar = '<i class="fa-solid fa-star" style="color: #f9b234;"></i>';
+
+                                // Start the output
+                                $output = '';
+
+                                // Loop to generate stars
+                                for ($i = 0; $i < $rating; $i++) {
+                                    $output .= $fullStar; // Append a star for each rating point
+                                }
+
+                                // Display the stars
+                                ?>
+                                <h4><?php echo $output; ?></h4>
+
+                            <!-- <h4><i class="fa-solid fa-star" style="color: #f9b234;"></i> <?php echo $feedback->Rating?></h4> -->
 
                         </figcaption>
                     </figure>
