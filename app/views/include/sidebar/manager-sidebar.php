@@ -79,12 +79,12 @@ if (!isset($_SESSION['user_type_id']) || ($_SESSION['user_type_id'] !== 2 && $_S
           </a>
         </li>
 
-        <!-- <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-wallet icon'></i>
-            <span class="text nav-text">Wallets</span>
+        <li class="nav-link">
+          <a href="<?php echo URLROOT ?>/statistics">
+            <i class='bx bx-stats icon'></i>
+            <span class="text nav-text">Statistics</span>
           </a>
-        </li> -->
+        </li> 
 
       </ul>
     </div>

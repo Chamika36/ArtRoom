@@ -123,10 +123,10 @@
 					</table>
 				</div>
 				
-	<div class="todo">
+	<!-- <div class="todo">
     <div class="head">
         <h3>Partners</h3>
-    </div>
+    </div> -->
     <!-- <table class="partner-table">
 	<hr/>
         <tbody>
@@ -144,8 +144,8 @@
             </tr>
         </tbody>
     	</table> -->
-	</div>
-	</div>
+	<!-- </div> -->
+	<!-- </div> -->
 	</main>
 
 	</section>
