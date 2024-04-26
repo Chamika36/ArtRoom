@@ -6,7 +6,7 @@ class Samples extends Controller{
     }
 
     public function index() {
-        if($_SESSION['user_type_id'] == 3) {
+        if(isset($_SESSION['user_type_id']) && $_SESSION['user_type_id'] == 3) {
             $samples = $this->sampleModel->getSamplesByPhotographer($_SESSION['user_id']);  
         }else{
             $samples = $this->sampleModel->getSamples();
@@ -17,15 +17,18 @@ class Samples extends Controller{
             'samples' => $samples,
             'customers' => $customers
         );
-    
-        if($_SESSION['user_type_id'] == 2) { 
-            // If user is a manager (user_type_id 2)
-            $this->view('pages/manager/samples/samples', $data);
-        } 
-        else if($_SESSION['user_type_id'] == 3) {
-            // If user is a partner (user_type_id 3)
-            $this->view('pages/partner/samples', $data);
-        
+
+        if(isset($_SESSION['user_type_id'])){
+            if($_SESSION['user_type_id'] == 2) { 
+                // If user is a manager (user_type_id 2)
+                $this->view('pages/manager/samples/samples', $data);
+            } 
+            else if($_SESSION['user_type_id'] == 3) {
+                // If user is a partner (user_type_id 3)
+                $this->view('pages/partner/samples', $data);
+            } else {
+                $this->view('pages/customer/samples/samples', $data);
+            }
         } else {
             $this->view('pages/customer/samples/samples', $data);
         }

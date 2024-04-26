@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample View</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/view.css">
+
+    
+      
+
+      
+      
+
 </head>
 <body>
 
