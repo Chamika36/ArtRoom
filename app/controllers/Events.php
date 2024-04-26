@@ -277,6 +277,7 @@
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
             $photographerAction = $this->partnerModel->getPhotographerAction($id);
+            $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
             $editorAction = $this->partnerModel->getEditorAction($id);
             $printingFirmAction = $this->partnerModel->getPrintingFirmAction($id);
 
@@ -287,6 +288,7 @@
                 'editor' => $editor,
                 'printingFirm' => $printingFirm,
                 'photographerAction' => $photographerAction,
+                'photographers' => $photographers,
                 'editorAction' => $editorAction,
                 'printingFirmAction' => $printingFirmAction
             ];
@@ -619,12 +621,20 @@
                     $this->eventModel->photographerAction($data);
 
                     $notification_data_customer = [
-                        'user_id' => $this->eventModel->getEventById($eventID)->CustomerID,
+                        'user_id' => $this->eventModel->getEventById($eventId)->CustomerID,
                         'type' => 'allocate',
                         'content' => 'A new photographer has been allocated.',
-                        'link' => 'events/viewEvent/' . $eventID . '',
-                        'event_id' => $eventID
+                        'link' => 'events/viewEvent/' . $eventId . '',
+                        'event_id' => $eventId
                     ];
+                    $notification_data_manager = [
+                        'user_id' => 16,
+                        'type' => 'allocate',
+                        'content' => 'A new photographer has been allocated.',
+                        'link' => 'events/loadEvent/' . $eventId . '',
+                        'event_id' => $eventId
+                    ];
+                    $this->notificationModel->createNotification($notification_data_manager);
                     $this->notificationModel->createNotification($notification_data_customer);
 
                 } else if($partnerType == 4) {
@@ -649,6 +659,40 @@
                 echo json_encode(['error' => 'Invalid request method']);
             }
         }
+
+        // reselect requested photographer
+        public function reselect($eventId){
+            // Assuming you are using POST method
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $json_data = file_get_contents("php://input");
+
+                $data = json_decode($json_data);
+                if ($data === null) {
+                    http_response_code(400); // Bad Request
+                    echo json_encode(['error' => 'Invalid JSON data']);
+                    return;
+                }
+
+                $selectedPartner = $data->selectedPartner;
+                $data = [
+                    'eventID' => $eventId
+                ];
+
+                $success = $this->eventModel->reselectPhotographer($eventId, $selectedPartner);
+                
+                
+                if ($success) {
+                 //   $this->sendAllocateNotification($selectedPartner, $eventId);
+                    $response = ['success' => true, 'message' => 'Reselected successfully'];
+                } else {
+                    $response = ['success' => false, 'message' => 'Failed to reselect'];
+                }
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid request method']);
+            }
+        }
+
 
         // Send notification on allocation to partner
         public function sendAllocateNotification($partnerId, $eventID) {

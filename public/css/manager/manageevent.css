@@ -59,9 +59,15 @@ h2 {
 }
 
 /* Additional Charges Form Styles */
+#additionalChargesForm {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+
 .additional-charges {
   margin-top: 20px;
-  display: flex;
+  display: inline-flex;
   align-items: flex-start; /* Align items to the start of the flex container */
 }
 
@@ -77,12 +83,39 @@ h2 {
 }
 
 .additional-charges button {
-  margin-top: 10px;
+  width: 20px;
+  margin-top: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #007BFF;
+  border: 1px solid #ddd;
+  color : #fff;
+  cursor: pointer;
+}
+
+.additional-charges button:hover {
+  background-color: #0056b3;
 }
 
 
 #additionalChargesDisplay p {
+  font-size: 16px;
   margin: 5px 0;
+}
+
+.send-button {
+  width:120px;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
 }
 
 select{
@@ -122,8 +155,11 @@ input[type="submit"]:hover,
 }
 
 .form-group {
-  margin-left: auto;
+  margin-left: 100px;
   margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  gap: 10px;
 }
 
 table {
@@ -139,6 +175,11 @@ th, td {
 
 th {
   background-color: #f2f2f2;
+}
+
+td {
+  border-top: 1px solid #f2f2f2;
+  font-size: 14px;
 }
 
 #additionalChargesDisplay{

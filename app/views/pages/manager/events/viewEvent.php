@@ -29,7 +29,7 @@
                 <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
                 
                 
-                <li><strong>Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?> <Strong>Status : </Strong>
+                <li><strong>Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?> <Strong>Status : </Strong>
                     <?php
                     $photographerAction = $data['photographerAction']->Action;
                     switch ($photographerAction) {
@@ -233,13 +233,13 @@
                         <label for="charge-name">Reason:</label>
                         <input type="text" id="reason">
 
-                        <label for="charge-price">Price per each:</label>
+                        <label for="charge-price">Price:</label>
                         <input type="number" id="price" min="0">
 
                         <label for="charge-quantity">Quantity:</label>
                         <input type="number" id="quantity" min="0" value="1">
 
-                        <button type="button" class="button" onclick="addAdditionalCharge()">+</button>
+                        <button type="button" class="" onclick="addAdditionalCharge()">+</button>
                     </div>
 
                     <div id="additionalChargesDisplay">
@@ -248,10 +248,11 @@
 
                     <input type="hidden" id="additionalCharges" name="additionalCharges" value="[]">
 
-                    <label for="revisedBudget">Revised Budget:</label>
+                    <strong><label for="revisedBudget">Revised Budget:</label>
                     <input type="number" id="revisedBudget" name="revisedBudget" value="<?php echo $data['event']->TotalBudget; ?>" readonly>
+                    </strong>
 
-                    <button type="submit" class="button">Send Quota to Customer</button>
+                    <button type="submit" class="send-button">Send Quota</button>
                 </form>
             <?php endif; ?>
             

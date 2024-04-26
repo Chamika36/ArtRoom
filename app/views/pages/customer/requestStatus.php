@@ -67,6 +67,31 @@
                     <?php } ?>
                     </div>
 
+                    <div class="status-container">
+                        <div class="event-details-container">
+                            <div class="event-details-item">
+                                <p class="details">Event ID : <?php echo $data['event']->EventID ?></p>
+                                <p class="details">Event Date : <?php echo $data['event']->EventDate ?></p>
+                                <p class="details">Start Time : <?php echo $data['event']->StartTime ?></p>
+                                <p class="details">End Time : <?php echo $data['event']->EndTime ?></p>
+                                <p class="details">Event Location : <?php echo $data['event']->Location ?></p>
+                                <p class="details">Photographer : <?php echo $data['photographer']->FirstName . ' '. $data['photographer']->LastName?></p>
+                                <?php if($data['photographerAction']->Action == 'Declined'){ ?>
+                                    <div class="form-group">
+                                        <label for="photographer">Reselect Photographer:</label>
+                                        <select name="photographer" id="photographer" required>
+                                            <option value="">Select a photographer</option>
+                                            <?php foreach ($data['photographers'] as $photographer) : ?>
+                                                <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reselect</button>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="payment-container">
 
                             <div class="payment-header">
@@ -139,9 +164,73 @@
                     </div>        
                 </div>
                     
-    </body>
 
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
+        $(document).ready(function () {
+            // Reallocate partners
+            $('.reallocate-button').on('click', function (e) {
+                e.preventDefault();
+
+                SweetAlert.fire({
+                    title: 'Are you sure?',
+                    text: 'You are about to reselect the partner. Do you want to proceed?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, reselect him!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var partnerType = $(this).data('partner-type');
+                        var partnerTypeName = $(this).data('partner-type-name');
+                        var eventId = <?php echo $data['event']->EventID; ?>;
+                        var selectedPartner = $('select[name="' + partnerTypeName + '"]').val();
+
+                        console.log(partnerType);
+                        console.log(eventId);
+                        console.log(selectedPartner);
+
+                        // Send AJAX request using Fetch API
+                        fetch('<?php echo URLROOT; ?>/events/reallocate/' + eventId, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                partnerType: partnerType,
+                                selectedPartner: selectedPartner,
+                            }),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Update the view based on the response
+                            // You can display a success message or handle the view update as needed
+                            console.log(data);
+                            if (data.success) {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Partner reallocated successfully.',
+                                    icon: 'success',
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Failed to reallocate the partner.',
+                                    icon: 'error',
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+
+            });
+        });
+
         function openForm() {
         document.getElementById("myForm").style.display = "block";
         }
@@ -176,5 +265,6 @@
         }
 
     </script>
+</body>
 
 </html>

@@ -257,6 +257,19 @@
             }
         }
 
+        // reselect requsted photographer
+        public function reselectPhotographer($eventId, $requstedPhotographer){
+            $this->db->query('UPDATE Event SET RequestedPhotographer = :requestedPhotographer WHERE EventID = :eventId');
+            $this->db->bind(':requestedPhotographer', $requstedPhotographer);
+            $this->db->bind(':eventId', $eventId);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         // delete request
         public function deleteRequest($id) {
             $this->db->query('DELETE FROM Event WHERE EventID = :id');

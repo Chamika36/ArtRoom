@@ -74,6 +74,16 @@ class Partners extends Controller {
         
         switch ($user_type_id) {
             case 3:
+                if($action == 'Declined') {
+                    $notification_data_customer = [
+                        'user_id' => $event->CustomerID,
+                        'type' => 'action',
+                        'content' => 'Photographer has declined the event. Reselect a photographer or cancel the event',
+                        'link' => 'events/viewEvent/'.$event_id,
+                        'event_id' => $event_id
+                    ];
+                    $this->notificationModel->createNotification($notification_data_customer);
+                }
                 $this->partnerModel->updatePhotographerAction($event_id, $action , $comment);
                 break;
             case 4:
