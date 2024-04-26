@@ -93,6 +93,7 @@
         <section>
             <div class=gallery-topic id="Gallery">
                 <p style="color: white"><i class="fa-regular fa-images"></i> Our Gallery</p>
+                
             </div>
 
 
@@ -132,8 +133,10 @@
         
 
             </div>
+                <div class="view-gallery-btn-container">
+                <a class="view-gallery-btn" href="<?php echo URLROOT ?>/samples" style="color: black;">View all</a>
 
-
+            </div>
             </section>
 
         <div class=gallery-topic id="Packages">
