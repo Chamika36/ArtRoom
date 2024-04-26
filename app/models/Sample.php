@@ -12,6 +12,13 @@
             return $results;
         }
 
+        public function getTopsamples(){
+            $this->db->query('SELECT * FROM Sample ORDER BY SampleID ASC LIMIT 3'); 
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+
         public function getSampleById($id) {
             $this->db->query('SELECT * FROM Sample WHERE SampleID = :id');
             $this->db->bind(':id', $id);

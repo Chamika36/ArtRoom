@@ -470,7 +470,7 @@ padding: 13% 10% 12%;
     position: relative;
     margin: 24px;
     width: 320px;
-    height: 550px;
+    height: 530px;
     overflow: hidden;
     background-color: #fff;
     box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
@@ -619,3 +619,30 @@ padding: 13% 10% 12%;
     
 }
 
+.view-gallery-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-bottom: 50px;
+    
+}
+
+.view-gallery-btn{
+    background-color: #ffffff;
+    
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 4px solid #000000;
+    margin-top: 20px;
+}
+
+.view-gallery-btn:hover{
+    background-color: #f9b234;
+    
+}
