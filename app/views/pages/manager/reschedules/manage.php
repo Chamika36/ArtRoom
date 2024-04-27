@@ -26,18 +26,20 @@
                 <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
-                <li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?></li>
-                <?php if($reschedule->ApprovalStatus == 'PhotographerDeclined') :?>
-                <div class="">
-                    <label for="photographer"><li><strong>Reallocate Photographer:</strong></li></label>
-                    <select name="photographer" id="photographer" required>
-                        <option value="">Select a photographer</option>
-                        <?php foreach ($data['photographers'] as $photographer) : ?>
-                            <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reallocate</button>
-                </div>
+                <?php if(isset($data['event']->PhotographerID)) :?>
+                    <li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?></li>
+                    <?php if($reschedule->ApprovalStatus == 'PhotographerDeclined') :?>
+                    <div class="">
+                        <label for="photographer"><li><strong>Reallocate Photographer:</strong></li></label>
+                        <select name="photographer" id="photographer" required>
+                            <option value="">Select a photographer</option>
+                            <?php foreach ($data['photographers'] as $photographer) : ?>
+                                <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reallocate</button>
+                    </div>
+                    <?php endif ?>
                 <?php endif ?>
             </ul>
         </div>

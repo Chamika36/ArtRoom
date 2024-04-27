@@ -3,12 +3,15 @@ class Samples extends Controller{
     public function __construct() {
         $this->sampleModel = $this->model('Sample');
         $this->userModel = $this->model('User');
+        $this->notificationModel = $this->model('Notification');
     }
 
     public function index() {
         if(isset($_SESSION['user_type_id']) && $_SESSION['user_type_id'] == 3) {
             $samples = $this->sampleModel->getSamplesByPhotographer($_SESSION['user_id']);  
-        }else{
+        }else if(!isset($_SESSION['user_type_id']) || $_SESSION['user_type_id'] == 1) {
+            $samples = $this->sampleModel->getVisibleSamples();
+        }else {
             $samples = $this->sampleModel->getSamples();
         }
         $customers = $this->userModel->getCustomers();
@@ -149,7 +152,16 @@ class Samples extends Controller{
                     // Make sure no errors
                     if (empty($data['name_err']) && empty($data['description_err']) && empty($data['customer_err']) && empty($data['date_err'])) {
                         // Validated
-                        if ($this->sampleModel->addSample($data)) {
+                        $sample_id = $this->sampleModel->addSample($data);
+                        if ($sample_id) {
+                            $notification_customer = [
+                                'user_id' => $data['customer'],
+                                'type' => 'sample',
+                                'content' => 'Your images added to the sample gallery. View and confirm public visibility',
+                                'link' => 'samples/viewSample/'.$sample_id,
+                                'event_id' => 55
+                            ];
+                            $this->notificationModel->createNotification($notification_customer);
                             flash('sample_message', 'Sample Added');
                             if($isPartner == 1) {
                                 redirect('samples/getSamplesByPhotographer');
@@ -372,6 +384,16 @@ class Samples extends Controller{
             $this->view('pages/customer/samples/viewsample', $data);
 
         }
+    }
+
+    public function makePublic($sample_id) {
+        if($this->sampleModel->updateVisibility($sample_id , 1)) {
+            flash('sample_message', 'Sample visibility updated');
+            redirect('samples/viewSample/'.$sample_id);
+        } else {
+            die('Something went wrong');
+        }
+
     }
 
     public function getSamplesByPhotographer(){
