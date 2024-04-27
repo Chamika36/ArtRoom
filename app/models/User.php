@@ -110,7 +110,7 @@
 
         // edit profile
         public function editProfile($data) {
-            $this->db->query('UPDATE user SET FirstName = :firstName, LastName = :lastName, ContactNumber = :contactNumber, Email = :email Password = :password WHERE UserID = :id');
+            $this->db->query('UPDATE user SET FirstName = :firstName, LastName = :lastName, ContactNumber = :contactNumber, Email = :email, Password = :password WHERE UserID = :id');
             // Bind values
             $this->db->bind(':id', $data['id']);
             $this->db->bind(':firstName', $data['firstName']);

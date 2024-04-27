@@ -667,13 +667,13 @@
                     'oldPassword' => trim($_POST['oldPassword']),
                     'password' => trim($_POST['password']),
                     'confirmPassword' => trim($_POST['confirmPassword']),
-                    'userType' => $_POST['userType'],
                     'specialization' => $_POST['specialization'],
                     'first_name_err' => '',
                     'last_name_err' => '',
                     'email_err' => '',
                     'contact_err' => '',
                     'password_err' => '',
+                    'old_password_err' => '',
                     'confirm_password_err' => '',
                 ];
     
@@ -705,6 +705,7 @@
                     // Update User Profile
                     if ($this->userModel->editProfile($data)) {
                         echo 'Success';
+                        $this->createUserSession($user);
                         // redirect('users/profile');
                     } else {
                         die('Something went wrong');
@@ -724,12 +725,12 @@
                     'oldPassword' => '',
                     'password' => '',
                     'confirmPassword' => '',
-                    'userType' => $user->UserTypeID,
-                    'specialization' => $user->Specialization,
+                    'specialization' => '',
                     'first_name_err' => '',
                     'last_name_err' => '',
                     'contact_err' => '',
                     'email_err' => '',
+                    'old_password_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => '',
                 ];
