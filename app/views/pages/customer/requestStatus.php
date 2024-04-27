@@ -92,11 +92,8 @@
                                             <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reselect</button>
                                         </div>
                                     <?php } ?>
-
-                                </div>
-
                                 <?php } ?>
-
+                                </div>
                             </div>
                         </div>
                     </div>    
