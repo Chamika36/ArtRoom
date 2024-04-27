@@ -38,6 +38,9 @@
   <span class="close">&times;</span>
   <img class="modal-content" id="img01">
   <div id="caption" class="modal-caption"></div>
+  <!-- Left and right arrow buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 
 <script>
@@ -49,20 +52,54 @@ var images = document.querySelectorAll(".portfolio-grid img");
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
 
-images.forEach(function(image) {
+// Variables to keep track of current slide index
+var slideIndex = 1;
+
+// Function to open the modal and show the selected image
+function openModal() {
+  modal.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+  modal.style.display = "none";
+}
+
+// Function to navigate to the previous or next slide
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Function to display a specific slide
+function showSlides(n) {
+  var i;
+  var slides = document.querySelectorAll(".portfolio-grid img");
+  if (n > slides.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = slides.length; }
+  modalImg.src = slides[slideIndex - 1].src;
+  captionText.innerHTML = slides[slideIndex - 1].alt;
+}
+
+// Event listener for image clicks
+images.forEach(function(image, index) {
   image.addEventListener("click", function() {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
+    openModal();
+    slideIndex = index + 1; // Set current slide index
+    showSlides(slideIndex); // Show selected image
   });
 });
 
-// Get the <span> element that closes the modal
+// Event listener for close button
 var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  closeModal();
+};
+
+// Event listener for modal clicks
+modal.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal();
+  }
 };
 </script>
 
