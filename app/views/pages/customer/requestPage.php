@@ -20,6 +20,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
 
         body {
@@ -363,6 +365,44 @@
 
             return packagePrice + extrasTotal;
         }
+
+        function showAlert() {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Studio is at capacity on the selected date. Please choose another date.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+
+        function showSuccess() {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your booking request has been successfully submitted.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                // You can redirect to another page or do something else after the user clicks 'OK'
+                if (result.isConfirmed) {
+                    //window.location.href = 'your-redirect-url'; // Replace 'your-redirect-url' with the URL you want to redirect to
+                }
+            });
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector('.submit-button').addEventListener('click', function (event) {
+                if ('<?php echo empty($data['photographers']); ?>' === '1') {
+                    event.preventDefault(); // Prevent form submission
+                    showAlert();
+                } else {
+                    // Show success message after form submission
+                    document.querySelector('form').addEventListener('submit', function () {
+                        showSuccess();
+                    });
+                }
+            });
+        });
     </script>
 
     <script>
