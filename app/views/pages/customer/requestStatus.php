@@ -70,17 +70,18 @@
 
                     <div class="status-container-2">
                         <div class="event-details-container">
+                            <h3>Event Details</h3>
                             <div class="event-details-item">
-                                <p class="details">Event ID : <?php echo $data['event']->EventID ?></p>
-                                <p class="details">Event Date : <?php echo $data['event']->EventDate ?></p>
-                                <p class="details">Start Time : <?php echo $data['event']->StartTime ?></p>
-                                <p class="details">End Time : <?php echo $data['event']->EndTime ?></p>
-                                <p class="details">Event Location : <?php echo $data['event']->Location ?></p>
+                                <p class="details"><b>Event ID :</b> <?php echo $data['event']->EventID ?></p>
+                                <p class="details"><b>Event Date :</b> <?php echo $data['event']->EventDate ?></p>
+                                <p class="details"><b>Start Time :</b> <?php echo $data['event']->StartTime ?></p>
+                                <p class="details"><b>End Time :</b> <?php echo $data['event']->EndTime ?></p>
+                                <p class="details"><b>Event Location :</b> <?php echo $data['event']->Location ?></p>
                                 <?php if(isset($data['event']->PhotographerID)){ ?>
-                                    <p class="details">Photographer : <?php echo $data['photographer']->FirstName . ' '. $data['photographer']->LastName?></p>
+                                    <p class="details"><b>Photographer :</b> <?php echo $data['photographer']->FirstName . ' '. $data['photographer']->LastName?></p>
                                     <?php if($data['photographerAction']->Action == 'Declined'){ ?>
                                         <div class="form-group">
-                                            <label for="photographer">Reselect Photographer:</label>
+                                            <label for="photographer"><b>Reselect Photographer:</b></label>
 
                                             <select name="photographer" id="photographer" required>
                                                 <option value="">Select a photographer</option>
@@ -92,7 +93,7 @@
                                         </div>
                                     <?php } ?>
 
-                                
+                                </div>
 
                                 <?php } ?>
 
@@ -139,7 +140,7 @@
                                                 echo '<p class="details"><b> Canceled </b></p>';
                                             } else if($data['event']->Status == 'Pencil'){
                                                 echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
-                                                echo '<p class="details"> Yet to confirm the event </p>';
+                                                echo '<p class="details"><b> Yet to confirm the event </b></p>';
                                             } else if($data['event']->Status == 'Completed'){
                                                 echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
                                                 $advancedPayment = $data['event']->TotalBudget*0.1;

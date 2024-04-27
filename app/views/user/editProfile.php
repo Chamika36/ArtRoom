@@ -10,10 +10,16 @@
 
    
     <div class="container">
-    <h1 class="form-title">Edit User</h1>
+    <div class="branding">
+            <div class="artroom-logo">
+                <img class="artroom-logo" src="<?php echo URLROOT?>/images/logo.png" alt="logo">
+            </div>
+            <div class="brand-name">Art Room</div>
+        </div>
+    <h1 class="form-title">Edit Profile</h1>
                 <form name="registrationForm" action="<?php echo URLROOT; ?>/users/editProfile/<?php echo $_SESSION['user_id']; ?>" method="POST">
                 <div class="main-user-info">
-          
+                <div class="vertical-box">
                 <div class="user-input-box">
                     <label for="firstName">First Name: </label>
                     <input type="text" name="firstName" value="<?php echo $data['firstName']?>" required> 
@@ -24,18 +30,20 @@
                     <input type="text" name="lastName" value="<?php echo $data['lastName']?>" required>
                     <span class="invalid-feedback"><?php echo $data['last_name_err']?></span>
                 </div>
+                </div>
                 <div class="user-input-box">
                     <label for="email">Email: </label>
                     <input type="email" name="email" value="<?php echo $data['email']?>" required>
                     <span class="invalid-feedback"><?php echo $data['email_err']?></span>
                 </div>
                 <div class="user-input-box">
-                    <label for="userType">Old Password: </label>
+                    <label for="userType">Current Password: </label>
                     <input type="password" name="oldPassword" value="<?php echo $data['oldPassword']?>" required>
                     <span class="invalid-feedback"><?php echo $data['old_password_err']?></span>
                 </div>
+                <div class="vertical-box">
                 <div class="user-input-box">
-                    <label for="password">Password: </label>
+                    <label for="password">New Password: </label>
                     <input type="password" name="password" value="<?php echo $data['password']?>" required>
                     <span class="invalid-feedback"><?php echo $data['password_err']?></span>
                 </div>
@@ -43,6 +51,7 @@
                     <label for="userType">Confirm Password: </label>
                     <input type="password" name="confirmPassword" value="<?php echo $data['confirmPassword']?>" required>
                     <span class="invalid-feedback"><?php echo $data['confirm_password_err']?></span>
+                </div>
                 </div>
                 <div class="user-input-box">
                     <label for="userType">
@@ -63,6 +72,7 @@
                 <div class="form-submit-btn">
                     <input type="submit" value="Cancel" onclick="window.history.back();" class="cancel-btn">
                     <input type="submit" value="Update User" class="update-btn">
+                    
                 </div>
 
 
