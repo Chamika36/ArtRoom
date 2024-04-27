@@ -53,13 +53,17 @@ class Reschedules extends Controller{
                 'event_id' => $id
             ];
 
-            $notificaton_photographer = [
-                'user_id' => $photographer->UserID,
-                'type' => 'reschedule',
-                'content' => 'You have a reschdule request',
-                'link' => 'reschedules/reschedulesForPartner/' . $photographer->UserID,
-                'event_id' => $id
-            ];
+            
+            if(isset($photographer->UserID) ){
+                $notificaton_photographer = [
+                    'user_id' => $photographer->UserID,
+                    'type' => 'reschedule',
+                    'content' => 'You have a reschdule request',
+                    'link' => 'reschedules/reschedulesForPartner/' . $photographer->UserID,
+                    'event_id' => $id
+                ];
+                $this->notificationModel->createNotification($notificaton_photographer);
+            }
 
             // Validate event date
             if(empty($data['date'])) {
@@ -69,8 +73,7 @@ class Reschedules extends Controller{
             //  Make sure errors are empty
             if(empty($data['eventDate_err'])) {
                 if($this->rescheduleModel->reschedule($data)
-                    && $this->notificationModel->createNotification($notificaton)
-                    && $this->notificationModel->createNotification($notificaton_photographer) ){
+                    && $this->notificationModel->createNotification($notificaton)){
                     flash('event_message', 'Request reschedule');
                     redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
                 } else {
@@ -192,6 +195,12 @@ class Reschedules extends Controller{
         $this->rescheduleModel->updateStatus($id, 'Rejected');
         $this->notificationModel->createNotification($notificaton);
         //redirect('reschedules/');
+    }
+
+    public function delete($id){
+        $reschedule = $this->rescheduleModel->getRescheduleById($id);
+        $this->rescheduleModel->deleteReschedule($id);
+        redirect('reschedules/');
     }
 
 }

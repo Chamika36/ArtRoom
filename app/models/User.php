@@ -86,6 +86,7 @@
             }
         }
 
+
         // Edit user
         public function editUser($data) {
             $this->db->query('UPDATE user SET FirstName = :firstName, LastName = :lastName, ContactNumber = :contactNumber, Email = :email, UserTypeID = :userType, Specialization = :specialization WHERE UserID = :id');
@@ -106,6 +107,26 @@
                 return false;
             }
         }
+
+        // edit profile
+        public function editProfile($data) {
+            $this->db->query('UPDATE user SET FirstName = :firstName, LastName = :lastName, ContactNumber = :contactNumber, Email = :email, Password = :password WHERE UserID = :id');
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':firstName', $data['firstName']);
+            $this->db->bind(':lastName', $data['lastName']);
+            $this->db->bind(':contactNumber', $data['contactNumber']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+
+            // Execute
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
         // Delete user
         public function deleteUser($id) {

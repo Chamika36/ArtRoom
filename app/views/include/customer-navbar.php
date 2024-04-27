@@ -74,7 +74,7 @@
                             
                             <a href="'. URLROOT .'/events/request/0">Make a Request</a>
                             <a href="'. URLROOT .'/events/viewCustomerEvents/' . $_SESSION['user_id'] . '">My Requests</a>
-                            <a href="'. URLROOT .'/users/edit">Edit Profile</a>
+                            <a href="'. URLROOT .'/users/editProfile/' . $_SESSION['user_id'] . '">Edit Profile</a>
                             <a href="'. URLROOT .'/users/logout">Log Out</a>
                         </div>
                     </li>';

@@ -89,4 +89,25 @@
                 return false;
             }
         }
+
+        public function getRescheduleByEventID($id){
+            $this->db->query('SELECT * FROM reschedule WHERE EventID=:id');
+            $this->db->bind(':id', $id);
+
+            $result = $this->db->single();
+
+            return $result;
+        }
+
+        // delete reschedule
+        public function deleteReschedule($id){
+            $this->db->query('DELETE FROM reschedule WHERE ID = :id');
+            $this->db->bind(':id', $id);
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

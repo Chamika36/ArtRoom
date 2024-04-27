@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event status</title>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-navbar.css">
-    <link rel="stylesheet" href="../../../../public/css/grid.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/logo.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/customer-mainPages.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/payment-page.css">
@@ -13,7 +12,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -69,19 +67,21 @@
                             <?php } ?>
                         </div>
 
-                        <div class="status-container-2">
-                            <div class="event-details-container">
-                                <div class="event-details-item">
-                                    <h3>Event Details</h3>
-                                    <p class="details"><b>Event ID :</b> <?php echo $data['event']->EventID ?></p>
-                                    <p class="details"><b>Event Date :</b> <?php echo $data['event']->EventDate ?></p>
-                                    <p class="details"><b>Start Time :</b> <?php echo $data['event']->StartTime ?></p>
-                                    <p class="details"><b>End Time :</b> <?php echo $data['event']->EndTime ?></p>
-                                    <p class="details"><b>Event Location :</b> <?php echo $data['event']->Location ?></p>
-                                    <p class="details"><b>Photographer :</b> <?php echo $data['photographer']->FirstName . ' '. $data['photographer']->LastName?></p>
+
+                    <div class="status-container-2">
+                        <div class="event-details-container">
+                            <div class="event-details-item">
+                                <p class="details">Event ID : <?php echo $data['event']->EventID ?></p>
+                                <p class="details">Event Date : <?php echo $data['event']->EventDate ?></p>
+                                <p class="details">Start Time : <?php echo $data['event']->StartTime ?></p>
+                                <p class="details">End Time : <?php echo $data['event']->EndTime ?></p>
+                                <p class="details">Event Location : <?php echo $data['event']->Location ?></p>
+                                <?php if(isset($data['event']->PhotographerID)){ ?>
+                                    <p class="details">Photographer : <?php echo $data['photographer']->FirstName . ' '. $data['photographer']->LastName?></p>
                                     <?php if($data['photographerAction']->Action == 'Declined'){ ?>
                                         <div class="form-group">
-                                            <label class="details" for="photographer"><b>Reselect Photographer:</b></label>
+                                            <label for="photographer">Reselect Photographer:</label>
+
                                             <select name="photographer" id="photographer" required>
                                                 <option value="">Select a photographer</option>
                                                 <?php foreach ($data['photographers'] as $photographer) : ?>
@@ -91,7 +91,11 @@
                                             <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reselect</button>
                                         </div>
                                     <?php } ?>
-                                </div>
+
+                                
+
+                                <?php } ?>
+
                             </div>
                         </div>
                     </div>    
@@ -229,6 +233,8 @@
                         .catch(error => {
                             console.error('Error:', error);
                         });
+                        console.log('Reallocate the partner');
+                        window.location.reload();
                     }
                 });
 

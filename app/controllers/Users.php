@@ -647,4 +647,106 @@
             ];
             $this->view('pages/manager/users/editors', $data);
         }
+
+        public function editProfile($id) {
+            $user = $this->userModel->getUserById($id);
+    
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Process form
+    
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                // Init data
+                $data = [
+                    'id' => $id,
+                    'firstName' => trim($_POST['firstName']), 
+                    'lastName' => trim($_POST['lastName']),
+                    'contactNumber' => trim($_POST['contactNumber']),
+                    'email' => trim($_POST['email']),
+                    'oldPassword' => trim($_POST['oldPassword']),
+                    'password' => trim($_POST['password']),
+                    'confirmPassword' => trim($_POST['confirmPassword']),
+                    'specialization' => $_POST['specialization'],
+                    'first_name_err' => '',
+                    'last_name_err' => '',
+                    'email_err' => '',
+                    'contact_err' => '',
+                    'password_err' => '',
+                    'old_password_err' => '',
+                    'confirm_password_err' => '',
+                ];
+    
+                // Validate Email, Contact Number, Name, and Old Password (similar to your existing logic)
+                if(empty($data['email'])) {
+                    $data['email_err'] = 'Please enter email';
+                } else {
+                    // Check email
+                    if($data['email']==$user->Email){
+                        $data['email_err'] = '';
+                    }
+                    elseif($this->userModel->findUserByEmail($data['email'])) {
+                        $data['email_err'] = 'Email is already taken';
+                    }
+                }
+    
+                // Validate Password
+                if (empty($data['password'])) {
+                    $data['password_err'] = 'Please enter password';
+                } elseif (strlen($data['password']) < 6) {
+                    $data['password_err'] = 'Password must be at least 6 characters';
+                }
+    
+                // Validate Confirm Password
+                if (empty($data['confirmPassword'])) {
+                    $data['confirm_password_err'] = 'Please confirm password';
+                } else {
+                    if ($data['password'] != $data['confirmPassword']) {
+                        $data['confirm_password_err'] = 'Passwords do not match';
+                    }
+                }
+    
+                // Check for any errors
+                if (empty($data['email_err']) && empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['contact_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
+                    // No errors, proceed with updating user profile
+    
+                    // Hash Password
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+    
+                    // Update User Profile
+                    if ($this->userModel->editProfile($data)) {
+                        echo 'Success';
+                        $this->createUserSession($user);
+                        // redirect('users/profile');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('user/editProfile', $data);
+                }
+            } else {
+                // Display edit profile form
+                $data = [
+                    'id' => $id,
+                    'firstName' => $user->FirstName, 
+                    'lastName' => $user->LastName,
+                    'contactNumber' => $user->ContactNumber,
+                    'email' => $user->Email,
+                    'oldPassword' => '',
+                    'password' => '',
+                    'confirmPassword' => '',
+                    'specialization' => '',
+                    'first_name_err' => '',
+                    'last_name_err' => '',
+                    'contact_err' => '',
+                    'email_err' => '',
+                    'old_password_err' => '',
+                    'password_err' => '',
+                    'confirm_password_err' => '',
+                ];
+    
+                $this->view('user/editProfile', $data);
+            }
+        }
     }
