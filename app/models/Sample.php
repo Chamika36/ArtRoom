@@ -13,11 +13,16 @@
         }
 
         public function getTopsamples(){
-            $this->db->query('SELECT * FROM Sample ORDER BY SampleID ASC LIMIT 3'); 
+            $this->db->query('SELECT * FROM Sample WHERE Visibility = 1 ORDER BY SampleID ASC LIMIT 3'); 
             $results = $this->db->resultSet();
             return $results;
         }
 
+        public function getVisibleSamples(){
+            $this->db->query('SELECT * FROM Sample WHERE Visibility = 1');
+            $results = $this->db->resultSet();
+            return $results;
+        }
 
         public function getSampleById($id) {
             $this->db->query('SELECT * FROM Sample WHERE SampleID = :id');
@@ -39,7 +44,7 @@
             
             // Execute the query
             if($this->db->execute()) {
-                return true;
+                return $this->db->lastInsertId();
             } else {
                 return false;
             }
@@ -94,6 +99,23 @@
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
+        }
+
+        public function getLastInsertedSample() {
+            $this->db->query('SELECT * FROM Sample ORDER BY SampleID DESC LIMIT 1');
+            $row = $this->db->single();
+            return $row;
+        }
+
+        public function updateVisibility($id , $visibility) {
+            $this->db->query('UPDATE Sample SET Visibility = :visibility WHERE SampleID = :id');
+            $this->db->bind(':id', $id);
+            $this->db->bind(':visibility', $visibility);
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
     }
