@@ -678,6 +678,17 @@
                 ];
     
                 // Validate Email, Contact Number, Name, and Old Password (similar to your existing logic)
+                if(empty($data['email'])) {
+                    $data['email_err'] = 'Please enter email';
+                } else {
+                    // Check email
+                    if($data['email']==$user->Email){
+                        $data['email_err'] = '';
+                    }
+                    elseif($this->userModel->findUserByEmail($data['email'])) {
+                        $data['email_err'] = 'Email is already taken';
+                    }
+                }
     
                 // Validate Password
                 if (empty($data['password'])) {
