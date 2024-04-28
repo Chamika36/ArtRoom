@@ -159,6 +159,14 @@
             background-color: #242526;
         }
 
+        .delete-extra{
+            background-color: lightgray;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
     </style>
 </head>
 
@@ -298,14 +306,14 @@
             var selectedDate = $(this).val();
 
             $.ajax({
-                url: '<?php echo URLROOT; ?>/events/getAvailablePhotographers', // Update with your server endpoint
+                url: '<?php echo URLROOT; ?>/events/getAvailablePhotographers', 
                 method: 'POST',
                 data: { selectedDate: selectedDate },
                 success: function(response) {
-                    $('#requestedPhotographer').html(response); // Replace dropdown options with updated list
+                    $('#requestedPhotographer').html(response); 
                 },
                 error: function(xhr, status, error) {
-                    console.error(error); // Handle errors if needed
+                    console.error(error); 
                 }
             });
         });
@@ -347,10 +355,26 @@
             let selectedExtrasDiv = $('#selectedExtrasDisplay');
             selectedExtrasDiv.empty();
 
-            selectedExtras.forEach(extra => {
-                selectedExtrasDiv.append(`<p>${extra.name} - Quantity: ${extra.quantity} - Total: ${extra.totalofEach}</p>`);
+            selectedExtras.forEach((extra, index) => {
+                selectedExtrasDiv.append(`
+                    <div>
+                        <p>${extra.name} - Quantity: ${extra.quantity} - Total: ${extra.totalofEach}
+                        <button class="delete-extra" data-index="${index}">
+                            <i class="fas fa-times"></i>
+                        </button></p>
+                    </div>
+                `);
+            });
+
+            $('.delete-extra').on('click', function() {
+                let index = $(this).data('index');
+                selectedExtras.splice(index, 1); 
+                displaySelectedExtras(); 
+                updateTotalBudget(); 
+                $('#selectedExtras').val(JSON.stringify(selectedExtras)); 
             });
         }
+
 
         function updateTotalBudget() {
             let totalBudget = calculateTotalBudget();

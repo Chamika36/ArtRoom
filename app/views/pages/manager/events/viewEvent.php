@@ -8,7 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        
+        .delete-button {
+            background-color: transparent;
+            border: none;
+            color: #dc3545; 
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px; 
+        }
+
+        .delete-button:hover {
+            color: #c82333; 
+        }
+
     </style>
 </head>
 <body>
@@ -259,7 +271,9 @@
             <?php if($data['event']->Status != 'Canceled' && $data['event']->Status != 'Completed') : ?>
                 <div class="form-group-2">
                     <a href="#" class="button" style="background-color: #dc3545; color: white; " onclick="confirmCancelEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled')">Cancel Event</a>
-                    <a href="#" class="button" onclick="confirmCompleteEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed')">Complete Event</a>
+                    <?php if($data['editorAction']->Action == 'Completed' && $data['photographerAction']->Action == 'Completed' && $data['printingFirmAction']->Action == 'Completed') : ?>
+                        <a href="#" class="button" onclick="confirmCompleteEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed')">Complete Event</a>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
 
@@ -344,8 +358,13 @@
             let additionalChargesDiv = $('#additionalChargesDisplay');
             additionalChargesDiv.empty();
 
-            additionalCharges.forEach(additionalCharge => {
-                additionalChargesDiv.append(`<p>${additionalCharge.reason} - Price: ${additionalCharge.price} - Quantity: ${additionalCharge.quantity}  - Total: ${additionalCharge.total}</p>`);
+            additionalCharges.forEach((additionalCharge, index) => {
+                additionalChargesDiv.append(`
+                    <div>
+                        <p>${additionalCharge.reason} - Price: ${additionalCharge.price} - Quantity: ${additionalCharge.quantity}  - Total: ${additionalCharge.total}
+                        <button class="delete-button" onclick="deleteAdditionalCharge(${index})"><i class="fas fa-trash-alt"></i></button></p>
+                    </div>
+                `);
             });
         }
 
@@ -354,6 +373,13 @@
             let totalBudget = <?php echo $data['event']->TotalBudget; ?>;
             let additionalChargesTotal = additionalCharges.reduce((total, charge) => total + charge.total, 0);
             revisedBudget.value = totalBudget + additionalChargesTotal;
+        }
+
+        function deleteAdditionalCharge(index) {
+            additionalCharges.splice(index, 1);
+            displayadditionalCharges();
+            updateRevisedBudget();
+            document.getElementById('additionalCharges').value = JSON.stringify(additionalCharges);
         }
 
         function confirmCancelEvent(cancelUrl) {
