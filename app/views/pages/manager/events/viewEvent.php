@@ -23,7 +23,7 @@
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
                 <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
                 <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
-                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
+                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?> <button id="viewLocationButton" class="map-button"><i class="fas fa-map-marker-alt"></i> View on Map</button></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
                 <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
@@ -387,5 +387,14 @@
                 }
             });
         }
+
+        document.getElementById('viewLocationButton').addEventListener('click', function () {
+            var latitude = <?php echo $data['event']->Latitude; ?>;
+            var longitude = <?php echo $data['event']->Longitude; ?>;
+            
+            // Open OpenStreetMap in a new window with the specified coordinates
+            var mapUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=13/${latitude}/${longitude}`;
+            window.open(mapUrl, '_blank');
+        });
     </script>
 </body>

@@ -185,3 +185,24 @@ td {
   font-size: 2px;
   margin: 5px 0;
 }
+
+.map-button {
+  background-color: #3f5840; 
+  border: none;
+  color: white; 
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.map-button:hover {
+  background-color: #45a049; 
+}
+
+.map-button i {
+  vertical-align: middle;
+}

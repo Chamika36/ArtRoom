@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT ?>\css\partner\event-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Home</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
             <ul>
                 <li><strong>Event Name:</strong> <?php echo $data['package']->Name; ?></li>
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
-                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
+                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?> <button id="viewLocationButton" class="map-button"><i class="fas fa-map-marker-alt"></i> View on Map</button></li>
                 <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
                 <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
@@ -56,6 +57,19 @@
         
         </div>
     </div>
+
+    <script>
+       document.getElementById('viewLocationButton').addEventListener('click', function () {
+            var latitude = <?php echo $data['event']->Latitude; ?>;
+            var longitude = <?php echo $data['event']->Longitude; ?>;
+            
+            // Open OpenStreetMap in a new window with the specified coordinates
+            var mapUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=13/${latitude}/${longitude}`;
+            window.open(mapUrl, '_blank');
+        });
+
+        
+    </script>
 </body>
 </html>
 
