@@ -15,7 +15,7 @@
 
 <div class="home">
     
-<div class="container">
+        <div class="nav-container">
             <div id="header" class="background_pic">
                 <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
             </div>

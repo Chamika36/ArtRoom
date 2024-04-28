@@ -81,7 +81,7 @@
                                     <p class="details"><b>Photographer :</b> <?php echo $data['photographer']->FirstName . ' '. $data['photographer']->LastName?></p>
                                     <?php if($data['photographerAction']->Action == 'Declined'){ ?>
                                         <div class="form-group">
-                                            <label for="photographer"><b>Reselect Photographer:</b></label>
+                                            <label for="photographer"><b>Reselect Photographer:<></label>
 
                                             <select name="photographer" id="photographer" required>
                                                 <option value="">Select a photographer</option>
@@ -92,8 +92,10 @@
                                             <button type="button" class="button reallocate-button" data-partner-type="3" data-partner-type-name="photographer">Reselect</button>
                                         </div>
                                     <?php } ?>
+
                                 <?php } ?>
                                 </div>
+
                             </div>
                         </div>
                     </div>    
