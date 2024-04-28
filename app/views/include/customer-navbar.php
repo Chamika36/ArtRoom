@@ -56,6 +56,8 @@
             <a href="<?php echo URLROOT ?>/home/customer#Gallery">Gallery</a>
             
             <a href="<?php echo URLROOT ?>/home/customer#Packages">Packages</a>
+
+            <a href="<?php echo URLROOT ?>/users/viewPhotographers">Photographers</a>
         </div>
 
         <ul>
@@ -65,7 +67,7 @@
                 //echo '<li class="notification-icon1"><a>&#128276;</a></li>';
             
                 echo '<li>
-                            <a>Hello ' . $_SESSION['user_name'] .'</a>
+                            <a>Hello ' . $_SESSION['first_name'] .'</a>
                     </li>';
             
                 echo '<li class="profile-dropdown">
