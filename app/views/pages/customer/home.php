@@ -210,8 +210,8 @@
                 <a href="#" class="footer-link"><b>@2024 Art Room | All Rights Reserved</b></a>
             </div>
             <div class="footer-info">
-                <a href="#" class="footer-link"><b>About</b></a>
-                <a href="#" class="footer-link"><b>Contact Us</b></a>
+                <!-- <a href="#" class="footer-link"><b>About</b></a> -->
+                <a href="#" class="footer-link"><b>artroomworks@gmail.com</b></a>
             </div>
         </div>
         </footer>

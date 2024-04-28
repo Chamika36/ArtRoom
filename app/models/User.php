@@ -193,4 +193,11 @@
             return $result->count;
         }
 
+        //view photographers
+        public function viewPhotographers() {
+            $this->db->query('SELECT * FROM user WHERE UserTypeID = 3');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
     }
