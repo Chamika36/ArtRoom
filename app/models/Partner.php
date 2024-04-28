@@ -145,4 +145,19 @@
                 return false;
             }
         }
+
+        // update profile picture
+        public function updateProfilePicture($userId, $imageData) {
+            $this->db->query('UPDATE user SET ProfilePicture = :imageData WHERE UserID = :userId');
+            $this->db->bind(':userId', $userId);
+            $this->db->bind(':imageData', $imageData);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+
     }

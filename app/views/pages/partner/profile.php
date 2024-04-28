@@ -34,11 +34,14 @@
                 <div class="about-container">
                     
                     <div class="about-left">
-                        <div class="image-container">
-                            <img src="<?php echo URLROOT ?>/images/partners/images/about-pic.jpg" alt="" class="im" >
-                        </div>
+                    <div class="image-container">
+                        <img id="profilePicture" src="data:image/jpeg;base64,<?php echo base64_encode($data['partner']->ProfilePicture) ?>" alt="" class="im">
+                    </div>
 
-                        <!-- <span class="material-symbols-outlined beat-icon">edit</span> -->
+
+                
+
+                        <span id="uploadProfilePicture" class="material-symbols-outlined beat-icon" style="cursor: pointer;">upload</span>
                     </div>
         
                     <!-- 2nd -->
@@ -188,48 +191,49 @@
 
 </body>
 </html>
+<script>
+var uploadProfilePicture = document.getElementById('uploadProfilePicture');
 
-   <script>
-    // Get the modal
-    var modal = document.getElementById('editBioModal');
+// Add click event listener
+uploadProfilePicture.addEventListener('click', function() {
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
 
-    // Get the button that opens the modal
-    var btn = document.getElementById('edit-button'); // Corrected ID
+    // Create a form element
+    var form = document.createElement('form');
+    form.style.display = 'none'; // Hide the form
+    form.enctype = 'multipart/form-data'; // Set form enctype for file upload
+    form.appendChild(fileInput); // Append file input to form
+    document.body.appendChild(form); // Append form to document body
 
-    // Get the <span> elements that close the modal
-    var closeButtons = document.querySelectorAll(".close-button"); // Use querySelectorAll to get all close buttons
+    fileInput.click();
 
-    // When the user clicks the button, open the modal
-    btn.addEventListener('click', function() {
-        modal.style.display = "block";
+    fileInput.addEventListener('change', function() {
+        var file = fileInput.files[0];
+        var formData = new FormData();
+        formData.append('profilePicture', file);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '<?php echo URLROOT ?>/partners/uploadProfilePicture', true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Request was successful
+                console.log('Profile picture uploaded successfully');
+            } else {
+                // Request failed
+                console.error('Failed to upload profile picture');
+            }
+        };
+        xhr.send(formData);
+
+        // Remove the form after upload
+        document.body.removeChild(form);
     });
+});
 
-    function handleClick() {
-        modal.style.display = "block";
-    }
-
-    // Attach click event to each close button
-    closeButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            modal.style.display = "none";
-        });
-    });
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    function openpopup() {
-        var popup = document.querySelector(".pop-up"); // Use querySelector if only one popup
-        var container = document.querySelector(".about-container"); // Assuming there's only one about-container
-        popup.style.display = "block";
-        container.style.display = "none";
-        console.log("Popup opened");
-    }
 </script>
+
 
 
 

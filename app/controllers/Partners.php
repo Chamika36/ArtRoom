@@ -257,4 +257,43 @@ class Partners extends Controller {
             $this->view('pages/partner/editbio', $data);
         }
     }
+
+    public function uploadProfilePicture() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Check if the request contains a file
+            if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === UPLOAD_ERR_OK) {
+                // Get the uploaded file
+                $file = $_FILES['profilePicture'];
+    
+                // Check if the file is an image
+                $mime = mime_content_type($file['tmp_name']);
+                if (strpos($mime, 'image/') !== false) {
+                    // Read the file content
+                    $imageData = file_get_contents($file['tmp_name']);
+    
+                    // Update the user's profile picture in the database
+                    $userId = $_SESSION['user_id']; // Assuming you have the user ID in the session
+                    $success = $this->partnerModel->updateProfilePicture($userId, $imageData);
+    
+                    if ($success) {
+                        // Redirect or return a success message
+                        return "Profile picture uploaded successfully";
+                        flash('profile_picture_uploaded', 'Profile picture uploaded successfully');
+                        redirect('partners/profile/' . $userId);
+                    } else {
+                        flash('upload_error', 'Error uploading profile picture');
+                        redirect('partners/profile/' . $userId);
+                    }
+                } else {
+                    flash('invalid_file_type', 'Invalid file type. Please upload an image');
+                    redirect('partners/profile/' . $userId);
+                }
+            } else {
+                flash('no_file_uploaded', 'No file uploaded');
+                redirect('partners/profile/' . $userId);
+            }
+        }
+    }
+    
+    
 }
