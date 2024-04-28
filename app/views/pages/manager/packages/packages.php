@@ -35,7 +35,7 @@
                     
                     <button class="btn" onclick="window.location.href='<?php echo URLROOT ?>/packages/edit/<?php echo $package->PackageID; ?>'">Edit</button>
 
-                    <button class="btn1" onclick="confirmDelete('<?php echo $package->Name; ?>', '<?php echo $package->PackageID; ?>')">Delete</button>
+                    <button class="btn1" onclick="confirmDelete('<?php echo $package->Name; ?>', '<?php echo $package->PackageID; ?>' , '<?php echo $package->Selected; ?>')">Delete</button>
 
                 </div>
             </div>
@@ -43,30 +43,38 @@
         </div>
 
         <script>
-            function confirmDelete(packageName, packageID) {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: `You are about to delete the ${packageName} package.`,
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Redirect to delete URL
-                        window.location.href = `<?php echo URLROOT ?>/packages/delete/${packageID}`;
-                        
-                    } else {
-                        Swal.fire({
-                            title: "Cancelled!",
-                            text: "Your package is not deleted.",
-                            icon: "error"
-                        });
-                    }
-                });
+            function confirmDelete(packageName, packageID, selected) {
+                if (selected == 1) {
+                    Swal.fire({
+                        title: "Cannot Delete",
+                        text: `The ${packageName} package is currently selected and cannot be deleted.`,
+                        icon: "error"
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: `You are about to delete the ${packageName} package.`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Redirect to delete URL
+                            window.location.href = `<?php echo URLROOT ?>/packages/delete/${packageID}`;
+                        } else {
+                            Swal.fire({
+                                title: "Cancelled!",
+                                text: "Your package is not deleted.",
+                                icon: "error"
+                            });
+                        }
+                    });
+                }
             }
         </script>
+
         
         </body>
 </html>

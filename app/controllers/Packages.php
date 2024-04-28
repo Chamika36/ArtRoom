@@ -6,6 +6,9 @@ class Packages extends Controller {
 
     public function index() {
         $packages = $this->packageModel->getPackages();
+        foreach($packages as $package) {
+            $package->Selected = $this->packageModel->getPackageByEvent($package->PackageID);
+        }
         $data = [
             'packages' => $packages
         ];
