@@ -135,14 +135,16 @@ class Partners extends Controller {
 
     public function profile($id){
         $partner = $this->userModel->getUserById($id);
+        $samples = $this->sampleModel->getSamplesByPhotographer($id);
         $data = [
-            'partner' => $partner
+            'partner' => $partner,
+            'samples' => $samples
         ];
         $this->view('pages/partner/profile', $data);
         
     }
-    public function editPartner($id) {
 
+    public function editPartner($id) {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -150,61 +152,30 @@ class Partners extends Controller {
             // Init data
             $data = [
                 'id' => $id,
-                'FirstName' => trim($_POST['FirstName']), 
-                'LastName' => trim($_POST['LastName']),
-                'ContactNumber' => trim($_POST['ContactNumber']),
-                'Address' => $_POST['Address'],
-                'Email' => trim($_POST['Email']),
-                'Bio' => $_POST['Bio'],
-
-                
+                'FirstName' => $_POST['FirstName'],
+                'LastName' => $_POST['LastName'],
+                'Bio' => $_POST['Bio']
             ];
 
-            // Validate Name
-        //     if(empty($data['name'])) {
-        //         $data['name_err'] = 'Please enter name';
-        //     }
-
-        //     // Validate Price
-        //     if(empty($data['price'])) {
-        //         $data['price_err'] = 'Please enter price';
-        //     }
-
-        //     // Validate Description
-        //     if(empty($data['description'])) {
-        //         $data['description_err'] = 'Please enter description';
-        //     }
-
-        //     // Make sure no errors
-        //     if(empty($data['name_err']) && empty($data['price_err']) && empty($data['description_err'])) {
-        //         // Validated
-        //         if($this->packageModel->editPackage($data)) {
-        //             flash('package_edited', 'Package Edited');
-        //             redirect('packages');
-        //         } else {
-        //             die('Something went wrong');
-        //         }
-        //     } else {
-        //         // Load view with errors
-        //         $this->view('pages/manager/packages/editpackage', $data);
-        //     }
-
+            if($this->partnerModel->editPartner($data)) {
+                flash('partner_edited', 'Partner Edited');
+                redirect('partners/profile/'.$id);
+            } else {
+                die('Something went wrong');
+            }
         } else {
-            $package = $this->userModel->getUserById($id);
+            $partner = $this->userModel->getUserById($id);
 
             $data = [
                 'id' => $id,
-                'name' => $package->Name,
-                'price' => $package->Price,
-                'description' => $package->Description,
-                'servicesIncluded' => $package->ServicesIncluded,
-                'name_err' => '',
-                'price_err' => '',
-                'description_err' => ''
+                'FirstName' => $partner->FirstName,
+                'LastName' => $partner->LastName,
+                'Bio' => $partner->Bio,
             ];
-        $this->view('pages/partner/editprofile', $data);
+            $this->view('pages/partner/editprofile', $data);
         }
     }
+
 
     // file upload to google drive
     public function uploadImagesbyPhotographer($eventID) {
@@ -258,5 +229,32 @@ class Partners extends Controller {
         $link = 'https://drive.google.com/drive/folders/1SK44Gnhk4HHCzr4b7FnmMlybWBTOJ8d6?usp=sharing';
         header('Location: ' . $link);
     }
+    
+    public function editbio($id) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+            // Init data
+            $data = [
+                'id' => $id,
+                'Bio' => $_POST['Bio'],
+            ];
 
+            if($this->partnerModel->editBio($data)) {
+                flash('bio_edited', 'Bio Edited');
+                redirect('partners/profile/'.$id);
+            } else {
+                die('Something went wrong');
+            }
+        } else {
+            $partner = $this->userModel->getUserById($id);
+
+            $data = [
+                'id' => $id,
+                'Bio' => $partner->Bio,
+            ];
+            $this->view('pages/partner/editbio', $data);
+        }
+    }
 }
