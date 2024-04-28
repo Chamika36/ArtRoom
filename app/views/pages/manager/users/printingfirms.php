@@ -46,9 +46,7 @@
                         <td><?php echo $printingfirm->LastName; ?></td>
                         <td><?php echo $printingfirm->ContactNumber; ?></td>
                         <td><?php echo $printingfirm->Email; ?></td>
-                        <!-- <td>
-                        <a href="<?php //echo URLROOT; ?>/users/getorders/<?php //echo $printingfirm->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a>
-                        </td> -->
+                        
                         <td>
                         <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $printingfirm->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a>
                         </td>

@@ -47,9 +47,7 @@
                         <td><?php echo $photographer->ContactNumber; ?></td>
                         <td><?php echo $photographer->Email; ?></td>
                         <td><?php echo $photographer->Specialization; ?></td> 
-                        <!-- <td>
-                        <a href="<?php// echo URLROOT; ?>/users/getorders/<?php echo// $photographer->UserID; ?>"><p class="status delivered">Orders</p></a>
-                        </td> -->
+                    
                         <td>
                         <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $photographer->UserID; ?>"><p class="status shipped">Edit</p></a>
                         </td>

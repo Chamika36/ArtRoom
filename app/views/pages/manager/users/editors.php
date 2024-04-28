@@ -47,9 +47,7 @@
                         <td><?php echo $editor->ContactNumber; ?></td>
                         <td><?php echo $editor->Email; ?></td>
                         <td><?php echo $editor->Specialization; ?></td>
-                        <!-- <td>
-                        <a href="<?php // URLROOT; ?>/users/getorders/<?php echo// $editor->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a>
-                        </td> -->
+                        
                         <td>
                         <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $editor->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a>
                         </td>
