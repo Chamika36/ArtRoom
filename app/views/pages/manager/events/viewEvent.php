@@ -257,7 +257,7 @@
             <?php endif; ?>
             
             <?php if($data['event']->Status != 'Canceled' && $data['event']->Status != 'Completed') : ?>
-                <div class="form-group">
+                <div class="form-group-2">
                     <a href="#" class="button" style="background-color: #dc3545; color: white; " onclick="confirmCancelEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled')">Cancel Event</a>
                     <a href="#" class="button" onclick="confirmCompleteEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed')">Complete Event</a>
                 </div>

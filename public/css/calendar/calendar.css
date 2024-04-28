@@ -14,24 +14,32 @@
   left: 0px;
   right: 0px;
   top: 0;
-  width: 100%;
+  width: 98%;
   height: 100%;
   border-radius: 10px;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
+  background-color: rgba(0, 0, 0, 0.7); 
   animation: fadeIn 0.3s ease; 
 }
 
 .modal-content {
   position: relative;
-  margin: auto;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;  
+  margin-top: 5vh;  
   background-color: #fff;
   padding: 20px;
   max-width: 90%;
-  max-height: 100%; 
+  max-height: 90vh; 
   overflow-y: auto; 
   border-radius: 5px;
   animation: slideIn 0.5s ease; 
+}
+
+.vertical-center {
+  margin-top: 5vh;  
 }
 
 .checkbox {
