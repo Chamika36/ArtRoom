@@ -5,8 +5,9 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>Photographer Details</title>
+     <title>Editor Details</title>
      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/photographertable.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
  </head>
  
  <body>
@@ -19,7 +20,7 @@
     <div class="home">
      <main class="table" id="customers_table">
          <section class="table__header">
-             <h1>Photographer Details</h1>
+             <h1>Editor Details</h1>
 
          </section>
          <section class="table__body">
@@ -47,13 +48,23 @@
                         <td><?php echo $editor->ContactNumber; ?></td>
                         <td><?php echo $editor->Email; ?></td>
                         <td><?php echo $editor->Specialization; ?></td>
-                        
+                         
+
+
                         <td>
-                        <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $editor->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a>
+                            <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $editor->UserID; ?>">
+                                <i class="fas fa-pencil-alt edit-icon"></i> <!-- Edit icon -->
+                            </a>
                         </td>
                         <td>
-                        <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $editor->UserID; ?>"><p class="status cancelled"><b>Delete</b></p></a>
-                        </td> 
+                            <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $editor->UserID; ?>" onclick="return confirm('Are you sure you want to delete <?php echo $editor->FirstName ?>');">
+                                <i class="fas fa-trash-alt delete-icon"></i> <!-- Delete icon -->
+                            </a>
+                        </td>
+
+
+
+
                      </tr>
                  </tbody>
                  <?php endforeach; ?>
