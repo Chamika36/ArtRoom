@@ -173,7 +173,7 @@ body {    margin: 0;
     }
     #content main .table-data .order table th {
         padding-bottom: 12px;
-        font-size: 13px;
+        font-size: 15px;
         text-align: left;
         border-bottom: 1px solid var(--grey);
     }
@@ -243,7 +243,7 @@ body {    margin: 0;
         content: "\2022"; /* Unicode for a bullet point */
         color: var(--light-blue); /* Same color as the text */
         margin-right: 0.5em; /* Adjust as needed for spacing */
-        font-size: 1.2em; /* Increase the size of the bullet point */
+        font-size: 2em; /* Increase the size of the bullet point */
     }
 
     #content main .table-data .order table tr td .status.FullPaid {
