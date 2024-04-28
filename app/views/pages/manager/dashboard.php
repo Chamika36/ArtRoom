@@ -121,15 +121,15 @@
         <tbody>
             <tr class="partner-row">
                 <td><a href="<?php echo URLROOT ?>/users/getPhotographers">Photographers</a></td>
-                <td>10</td>
+                <td><?php echo ($data['photographerCount']);?></td>
             </tr>
             <tr class="partner-row">
                 <td><a href="<?php echo URLROOT ?>/users/getEditors">Editors</a></td>
-                <td>5</td>
+                <td><?php echo $data['editorCount'];?></td>
             </tr>
             <tr class="partner-row">
                 <td><a href="<?php echo URLROOT ?>/users/getPrintingFirms">Printing Firms</a></td>
-                <td>2</td>
+                <td><?php echo $data['printingFirmCount'];?></td>
             </tr>
         </tbody>
     	</table>

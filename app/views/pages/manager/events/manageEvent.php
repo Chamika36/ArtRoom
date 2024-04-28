@@ -22,7 +22,7 @@
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
                 <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
                 <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
-                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?><button id="viewLocationButton">View Location on Map</button></li>
+                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?> <button id="viewLocationButton" class="map-button"><i class="fas fa-map-marker-alt"></i> View on Map</button></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
                 <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>

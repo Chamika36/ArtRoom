@@ -185,4 +185,12 @@
             return $results;
         }
 
+        // get user count
+        public function getUserCountByUserType($userType) {
+            $this->db->query('SELECT COUNT(*) as count FROM user WHERE UserTypeID = :userType');
+            $this->db->bind(':userType', $userType);
+            $result = $this->db->single();
+            return $result->count;
+        }
+
     }

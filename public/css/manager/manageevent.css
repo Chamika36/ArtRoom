@@ -39,7 +39,6 @@ h2 {
 
 .event-details h3,
 .partners h3,
-.form-group label,
 .budget h3 {
   font-size: 18px;
   color: #333;
@@ -154,7 +153,7 @@ input[type="submit"]:hover,
   background-color: #dc3545;
 }
 
-.form-group {
+.form-group-2 {
   margin-left: 100px;
   margin-right: auto;
   margin-bottom: 20px;
@@ -185,4 +184,25 @@ td {
 #additionalChargesDisplay{
   font-size: 2px;
   margin: 5px 0;
+}
+
+.map-button {
+  background-color: #3f5840; 
+  border: none;
+  color: white; 
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.map-button:hover {
+  background-color: #45a049; 
+}
+
+.map-button i {
+  vertical-align: middle;
 }

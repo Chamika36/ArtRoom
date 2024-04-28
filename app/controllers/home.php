@@ -109,6 +109,9 @@ class Home extends Controller {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
         $rescheduleCount = $this->rescheduleModel->getRescheduleCount();
+        $photographerCount = $this->userModel->getUserCountByUserType(3);
+        $editorCount = $this->userModel->getUserCountByUserType(4);
+        $printingFirmCount = $this->userModel->getUserCountByUserType(5);
         $events = $this->eventModel->getLastFiveEvents();
         $notifications = $this->notificationModel->getNotificationByManager();
         $unreadNotificationCount = $this->notificationModel->getNotificationCountByManager();
@@ -123,6 +126,9 @@ class Home extends Controller {
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
             'rescheduleCount' => $rescheduleCount,
+            'photographerCount' => $photographerCount,
+            'editorCount' => $editorCount,
+            'printingFirmCount' => $printingFirmCount,
             'events' => $events,
             'notifications' => $notifications,
             'unreadNotificationCount' => $unreadNotificationCount
