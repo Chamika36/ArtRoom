@@ -277,9 +277,9 @@ class Partners extends Controller {
     
                     if ($success) {
                         // Redirect or return a success message
+                        redirect('partners/profile/' . $userId);
                         return "Profile picture uploaded successfully";
                         flash('profile_picture_uploaded', 'Profile picture uploaded successfully');
-                        redirect('partners/profile/' . $userId);
                     } else {
                         flash('upload_error', 'Error uploading profile picture');
                         redirect('partners/profile/' . $userId);

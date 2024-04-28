@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>\css\partner\profile.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/samples.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         button[type="button"] {
@@ -220,9 +221,27 @@ uploadProfilePicture.addEventListener('click', function() {
             if (xhr.status === 200) {
                 // Request was successful
                 console.log('Profile picture uploaded successfully');
+                // Display a success message using SweetAlert
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Profile picture uploaded successfully',
+                    showConfirmButton: false,
+                    timer: 3000 // Close the alert after 1.5 seconds
+                });
+                // reload the page
+                location.reload();
             } else {
                 // Request failed
                 console.error('Failed to upload profile picture');
+                // Display an error message using SweetAlert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to upload profile picture',
+                    showConfirmButton: false,
+                    timer: 1500 // Close the alert after 1.5 seconds
+                });
             }
         };
         xhr.send(formData);
