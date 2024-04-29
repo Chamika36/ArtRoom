@@ -19,6 +19,7 @@
 
     <section>
         <div class="sec-grid">
+
         <?php foreach ($data['photographers'] as $photographers) : ?>
             <a href="<?php echo URLROOT; ?>/users/viewPhotographer/<?php echo $photographers->UserID; ?>">
                 <div class="profile-card">
@@ -29,6 +30,7 @@
                 </div>
             </a>
         <?php endforeach; ?>
+
     </div>
     </section>
 
