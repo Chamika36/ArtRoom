@@ -21,14 +21,16 @@
         <div class="sec-grid">
 
         <?php foreach ($data['photographers'] as $photographers) : ?>
-            <a href="<?php echo URLROOT; ?>/users/viewPhotographer/<?php echo $photographers->UserID; ?>">
+            
                 <div class="profile-card">
                     <img id="profilePicture" src="data:image/jpeg;base64,<?php echo base64_encode($photographers->ProfilePicture) ?>" alt="" class="im">
                     <h1><?php echo $photographers->FirstName; ?></br> <?php echo $photographers->LastName; ?></h1>
                     <h4>About</h4>
                     <p><?php echo $photographers->Bio; ?></p>
+                    <a href="<?php echo URLROOT; ?>/users/viewPhotographer/<?php echo $photographers->UserID; ?>"><button><b>View Profile</b></button></a>
+                    
                 </div>
-            </a>
+            
         <?php endforeach; ?>
 
     </div>
