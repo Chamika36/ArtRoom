@@ -7,6 +7,7 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Printing Firms Details</title>
      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/photographertable.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
  </head>
  
  <body>
@@ -32,7 +33,7 @@
                     <th>Last Name</th>
                     <th>Contact Number</th>
                     <th>Email</th>
-                    <th>Orders</th>
+                    <!-- <th>Orders</th> -->
                     <th>Edit</th>
                     <th>Delete</th>
                      </tr>
@@ -46,15 +47,22 @@
                         <td><?php echo $printingfirm->LastName; ?></td>
                         <td><?php echo $printingfirm->ContactNumber; ?></td>
                         <td><?php echo $printingfirm->Email; ?></td>
+                        
+                       
                         <td>
-                        <a href="<?php echo URLROOT; ?>/users/getorders/<?php echo $printingfirm->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a>
+                            <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $printingfirm->UserID; ?>">
+                                <i class="fas fa-pencil-alt edit-icon"></i> <!-- Edit icon -->
+                            </a>
                         </td>
                         <td>
-                        <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $printingfirm->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a>
+                            <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $printingfirm->UserID; ?>" onclick="return confirm('Are you sure you want to delete <?php echo $printingfirm->FirstName ?>');">
+                                <i class="fas fa-trash-alt delete-icon"></i> <!-- Delete icon -->
+                            </a>
                         </td>
-                        <td>
-                        <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $printingfirm->UserID; ?>"><p class="status cancelled"><b>Delete</b></p></a>
-                        </td> 
+
+
+
+
                      </tr>
                  </tbody>
                  <?php endforeach; ?>

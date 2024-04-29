@@ -14,26 +14,77 @@
   left: 0px;
   right: 0px;
   top: 0;
-  width: 100%;
+  width: 98%;
   height: 100%;
   border-radius: 10px;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
+  background-color: rgba(0, 0, 0, 0.7); 
   animation: fadeIn 0.3s ease; 
 }
 
 .modal-content {
   position: relative;
-  margin: auto;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;  
+  margin-top: 5vh;  
   background-color: #fff;
-  top: 5%;
   padding: 20px;
   max-width: 90%;
-  max-height: 95%; 
+  max-height: 90vh; 
   overflow-y: auto; 
   border-radius: 5px;
   animation: slideIn 0.5s ease; 
 }
+
+.vertical-center {
+  margin-top: 5vh;  
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  margin: 0;
+  border: 0.25rem solid rgb(12, 14, 12);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%);
+  transform: scale(0);
+  background-color: rgb(18, 19, 18);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(2);
+  background-color: green;
+}
+
+.checkbox label {
+  font-size: 1.6rem;
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
+
 
 @keyframes fadeIn {
   from { opacity: 0; }

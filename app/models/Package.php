@@ -65,4 +65,18 @@
                 return false;
             }
         }
+
+        public function getPackageByEvent($id) {
+            $this->db->query('SELECT * FROM event WHERE PackageID = :id');
+            $this->db->bind(':id', $id);
+
+            $results = $this->db->resultSet();
+            if($this->db->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
     }
+
+}

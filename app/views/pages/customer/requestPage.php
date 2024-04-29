@@ -20,10 +20,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
 
         body {
-            background:#F9F9F9;
+            background:#fffacd;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -37,7 +39,7 @@
             background: #fff;
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
             margin-top: 80px;
         }
 
@@ -56,7 +58,7 @@
         .form .input-box{
             width: 100%;
             margin-top: 20px;
-        
+            
             
         }
 
@@ -67,7 +69,7 @@
 
         .form .input-box input{
             
-            height: 50px;
+            height: 40px;
             width:100%;
             outline: none;
             border: 1px solid #ddd;
@@ -157,6 +159,14 @@
             background-color: #242526;
         }
 
+        .delete-extra{
+            background-color: lightgray;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
     </style>
 </head>
 
@@ -173,10 +183,10 @@
             
         <div class="container">   
                     <div>
-                        <h1>Request for a Booking</h1>
+                        <h1><b>Request for a Booking</b></h1>
                     </div>    
         
-                <form class="form" action="<?php echo URLROOT; ?>/events/request" method="POST">
+                <form class="form" action="<?php echo URLROOT; ?>/events/request/0" method="POST">
                     <!-- <label for="event-type">Event Type</label>
                     <select id="event-type" name="event-type">
                         <option value="option1">Option 1</option>
@@ -184,22 +194,22 @@
                     </select> -->
                     
                     <div class="input-box">
-                        <label for="date">Event Date</label>
+                        <label for="date"><b>Event Date</b></label>
                         <input type="date" id="date" name="date" min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>" required>
                         <span class="invalid-feedback"><?php echo $data['eventDate_err']; ?></span>
                     </div>
                     <div class="time-box">
                         <div class="input-box">
-                            <label for="startTime">Start Time</label>
+                            <label for="startTime"><b>Start Time</b></label>
                             <input type="time" id="startTime" name="startTime" required>
                         </div>
                         <div class="input-box">
-                            <label for="endTime">End Time</label>
+                            <label for="endTime"><b>End Time</b></label>
                             <input type="time" id="endTime" name="endTime" min="" required>
                         </div>
                     </div>
                     <div class="input-box">
-                        <label for="location">Location</label>
+                        <label for="location"><b>Location</b></label>
                         <input type="text" id="location" name="location" placeholder="Choose location" required>
                         <input type="hidden" id="latitude" name="latitude" value="" required>
                         <input type="hidden" id="longitude" name="longitude" value="" required>
@@ -210,9 +220,9 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="requestedPhotographer">Request Photographer</label>
+                        <label for="requestedPhotographer"><b>Request Photographer</b></label>
                         <select id="requestedPhotographer" name="requestedPhotographer">
-                        <option value="">Select a photographer</option>
+                        <option value=""><b>Select a photographer</b></option>
                             <?php foreach ($data['photographers'] as $photographer) : ?>
                                 <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
                             <?php endforeach; ?>
@@ -220,9 +230,15 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="package">Selected Package</label>
+                        <label for="package"><b>Selected Package</b></label>
                         <select id="package" name="package" required>
-                            <option value="">Select a package</option>
+                            <?php if (($data['package']) != '') {
+                                echo '<option value="' . $data['package']->PackageID . '" data-price="' . $data['package']->Price . '">' . $data['package']->Name . ' - Rs. ' . $data['package']->Price . '</option>';
+                            } else { 
+                                echo '<option value=""><b>Select a package</b></option>';
+                            }
+                            ?>
+
                             <?php foreach ($data['packages'] as $package) : ?>
                                 <option value="<?php echo $package->PackageID; ?>" data-price="<?php echo $package->Price; ?>"><?php echo $package->Name . " - Rs. " . $package->Price ; ?></option>
                             <?php endforeach; ?>
@@ -231,7 +247,7 @@
                     <!-- Additional Items -->
                     <div class="extras-section">
                         <div class="input-box">
-                            <label for="extras">Select Extras:</label>
+                            <label for="extras"><b>Select Extras:</b></label>
                             <select id="extras" name="extras">
                                 <option value="1500.00">Additional Album Page - Rs. 1,500.00</option>
                                 <option value="70.00">Thanking Card - Rs. 70.00</option>
@@ -243,7 +259,7 @@
                             </select>
                         </div>
                         <div class="input-box">
-                            <label for="quantity">Quantity:</label>
+                            <label for="quantity"><b>Quantity:</b></label>
                             <input type="number" id="quantity" name="quantity" min="1" step="1">
                         </div>  
                         <div class="input-box"> 
@@ -258,17 +274,17 @@
                     <input type="hidden" id="selectedExtras" name="selectedExtras" value="[]">
 
                     <div class="input-box">
-                        <label for="additionalRequest">Additional Request</label>
+                        <label for="additionalRequest"><b>Additional Request</b></label>
                         <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
                     </div>
                     <div class="input-box">
-                        <label for="totalBudget">Total Budget:</label>
+                        <label for="totalBudget"><b>Total Budget:</b></label>
                         <input type="text" id="totalBudget" name="totalBudget" readonly>
 
                         <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
                     </div>
                     <div >
-                        <button class="submit-button" type="submit" value="Send Request">Send Request</button>
+                        <button class="submit-button" type="submit" value="Send Request"><b>Send Request</b></button>
                     </div>
                 </form>
             
@@ -290,14 +306,14 @@
             var selectedDate = $(this).val();
 
             $.ajax({
-                url: '<?php echo URLROOT; ?>/events/getAvailablePhotographers', // Update with your server endpoint
+                url: '<?php echo URLROOT; ?>/events/getAvailablePhotographers', 
                 method: 'POST',
                 data: { selectedDate: selectedDate },
                 success: function(response) {
-                    $('#requestedPhotographer').html(response); // Replace dropdown options with updated list
+                    $('#requestedPhotographer').html(response); 
                 },
                 error: function(xhr, status, error) {
-                    console.error(error); // Handle errors if needed
+                    console.error(error); 
                 }
             });
         });
@@ -339,10 +355,26 @@
             let selectedExtrasDiv = $('#selectedExtrasDisplay');
             selectedExtrasDiv.empty();
 
-            selectedExtras.forEach(extra => {
-                selectedExtrasDiv.append(`<p>${extra.name} - Quantity: ${extra.quantity} - Total: ${extra.totalofEach}</p>`);
+            selectedExtras.forEach((extra, index) => {
+                selectedExtrasDiv.append(`
+                    <div>
+                        <p>${extra.name} - Quantity: ${extra.quantity} - Total: ${extra.totalofEach}
+                        <button class="delete-extra" data-index="${index}">
+                            <i class="fas fa-times"></i>
+                        </button></p>
+                    </div>
+                `);
+            });
+
+            $('.delete-extra').on('click', function() {
+                let index = $(this).data('index');
+                selectedExtras.splice(index, 1); 
+                displaySelectedExtras(); 
+                updateTotalBudget(); 
+                $('#selectedExtras').val(JSON.stringify(selectedExtras)); 
             });
         }
+
 
         function updateTotalBudget() {
             let totalBudget = calculateTotalBudget();
@@ -357,6 +389,44 @@
 
             return packagePrice + extrasTotal;
         }
+
+        function showAlert() {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Studio is at capacity on the selected date. Please choose another date.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+
+        function showSuccess() {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your booking request has been successfully submitted.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                // You can redirect to another page or do something else after the user clicks 'OK'
+                if (result.isConfirmed) {
+                    //window.location.href = 'your-redirect-url'; // Replace 'your-redirect-url' with the URL you want to redirect to
+                }
+            });
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector('.submit-button').addEventListener('click', function (event) {
+                if ('<?php echo empty($data['photographers']); ?>' === '1') {
+                    event.preventDefault(); // Prevent form submission
+                    showAlert();
+                } else {
+                    // Show success message after form submission
+                    document.querySelector('form').addEventListener('submit', function () {
+                        showSuccess();
+                    });
+                }
+            });
+        });
     </script>
 
     <script>

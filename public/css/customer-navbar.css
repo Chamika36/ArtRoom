@@ -1,6 +1,7 @@
 /* Navbar Styles */
 * {
   font-family: "Poppins", sans-serif;
+  
 }
 
 a {
@@ -8,7 +9,8 @@ a {
   text-decoration: none;
 }
 
-header img {
+
+img {
   height: 50px;
   width: 50px;
   margin-right: 10px;
@@ -30,6 +32,7 @@ header {
   color: #e4e3e3;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+  z-index: 1000;
 }
 
 header .branding {
@@ -50,13 +53,16 @@ header li .left{
 }
 
 header li {
-  margin: 5px;
+  margin: 2px;
   font-size: 17px;
   font-weight: 500;
   white-space: nowrap;
   opacity: 1;
 }
 
+/* ul {
+  margin-left: 420px;
+} */
 
 
 header li a {
@@ -76,42 +82,20 @@ header li a:hover {
   
 }
 
-/* ... Your existing styles ... */
+
 
 header li.profile-dropdown {
-  display: flex;
-  align-items: center;
-  position: relative;
-  
+  display: inline-block;
 }
-
-header li.profile-dropdown .profile-info {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background-color: #3b3d3e; /* Background color similar to the login button */
-  padding: 6px; /* Adjust padding as needed */
-  border-radius: 6px; /* Add border-radius for rounded corners */
-  margin-top: -20px;
-  
-}
-
-header li.profile-dropdown .user-greeting {
-  margin-right: 15px; /* Adjust as needed for spacing between greeting and image */
-  color: #ccc; /* Adjust color as needed */
-}
-
 
 header li.profile-dropdown img {
-  height: 35px; /* Adjust as per your profile picture size */
-  width: 35px;
+  height: 20px; /* Adjust as per your profile picture size */
+  width: 20px;
   border-radius: 50%;
-  margin-right: 15px; /* Adjust the margin between the profile picture and arrow */
-  
 }
 
 header li.profile-dropdown .arrow-icon {
-  font-size: 15px; /* Adjust the font size of the arrow icon */
+  font-size: 18px; /* Adjust the font size of the arrow icon */
 }
 
 header .dropdown-content {
@@ -122,8 +106,8 @@ header .dropdown-content {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 6px;
-  top: 30px; /* Adjust this value based on the height of your navbar and profile picture */
-  right: 0; /* Align dropdown to the right side of the profile picture */
+  top: 53px; 
+  right: 20px; /* Align dropdown to the right side of the profile picture */
   text-align: center;
 }
 
@@ -140,7 +124,7 @@ header .dropdown-content a {
 }
 
 header .dropdown-content a:hover {
-  background-color: #3a3b3c;
+  background-color: #f9b234;
 }
 
 /* ... Your existing styles ... */
@@ -150,6 +134,29 @@ header .dropdown-content.show {
 }
 
 
+.menu{
+  float: left;
+}
 
+.topnav {
+  overflow: hidden;
+  margin-left: 0px;
+  padding: 20px;
+}
 
+.topnav a {
+  /* float: left; */
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px 10px;
+  text-decoration: none;
+  font-size: 17px;
+  transition: background-color 0.3s;
+  border-radius: 1px;
+}
 
+.topnav a:hover {
+  background-color: #f9b234;
+  color: black;
+  
+}

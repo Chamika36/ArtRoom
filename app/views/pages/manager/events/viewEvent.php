@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Event</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/manager/manageevent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        
+        .delete-button {
+            background-color: transparent;
+            border: none;
+            color: #dc3545; 
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px; 
+        }
+
+        .delete-button:hover {
+            color: #c82333; 
+        }
+
     </style>
 </head>
 <body>
@@ -21,11 +35,34 @@
                 <li><strong>Date:</strong> <?php echo $data['event']->EventDate; ?></li>
                 <li><strong>Start Time:</strong> <?php echo $data['event']->StartTime; ?></li>
                 <li><strong>End Time:</strong> <?php echo $data['event']->EndTime; ?></li>
-                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?></li>
+                <li><strong>Location:</strong> <?php echo $data['event']->Location; ?> <button id="viewLocationButton" class="map-button"><i class="fas fa-map-marker-alt"></i> View on Map</button></li>
                 <li><strong>Status:</strong> <?php echo $data['event']->Status; ?></li>
                 <li><strong>Additional Requests:</strong> <?php echo $data['event']->AdditionalRequests; ?></li>
                 <li><strong>Requsted Photographer:</strong> <?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></li>
-                <li><strong>Assigned Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?> <Strong>Status : </Strong><?php echo $data['photographerAction']->Action; ?></li>
+                
+                
+                <li><strong>Photographer:</strong> <?php echo $data['photographer']->FirstName . ' ' . $data['photographer']->LastName; ?> <Strong>Status : </Strong>
+                    <?php
+                    $photographerAction = $data['photographerAction']->Action;
+                    switch ($photographerAction) {
+                        case 'Pending':
+                            echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                            break;
+                        case 'Accepted':
+                            echo '<i class="fas fa-check-circle" style="color: orange;"></i> Accepted';
+                            break;
+                        case 'Declined':
+                            echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
+                            break;
+                        case 'Completed':
+                            echo '<i class="fas fa-check-circle" style="color: green;"></i> Completed';
+                            break;
+                        default:
+                            echo 'Unknown Status';
+                            break;
+                    }
+                    ?>
+                </li>
                 <?php if ($data['photographerAction']->Action == 'Declined') : ?>
                     <div class="form-group">
                         <label for="photographer">Reallocate Photographer:</label>
@@ -39,7 +76,28 @@
                     </div>
                 <?php endif; ?>
 
-                <li><strong>Assigned Editor:</strong> <?php echo $data['editor']->FirstName . ' ' . $data['editor']->LastName; ?> <Strong>Status : </Strong><?php echo $data['editorAction']->Action; ?></li>
+                <li><strong>Editor:</strong> <?php echo $data['editor']->FirstName . ' ' . $data['editor']->LastName; ?> <Strong>Status : </Strong>
+                    <?php
+                    $editorAction = $data['editorAction']->Action;
+                    switch ($editorAction) {
+                        case 'Pending':
+                            echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                            break;
+                        case 'Accepted':
+                            echo '<i class="fas fa-check-circle" style="color: orange;"></i> Accepted';
+                            break;
+                        case 'Declined':
+                            echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
+                            break;
+                        case 'Completed':
+                            echo '<i class="fas fa-check-circle" style="color: green;"></i> Completed';
+                            break;
+                        default:
+                            echo 'Unknown Status';
+                            break;
+                    }
+                    ?>
+                </li>
                 <?php if ($data['editorAction']->Action == 'Declined') : ?>
                     <div class="form-group">
                         <label for="editor">Reallocate Editor:</label>
@@ -53,7 +111,28 @@
                     </div>
                 <?php endif; ?>
 
-                <li><strong>Assigned Printing Firm:</strong> <?php echo $data['printingFirm']->FirstName . ' ' . $data['printingFirm']->LastName; ?> <Strong>Status : </Strong><?php echo $data['printingFirmAction']->Action; ?></li>
+                <li><strong>Printing:</strong> <?php echo $data['printingFirm']->FirstName . ' ' . $data['printingFirm']->LastName; ?> <Strong>Status : </Strong>
+                    <?php
+                    $printingFirmAction = $data['printingFirmAction']->Action;
+                    switch ($printingFirmAction) {
+                        case 'Pending':
+                            echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                            break;
+                        case 'Accepted':
+                            echo '<i class="fas fa-check-circle" style="color: orange;"></i> Accepted';
+                            break;
+                        case 'Declined':
+                            echo '<i class="fas fa-times-circle" style="color: red;"></i> Declined';
+                            break;
+                        case 'Completed':
+                            echo '<i class="fas fa-check-circle" style="color: green;"></i> Completed';
+                            break;
+                        default:
+                            echo 'Unknown Status';
+                            break;
+                    }
+                    ?>
+                </li>
                 <?php if ($data['printingFirmAction']->Action == 'Declined') : ?>
                     <div class="form-group">
                         <label for="printingFirm">Reallocate Printing Firm:</label>
@@ -135,8 +214,27 @@
                         ?>
                     <!-- </td>
                 <tr> -->
-                    <th>Total Budget</th>
-                    <td><?php echo $data['event']->TotalBudget; ?></td>
+                <th>Total Budget</th>
+                    <td>
+                        <?php echo $data['event']->TotalBudget; ?> 
+                        <?php
+                        $status = $data['event']->Status;
+                        switch ($status) {
+                            case 'Pencil':
+                            case 'Accepted':
+                                echo '<i class="fas fa-exclamation-circle" style="color: red;"></i> Pending';
+                                break;
+                            case 'Advanced':
+                                echo '<i class="fas fa-check-circle" style="color: orange;"></i> Advanced';
+                                break;
+                            case 'FullPaid':
+                                echo '<i class="fas fa-check-circle" style="color: green;"></i> Fully Paid';
+                                break;
+                            default:
+                                break;
+                        }
+                        ?>
+                    </td>
                 </tr>
             </table>
 
@@ -147,13 +245,13 @@
                         <label for="charge-name">Reason:</label>
                         <input type="text" id="reason">
 
-                        <label for="charge-price">Price per each:</label>
+                        <label for="charge-price">Price:</label>
                         <input type="number" id="price" min="0">
 
                         <label for="charge-quantity">Quantity:</label>
                         <input type="number" id="quantity" min="0" value="1">
 
-                        <button type="button" class="button" onclick="addAdditionalCharge()">+</button>
+                        <button type="button" class="" onclick="addAdditionalCharge()">+</button>
                     </div>
 
                     <div id="additionalChargesDisplay">
@@ -162,19 +260,23 @@
 
                     <input type="hidden" id="additionalCharges" name="additionalCharges" value="[]">
 
-                    <label for="revisedBudget">Revised Budget:</label>
+                    <strong><label for="revisedBudget">Revised Budget:</label>
                     <input type="number" id="revisedBudget" name="revisedBudget" value="<?php echo $data['event']->TotalBudget; ?>" readonly>
+                    </strong>
 
-                    <button type="submit" class="button">Send Quota to Customer</button>
+                    <button type="submit" class="send-button">Send Quota</button>
                 </form>
             <?php endif; ?>
             
-            <!-- cancel event -->
-            <form action="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled" method="POST">
-                <div class="form-group">
-                    <input class="button" type="submit" value="Cancel Event">
+            <?php if($data['event']->Status != 'Canceled' && $data['event']->Status != 'Completed') : ?>
+                <div class="form-group-2">
+                    <a href="#" class="button" style="background-color: #dc3545; color: white; " onclick="confirmCancelEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled')">Cancel Event</a>
+                    <?php if($data['editorAction']->Action == 'Completed' && $data['photographerAction']->Action == 'Completed' && $data['printingFirmAction']->Action == 'Completed') : ?>
+                        <a href="#" class="button" onclick="confirmCompleteEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed')">Complete Event</a>
+                    <?php endif; ?>
                 </div>
-            </form>
+            <?php endif; ?>
+
 
         </div>
 
@@ -256,8 +358,13 @@
             let additionalChargesDiv = $('#additionalChargesDisplay');
             additionalChargesDiv.empty();
 
-            additionalCharges.forEach(additionalCharge => {
-                additionalChargesDiv.append(`<p>${additionalCharge.reason} - Price: ${additionalCharge.price} - Quantity: ${additionalCharge.quantity}  - Total: ${additionalCharge.total}</p>`);
+            additionalCharges.forEach((additionalCharge, index) => {
+                additionalChargesDiv.append(`
+                    <div>
+                        <p>${additionalCharge.reason} - Price: ${additionalCharge.price} - Quantity: ${additionalCharge.quantity}  - Total: ${additionalCharge.total}
+                        <button class="delete-button" onclick="deleteAdditionalCharge(${index})"><i class="fas fa-trash-alt"></i></button></p>
+                    </div>
+                `);
             });
         }
 
@@ -267,5 +374,53 @@
             let additionalChargesTotal = additionalCharges.reduce((total, charge) => total + charge.total, 0);
             revisedBudget.value = totalBudget + additionalChargesTotal;
         }
+
+        function deleteAdditionalCharge(index) {
+            additionalCharges.splice(index, 1);
+            displayadditionalCharges();
+            updateRevisedBudget();
+            document.getElementById('additionalCharges').value = JSON.stringify(additionalCharges);
+        }
+
+        function confirmCancelEvent(cancelUrl) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This event will be canceled!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = cancelUrl;
+                }
+            });
+        }
+
+        function confirmCompleteEvent(completeUrl) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This event will be marked as completed!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, complete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = completeUrl;
+                }
+            });
+        }
+
+        document.getElementById('viewLocationButton').addEventListener('click', function () {
+            var latitude = <?php echo $data['event']->Latitude; ?>;
+            var longitude = <?php echo $data['event']->Longitude; ?>;
+            
+            // Open OpenStreetMap in a new window with the specified coordinates
+            var mapUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=13/${latitude}/${longitude}`;
+            window.open(mapUrl, '_blank');
+        });
     </script>
 </body>

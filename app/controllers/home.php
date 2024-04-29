@@ -7,13 +7,25 @@ class Home extends Controller {
         $this->eventModel = $this->model('Event');
         $this->packageModel = $this->model('Package');
         $this->notificationModel = $this->model('Notification');
+        $this->feedbackModel = $this->model('Feedback');
+        $this->sampleModel = $this->model('Sample');
+        $this->rescheduleModel = $this->model('Reschedule');
     }
 
    public function index() {
         $packages = $this->packageModel->getPackages();
+        // $sample = $this->sampleModel->getSamples();
+        $sample = $this->sampleModel->getTopSamples();
+        $feedbacks = $this->feedbackModel->getTopFeedbacks();
+        foreach($feedbacks as $feedback) {
+            $user = $this->userModel->getUserById($feedback->CustomerID);
+            $feedback->Name = $user->FirstName . ' ' . $user->LastName;
+        }
         $data = [
             'title' => 'Home',
-            'packages' => $packages
+            'packages' => $packages,
+            'samples' => $sample,
+            'feedbacks' => $feedbacks
         ];
         if(isset($_SESSION['user_type_id'])) {
             switch($_SESSION['user_type_id']) {
@@ -74,12 +86,21 @@ class Home extends Controller {
         $packages = $this->packageModel->getPackages();
         $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
         $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
+        $feedbacks = $this->feedbackModel->getTopFeedbacks();
+        foreach($feedbacks as $feedback) {
+            $user = $this->userModel->getUserById($feedback->CustomerID);
+            $feedback->Name = $user->FirstName . ' ' . $user->LastName;
+        }
+        // $sample = $this->sampleModel->getSamples();
+         $sample = $this->sampleModel->getTopSamples();
 
         $data = [
             'title' => 'Home',
             'packages' => $packages,
             'notifications' => $notifications,
-            'unreadNotificationCount' => $unreadNotificationCount
+            'unreadNotificationCount' => $unreadNotificationCount,
+            'feedbacks' => $feedbacks,
+            'samples' => $sample
         ];
         $this->view('pages/customer/home', $data);
     }
@@ -87,6 +108,10 @@ class Home extends Controller {
     public function manager() {
         $eventCount = $this->eventModel->getEventCount();
         $requestCount = $this->eventModel->getRequestCount();
+        $rescheduleCount = $this->rescheduleModel->getRescheduleCount();
+        $photographerCount = $this->userModel->getUserCountByUserType(3);
+        $editorCount = $this->userModel->getUserCountByUserType(4);
+        $printingFirmCount = $this->userModel->getUserCountByUserType(5);
         $events = $this->eventModel->getLastFiveEvents();
         $notifications = $this->notificationModel->getNotificationByManager();
         $unreadNotificationCount = $this->notificationModel->getNotificationCountByManager();
@@ -100,6 +125,10 @@ class Home extends Controller {
             'title' => 'Home',
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
+            'rescheduleCount' => $rescheduleCount,
+            'photographerCount' => $photographerCount,
+            'editorCount' => $editorCount,
+            'printingFirmCount' => $printingFirmCount,
             'events' => $events,
             'notifications' => $notifications,
             'unreadNotificationCount' => $unreadNotificationCount
@@ -110,6 +139,7 @@ class Home extends Controller {
     public function partner(){
         $eventCount = $this->eventModel->getEventCountByPartner($_SESSION['user_id']);
         $requestCount = $this->eventModel->getRequestCountByPartner($_SESSION['user_id']);
+        $rescheduleCount = $this->rescheduleModel->getRescheduleCountByPartner($_SESSION['user_id']);
         $events = $this->eventModel->getLastFiveEventsByPartner($_SESSION['user_id']);
         $packages = $this->packageModel->getPackages();
         $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
@@ -119,6 +149,7 @@ class Home extends Controller {
             'title' => 'Home',
             'eventCount' => $eventCount,
             'requestCount' => $requestCount,
+            'rescheduleCount' => $rescheduleCount,
             'events' => $events,
             'packages' => $packages,
             'notifications' => $notifications,

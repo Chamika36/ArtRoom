@@ -118,4 +118,46 @@
 
             return $results;
         }
+
+        // edit bio
+        public function editBio($id, $bio) {
+            $this->db->query('UPDATE user SET Bio = :bio WHERE UserID = :id');
+            $this->db->bind(':id', $id);
+            $this->db->bind(':bio', $bio);
+
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function editPartner($data) {
+            $this->db->query('UPDATE user SET FirstName = :FirstName, LastName = :LastName, Bio = :Bio WHERE UserID = :id');
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':FirstName', $data['FirstName']);
+            $this->db->bind(':LastName', $data['LastName']);
+            $this->db->bind(':Bio', $data['Bio']);
+    
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // update profile picture
+        public function updateProfilePicture($userId, $imageData) {
+            $this->db->query('UPDATE user SET ProfilePicture = :imageData WHERE UserID = :userId');
+            $this->db->bind(':userId', $userId);
+            $this->db->bind(':imageData', $imageData);
+        
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+
     }

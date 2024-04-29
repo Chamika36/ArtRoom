@@ -1,11 +1,12 @@
 *{
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    /* margin: 0; */
     box-sizing: border-box;
     font-family: sans-serif;
 }
 
 body{
+    background-color:#FBF9F3;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -13,14 +14,44 @@ body{
     background-size: cover;
 }
 
+.branding{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    
+
+}
+.artroom-logo{
+  width: 75px;
+  height: 75px;
+  
+}
+.brand-name{
+    color: #2E2626;
+    font-family: Otomanopee One;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 118.9%; /* 76.096px */
+    
+    mix-blend-mode: darken;
+    font-weight: bold;
+    
+}
+
 .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     max-width: 650px;
-    background: rgba(0, 0, 0, 0.5);
+    background-color:#fff;
     padding: 28px;
-    margin: 0 28px;
+    /* margin: 0 28px; */
     border-radius: 10px;
-    box-shadow: inset -2px 2px 2px white;
+    box-shadow: 2px 6px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .form-title{
@@ -28,70 +59,115 @@ body{
     font-weight: 600;
     text-align: center;
     padding-bottom: 6px;
-    color: white;
-    text-shadow: 2px 2px 2px black;
+    color: #2E2626;
+    /* text-shadow: 2px 2px 2px black; */
     border-bottom: solid 1px white;
 }
 
 .main-user-info{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px 0;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    color: #2E2626;
+    
+    /* padding: 20px 0; */
 }
 
-.user-input-box:nth-child(2n){
+/* .user-input-box:nth-child(2n){
     justify-content: end;
-}
+} */
 
 .user-input-box{
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    justify-content: center;
+    width: 100%;
     padding-bottom: 15px;
+    /* background: #8333eb; */
 }
 
 .user-input-box label{
-    width: 95%;
-    color: white;
-    font-size: 20px;
+    width: 100%;
+    color: #2E2626;
+    font-size: 15px;
     font-weight: 400;
-    margin: 5px 0;
+    margin: 3px 0;
 }
 
 .user-input-box input{
-    height: 40px;
-    width: 95%;
-    border-radius: 15px;
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
     outline: none;
-    border: 1px solid grey;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    background-color: #F2F2F2;
+    color: #2E2626;
     padding: 0 10px;
 }
 
+.user-input-box textarea {
+    width: 100%; /* Set width to 100% to occupy the entire space of its container */
+    height: auto; /* Let the browser determine the height based on the specified rows */
+    border-radius: 15px;
+    outline: none;
+    border: 1px solid grey;
+    padding: 10px; /* Adjust padding as needed */
+}
 
-.form-submit-btn input{
+.vertical-box{
+    display: flex;
+    flex-direction: row;
+    /* background: #a61c1c; */
+    gap: 10px;
+}
+
+.cancel-btn {
+    margin-right: 50px; /* Adjust the margin as needed to move the button more to the left */
+    background: #f9b234;
+}
+
+.update-btn {
+    width: calc(100% - 50px); 
+    background: #f9b234;
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.save-btn {
+    width: 150px; /* Increase width as needed */
+    background: #f9b234;
+    padding: 10px; /* Adjust padding as needed */
+
+}.save-btn {
+    width: 200px; /* Increase width as needed */
+    background: #f9b234;
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.form-submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: #a87723; */
+}
+
+.form-submit-btn input {
+    background-color: #242526;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    text: bold;
+    /* padding: 0px; */
+    border: none;
+    border-radius: 5px;
+    color: #d5d8db;
     cursor: pointer;
 }
 
-.form-submit-btn{
-    margin-top: 40px;
-}
-
-.form-submit-btn input{
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    font-size: 20px;
-    padding: 10px;
-    border:none;
-    border-radius: 10px;
-    color:  #242526;
-    background: #a87723;
-}
-
-.form-submit-btn input:hover{
+.form-submit-btn input:hover {
     background: #f9b234;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 @media(max-width: 600px){

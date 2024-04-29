@@ -26,6 +26,21 @@
             }
         }
 
+        // reset password
+        public function resetPassword($data) {
+            $this->db->query('UPDATE user SET Password = :password WHERE Email = :email');
+            // Bind values
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+
+            // Execute
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         // Find user by email
         public function findUserByEmail($email) {
             $this->db->query('SELECT * FROM user WHERE email = :email');
@@ -71,6 +86,7 @@
             }
         }
 
+
         // Edit user
         public function editUser($data) {
             $this->db->query('UPDATE user SET FirstName = :firstName, LastName = :lastName, ContactNumber = :contactNumber, Email = :email, UserTypeID = :userType, Specialization = :specialization WHERE UserID = :id');
@@ -91,6 +107,26 @@
                 return false;
             }
         }
+
+        // edit profile
+        public function editProfile($data) {
+            $this->db->query('UPDATE user SET FirstName = :firstName, LastName = :lastName, ContactNumber = :contactNumber, Email = :email, Password = :password WHERE UserID = :id');
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':firstName', $data['firstName']);
+            $this->db->bind(':lastName', $data['lastName']);
+            $this->db->bind(':contactNumber', $data['contactNumber']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+
+            // Execute
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
         // Delete user
         public function deleteUser($id) {
@@ -145,6 +181,21 @@
         // Get only editors
         public function getEditors() {
             $this->db->query('SELECT * FROM user WHERE UserTypeID = 4');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        // get user count
+        public function getUserCountByUserType($userType) {
+            $this->db->query('SELECT COUNT(*) as count FROM user WHERE UserTypeID = :userType');
+            $this->db->bind(':userType', $userType);
+            $result = $this->db->single();
+            return $result->count;
+        }
+
+        //view photographers
+        public function viewPhotographers() {
+            $this->db->query('SELECT * FROM user WHERE UserTypeID = 3');
             $results = $this->db->resultSet();
             return $results;
         }

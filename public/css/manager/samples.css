@@ -16,6 +16,10 @@ body {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     width: 100%;
     display: flex;
@@ -46,6 +50,7 @@ body {
 
 .img-container img {
     width: 100%;
+    height: fit-content;
 }
 
 .body-container {
@@ -78,6 +83,7 @@ body {
 .title,
 .price {
     color: #18537a;
+    text-align: center;
     font-size: 1.5em;
     font-weight: bold;
     letter-spacing: 1px;
@@ -102,12 +108,16 @@ body {
     margin-top: 12px;
     padding: 28px;
     padding-bottom: 0;
+    font-weight: bold;
+    
 }
 
 .additional-info .info {
-    font-size: 0.9em;
+    font-size: 1.1em;
     margin-bottom: 20px;
     text-align: center;
+    font-weight: bold;
+    /*color: #000;*/
 }
 
 .info i {
@@ -121,29 +131,79 @@ body {
     font-weight: bolder;
 }
 
-.action {
-    color: #fff;
-    border: 3px solid #fff;
-    background-color: transparent;
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    outline: none;
-    cursor: pointer;
-    padding: 12px;
-    text-transform: uppercase;
-    font-size: 1.3em;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: background-color 0.4s, top 0.4s;
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    width: 100%;
 }
 
-.item-container:hover .action {
-    top: 50px;
+.action {
+    background-color: transparent;
+    width: calc(50% - 10px);
+    outline: none;
+    cursor: pointer;
+    padding: 8px;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.4s;
 }
+
+.view-button {
+    color: #29a239;
+    border: 3px solid #29a239;
+}
+
+.edit-button {
+    color: #312ab0;
+    border: 3px solid #312ab0;
+}
+
+.delete-button {
+    color: #bc2525;
+    border: 3px solid #bc2525;
+}
+
 
 .action:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+
+
+.view-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+}
+
+.edit-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+}
+
+.delete-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+}
+
+
+.add-package-btn {
+    background-color: #3b3d3e;
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 18px; /* Increased font size */
+    padding: 15px 30px; /* Increased padding */
+    margin-top: 40px; /* Increased margin-top to add more space */
+    margin-right: 20px;
+    float: right;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.add-package-btn:hover {
+    background-color: #8b8882;
+    color: #ffffff;
+}
+

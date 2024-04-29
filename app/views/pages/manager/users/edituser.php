@@ -8,6 +8,7 @@
 
     <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
 
+   
     <div class="container">
     <h1 class="form-title">Edit User</h1>
                 <form name="registrationForm" action="<?php echo URLROOT; ?>/users/edit/<?php echo $data['id']; ?>" method="POST">
@@ -53,12 +54,17 @@
                 </div>
 
                 <div class="form-submit-btn">
-          <input type="submit" value="Update User">
-        </div>
+                    <input type="submit" value="Cancel" onclick="window.history.back();" class="cancel-btn">
+                    <input type="submit" value="Update User" class="update-btn">
+                </div>
+
+
             </form>
             </div>
         </div>
     </div>
+
+
 </body>
 </html>
 

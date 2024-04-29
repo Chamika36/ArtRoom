@@ -7,16 +7,22 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/calendar.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.css" />
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/calendar/evo-calendar.midnight-blue.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-    <input type="checkbox" id="showEvents" <?php if($data['type'] == 'ongoing' || $data['type'] == 'all') echo 'checked';?>>
-    <label for="showEvents">Show Events</label>
+    <div class="checkbox">
+        <input type="checkbox" id="showEvents" <?php if($data['type'] == 'ongoing' || $data['type'] == 'all') echo 'checked';?>>
+        <label for="showEvents">
+            Show Events
+        </label>
 
-    <input type="checkbox" id="showRequests" <?php if($data['type'] == 'request' || $data['type'] == 'all') echo 'checked';?>>
-    <label for="showRequests">Show Requests</label>
-    
+        <input type="checkbox" id="showRequests" <?php if($data['type'] == 'request' || $data['type'] == 'all') echo 'checked';?>>
+        <label for="showRequests">
+            Show Requests
+        </label>
+    </div>
+
     <div class="hero">
         <!-- Calendar -->
         <div id="calendar"></div>
@@ -55,7 +61,7 @@
                 format: 'yyyy-mm-dd'
             });
 
-            $('#calendar').evoCalendar('selectMonth', 1); 
+            $('#calendar').evoCalendar('selectMonth', 4); 
 
             // Add events to the calendar
             if (showEvents) {
@@ -126,7 +132,7 @@
                 });
                 console.log('break 3');
 
-                $('#calendar').evoCalendar('selectMonth', 1); 
+                $('#calendar').evoCalendar('selectMonth', 4); 
 
                 if (showEvents) {
                     ongoingData.forEach(function(event) {

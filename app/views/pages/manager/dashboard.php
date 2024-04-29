@@ -26,10 +26,15 @@
 			<!-- Dropdown for notifications -->
 			<ul class="dropdown-menu">
 				<?php foreach($data['notifications'] as $notification) : ?>
-					<?php if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment') : ?>
-					<li>
-						<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
-					</li>
+					<?php //if($notification->Type ===  'action' || $notification->Type === 'request' || $notification->Type === 'payment' || $notification->Type === 'reschedule') : ?>
+					<?php if($notification->Type === 'file') : ?>
+						<li>
+							<a href="<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+						</li>
+					<?php else : ?>
+						<li>
+							<a href="<?php echo URLROOT ?>/<?php echo $notification->Link; ?>" data-notification-id="<?php echo $notification->NotificationID; ?>"><?php echo $notification->Content?></a>
+						</li>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
@@ -63,13 +68,15 @@
 					</li>
 				</a>
 
-				<li>
-					<i class='bx bx-message-rounded-error'></i>
-					<span class="text">
-						<h3>2</h3>
-						<p>Reschedule Requests</p>
-					</span>
-				</li>
+				<a href="<?php echo URLROOT ?>/reschedules">
+					<li>
+						<i class='bx bx-message-rounded-error'></i>
+						<span class="text">
+							<h3><?php echo is_array($data['rescheduleCount']) ? count($data['rescheduleCount']) : $data['rescheduleCount']; ?></h3>
+							<p>Reschedule Requests</p>
+						</span>
+					</li>
+				</a>
 			</ul>
 
 
@@ -83,9 +90,9 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Event </th>
+								<th><center>Event </th>
 								<th>Date Order</th>
-								<th>Status</th>
+								<th><center>Status</th>
 							</tr>
 						</thead>
 						
@@ -114,15 +121,15 @@
         <tbody>
             <tr class="partner-row">
                 <td><a href="<?php echo URLROOT ?>/users/getPhotographers">Photographers</a></td>
-                <td>10</td>
+                <td><?php echo ($data['photographerCount']);?></td>
             </tr>
             <tr class="partner-row">
                 <td><a href="<?php echo URLROOT ?>/users/getEditors">Editors</a></td>
-                <td>5</td>
+                <td><?php echo $data['editorCount'];?></td>
             </tr>
             <tr class="partner-row">
                 <td><a href="<?php echo URLROOT ?>/users/getPrintingFirms">Printing Firms</a></td>
-                <td>2</td>
+                <td><?php echo $data['printingFirmCount'];?></td>
             </tr>
         </tbody>
     	</table>

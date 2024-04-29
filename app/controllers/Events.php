@@ -107,8 +107,7 @@
         }
 
         // event request
-        public function request() {
-
+        public function request($packageID) {
             if (!$this->isLoggedIn()) {
                 // If not logged in, display a message and redirect to the login page
                 flash('event_message', 'Please log in to place a request');
@@ -224,6 +223,10 @@
                     'additionalRequest_err' => ''
                 ];
 
+                if($packageID != 0) {
+                    $data['package'] = $this->packageModel->getPackageById($packageID);
+                }
+
                 // Load view
                 $this->view('pages/customer/requestPage', $data);
             }
@@ -274,6 +277,7 @@
             $editor = $this->userModel->getUserById($event->EditorID);
             $printingFirm = $this->userModel->getUserById($event->PrintingFirmID);
             $photographerAction = $this->partnerModel->getPhotographerAction($id);
+            $photographers = $this->partnerModel->getAvailablePartners(3,$event->EventDate);
             $editorAction = $this->partnerModel->getEditorAction($id);
             $printingFirmAction = $this->partnerModel->getPrintingFirmAction($id);
 
@@ -284,6 +288,7 @@
                 'editor' => $editor,
                 'printingFirm' => $printingFirm,
                 'photographerAction' => $photographerAction,
+                'photographers' => $photographers,
                 'editorAction' => $editorAction,
                 'printingFirmAction' => $printingFirmAction
             ];
@@ -384,63 +389,97 @@
         // update event status
         public function updateEventStatus($id, $status) {
             if($this->eventModel->updateEventStatus($id, $status)) {
+                // Notification data
+                $notification_data = [
+                    'user_id' => $this->eventModel->getEventById($id)->CustomerID,
+                    'type' => 'status',
+                    'content' => 'Your event status has been updated to ' . $status,
+                    'link' => 'events/viewEvent/' . $id . '',
+                    'event_id' => $id
+                ];
+
+                if($status == 'Completed'){
+                    $notification_data['content'] = 'Your event has been completed. Collect your photos.';
+                }
+
+                $this->notificationModel->createNotification($notification_data);
+
+                // Notification data to partners
+                if($status == 'Completed'){
+                    $notification_data['content'] = 'Your event has been completed.';
+                }
+                $notification_data['link'] = 'partners/viewEvent/' . $id . '';
+
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PhotographerID;
+                $this->notificationModel->createNotification($notification_data);
+
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->EditorID;
+                $this->notificationModel->createNotification($notification_data);
+
+                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PrintingFirmID;
+                $this->notificationModel->createNotification($notification_data);
+
                 flash('event_message', 'Event status updated');
-                redirect('events');
+                if($_SESSION['user_type_id'] == 1) {
+                    redirect('events/viewEvent/' . $id . '');
+                } else {
+                    redirect('events/loadEvent/' . $id . '');
+                }
             } else {
                 die('Something went wrong');
             }
         }
 
-        // Reschedule requests
-        public function rescheduleRequest($id) {
-            // Check for POST
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Process form
-                // Sanitize POST data
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // // Reschedule requests
+        // public function rescheduleRequest($id) {
+        //     // Check for POST
+        //     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //         // Process form
+        //         // Sanitize POST data
+        //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
-                // Init data
-                $data = [
-                    'id' => $id,
-                    'date' => trim($_POST['date']),
-                    'startTime' => trim($_POST['startTime']),
-                    'endTime' => trim($_POST['endTime']),
-                    'location' => trim($_POST['location']),
-                ];
+        //         // Init data
+        //         $data = [
+        //             'id' => $id,
+        //             'date' => trim($_POST['date']),
+        //             'startTime' => trim($_POST['startTime']),
+        //             'endTime' => trim($_POST['endTime']),
+        //             'location' => trim($_POST['location']),
+        //         ];
 
-                // Validate event date
-                if(empty($data['date'])) {
-                    $data['eventDate_err'] = 'Please enter event date';
-                }
+        //         // Validate event date
+        //         if(empty($data['date'])) {
+        //             $data['eventDate_err'] = 'Please enter event date';
+        //         }
 
-                //  Make sure errors are empty
-                if(empty($data['eventDate_err'])) {
-                    if($this->eventModel->rescheduleEvent($data)) {
-                        flash('event_message', 'Request rescheduled');
-                        redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
-                    } else {
-                        die('Something went wrong');
-                    }
-                } else {
-                    // Load view with errors
-                    $this->view('pages/customer/rescheduleRequest', $data);
-                }
-            } else {
-                // Init data
-                $event = $this->eventModel->getEventById($id);
-                $data = [
-                    'id' => $id,
-                    'date' => $event->EventDate,
-                    'startTime' => $event->StartTime,
-                    'endTime' => $event->EndTime,
-                    'location' => $event->Location,
-                    'eventDate_err' => ''
-                ];
+        //         //  Make sure errors are empty
+        //         if(empty($data['eventDate_err'])) {
+        //             if($this->eventModel->rescheduleEvent($data)) {
+        //                 flash('event_message', 'Request rescheduled');
+        //                 redirect('events/viewCustomerEvents/' . $_SESSION['user_id'] . '');
+        //             } else {
+        //                 die('Something went wrong');
+        //             }
+        //         } else {
+        //             // Load view with errors
+        //             $this->view('pages/customer/rescheduleRequest', $data);
+        //         }
+        //     } else {
+        //         // Init data
+        //         $event = $this->eventModel->getEventById($id);
+        //         $data = [
+        //             'id' => $id,
+        //             'date' => $event->EventDate,
+        //             'startTime' => $event->StartTime,
+        //             'endTime' => $event->EndTime,
+        //             'location' => $event->Location,
+        //             'eventDate_err' => ''
+        //         ];
 
-                // Load view
-                $this->view('pages/customer/rescheduleRequest', $data);
-            }
-        }
+        //         // Load view
+        //         $this->view('pages/customer/rescheduleRequest', $data);
+        //     }
+        // }
 
         // Event count
         public function eventCount() {
@@ -582,12 +621,20 @@
                     $this->eventModel->photographerAction($data);
 
                     $notification_data_customer = [
-                        'user_id' => $this->eventModel->getEventById($eventID)->CustomerID,
+                        'user_id' => $this->eventModel->getEventById($eventId)->CustomerID,
                         'type' => 'allocate',
                         'content' => 'A new photographer has been allocated.',
-                        'link' => 'events/viewEvent/' . $eventID . '',
-                        'event_id' => $eventID
+                        'link' => 'events/viewEvent/' . $eventId . '',
+                        'event_id' => $eventId
                     ];
+                    $notification_data_manager = [
+                        'user_id' => 16,
+                        'type' => 'allocate',
+                        'content' => 'A new photographer has been allocated.',
+                        'link' => 'events/loadEvent/' . $eventId . '',
+                        'event_id' => $eventId
+                    ];
+                    $this->notificationModel->createNotification($notification_data_manager);
                     $this->notificationModel->createNotification($notification_data_customer);
 
                 } else if($partnerType == 4) {
@@ -612,6 +659,40 @@
                 echo json_encode(['error' => 'Invalid request method']);
             }
         }
+
+        // reselect requested photographer
+        public function reselect($eventId){
+            // Assuming you are using POST method
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $json_data = file_get_contents("php://input");
+
+                $data = json_decode($json_data);
+                if ($data === null) {
+                    http_response_code(400); // Bad Request
+                    echo json_encode(['error' => 'Invalid JSON data']);
+                    return;
+                }
+
+                $selectedPartner = $data->selectedPartner;
+                $data = [
+                    'eventID' => $eventId
+                ];
+
+                $success = $this->eventModel->reselectPhotographer($eventId, $selectedPartner);
+                
+                
+                if ($success) {
+                 //   $this->sendAllocateNotification($selectedPartner, $eventId);
+                    $response = ['success' => true, 'message' => 'Reselected successfully'];
+                } else {
+                    $response = ['success' => false, 'message' => 'Failed to reselect'];
+                }
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid request method']);
+            }
+        }
+
 
         // Send notification on allocation to partner
         public function sendAllocateNotification($partnerId, $eventID) {
@@ -667,11 +748,69 @@
             }
         }
 
+        // View requests by each partner
+        public function viewPartnerRequests($id) {
+            $requests = $this->eventModel->getRequestsByPartner($id);
+
+            foreach ($requests as $request) {
+                $user_type_id = $_SESSION['user_type_id'];
+                $action = '';
+
+                switch($user_type_id) {
+                    case 3:
+                        $action = $this->partnerModel->getPhotographerAction($request->EventID); 
+                        break;
+                    case 4:
+                        $action = $this->partnerModel->getEditorAction($request->EventID);
+                        break;
+                    case 5:
+                        $action = $this->partnerModel->getPrintingFirmAction($request->EventID);
+                        break;
+                    default:
+                        $action = "Error";
+                        break;
+                }
+
+                $request->UserTYpe = $user_type_id;
+                $request->Action = $action->Action;
+            }
+
+            $data = [
+                'events' => $requests,
+            ];
+        
+            $this->view('pages/partner/events', $data);
+        }
+
         // View event by ech Partner
         public function viewPartnerEvents($id) {
             $events = $this->eventModel->getEventsByPartner($id);
+
+            foreach ($events as $event) {
+                $user_type_id = $_SESSION['user_type_id'];
+                $action = '';
+
+                switch($user_type_id) {
+                    case 3:
+                        $action = $this->partnerModel->getPhotographerAction($event->EventID); 
+                        break;
+                    case 4:
+                        $action = $this->partnerModel->getEditorAction($event->EventID);
+                        break;
+                    case 5:
+                        $action = $this->partnerModel->getPrintingFirmAction($event->EventID);
+                        break;
+                    default:
+                        $action = "Error";
+                        break;
+                }
+
+                $event->UserType = $user_type_id;
+                $event->Action = $action->Action;
+            }
+
             $data = [
-                'events' => $events
+                'events' => $events,
             ];
         
             $this->view('pages/partner/events', $data);

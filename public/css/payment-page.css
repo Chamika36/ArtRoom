@@ -1,3 +1,7 @@
+body{
+    background-color:#ffffff;
+}
+
 .rescheduleRequest {
     width: 500px;
     height: 48px;
@@ -16,31 +20,53 @@
 }
 
 .container {
-display: flex;
-justify-content: space-evenly;
+    display: flex;
+    
+    /* gap: 20px; */
+
 }
 
-
-.status-container {
-background-color: #ffffff;
-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-padding: 20px;
-border-radius: 10px;
-width: 35%;
+.details-container{
+    display: flex;
+    background: #ffffff;
+    width: 50%;
+    margin-left: 5%;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
+
+.status-container-1 {
+    background-color: #f9f9f9;
+    /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); */
+    padding: 30px;
+    border-radius: 10px;
+    width: 40%;
+    border: 1px solid #c5c4c4;
+    
+    /* border: 2px solid #f9b234; */
+    }
+
+    .status-container-2{
+        background-color: #f9f9f9;
+        width: 60%;
+        padding: 30px;
+        border-radius: 10px;
+        border: 1px solid #c5c4c4;
+    }
 
 
 .status-item {
     display: flex;
     align-items: center;
-    margin: 40px;
+    margin-bottom: 30px;
     margin-left: 5%;
-    
 }
 
 .status-item i {
     font-size: 24px;
-    margin-right: 10px;
+    margin-right: 12px;
 }
 
 .payment-container{
@@ -48,7 +74,8 @@ width: 35%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: #9fdfeb; */
+    margin: 6%;
+    
 }
 
 .payment-header {
@@ -92,12 +119,14 @@ width: 35%;
     border-radius: 5px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     background: #faf9f9;
+    
 }
 
 .can-res-buttons{
     display: flex;
     flex-direction: row;
-    
+    padding-right: 5px;
+    gap: 10px;
 }
 
 .make-payment-btn{
@@ -123,11 +152,66 @@ width: 35%;
 }
 
 .details{
-    color: rgb(105, 105, 105);
+    color: rgb(58, 57, 57);
     margin-right: 20px;
 }
+
 
 .logo{
     width: 55px;
     height: 55px;
 }
+
+button{
+    background-color: #242526;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 3px solid #000000;
+    margin-top: 10px;
+    
+}
+
+button:hover{
+    background-color: #f9b234;
+    color: #000000;
+}
+
+select{
+    /* width: 100%; */
+    height: 30px;
+    border-radius: 6px;
+    /* margin-top: 5px; */
+    /* margin-bottom: 10px; */
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    background-color: #F2F2F2;
+    color: #2E2626;
+    /* padding-left: 10px; */
+}
+
+.feedback-btn-container{
+   
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .feedback-btn{
+    background-color: #f8f8fb;
+    color: #000000;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 3px solid #000000;
+    margin-top: 20px;
+} */
