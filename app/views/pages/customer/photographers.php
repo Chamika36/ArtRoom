@@ -19,16 +19,18 @@
 
     <section>
         <div class="sec-grid">
-    <?php foreach ($data['photographers'] as $photographers) : ?>
-        <div class="profile-card">
-        <img id="profilePicture" src="data:image/jpeg;base64,<?php echo base64_encode($photographers->ProfilePicture); ?>" >
 
-            <h1><?php echo $photographers->FirstName; ?></br> <?php echo $photographers->LastName; ?></h1>
-            <h4>About</h4>
-            <p><?php echo $photographers->Bio; ?></p>
+        <?php foreach ($data['photographers'] as $photographers) : ?>
+            <a href="<?php echo URLROOT; ?>/users/viewPhotographer/<?php echo $photographers->UserID; ?>">
+                <div class="profile-card">
+                    <img id="profilePicture" src="data:image/jpeg;base64,<?php echo base64_encode($photographers->ProfilePicture) ?>" alt="" class="im">
+                    <h1><?php echo $photographers->FirstName; ?></br> <?php echo $photographers->LastName; ?></h1>
+                    <h4>About</h4>
+                    <p><?php echo $photographers->Bio; ?></p>
+                </div>
+            </a>
+        <?php endforeach; ?>
 
-        </div>
-    <?php endforeach; ?>
     </div>
     </section>
 
