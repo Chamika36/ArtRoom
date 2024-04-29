@@ -80,12 +80,14 @@ body{
 .user-input-box{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
     padding-bottom: 15px;
+    /* background: #8333eb; */
 }
 
 .user-input-box label{
-    width: 95%;
+    width: 100%;
     color: #2E2626;
     font-size: 15px;
     font-weight: 400;
@@ -94,7 +96,7 @@ body{
 
 .user-input-box input{
     height: 30px;
-    width: 95%;
+    width: 100%;
     border-radius: 5px;
     outline: none;
     border: 0.5px solid rgba(0, 0, 0, 0.2);
@@ -115,45 +117,48 @@ body{
 .vertical-box{
     display: flex;
     flex-direction: row;
-    
+    /* background: #a61c1c; */
+    gap: 10px;
 }
 
 .cancel-btn {
     margin-right: 50px; /* Adjust the margin as needed to move the button more to the left */
-    background: #a87723;
+    background: #f9b234;
 }
 
 .update-btn {
     width: calc(100% - 50px); 
-    background: #a87723;
+    background: #f9b234;
     padding: 10px; /* Adjust padding as needed */
 }
 
 .save-btn {
     width: 150px; /* Increase width as needed */
-    background: #a87723;
+    background: #f9b234;
     padding: 10px; /* Adjust padding as needed */
 
 }.save-btn {
     width: 200px; /* Increase width as needed */
-    background: #a87723;
+    background: #f9b234;
     padding: 10px; /* Adjust padding as needed */
 }
 
 .form-submit-btn {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #a87723;
+    /* color: #a87723; */
 }
 
 .form-submit-btn input {
     background-color: #242526;
     width: 100%;
-    font-size: 20px;
-    padding: 10px;
+    height: 40px;
+    font-size: 18px;
+    text: bold;
+    /* padding: 0px; */
     border: none;
     border-radius: 5px;
     color: #d5d8db;
@@ -162,7 +167,7 @@ body{
 
 .form-submit-btn input:hover {
     background: #f9b234;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 @media(max-width: 600px){

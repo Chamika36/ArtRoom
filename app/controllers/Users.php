@@ -2,6 +2,7 @@
     class Users extends Controller{
         public function __construct() {
             $this->userModel = $this->model('User');
+            $this->sampleModel = $this->model('Sample');
         }
 
         public function index() {
@@ -270,6 +271,7 @@
             $_SESSION['user_email'] = $user->Email;
             $_SESSION['user_type_id'] = $user->UserTypeID;
             $_SESSION['user_name'] = $user->FirstName . ' ' . $user->LastName;
+            $_SESSION['first_name'] = $user->FirstName;
             
             switch($_SESSION['user_type_id']) {
                 case 1:
@@ -748,5 +750,25 @@
     
                 $this->view('user/editProfile', $data);
             }
+        }
+
+        //view protographers
+        public function viewPhotographers() {
+            $photographers = $this->userModel->viewPhotographers();
+            $data = [
+                'photographers' => $photographers
+            ];
+            $this->view('pages/customer/photographers', $data);
+        }
+
+        //view protographer
+        public function viewPhotographer($id) {
+            $partner = $this->userModel->getUserById($id);
+            $samples = $this->sampleModel->getSamplesByPhotographer($id);
+            $data = [
+                'partner' => $partner,
+                'samples' => $samples
+            ];
+            $this->view('pages/customer/viewPhotographer', $data);
         }
     }

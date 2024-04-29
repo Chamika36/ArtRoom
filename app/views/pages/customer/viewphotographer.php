@@ -22,8 +22,11 @@
 </head>
 <body>
     <!-- sidebar -->
-    <!-- main content -->
-    <?php include(APPROOT . '/views/include/partner-sidebar.php'); ?>
+    <div class="nav-container">
+        <div id="header" class="background_pic">
+            <?php include(APPROOT . '/views/include/customer-navbar.php'); ?>
+        </div>
+    </div>
     
     <div class="home">
     <main>
@@ -38,24 +41,14 @@
                     <div class="image-container">
                         <img id="profilePicture" src="data:image/jpeg;base64,<?php echo base64_encode($data['partner']->ProfilePicture) ?>" alt="" class="im">
                     </div>
-
-
-                
-
-                        <span id="uploadProfilePicture" class="material-symbols-outlined beat-icon" style="cursor: pointer;">upload</span>
                     </div>
         
                     <!-- 2nd -->
                     
                     <div class="about-right" id="view" >
                         <div class="" style="padding-bottom: 16px;">
-                            <h2><?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?>
-                            <?php if(isset($_SESSION['user_id']) && ($data['partner']->UserID == $_SESSION['user_id'])) : ?>
-                                <a href="<?php echo URLROOT?>/partners/editpartner/<?php echo $_SESSION['user_id']?>"><span class="material-symbols-outlined beat-icon">edit</span></a></h2>
-                                <p class="lead" style="margin-bottom: 16px;"><?php echo ($data['partner']->Bio) ? ($data['partner']->Bio) : 'Click to add a bio'?></p>
-                            <?php else : ?>
-                                <p class="lead" style="margin-bottom: 16px;"><?php echo ($data['partner']->Bio) ? ($data['partner']->Bio) : 'No bio available'?></p>
-                            <?php endif; ?>
+                            <h2><?php echo $data['partner']->FirstName .' ' . $data['partner']->LastName ?></h2>
+                            <p class="lead" style="margin-bottom: 16px;"><?php echo ($data['partner']->Bio) ? ($data['partner']->Bio) : 'No bio available'?></p>
                         </div>
 
                         <!--
@@ -192,67 +185,3 @@
 
 </body>
 </html>
-<script>
-var uploadProfilePicture = document.getElementById('uploadProfilePicture');
-
-// Add click event listener
-uploadProfilePicture.addEventListener('click', function() {
-    var fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'image/*';
-
-    // Create a form element
-    var form = document.createElement('form');
-    form.style.display = 'none'; // Hide the form
-    form.enctype = 'multipart/form-data'; // Set form enctype for file upload
-    form.appendChild(fileInput); // Append file input to form
-    document.body.appendChild(form); // Append form to document body
-
-    fileInput.click();
-
-    fileInput.addEventListener('change', function() {
-        var file = fileInput.files[0];
-        var formData = new FormData();
-        formData.append('profilePicture', file);
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '<?php echo URLROOT ?>/partners/uploadProfilePicture', true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Request was successful
-                console.log('Profile picture uploaded successfully');
-                // Display a success message using SweetAlert
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Profile picture uploaded successfully',
-                    showConfirmButton: false,
-                    timer: 3000 // Close the alert after 1.5 seconds
-                });
-                // reload the page
-            } else {
-                // Request failed
-                console.error('Failed to upload profile picture');
-                // Display an error message using SweetAlert
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Failed to upload profile picture',
-                    showConfirmButton: false,
-                    timer: 1500 // Close the alert after 1.5 seconds
-                });
-            }
-        };
-        xhr.send(formData);
-
-        // Remove the form after upload
-        document.body.removeChild(form);
-    });
-});
-
-</script>
-
-
-
-
-     
