@@ -90,9 +90,9 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Event </th>
+								<th><center>Event </th>
 								<th>Date Order</th>
-								<th>Status</th>
+								<th><center>Status</th>
 							</tr>
 						</thead>
 						

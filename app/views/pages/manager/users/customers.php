@@ -8,6 +8,7 @@
 
      <title>Customers</title>
      <link rel="stylesheet" href="<?php echo URLROOT ?>/css/manager/photographertable.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
  </head>
 <body>
     <?php include(APPROOT . '/views/include/sidebar/manager-sidebar.php'); ?>
@@ -38,9 +39,22 @@
                         <td><?php echo $customer->LastName; ?></td>
                         <td><?php echo $customer->ContactNumber; ?></td>
                         <td><?php echo $customer->Email; ?></td>
-                        <!-- <td><a href="<?php// echo URLROOT; ?>/users/getorders/<?php// echo $customer->UserID; ?>"><p class="status delivered"><b>Orders</b></p></a></td> -->
-                        <td><a href="<?php echo URLROOT; ?>/users/edit/<?php echo $customer->UserID; ?>"><p class="status shipped"><b>Edit</b></p></a></td>
-                        <td><a href="<?php echo URLROOT; ?>/users/delete/<?php echo $customer->UserID; ?>"><p class="status cancelled"><b>Delete</b></p></a></td>
+                        
+
+
+                        <td>
+                            <a href="<?php echo URLROOT; ?>/users/edit/<?php echo $customer->UserID; ?>">
+                                <i class="fas fa-pencil-alt edit-icon"></i> <!-- Edit icon -->
+                            </a>
+                        </td>
+                        <td>
+                             <a href="<?php echo URLROOT; ?>/users/delete/<?php echo $customer->UserID; ?>" onclick="return confirm('Are you sure you want to delete <!?php echo $photographer->FirstName ?>');">
+                                <i class="fas fa-trash-alt delete-icon"></i> <!-- Delete icon -->
+                            </a>
+                        </td>
+
+
+
                     </tbody>
                 <?php endforeach; ?>
             </table>
