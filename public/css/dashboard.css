@@ -36,12 +36,12 @@ body {    margin: 0;
         --light-yellow: #FFF2C6;
         --orange: #f9b234;
         --dark-grey: #3a3b3c;
-        --light-green: #0eed42;
-        --green: #23ca4a;
-        --right-blue: #0d0dd6;
-        --light-blue: #4a8cef;
-        --dark-red: #b93b3b;
-        --dark-yellow: #e1d33f;
+        --light-green: #2f623b;
+        --green: #043510;
+        --right-blue: #05053f;
+        --light-blue: #252e3c;
+        --dark-red: #640e0e;
+        --dark-yellow: #978c13;
         --green: #24ae44;
     }
     
@@ -173,7 +173,7 @@ body {    margin: 0;
     }
     #content main .table-data .order table th {
         padding-bottom: 12px;
-        font-size: 13px;
+        font-size: 15px;
         text-align: left;
         border-bottom: 1px solid var(--grey);
     }
@@ -206,23 +206,67 @@ body {    margin: 0;
         text-align: center; 
     }
     #content main .table-data .order table tr td .status.Accepted {
-        background: var(--light-green);
+        color: var(--light-green);
+    }
+    #content main .table-data .order table tr td .status.Accepted::before {
+        content: "\2022"; /* Unicode for a bullet point */
+        color: var(--light-green); /* Same color as the text */
+        margin-right: 0.5em; /* Adjust as needed for spacing */
+        font-size: 1.2em; /* Increase the size of the bullet point */
     }
     #content main .table-data .order table tr td .status.Pencil {
-        background: var(--dark-yellow);
+        color: var(--dark-yellow);
     }
+    
+    #content main .table-data .order table tr td .status.Pencil::before {
+        content: "\270E"; /* Unicode for a pencil icon */
+        color: var(--dark-yellow); /* Same color as the text */
+        margin-right: 0.5em; /* Adjust as needed for spacing */
+        transform: scaleX(-1); /* Flip the icon horizontally */
+    }
+    
     #content main .table-data .order table tr td .status.Canceled {
-        background: var(--dark-red);
+        color: var(--dark-red);
     }
+    
+    #content main .table-data .order table tr td .status.Canceled::before {
+        content: "\274C"; /* Unicode for a wrong mark icon */
+        color: var(--dark-red); /* Same color as the text */
+        margin-right: 0.5em; /* Adjust as needed for spacing */
+    }
+    
     #content main .table-data .order table tr td .status.Advanced {
-        background: var(--light-blue);
+        color: var(--light-blue);
     }
+
+    #content main .table-data .order table tr td .status.Advanced::before {
+        content: "\2022"; /* Unicode for a bullet point */
+        color: var(--light-blue); /* Same color as the text */
+        margin-right: 0.5em; /* Adjust as needed for spacing */
+        font-size: 2em; /* Increase the size of the bullet point */
+    }
+
     #content main .table-data .order table tr td .status.FullPaid {
-        background: var(--right-blue);
+        color: var(--right-blue);
     }
+    
+    #content main .table-data .order table tr td .status.FullPaid::before {
+        content: "\2713"; /* Unicode for a checkmark */
+        color: var(--right-blue); /* Same color as the text */
+        margin-right: 0.5em; /* Adjust as needed for spacing */
+    }
+    
     #content main .table-data .order table tr td .status.Completed {
-        background: var(--green);
+        color: var(--green);
     }
+    
+    #content main .table-data .order table tr td .status.Completed::before {
+        content: "\2714\2714"; /* Unicode for double tick */
+        color: var(--green); /* Same color as the text */
+        margin-right: 0.5em; /* Adjust as needed for spacing */
+        letter-spacing: -0.2em; /* Adjust to decrease the space between ticks */
+    }
+    
     
     
     #content main .table-data .todo {
