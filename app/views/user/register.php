@@ -36,7 +36,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 5px;
+        margin-top: 20px;
         margin-bottom: 10px;
         
 
@@ -65,6 +65,7 @@
 
     form{
         text-align: left;
+        padding: 25px;
     }
 
     
