@@ -230,7 +230,6 @@ uploadProfilePicture.addEventListener('click', function() {
                     timer: 3000 // Close the alert after 1.5 seconds
                 });
                 // reload the page
-                location.reload();
             } else {
                 // Request failed
                 console.error('Failed to upload profile picture');
