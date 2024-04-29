@@ -84,8 +84,10 @@ class Home extends Controller {
 
     public function customer() {
         $packages = $this->packageModel->getPackages();
-        $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
-        $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
+        if(isset($_SESSION['user_id'])){
+            $notifications = $this->notificationModel->getNotificationsByUserId($_SESSION['user_id']);
+            $unreadNotificationCount = $this->notificationModel->getUnreadNotificationCountByUserId($_SESSION['user_id']);
+        }
         $feedbacks = $this->feedbackModel->getTopFeedbacks();
         foreach($feedbacks as $feedback) {
             $user = $this->userModel->getUserById($feedback->CustomerID);
@@ -98,10 +100,15 @@ class Home extends Controller {
             'title' => 'Home',
             'packages' => $packages,
             'notifications' => $notifications,
-            'unreadNotificationCount' => $unreadNotificationCount,
+            'unreadNotificationCount' => 0,
             'feedbacks' => $feedbacks,
             'samples' => $sample
         ];
+
+        if(isset($_SESSION['user_id'])){
+            $data['unreadNotificationCount'] = $unreadNotificationCount;
+        }
+
         $this->view('pages/customer/home', $data);
     }
 

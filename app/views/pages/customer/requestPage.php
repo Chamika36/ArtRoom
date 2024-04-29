@@ -278,7 +278,7 @@
                         <textarea id="additionalRequests" name="additionalRequests" rows="4"></textarea>
                     </div>
                     <div class="input-box">
-                        <label for="totalBudget"><b>Total Budget:</b></label>
+                        <label for="totalBudget"><b>Total Budget (LKR):</b></label>
                         <input type="text" id="totalBudget" name="totalBudget" readonly>
 
                         <input type="hidden" id="customer" name="customer" value="<?php echo $_SESSION['user_id']; ?>">
