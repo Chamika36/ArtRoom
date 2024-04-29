@@ -17,8 +17,10 @@ section{
 
 }
 
+
+
 .profile-card{
-    background-color: white;
+    background-color: rgb(254, 252, 252);
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px;
@@ -49,4 +51,19 @@ p{
     font-size: 1em;
     font-weight: 500;
     color: #928e88;
+}
+
+button{
+    background-color: #f9b234;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.profile-card button:hover{
+    background-color: #000000;
+    color: rgb(255, 255, 255);
 }

@@ -111,41 +111,41 @@
                                 <div class="payment-content">
                                             <?php
                                             if ($data['event']->Status == 'Accepted') { 
-                                                echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                                echo '<p class="details"> Total Budget Confirmed : Rs.' . $data['event']->TotalBudget . '</p>';
                                                 $advancedPayment = $data['event']->TotalBudget*0.1;
-                                                echo '<p class="details"> Advanced Payment : ' . $advancedPayment . '</p>';
+                                                echo '<p class="details"> Advanced Payment : Rs.' . $advancedPayment . '</p>';
                                                 echo '<p class="details"><i class="fas fa-exclamation-circle" style="color: red;"></i><strong> Please pay the advanced payment.</strong> </p>';
                                                 echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '" ><button class="make-payment-btn"><b>Make Payment</b></button></a>';
 
                                             } else if($data['event']->Status == 'Advanced'){
-                                                echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                                echo '<p class="details"> Total Budget Confirmed : Rs.' . $data['event']->TotalBudget . '</p>';
                                                 $advancedPayment = $data['event']->TotalBudget*0.1;
                                                 $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
                                                 $date = date('Y-m-d', strtotime($data['event']->EventDate . ' - 7 days'));
-                                                echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
-                                                echo '<P class="details"> Remaining Payment : ' . $remainingPayment . '</p>';
+                                                echo '<p class="details"> Advanced Payment : Rs.' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
+                                                echo '<P class="details"> Remaining Payment : Rs.' . $remainingPayment . '</p>';
                                                 echo '<p class="details"><i class="fas fa-exclamation-circle" style="color: red;"></i><strong> Please pay the full payment before ' . $date  . '</strong> </p>';
                                                 echo '<a href="' . URLROOT . '/payments/makePayment/' . $data['event']->EventID . '" ><button class="make-payment-btn"><b>Make Payment</b></button></a>';
 
                                             } else if($data['event']->Status == 'FullPaid'){
-                                                echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                                echo '<p class="details"> Total Budget Confirmed : Rs.' . $data['event']->TotalBudget . '</p>';
                                                 $advancedPayment = $data['event']->TotalBudget*0.1;
                                                 $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
-                                                echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
-                                                echo '<P class="details"> Remaining Payment : ' . $remainingPayment . '<i class="fas fa-check-circle" style="color: green;"></i> </p>';
+                                                echo '<p class="details"> Advanced Payment : Rs.' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
+                                                echo '<P class="details"> Remaining Payment : Rs.' . $remainingPayment . '<i class="fas fa-check-circle" style="color: green;"></i> </p>';
                                                 echo '<p class="details"><b> Fully Paid </b></p>';
                                             } else if($data['event']->Status == 'Canceled'){
-                                                echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                                echo '<p class="details"> Total Budget Confirmed : Rs.' . $data['event']->TotalBudget . '</p>';
                                                 echo '<p class="details"><b> Canceled </b></p>';
                                             } else if($data['event']->Status == 'Pencil'){
-                                                echo '<p class="details"> Total Budget Predicted : ' . $data['event']->TotalBudget . '</p>';
+                                                echo '<p class="details"> Total Budget Predicted : Rs.' . $data['event']->TotalBudget . '</p>';
                                                 echo '<p class="details"><b> Yet to confirm the event </b></p>';
                                             } else if($data['event']->Status == 'Completed'){
-                                                echo '<p class="details"> Total Budget Confirmed : ' . $data['event']->TotalBudget . '</p>';
+                                                echo '<p class="details"> Total Budget Confirmed : Rs.' . $data['event']->TotalBudget . '</p>';
                                                 $advancedPayment = $data['event']->TotalBudget*0.1;
                                                 $remainingPayment = $data['event']->TotalBudget - $advancedPayment;
-                                                echo '<p class="details"> Advanced Payment : ' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
-                                                echo '<P class="details"> Remaining Payment : ' . $remainingPayment . ' <i class="fas fa-check-circle" style="color: green;"></i>  </p>';
+                                                echo '<p class="details"> Advanced Payment : Rs.' . $advancedPayment . ' <i class="fas fa-check-circle" style="color: orange;"></i> </p>';
+                                                echo '<P class="details"> Remaining Payment : Rs.' . $remainingPayment . ' <i class="fas fa-check-circle" style="color: green;"></i>  </p>';
                                                 echo '<p class="details"><b> Fully Paid </b></p>';
                                             }
 
