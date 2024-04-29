@@ -24,7 +24,7 @@
         align-items: center;
         width: 35%;
         
-        padding: 50px;
+        /* padding: 50px; */
         border-radius: 15px;
         box-shadow: 2px 6px 10px 0 rgba(0, 0, 0, 0.2);
        
@@ -198,7 +198,7 @@
                         <select id="userType" name="userType" required>
                             <option value="" disabled selected>Select a type</option>
                             <option value="1">Customer</option>
-                            <option value="2">Manager</option>
+                            <!-- <option value="2">Manager</option> -->
                             <option value="3">Photographer</option>
                             <option value="4">Editor</option>
                             <option value="5">Printing Firm</option>
