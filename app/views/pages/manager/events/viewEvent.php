@@ -271,7 +271,7 @@
             <?php if($data['event']->Status != 'Canceled' && $data['event']->Status != 'Completed') : ?>
                 <div class="form-group-2">
                     <a href="#" class="button" style="background-color: #dc3545; color: white; " onclick="confirmCancelEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled')">Cancel Event</a>
-                    <?php if($data['editorAction']->Action == 'Completed' && $data['photographerAction']->Action == 'Completed' && $data['printingFirmAction']->Action == 'Completed') : ?>
+                    <?php if($data['photographerAction']->Action == 'Completed') : ?>
                         <a href="#" class="button" onclick="confirmCompleteEvent('<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Completed')">Complete Event</a>
                     <?php endif; ?>
                 </div>
