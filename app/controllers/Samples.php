@@ -40,8 +40,10 @@ class Samples extends Controller{
     }
     
 
+
+  
     public function add($isPartner) {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             
@@ -49,21 +51,20 @@ class Samples extends Controller{
             $cover_image = $_FILES['image'];
             $cover_image_new_name = ''; // Initialize cover image name
             $upload_err_cover = false;
-    
-            // Check for cover image upload error and validate file type
-            $allowed_cover_types = array('image/jpeg', 'image/png', 'image/gif'); // Add more allowed types if needed
-            if ($cover_image['error'] === 0 && in_array($cover_image['type'], $allowed_cover_types)) {
+
+            // Check for cover image upload error
+            if ($cover_image['error'] === 0) {
                 // Generate a unique name for the cover image
                 $cover_image_new_name = uniqid('', true) . '_' . $cover_image['name'];
                 // Set the path where the cover image will be stored
                 $cover_image_destination = 'images/samples/' . $_POST['name'] . '/' . $cover_image_new_name;
-    
+
                 // Create the folder if it doesn't exist
                 if (!is_dir('images/samples/' . $_POST['name'])) {
                     mkdir('images/samples/' . $_POST['name'], 0777, true);
                     $image_folder = 'images/samples/' . $_POST['name'];
                 }
-    
+
                 // Move the uploaded cover image to the destination folder
                 if (!move_uploaded_file($cover_image['tmp_name'], $cover_image_destination)) {
                     // Error uploading cover image
@@ -73,7 +74,7 @@ class Samples extends Controller{
                 // Error uploading cover image
                 $upload_err_cover = true;
             }
-    
+
             // Proceed if no cover image upload error
             if (!$upload_err_cover) {
                 // File upload for sample images
@@ -81,38 +82,34 @@ class Samples extends Controller{
                 $images_arr = array();
                 $upload_err = false;
         
-                // Validate sample images
-                $allowed_sample_types = array('image/jpeg', 'image/png', 'image/gif'); // Add more allowed types if needed
-    
                 // Loop through each image file
                 foreach ($images['tmp_name'] as $key => $image_tmp_name) {
                     $image_name = $images['name'][$key];
-                    $image_type = $images['type'][$key];
                     $image_err = $images['error'][$key];
-    
-                    // Check for file upload error and validate file type
-                    if ($image_err === 0 && in_array($image_type, $allowed_sample_types)) {
+        
+                    // Check for file upload error
+                    if($image_err === 0){
                         // Generate a unique name for the image
                         $image_new_name = uniqid('', true) . '_' . $image_name;
                         // Set the path where the image will be stored
                         $image_destination = 'images/samples/' . $_POST['name'] . '/' . $image_new_name;
-    
+        
                         // Move the uploaded file to the destination folder
-                        if (!move_uploaded_file($image_tmp_name, $image_destination)) {
+                        if(!move_uploaded_file($image_tmp_name, $image_destination)){
                             // Error uploading file
                             $upload_err = true;
                             break;
                         }
                         $images_arr[] = $image_new_name;
                     } else {
-                        // Error uploading file or invalid file type
+                        // Error uploading file
                         $upload_err = true;
                         break;
                     }
                 }
         
-                if ($upload_err) {
-                    $data['images_err'] = 'Error uploading files or invalid file type';
+                if($upload_err) {
+                    $data['images_err'] = 'Error uploading files';
                     $this->view('pages/manager/samples/addsample', $data);
                 } else {
                     // Init data
@@ -130,6 +127,12 @@ class Samples extends Controller{
                         'customer_err' => '',
                         'date_err' => ''
                     );
+
+                    if($isPartner == 1) {
+                        $data['photographer'] = $_SESSION['user_id'];
+                    } else {
+                        $data['photographer'] = trim($_POST['photographer']);
+                    }
         
                     // Validate Name
                     if(empty($data['name'])) {
@@ -149,27 +152,47 @@ class Samples extends Controller{
                     // Make sure no errors
                     if (empty($data['name_err']) && empty($data['description_err']) && empty($data['customer_err']) && empty($data['date_err'])) {
                         // Validated
-                        if ($this->sampleModel->addSample($data)) {
+                        $sample_id = $this->sampleModel->addSample($data);
+                        if ($sample_id) {
+                            $notification_customer = [
+                                'user_id' => $data['customer'],
+                                'type' => 'sample',
+                                'content' => 'Your images added to the sample gallery. View and confirm public visibility',
+                                'link' => 'samples/viewSample/'.$sample_id,
+                                'event_id' => 55
+                            ];
+                            $this->notificationModel->createNotification($notification_customer);
                             flash('sample_message', 'Sample Added');
-                            redirect('samples');
+                            if($isPartner == 1) {
+                                redirect('samples/getSamplesByPhotographer');
+                            } else {
+                                redirect('samples');
+                            }
                         } else {
                             die('Something went wrong');
                         }
                     } else {
                         // Load view with errors
-                        $this->view('pages/manager/samples/addsample', $data);
+                        if($isPartner == 1) {
+                            $this->view('pages/partner/addsample', $data);
+                        } else {
+                            $this->view('pages/manager/samples/addsample', $data);
+                        }
                     }
                 }
             } else {
                 // Error uploading cover image
                 $data['images_err'] = 'Error uploading cover image';
-                $this->view('pages/manager/samples/addsample', $data);
+                if($isPartner == 1) {
+                    $this->view('pages/partner/addsample', $data);
+                } else {
+                    $this->view('pages/manager/samples/addsample', $data);
+                }
             }
         } else {
-            // Handle GET request
             $customers = $this->userModel->getCustomers();
             $photographers = $this->userModel->getPhotographers();
-    
+
             $data = array(
                 'name' => '',
                 'description' => '',
@@ -184,17 +207,14 @@ class Samples extends Controller{
                 'customer_err' => '',
                 'date_err' => ''
             );
-    
-            if ($isPartner == 1) {
+
+            if($isPartner == 1) {
                 $this->view('pages/partner/addsample', $data);
             } else {
                 $this->view('pages/manager/samples/addsample', $data);
             }
         }
     }
-    
-  
-    
 
     public function delete($id){
         $folderPath = $this->sampleModel->getSampleById($id)->ImagePath; 
@@ -341,7 +361,8 @@ class Samples extends Controller{
     public function viewSample($id) {
         $sample = $this->sampleModel->getSampleById($id);
         $folder = $sample->ImagePath . '/';
-        $images = glob($folder . "*.*"); // Retrieve all files in the folder regardless of extension
+        $images = glob($folder . "*.jpg");
+
     
         $data = array(
             'sample' => $sample,
@@ -349,7 +370,8 @@ class Samples extends Controller{
             'images' => $images,
             'samples' => $sample
         );
-    
+
+
         if(isset($_SESSION['user_id'])) {
             if($_SESSION['user_type_id'] == 2) {
                 $this->view('pages/manager/samples/viewsample', $data);
@@ -360,9 +382,9 @@ class Samples extends Controller{
             }
         } else {
             $this->view('pages/customer/samples/viewsample', $data);
+
         }
     }
-    
 
     public function makePublic($sample_id) {
         if($this->sampleModel->updateVisibility($sample_id , 1)) {
