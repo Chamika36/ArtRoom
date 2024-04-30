@@ -17,21 +17,17 @@
     <div class="container">
         <div class="portfolio-content">
             <div class="sample-info">
-                <h2><?php echo isset($data['sample']->SampleName) ? $data['sample']->SampleName : ''; ?></h2>
-                <p><?php echo isset($data['sample']->Description) ? $data['sample']->Description : ''; ?></p>
-                <p>Date: <?php echo isset($data['sample']->Date) ? $data['sample']->Date : ''; ?></p>
+                <h2><?php echo $data['sample']->SampleName; ?></h2>
+                <p><?php echo $data['sample']->Description; ?></p>
+                <p>Date: <?php echo $data['sample']->Date; ?></p>
             </div>
 
             <div class="portfolio-grid">
-                <?php if(isset($data['images']) && is_array($data['images']) && !empty($data['images'])): ?>
-                    <?php foreach ($data['images'] as $image): ?>
-                        <div>
-                            <img src="<?php echo URLROOT ?>/<?php echo $image ?>" alt="Sample Image">
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No images available for this sample.</p>
-                <?php endif; ?>
+                <?php foreach ($data['images'] as $image) : ?>
+                    <div>
+                        <img src="<?php echo URLROOT ?>/<?php echo $image ?>" alt="Sample Image">
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
