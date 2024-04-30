@@ -341,8 +341,7 @@ class Samples extends Controller{
     public function viewSample($id) {
         $sample = $this->sampleModel->getSampleById($id);
         $folder = $sample->ImagePath . '/';
-        $images = glob($folder . "*.jpg");
-
+        $images = glob($folder . "*.*"); // Retrieve all files in the folder regardless of extension
     
         $data = array(
             'sample' => $sample,
@@ -350,8 +349,7 @@ class Samples extends Controller{
             'images' => $images,
             'samples' => $sample
         );
-
-
+    
         if(isset($_SESSION['user_id'])) {
             if($_SESSION['user_type_id'] == 2) {
                 $this->view('pages/manager/samples/viewsample', $data);
@@ -362,9 +360,9 @@ class Samples extends Controller{
             }
         } else {
             $this->view('pages/customer/samples/viewsample', $data);
-
         }
     }
+    
 
     public function makePublic($sample_id) {
         if($this->sampleModel->updateVisibility($sample_id , 1)) {
