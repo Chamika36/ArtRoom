@@ -28,11 +28,17 @@
             </div> 
 
             <div class="user-input-box">
-                <label for="description"> Description: </label>
+                <label for="description"> description: </label>
                 <textarea name="description" rows="4" required><?php echo $data['description']; ?></textarea>
                 <span class="invalid-feedback"><?php echo $data['description_err']?></span>
             </div>
             
+            <div class="user-input-box">
+                <label for="description"> comment: </label>
+                <textarea name="description" rows="4" required><?php echo $data['description']; ?></textarea>
+                <span class="invalid-feedback"><?php echo $data['description_err']?></span>
+            </div>
+
             <div class="user-input-box">
                 <label for="images">Sample Images: </label>
                 <input type="file" name="images[]" multiple accept="image/*" required> <!-- Added accept attribute for file type validation -->
