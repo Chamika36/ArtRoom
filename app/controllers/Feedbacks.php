@@ -29,7 +29,7 @@
                     $data['rating_err'] = 'Please rate us';
                 }
 
-                if(empty($data['feedback_err']) && empty($data['rating_err']) {
+                if(empty($data['feedback_err']) && empty($data['rating_err'])) {
                     if($this->feedbackModel->submitFeedback($data)) {
                         redirect('home/index');
                     }else{
