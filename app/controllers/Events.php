@@ -410,14 +410,17 @@
                 }
                 $notification_data['link'] = 'partners/viewEvent/' . $id . '';
 
-                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PhotographerID;
-                $this->notificationModel->createNotification($notification_data);
 
-                $notification_data['user_id'] = $this->eventModel->getEventById($id)->EditorID;
-                $this->notificationModel->createNotification($notification_data);
+                if(isset($this->eventModel->getEventById($id)->PhotographerID)){
+                    $notification_data['user_id'] = $this->eventModel->getEventById($id)->PhotographerID;
+                    $this->notificationModel->createNotification($notification_data);
 
-                $notification_data['user_id'] = $this->eventModel->getEventById($id)->PrintingFirmID;
-                $this->notificationModel->createNotification($notification_data);
+                    $notification_data['user_id'] = $this->eventModel->getEventById($id)->EditorID;
+                    $this->notificationModel->createNotification($notification_data);
+
+                    $notification_data['user_id'] = $this->eventModel->getEventById($id)->PrintingFirmID;
+                    $this->notificationModel->createNotification($notification_data);
+                }
 
                 flash('event_message', 'Event status updated');
                 if($_SESSION['user_type_id'] == 1) {
@@ -568,7 +571,7 @@
                         $this->sendAllocateNotification($data['printingFirm'] , $id)
                         ) {
                             flash('event_message', 'Event allocated');
-                            redirect('events');
+                            redirect('events/loadEvent/' . $id . '');
                     } else {
                         die('Something went wrong');
                     }

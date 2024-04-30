@@ -29,39 +29,42 @@
             </ul>
         </div>
         <div class="event-details">
-            <h3>Allocate Partners</h3>
-            <form action="<?php echo URLROOT; ?>/events/allocate/<?php echo $data['event']->EventID; ?>" method="POST">
-                <div class="form-group">
-                    <label for="photographer">Photographer:</label>
-                    <select name="photographer" id="photographer" required>
-                        <option value="<?php echo $data['requestedPhotographer']->UserID?>"><?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></option>
-                        <?php foreach ($data['photographers'] as $photographer) : ?>
-                            <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="editor">Editor:</label>
-                    <select name="editor" id="editor" required>
-                        <option value="">Select an editor</option>
-                        <?php foreach ($data['editors'] as $editor) : ?>
-                            <option value="<?php echo $editor->UserID; ?>"><?php echo $editor->FirstName . ' ' . $editor->LastName; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="printingFirm">Printing Firm:</label>
-                    <select name="printingFirm" id="printingFirm" required>
-                        <option value="">Select a printing firm</option>
-                        <?php foreach ($data['printingFirms'] as $printingFirm) : ?>
-                            <option value="<?php echo $printingFirm->UserID; ?>"><?php echo $printingFirm->FirstName . ' ' . $printingFirm->LastName; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="button" type="submit" value="Allocate">
-                </div>
-            </form>
+            <?php if($data['event']->Status == 'Canceled') : ?>
+                <h3>Event Canceled</h3>
+            <?php else : ?>
+                <h3>Allocate Partners</h3>
+                <form action="<?php echo URLROOT; ?>/events/allocate/<?php echo $data['event']->EventID; ?>" method="POST">
+                    <div class="form-group">
+                        <label for="photographer">Photographer:</label>
+                        <select name="photographer" id="photographer" required>
+                            <option value="<?php echo $data['requestedPhotographer']->UserID?>"><?php echo $data['requestedPhotographer']->FirstName . ' ' . $data['requestedPhotographer']->LastName; ?></option>
+                            <?php foreach ($data['photographers'] as $photographer) : ?>
+                                <option value="<?php echo $photographer->UserID; ?>"><?php echo $photographer->FirstName . ' ' . $photographer->LastName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editor">Editor:</label>
+                        <select name="editor" id="editor" required>
+                            <option value="">Select an editor</option>
+                            <?php foreach ($data['editors'] as $editor) : ?>
+                                <option value="<?php echo $editor->UserID; ?>"><?php echo $editor->FirstName . ' ' . $editor->LastName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="printingFirm">Printing Firm:</label>
+                        <select name="printingFirm" id="printingFirm" required>
+                            <option value="">Select a printing firm</option>
+                            <?php foreach ($data['printingFirms'] as $printingFirm) : ?>
+                                <option value="<?php echo $printingFirm->UserID; ?>"><?php echo $printingFirm->FirstName . ' ' . $printingFirm->LastName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="button" type="submit" value="Allocate">
+                    </div>
+                </form>
 
             <!-- cancel event -->
             <form action="<?php echo URLROOT; ?>/events/updateEventStatus/<?php echo $data['event']->EventID; ?>/Canceled" method="POST">
@@ -69,6 +72,8 @@
                     <input class="button" type="submit" value="Cancel Event">
                 </div>
             </form>
+
+            <?php endif; ?>
         </div>
     </div>
 

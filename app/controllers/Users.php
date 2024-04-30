@@ -413,6 +413,7 @@
                 // Make sure errors are empty
                 if(empty($data['otp_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
                     // Validated
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                     // Reset Password
                     if($this->userModel->resetPassword($data)) {
                         // Unset session variables

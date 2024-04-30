@@ -116,7 +116,7 @@
 
         // Get event count by partner
         public function getEventCountByPartner($id) {
-            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE (PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id) AND Status <> "Pencil"');
+            $this->db->query('SELECT COUNT(*) AS count FROM Event WHERE (PhotographerID = :id OR EditorID = :id OR PrintingFirmID = :id)');
             $this->db->bind(':id', $id);
             $result = $this->db->single();
             

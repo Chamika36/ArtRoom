@@ -195,7 +195,7 @@
 
         //view photographers
         public function viewPhotographers() {
-            $this->db->query('SELECT * FROM user WHERE UserTypeID = 3');
+            $this->db->query('SELECT * FROM user WHERE UserTypeID = 3 AND UserID <> 19');
             $results = $this->db->resultSet();
             return $results;
         }
