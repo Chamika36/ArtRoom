@@ -23,7 +23,7 @@
 
             <div class="user-input-box">
                 <label for="image">Cover Image: </label>
-                <input type="file" name="image" required> 
+                <input type="file" name="image" accept="image/*" required> <!-- Added accept attribute for file type validation -->
                 <span class="invalid-feedback"><?php echo $data['images_err']?></span>
             </div> 
 
@@ -35,7 +35,7 @@
             
             <div class="user-input-box">
                 <label for="images">Sample Images: </label>
-                <input type="file" name="images[]" multiple required> 
+                <input type="file" name="images[]" multiple accept="image/*" required> <!-- Added accept attribute for file type validation -->
                 <span class="invalid-feedback"><?php echo $data['images_err']?></span>
             </div> 
 
